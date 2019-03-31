@@ -1,0 +1,38 @@
+{
+  "source": "./src",
+  "destination": "./docs/api",
+  "plugins": [
+    {"name": "esdoc-node"},
+    {"name": "esdoc-typescript-plugin", "option": {"enable": true}},
+    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "lint": {"enable": true},
+        "coverage": {"enable": true},
+        "accessor": {"access": ["public", "protected", "private"], "autoPrivate": true},
+        "undocumentIdentifier": {"enable": true},
+        "unexportedIdentifier": {"enable": false},
+        "typeInference": {"enable": true},
+        "test": {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$","(spec|Spec|test|Test)\\.ts$"],
+          "excludes": ["\\.config\\.js$","\\.config\\.ts$"]
+        },
+        "brand": {
+          "title":"eventstore-ts-client",
+          "description": "Eventstore javascript client library written in typescript",
+          "repository": "https://github.com/sebastianwessel/eventstore-ts-client"
+        },
+        "manual": {
+          "index": "./readme.md",
+          "globalIndex": true,
+          "asset": "./docs/manual/asset",
+          "files": [
+          ]
+        }
+      }
+    }
+  ]
+}
