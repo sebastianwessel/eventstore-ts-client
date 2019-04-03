@@ -3,17 +3,21 @@
   "version": "1.0.0",
   "description": "Eventstore javascript client library written in typescript",
   "main": "dist/index.js",
-  "typings": "lib/index.d.ts",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint --cache .",
+    "lint:fix": "eslint . --fix",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
   "dependencies": {
     "@types/bunyan": "^1.8.6",
     "bunyan": "^1.8.12",
-    "joi": "^14.3.1",
     "long": "^4.0.0",
     "protobufjs": "^6.8.8",
     "uuid4": "^1.1.4"
   },
   "devDependencies": {
-    "@types/joi": "^14.3.2",
     "@types/long": "^4.0.0",
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.5.0",
@@ -25,15 +29,10 @@
     "esdoc-typescript-plugin": "^1.0.1",
     "eslint": "^5.16.0",
     "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-prettier": "^3.0.1",
     "prettier": "^1.16.4",
     "typescript": "^3.4.1"
-  },
-  "scripts": {
-    "build": "tsc",
-    "lint": "eslint --cache .",
-    "lint:fix": "eslint . --fix",
-    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
