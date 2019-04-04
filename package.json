@@ -8,13 +8,14 @@
     "build": "tsc",
     "lint": "eslint --cache .",
     "lint:fix": "eslint . --fix",
-    "test": "mocha --require ts-node/register test/**/*.test.ts"
+    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test:coverage": "nyc mocha test/**/*.test.ts"
   },
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
   },
-  "engineStrict" : true,
+  "engineStrict": true,
   "dependencies": {
     "@types/bunyan": "^1.8.6",
     "bunyan": "^1.8.12",
@@ -40,9 +41,24 @@
     "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-prettier": "^3.0.1",
     "mocha": "^6.0.2",
+    "nyc": "^13.3.0",
     "prettier": "^1.16.4",
+    "source-map-support": "^0.5.11",
     "ts-node": "^8.0.3",
     "typescript": "^3.4.1"
+  },
+  "nyc": {
+    "extension": [
+      ".ts",
+      ".tsx"
+    ],
+    "exclude": [
+      "**/*.d.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   },
   "repository": {
     "type": "git",
