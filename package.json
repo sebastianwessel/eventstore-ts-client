@@ -10,6 +10,11 @@
     "lint:fix": "eslint . --fix",
     "test": "mocha --require ts-node/register test/**/*.test.ts"
   },
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "engineStrict" : true,
   "dependencies": {
     "@types/bunyan": "^1.8.6",
     "bunyan": "^1.8.12",
