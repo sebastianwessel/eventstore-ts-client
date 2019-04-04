@@ -28,7 +28,7 @@ describe('Basic connection test', () => {
   })
 
   it('returns clientId - name of connection', () => {
-    expect(es.name).to.be('ts-client-test')
+    expect(es.name).to.be.equal('ts-client-test')
   })
 
   it('can ping eventstore', async () => {

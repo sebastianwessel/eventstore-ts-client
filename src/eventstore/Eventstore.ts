@@ -41,7 +41,7 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   protected init(connectionConfiguration: EventstoreSettings | object = {}): void {
-    this.connectionConfig = setConnectionSettings(connectionConfiguration)
+    this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
   }
