@@ -39,8 +39,7 @@ const defaultConnectionSettings: EventstoreSettings = {
   port: 1113,
   useSSL: false,
   logger: bunyan.createLogger({
-    name: 'eventstore-ts-client',
-    level: 'trace'
+    name: 'eventstore-ts-client'
   }),
   requireMaster: true,
 
@@ -59,7 +58,7 @@ const defaultConnectionSettings: EventstoreSettings = {
   externalGossipPort: 0,
   gossipTimeout: 1000,
   gossipSeeds: [],
-  clientId: uuid()
+  clientId: `ts-client-${uuid()}`
 }
 
 let setConnectionSettings = (customSettings: object | EventstoreSettings): EventstoreSettings => {
