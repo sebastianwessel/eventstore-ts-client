@@ -1,4 +1,4 @@
-import {EventstoreSettings} from '../EventstoreSettings'
+import {EventstoreSettings} from './EventstoreSettings'
 import * as net from 'net'
 import * as tls from 'tls'
 import * as bunyan from 'bunyan'
@@ -758,13 +758,10 @@ export class TCPConnection extends EventEmitter {
    *
    * @protected
    * @param {string} correlationId
-   * @param {(null | Event | Event[])} [result=null]
+   * @param {(null | T)} [result=null]
    * @memberof TCPConnection
    */
-  protected resolveCommandPromise(
-    correlationId: string,
-    result: null | Event | Event[] = null
-  ): void {
+  protected resolveCommandPromise<T>(correlationId: string, result: null | T = null): void {
     const resultPromise = this.pendingRequests.get(correlationId)
     if (resultPromise) {
       resultPromise.resolve(result)

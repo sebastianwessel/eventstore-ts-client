@@ -1,3 +1,6 @@
 export class Event {
-  public constructor() {}
+  protected eventName: string
+  public constructor(eventName: string = 'Event') {
+    this.eventName = eventName
+  }
 }

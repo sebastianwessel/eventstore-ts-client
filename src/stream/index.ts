@@ -1,1 +1,1 @@
-export {Stream} from './Stream'
+export {Stream, StreamOptions} from './Stream'

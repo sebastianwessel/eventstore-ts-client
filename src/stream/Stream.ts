@@ -8,24 +8,28 @@ import {ExpectedVersion} from '../protobuf/ExpectedVersion'
 
 const protobuf = model.eventstore.proto
 
+export interface StreamOptions {
+  requireMaster?: boolean
+  resolveLinks?: boolean
+  credentials?: {
+    username: string
+    password: string
+  }
+}
 export class Stream {
   protected esConnection: Eventstore
   public log: bunyan
   protected streamName: string
-  protected options: {
-    requireMaster: boolean
-  }
+  protected options: StreamOptions
 
-  public constructor(eventstore: Eventstore, streamName: string, options?: {}) {
+  public constructor(eventstore: Eventstore, streamName: string, options: StreamOptions) {
     this.esConnection = eventstore
     this.streamName = streamName
     this.log = this.esConnection.logger.child
       ? this.esConnection.logger.child({module: 'Stream'})
       : this.esConnection.logger
-    const defaultOptions = {
-      requireMaster: false
-    }
-    this.options = {...defaultOptions, ...options}
+
+    this.options = options
   }
 
   public get logger(): bunyan {
@@ -120,7 +124,7 @@ export class Stream {
           uuid(),
           EventstoreCommand.DeleteStream,
           Buffer.from(protobuf.DeleteStream.encode(raw).finish()),
-          null,
+          this.options.credentials,
           {
             resolve,
             reject
@@ -141,23 +145,23 @@ export class Stream {
     return {...newMetadata}
   }
 
-  public async aggregate(): Promise<string[]> {
-    return []
+  public async aggregate<T>(initState: T): Promise<T> {
+    return initState
   }
 
   public async getFirstEvent(): Promise<Event | null> {
-    return {}
+    return new Event()
   }
 
   public async getLastEvent(): Promise<Event | null> {
-    return {}
+    return new Event()
   }
 
   public async getFirstEventOf(): Promise<Event | null> {
-    return {}
+    return new Event()
   }
 
   public async getLastEventOf(): Promise<Event | null> {
-    return {}
+    return new Event()
   }
 }

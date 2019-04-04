@@ -1,6 +1,6 @@
-import {setConnectionSettings, EventstoreSettings} from '../EventstoreSettings'
+import {setConnectionSettings, EventstoreSettings} from './EventstoreSettings'
 import {EventEmitter} from 'events'
-import {Stream} from '../stream'
+import {Stream, StreamOptions} from '../stream'
 import * as bunyan from 'bunyan'
 import {TCPConnection} from './TCPConnection'
 import uuid = require('uuid/v4')
@@ -44,6 +44,17 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = setConnectionSettings(connectionConfiguration)
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
+  }
+
+  /**
+   * Returns client id - name of eventstore connection
+   *
+   * @readonly
+   * @type {string}
+   * @memberof Eventstore
+   */
+  public get name(): string {
+    return this.connectionConfig.clientId
   }
 
   /**
@@ -113,11 +124,17 @@ export class Eventstore extends EventEmitter {
    * Get a stream instance specified by streamName
    *
    * @param {string} streamName
+   * @param {StreamOptions} [streamOptions]
    * @returns {Promise<Stream>}
    * @memberof Eventstore
    */
-  public async stream(streamName: string): Promise<Stream> {
-    return new Stream(this, streamName)
+  public async stream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+    const defaultOptions: StreamOptions = {
+      requireMaster: false,
+      resolveLinks: true,
+      credentials: this.connectionConfig.credentials
+    }
+    return new Stream(this, streamName, {...defaultOptions, ...streamOptions})
   }
 
   /**
@@ -128,10 +145,16 @@ export class Eventstore extends EventEmitter {
    */
   public async ping(): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.connection.sendCommand(uuid(), EventstoreCommand.Ping, null, null, {
-        resolve,
-        reject
-      })
+      this.connection.sendCommand(
+        uuid(),
+        EventstoreCommand.Ping,
+        null,
+        this.connectionConfig.credentials,
+        {
+          resolve,
+          reject
+        }
+      )
     })
   }
 
@@ -155,7 +178,7 @@ export class Eventstore extends EventEmitter {
         uuid(),
         EventstoreCommand.IdentifyClient,
         Buffer.from(protobuf.IdentifyClient.encode(raw).finish()),
-        null,
+        this.connectionConfig.credentials,
         {
           resolve,
           reject
