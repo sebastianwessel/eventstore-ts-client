@@ -138,6 +138,30 @@ export class Eventstore extends EventEmitter {
   }
 
   /**
+   * Get a stream instance specified by streamName
+   *
+   * @param {string} streamName
+   * @param {StreamOptions} [streamOptions]
+   * @returns {Promise<Stream>}
+   * @memberof Eventstore
+   */
+  public async fromStream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+    return this.stream(streamName, streamOptions)
+  }
+
+  /**
+   * Get a stream instance specified by streamName
+   *
+   * @param {string} streamName
+   * @param {StreamOptions} [streamOptions]
+   * @returns {Promise<Stream>}
+   * @memberof Eventstore
+   */
+  public async atStream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+    return this.stream(streamName, streamOptions)
+  }
+
+  /**
    * Ping eventstore
    *
    * @returns {Promise<void>}
