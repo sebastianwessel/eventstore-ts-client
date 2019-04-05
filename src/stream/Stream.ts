@@ -19,12 +19,12 @@ export interface StreamOptions {
 export class Stream {
   protected esConnection: Eventstore
   public log: bunyan
-  protected streamName: string
+  protected streamId: string
   protected options: StreamOptions
 
-  public constructor(eventstore: Eventstore, streamName: string, options: StreamOptions) {
+  public constructor(eventstore: Eventstore, streamId: string, options: StreamOptions) {
     this.esConnection = eventstore
-    this.streamName = streamName
+    this.streamId = streamId
     this.log = this.esConnection.logger.child
       ? this.esConnection.logger.child({module: 'Stream'})
       : this.esConnection.logger
@@ -36,20 +36,48 @@ export class Stream {
     return this.log
   }
 
-  public async emit(event: Event | Event[]): Promise<void> {
+  public append(
+    event: Event | Event[],
+    expectedVersion?: ExpectedVersion | number | Long,
+    requireMaster?: boolean
+  ): Promise<void> {
     if (Array.isArray(event)) {
-      return this.emitEvents(event)
+      return this.appendEvents(event, expectedVersion, requireMaster)
     } else {
-      return this.emitEvent(event)
+      return this.appendEvents([event], expectedVersion, requireMaster)
     }
   }
 
-  public async emitEvent(event: Event): Promise<void> {
-    return
-  }
+  protected appendEvents(
+    events: Event[],
+    expectedVersion?: ExpectedVersion | number | Long,
+    requireMaster?: boolean
+  ): Promise<void> {
+    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = []
+    for (let x = 0, xMax = events.length; x < xMax; x++) {
+      eventArrayTransformed.push(events[x].toRaw())
+    }
 
-  public async emitEvents(events: Event[]): Promise<void> {
-    return
+    const raw = protobuf.WriteEvents.fromObject({
+      eventStreamId: this.streamId,
+      expectedVersion: expectedVersion !== undefined ? expectedVersion : ExpectedVersion.Any,
+      events: eventArrayTransformed,
+      requireMaster: requireMaster !== undefined ? requireMaster : this.options.requireMaster
+    })
+    return new Promise((resolve, reject) => {
+      this.esConnection
+        .getConnection()
+        .sendCommand(
+          uuid(),
+          EventstoreCommand.WriteEvents,
+          Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
+          this.options.credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+    })
   }
 
   public async subscribe(): Promise<void> {
@@ -68,11 +96,11 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  public async hardDelete(
+  public hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<void> {
-    this.log.debug(`Hard delete Stream ${this.streamName}`)
+    this.log.debug(`Hard delete Stream ${this.streamId}`)
     return this.delete(true, expectedVersion, requireMaster)
   }
 
@@ -84,11 +112,11 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  public async softDelete(
+  public softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<void> {
-    this.log.debug(`Soft delete Stream ${this.streamName}`)
+    this.log.debug(`Soft delete Stream ${this.streamId}`)
     return this.delete(false, expectedVersion, requireMaster)
   }
 
@@ -103,7 +131,7 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  protected async delete(
+  protected delete(
     hardDelete: boolean,
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
@@ -113,7 +141,7 @@ export class Stream {
     }
     return new Promise((resolve, reject) => {
       const raw = protobuf.DeleteStream.fromObject({
-        eventStreamId: this.streamName,
+        eventStreamId: this.streamId,
         expectedVersion,
         requireMaster,
         hardDelete
@@ -133,8 +161,8 @@ export class Stream {
     })
   }
 
-  public async startTransaction(): Promise<void> {
-    return
+  public async startTransaction(): Promise<string> {
+    return 'transactionId'
   }
 
   public async getMetadata(): Promise<object> {
@@ -150,18 +178,22 @@ export class Stream {
   }
 
   public async getFirstEvent(): Promise<Event | null> {
-    return new Event()
+    return new Event(this.streamId)
   }
 
   public async getLastEvent(): Promise<Event | null> {
-    return new Event()
+    return new Event(this.streamId)
   }
 
   public async getFirstEventOf(): Promise<Event | null> {
-    return new Event()
+    return new Event(this.streamId)
   }
 
   public async getLastEventOf(): Promise<Event | null> {
-    return new Event()
+    return new Event(this.streamId)
+  }
+
+  public get name(): string {
+    return this.streamId
   }
 }
