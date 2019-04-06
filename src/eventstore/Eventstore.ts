@@ -168,7 +168,7 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   public async ping(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       this.connection.sendCommand(
         uuid(),
         EventstoreCommand.Ping,
@@ -192,7 +192,7 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   protected async identifyClient(): Promise<void> {
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
       const raw = protobuf.IdentifyClient.fromObject({
         version: 1,

@@ -5,6 +5,8 @@ import * as bunyan from 'bunyan'
 import * as model from '../protobuf/model'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import {ExpectedVersion} from '../protobuf/ExpectedVersion'
+import {Transaction} from './Transaction'
+import * as eventstoreError from '../errors'
 
 const protobuf = model.eventstore.proto
 
@@ -36,7 +38,7 @@ export class Stream {
     return this.log
   }
 
-  public append(
+  public async append(
     event: Event | Event[],
     expectedVersion?: ExpectedVersion | number | Long,
     requireMaster?: boolean
@@ -48,15 +50,19 @@ export class Stream {
     }
   }
 
-  protected appendEvents(
+  protected async appendEvents(
     events: Event[],
     expectedVersion?: ExpectedVersion | number | Long,
     requireMaster?: boolean
   ): Promise<void> {
-    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = []
-    for (let x = 0, xMax = events.length; x < xMax; x++) {
-      eventArrayTransformed.push(events[x].toRaw())
-    }
+    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) => {
+      if (!event.isNew) {
+        throw eventstoreError.newEventstoreOperationError(
+          `Event ${event.name} is already stored in eventstore`
+        )
+      }
+      return event.toRaw()
+    })
 
     const raw = protobuf.WriteEvents.fromObject({
       eventStreamId: this.streamId,
@@ -64,7 +70,12 @@ export class Stream {
       events: eventArrayTransformed,
       requireMaster: requireMaster !== undefined ? requireMaster : this.options.requireMaster
     })
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
+      const setToWritten = (): void => {
+        events.map((event) => (event.isNew = false))
+        resolve()
+      }
+
       this.esConnection
         .getConnection()
         .sendCommand(
@@ -73,7 +84,7 @@ export class Stream {
           Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
           this.options.credentials,
           {
-            resolve,
+            resolve: setToWritten,
             reject
           }
         )
@@ -131,7 +142,7 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  protected delete(
+  protected async delete(
     hardDelete: boolean,
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
@@ -139,7 +150,7 @@ export class Stream {
     if (!requireMaster) {
       requireMaster = this.options.requireMaster
     }
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       const raw = protobuf.DeleteStream.fromObject({
         eventStreamId: this.streamId,
         expectedVersion,
@@ -161,8 +172,8 @@ export class Stream {
     })
   }
 
-  public async startTransaction(): Promise<string> {
-    return 'transactionId'
+  public async startTransaction(): Promise<Transaction> {
+    return new Transaction(this, 'someid')
   }
 
   public async getMetadata(): Promise<object> {
