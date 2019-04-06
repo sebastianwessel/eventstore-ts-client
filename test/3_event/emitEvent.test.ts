@@ -12,13 +12,55 @@ describe('Event emit tests', () => {
     await es.disconnect()
   })
 
-  it('emits a new event', async () => {
-    const newEvent = new Event('testevent')
+  it('emits single new event', async () => {
+    const newEvent = new Event('SingleEventWritten')
+    const stream = await es.stream('testemitstream')
     try {
-      const stream = await es.stream('hola')
       await stream.append(newEvent)
+      expect(newEvent.isNew).to.be.false
     } catch (err) {
       assert.fail(err)
+    }
+  })
+
+  it('emits multiple new event', async () => {
+    const newEvents = [
+      new Event('FirstEventWritten'),
+      new Event('NextEventWritten'),
+      new Event('LastEventWritten')
+    ]
+    const stream = await es.stream('testemitstream')
+    try {
+      await stream.append(newEvents)
+      expect(newEvents[0].isNew).to.be.false
+      expect(newEvents[1].isNew).to.be.false
+      expect(newEvents[2].isNew).to.be.false
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('throws when emitting events already stored in eventstore', async () => {
+    const newEvents = [
+      new Event('FirstEventWritten'),
+      new Event('NextEventWritten'),
+      new Event('LastEventWritten')
+    ]
+    const stream = await es.stream('testemitstream')
+    try {
+      await stream.append(newEvents)
+      expect(newEvents[0].isNew).to.be.false
+      expect(newEvents[1].isNew).to.be.false
+      expect(newEvents[2].isNew).to.be.false
+    } catch (err) {
+      assert.fail(err)
+    }
+    try {
+      await stream.append(newEvents)
+      assert.fail('has not thrown')
+    } catch (err) {
+      assert.ok(err)
+      expect(err.name).to.be.equal('EventstoreOperationError')
     }
   })
 })
