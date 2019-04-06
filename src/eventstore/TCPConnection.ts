@@ -3,12 +3,11 @@ import * as net from 'net'
 import * as tls from 'tls'
 import * as bunyan from 'bunyan'
 import {EventEmitter} from 'events'
-import {uuidToBuffer, uuidFromBuffer} from './uuidBufferConvert'
+import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
 import {Subscription} from '../subscription'
-import {Event} from '../event'
 
 const protobuf = model.eventstore.proto
 
@@ -38,7 +37,12 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  * @export
  * @class TCPConnection
  * @extends {EventEmitter}
- * @emits {Error}
+ * @emits {error} emit error on connection errors
+ * @emits {heartbeat} emit incoming heartbeat
+ * @emits {connected} emit when connection is established
+ * @emits {close} emit when connection is closed
+ * @emits {drain} emit before connection closes
+ *
  */
 export class TCPConnection extends EventEmitter {
   protected connectionConfig: EventstoreSettings
@@ -51,6 +55,9 @@ export class TCPConnection extends EventEmitter {
   protected messageCurrentLength: number = 0
   protected messageData: Buffer | null = null
   protected subscriptionList: Map<string, Subscription> = new Map()
+  protected isUnexpectedClosed: boolean = true
+  protected heartBeatCheckInterval: NodeJS.Timeout | null = null
+  protected lastHeartBeatTime: number
 
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
@@ -64,6 +71,7 @@ export class TCPConnection extends EventEmitter {
     if (this.connectionConfig.useSSL) {
       this.socket = new tls.TLSSocket(this.socket)
     }
+    this.lastHeartBeatTime = Date.now()
   }
 
   /**
@@ -98,7 +106,7 @@ export class TCPConnection extends EventEmitter {
 
     this.log.debug(`Start connecting to ${host}:${port}`)
 
-    return new Promise((resolve, reject) => {
+    await new Promise((resolve, reject) => {
       const errorListener = (err: Error): void => {
         this.state = connectionState.closed
         this.onError(err)
@@ -108,7 +116,16 @@ export class TCPConnection extends EventEmitter {
       const successListener = (): void => {
         this.socket.removeListener('error', errorListener)
         this.onConnect()
+        this.heartBeatCheckInterval = setInterval(() => {
+          if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
+            const err = eventstoreError.newEventstoreTimeoutError(
+              `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
+            )
+            this.onError(err)
+          }
+        }, this.connectionConfig.heartbeatInterval)
         resolve()
+        this.isUnexpectedClosed = false
       }
 
       this.socket.once('error', errorListener)
@@ -126,11 +143,12 @@ export class TCPConnection extends EventEmitter {
    * @returns {Promise<void>}
    * @memberof TCPConnection
    */
-  public disconnect(): Promise<void> {
-    return new Promise((resolve, reject) => {
+  public async disconnect(): Promise<void> {
+    await new Promise((resolve, reject) => {
       this.onDrain()
       if (this.pendingRequests.size <= 0) {
         this.state = connectionState.closed
+        this.isUnexpectedClosed = false
         this.socket.end(() => {
           this.socket.destroy()
           resolve()
@@ -138,11 +156,15 @@ export class TCPConnection extends EventEmitter {
       } else {
         setTimeout(() => {
           this.state = connectionState.closed
+          this.isUnexpectedClosed = false
           if (this.pendingRequests.size > 0) {
-            this.log.warn(`Lost ${this.pendingRequests.size} answers`)
             this.socket.end(() => {
               this.socket.destroy()
-              reject(new Error(`Lost ${this.pendingRequests.size} answers`))
+              const err = eventstoreError.newConnectionError(
+                `Lost ${this.pendingRequests.size} answers`
+              )
+              reject(err)
+              this.onError(err)
             })
           } else {
             this.socket.end(() => {
@@ -160,7 +182,7 @@ export class TCPConnection extends EventEmitter {
    *
    * @param {string} correlationId
    * @param {EventstoreCommand} command
-   * @param {(Buffer | null)} [data=null]
+   * @param {Buffer | null)} [data=null]
    * @param {({username: string; password: string} | null)} [credentials=null]
    * @param {({resolve: Function; reject: Function} | null)} [promise=null]
    * @memberof TCPConnection
@@ -236,7 +258,7 @@ export class TCPConnection extends EventEmitter {
     } catch (err) {
       const newErr = eventstoreError.newConnectionError(err.message, err)
       this.rejectCommandPromise(correlationId, newErr)
-      this.emit('error', newErr)
+      this.onError(newErr)
     }
   }
 
@@ -313,6 +335,7 @@ export class TCPConnection extends EventEmitter {
    *
    * @protected
    * @param {Buffer} data
+   * @emits {heartbeat}
    * @memberof TCPConnection
    */
   protected handleSingleResponseData(data: Buffer): void {
@@ -338,6 +361,7 @@ export class TCPConnection extends EventEmitter {
 
     //Answer Heartbeat directly without adding to promise queue
     if (command === EventstoreCommand.HeartbeatRequestCommand) {
+      this.emit('heartbeat')
       this.sendCommand(correlationId, EventstoreCommand.HeartbeatResponseCommand)
       return
     }
@@ -359,12 +383,12 @@ export class TCPConnection extends EventEmitter {
       case EventstoreCommand.BadRequest:
         err = eventstoreError.newBadRequestError()
         this.rejectCommandPromise(correlationId, err)
-        this.emit('error', err)
+        this.onError(err)
         break
       case EventstoreCommand.NotAuthenticated:
         err = eventstoreError.newNotAuthenticatedError()
         this.rejectCommandPromise(correlationId, err)
-        this.emit('error', err)
+        this.onError(err)
         break
       case EventstoreCommand.NotHandled:
         const notHandled = protobuf.NotHandled.decode(payload)
@@ -372,7 +396,7 @@ export class TCPConnection extends EventEmitter {
           ${protobuf.NotHandled.NotHandledReason[notHandled.reason]}
         `)
         this.rejectCommandPromise(correlationId, err)
-        this.emit('error', err)
+        this.onError(err)
         break
       case EventstoreCommand.CreatePersistentSubscriptionCompleted:
         this.handleCreatePersistentSubscriptionCompleted(correlationId, payload)
@@ -448,7 +472,7 @@ export class TCPConnection extends EventEmitter {
           'EventstoreImplementationError'
         )
         this.rejectCommandPromise(correlationId, err)
-        this.emit('error', err)
+        this.onError(err)
         break
     }
   }
@@ -748,7 +772,10 @@ export class TCPConnection extends EventEmitter {
       resultPromise.reject(error)
       this.pendingRequests.delete(correlationId)
     } else {
-      this.log.error({correlationId}, 'Could not find correlationId on rejectCommandPromise')
+      const err = eventstoreError.newImplementationError(
+        `Could not find correlationId ${correlationId} on rejectCommandPromise`
+      )
+      this.onError(err)
     }
   }
 
@@ -767,7 +794,10 @@ export class TCPConnection extends EventEmitter {
       resultPromise.resolve(result)
       this.pendingRequests.delete(correlationId)
     } else {
-      this.log.error({correlationId}, 'Could not find correlationId on resolveCommandPromise')
+      const err = eventstoreError.newImplementationError(
+        `Could not find correlationId ${correlationId} on resolveCommandPromise`
+      )
+      this.onError(err)
     }
   }
 
@@ -780,7 +810,9 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   protected onError(err?: Error): void {
-    this.log.error({err}, 'Eventstore connection error')
+    const errorMessage =
+      err !== undefined ? `${err.name}: ${err.message}` : 'Eventstore connection error'
+    this.log.error({err}, errorMessage)
     this.emit('error', err)
   }
 
@@ -815,7 +847,13 @@ export class TCPConnection extends EventEmitter {
   protected onClose(): void {
     this.log.debug('Connection to eventstore closed')
     this.state = connectionState.closed
+    if (this.heartBeatCheckInterval) {
+      clearInterval(this.heartBeatCheckInterval)
+    }
     this.emit('close')
+    if (this.isUnexpectedClosed) {
+      this.emit('error')
+    }
   }
 
   /**
