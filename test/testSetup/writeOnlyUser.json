@@ -1,0 +1,9 @@
+{
+  "loginName": "writeOnlyUser",
+  "fullName": "Write only user",
+  "password": "writeOnlyUserPassword",
+  "groups": [
+    "write-group",
+    "metawrite-group"
+  ]
+}

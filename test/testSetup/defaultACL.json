@@ -1,0 +1,22 @@
+[
+  {
+      "eventId": "7c314750-05e1-439f-b2eb-f5b0e019be72",
+      "eventType": "update-default-acl",
+      "metadata": {
+          "$userStreamAcl": {
+              "$r": ["read-group","restricted-group"],
+              "$w": ["write-group","restricted-group"],
+              "$d": ["delete-group","restricted-group"],
+              "$mr": ["metaread-group","restricted-group"],
+              "$mw": ["metawrite-group","restricted-group"]
+          },
+          "$systemStreamAcl": {
+              "$r": "$admins",
+              "$w": "$admins",
+              "$d": "$admins",
+              "$mr": "$admins",
+              "$mw": "$admins"
+          }
+      }
+  }
+]

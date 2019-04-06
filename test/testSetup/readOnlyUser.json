@@ -1,0 +1,10 @@
+
+{
+  "loginName": "readOnlyUser",
+  "fullName": "Read only user",
+  "password": "readOnlyUserPassword",
+  "groups": [
+    "read-group",
+    "metaread-group"
+  ]
+}
