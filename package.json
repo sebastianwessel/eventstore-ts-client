@@ -5,10 +5,10 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build": "./scipts/build.sh",
     "lint": "eslint --cache .",
     "lint:fix": "eslint . --fix",
-    "test": "mocha --require ts-node/register test/**/*.test.ts",
+    "test": "./scipts/test.sh",
     "test:coverage": "nyc mocha test/**/*.test.ts",
     "document":"typedoc --theme markdown"
   },
