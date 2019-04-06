@@ -254,6 +254,20 @@ function newEventstoreTimeoutError(
   return new EventstoreError(`Timeout error: ${message}`, 'EventstoreTimeoutError', rootCause)
 }
 
+/**
+ * Returns new EventstoreError type of EventstoreOperationError
+ *
+ * @param {string} [message='']
+ * @param {(Error | null)} [rootCause=null]
+ * @returns {EventstoreError}
+ */
+function newEventstoreOperationError(
+  message: string = '',
+  rootCause: Error | null = null
+): EventstoreError {
+  return new EventstoreError(`Operation error: ${message}`, 'EventstoreOperationError', rootCause)
+}
+
 export {
   EventstoreError,
   newConnectionError,
@@ -274,5 +288,6 @@ export {
   newUnspecificError,
   newDoesNotExistError,
   newImplementationError,
-  newEventstoreTimeoutError
+  newEventstoreTimeoutError,
+  newEventstoreOperationError
 }
