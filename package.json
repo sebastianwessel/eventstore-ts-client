@@ -21,6 +21,9 @@
     "npm": ">=6.0.0"
   },
   "engineStrict": true,
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@types/bunyan": "^1.8.6",
     "bunyan": "^1.8.12",
