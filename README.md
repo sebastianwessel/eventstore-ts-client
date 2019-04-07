@@ -19,10 +19,12 @@ This repo is **under havy development and not ready for use**
 Main focus on this lib are:
 
 - available for typescript
-- highly documented
+- available for ES6 with async/await syntax
+- well documented
 - clean code
 - propper code readability
 - propper testing
+- nice error handling
 
 ## Documentation
 

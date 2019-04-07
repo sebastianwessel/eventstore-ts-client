@@ -10,4 +10,5 @@
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 
-Tests are implemented as integration tests against a real eventstore cluster.
+Tests are implemented as integration tests against a real eventstore cluster.  
+You can find code coverage analysis at **[sonarcloud.com](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)**
