@@ -82,7 +82,7 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public get isConnected(): boolean {
-    return this.state === connectionState.connected ? true : false
+    return this.state === connectionState.connected
   }
 
   /**

@@ -38,18 +38,6 @@ export class Stream {
     return this.log
   }
 
-  public async append(
-    event: Event | Event[],
-    expectedVersion?: ExpectedVersion | number | Long,
-    requireMaster?: boolean
-  ): Promise<void> {
-    if (Array.isArray(event)) {
-      return this.appendEvents(event, expectedVersion, requireMaster)
-    } else {
-      return this.appendEvents([event], expectedVersion, requireMaster)
-    }
-  }
-
   protected async appendEvents(
     events: Event[],
     expectedVersion?: ExpectedVersion | number | Long,
@@ -72,7 +60,7 @@ export class Stream {
     })
     await new Promise((resolve, reject) => {
       const setToWritten = (): void => {
-        events.map((event) => (event.isNew = false))
+        events.forEach((event) => (event.isNew = false))
         resolve()
       }
 
@@ -89,6 +77,18 @@ export class Stream {
           }
         )
     })
+  }
+
+  public async append(
+    event: Event | Event[],
+    expectedVersion?: ExpectedVersion | number | Long,
+    requireMaster?: boolean
+  ): Promise<void> {
+    if (Array.isArray(event)) {
+      return this.appendEvents(event, expectedVersion, requireMaster)
+    } else {
+      return this.appendEvents([event], expectedVersion, requireMaster)
+    }
   }
 
   public async subscribe(): Promise<void> {
