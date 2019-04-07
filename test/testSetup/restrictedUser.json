@@ -1,0 +1,8 @@
+{
+  "loginName": "restrictedUser",
+  "fullName": "Restricted only user",
+  "password": "restrictedOnlyUserPassword",
+  "groups": [
+    "restricted-group"
+  ]
+}

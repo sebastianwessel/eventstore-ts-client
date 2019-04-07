@@ -3,8 +3,8 @@
   "destination": "./docs/api",
   "plugins": [
     {"name": "esdoc-node"},
-    {"name": "esdoc-typescript-plugin", "option": {"enable": true}},
     {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {"name": "esdoc-typescript-plugin", "option": {"enable": true}},
     {
       "name": "esdoc-standard-plugin",
       "option": {
@@ -30,6 +30,8 @@
           "globalIndex": true,
           "asset": "./docs/manual/asset",
           "files": [
+            "./docs/manual/readme.md",
+            "./docs/manual/eventstore.md"
           ]
         }
       }
