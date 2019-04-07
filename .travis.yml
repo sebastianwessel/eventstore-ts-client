@@ -35,8 +35,8 @@ jobs:
     - stage: sonarqube
       name: "Sonarqube gateway"
       script: sonar-scanner
-    - stage: coverage
-      name: "Run code coverage"
+    - stage: codecov
+      name: "Report coverage"
       script:
         - npm install codecov -g
         - nyc report --reporter=json > coverage/coverage.json
@@ -58,7 +58,7 @@ jobs:
 stages:
   - test
   - sonarqube
-  - coverage
+  - codecov
   - name: build
     if: branch = master
   - name: npm release
