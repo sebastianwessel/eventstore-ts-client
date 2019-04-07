@@ -21,7 +21,7 @@ jobs:
   include:
     - stage: test
       name: "Integration tests"
-      script: npm run test
+      script: npm run test:integration
     - script: npm run lint
       name: "Lint"
     - stage: coverage

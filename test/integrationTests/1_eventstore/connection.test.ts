@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {Eventstore} from '../../src'
+import {Eventstore} from '../../../src'
 import * as assert from 'assert'
 
 describe('Connection test', () => {
