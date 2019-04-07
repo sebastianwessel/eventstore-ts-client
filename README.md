@@ -7,6 +7,8 @@
 
 Eventstore javascript client library written in typescript
 
+This repo is **under havy development and not ready for use**
+
 ## Building
 
 To build this lib just run `npm run build`
