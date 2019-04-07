@@ -1,0 +1,25 @@
+
+{
+  "clean":false,
+  "extension": [
+    ".ts",
+    ".tsx"
+  ],
+  "exclude": [
+    "**/*.d.ts",
+    "**/*.js",
+    "test/**",
+    "docs/**",
+    "manual/**",
+    "dist/**",
+    "coverage/**"
+  ],
+  "reporter": [
+    "lcov",
+    "html",
+    "json",
+    "text-lcov",
+    "text-summary"
+  ],
+  "all": true
+}
