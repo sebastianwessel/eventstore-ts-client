@@ -8,8 +8,8 @@
     "build": "./scipts/build.sh",
     "lint": "eslint --cache .",
     "lint:fix": "eslint . --fix",
-    "test": "./scipts/test.sh",
-    "test:coverage": "nyc --reporter=lcov --reporter=text-summary --reporter=html mocha test/**/*.test.ts",
+    "test:integration": "./scipts/integrationTest.sh",
+    "test:coverageIntegration": "nyc --clean=false --reporter=lcov --reporter=text-summary --reporter=html mocha test/integrationTests/**/*.test.ts",
     "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
@@ -85,9 +85,9 @@
     "typescript"
   ],
   "author": "Sebastian Wessel",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache License 2",
   "bugs": {
     "url": "https://github.com/sebastianwessel/eventstore-ts-client/issues"
   },
-  "homepage": "https://github.com/sebastianwessel/eventstore-ts-client#readme"
+  "homepage": "https://sebastianwessel.github.io/eventstore-ts-client/"
 }

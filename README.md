@@ -5,13 +5,43 @@
 [![codecov](https://codecov.io/gh/sebastianwessel/eventstore-ts-client/branch/master/graph/badge.svg)](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)
 [![doc coverage](./docs/api/badge.svg)](./docs/api/index.html)
 
-Eventstore javascript client library written in typescript
+Eventstore javascript client library written in typescript.
 
 This repo is **under havy development and not ready for use**
 
+Main focus on this lib are:
+
+- available for typescript
+- highly documented
+- clean code
+- propper testing
+
+## Documentation
+
+Full documentation is available at **[https://sebastianwessel.github.io/eventstore-ts-client/](https://sebastianwessel.github.io/eventstore-ts-client/)**
+
+## Requirements
+
+You will need to have node.js version >=10 installed to use this lib because it's based on async iterators.  
+It's tested against eventstore version 5, but should also work on lower versions in general.  
+Expect some shortcut function for accessing standard projections which are not part of lower eventstore versions.
+
+## Installation
+
+Installation is as simple as most packages.  
+Just install package in your projects root with:
+
+```bash
+npm i --save eventstore-ts-client
+```
+
 ## Building
 
-To build this lib just run `npm run build`
+To build this lib just run:
+
+```bash
+npm run build
+```
 
 ## Test lib
 
@@ -21,7 +51,9 @@ Test are running against a 3 node eventstore cluster which will configured and f
 You will need to have docker installed on your machine to be able to run tests.  
 The setup contains a script which does all stuff for you - just type:
 
-`npm run test`
+```bash
+npm run test
+```
 
 Running tests will also generate some code coverage report to be used in tools like sonarqube
 
