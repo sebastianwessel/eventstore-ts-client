@@ -15,9 +15,9 @@ branches:
 
 script:
   - npm run test
-  - npm run build
 
 after_success:
+  - npm run build
   - npm install codecov -g
   - nyc report --reporter=json > coverage/coverage.json
   - codecov
