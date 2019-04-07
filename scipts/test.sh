@@ -104,9 +104,13 @@ fi
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
 npm run test:coverage
+testexit=0
+rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
 
 
 ### shut down eventstore cluster and remove docker containers
 ###############################################
 print_style "shutting down docker containers\n";
 docker-compose -f ./test/docker-compose.yml -p estest down
+
+exit $testexit
