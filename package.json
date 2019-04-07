@@ -85,7 +85,7 @@
     "typescript"
   ],
   "author": "Sebastian Wessel",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "Apache License 2",
   "bugs": {
     "url": "https://github.com/sebastianwessel/eventstore-ts-client/issues"
   },
