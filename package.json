@@ -13,6 +13,7 @@
     "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
+  "files": ["dist/**/*"],
   "pre-push": [
     "lint"
   ],
