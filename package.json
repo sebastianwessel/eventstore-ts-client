@@ -9,8 +9,9 @@
     "lint": "eslint --cache .",
     "lint:fix": "eslint . --fix",
     "test": "./scipts/test.sh",
-    "test:coverage": "nyc mocha test/**/*.test.ts",
-    "document":"typedoc --theme markdown"
+    "test:coverage": "nyc --reporter=lcov --reporter=text-summary --reporter=html mocha test/**/*.test.ts",
+    "document":"typedoc --theme markdown",
+    "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
   "engines": {
     "node": ">=10.0.0",
