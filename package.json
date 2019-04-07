@@ -10,9 +10,12 @@
     "lint:fix": "eslint . --fix",
     "test": "./scipts/test.sh",
     "test:coverage": "nyc --reporter=lcov --reporter=text-summary --reporter=html mocha test/**/*.test.ts",
-    "document":"typedoc --theme markdown",
+    "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
+  "pre-push": [
+    "lint"
+  ],
   "engines": {
     "node": ">=10.0.0",
     "npm": ">=6.0.0"
@@ -42,6 +45,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-json": "^1.4.0",
     "eslint-plugin-prettier": "^3.0.1",
+    "git-pre-push": "0.0.5",
     "mocha": "^6.0.2",
     "nyc": "^13.3.0",
     "prettier": "^1.16.4",
