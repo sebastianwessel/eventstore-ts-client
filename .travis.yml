@@ -17,6 +17,12 @@ branches:
     - master
     - dev
 
+addons:
+  sonarcloud:
+    organization: "sebastianwessel-github"
+    token:
+      secure: $SONAR_TOKEN
+
 jobs:
   include:
     - stage: test
@@ -24,6 +30,9 @@ jobs:
       script: npm run test:integration
     - script: npm run lint
       name: "Lint"
+    - stage: sonarqube
+      name: "Sonarqube gateway"
+      script: sonar-scanner
     - stage: coverage
       name: "Run code coverage"
       script:
@@ -46,6 +55,7 @@ jobs:
 
 stages:
   - test
+  - sonarqube
   - coverage
   - name: build
     if: branch = master
