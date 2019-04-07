@@ -6,6 +6,7 @@ node_js:
 cache:
   directories:
     - node_modules
+    - coverage
 
 branches:
   only:
@@ -13,8 +14,10 @@ branches:
     - dev
 
 script:
+  - npm run test
   - npm run build
 
 after_success:
-  - npm run test
-  - npm run report-coverage
+  - npm install codecov -g
+  - nyc report --reporter=json > coverage/coverage.json
+  - codecov
