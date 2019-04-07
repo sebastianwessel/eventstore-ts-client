@@ -13,7 +13,9 @@
     "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls"
   },
-  "files": ["dist/**/*"],
+  "files": [
+    "dist/**/*"
+  ],
   "pre-push": [
     "lint"
   ],
@@ -39,6 +41,7 @@
     "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
+    "acorn": "^6.1.1",
     "chai": "^4.2.0",
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
