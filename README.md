@@ -3,8 +3,14 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/sebastianwessel/eventstore-ts-client.svg?branch=master)](https://travis-ci.org/sebastianwessel/eventstore-ts-client)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
-[![codecov](https://codecov.io/gh/sebastianwessel/eventstore-ts-client/branch/master/graph/badge.svg)](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)
-[![doc coverage](./docs/api/badge.svg)](./docs/api/index.html)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=coverage)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=ncloc)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=security_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![ ](./docs/badge.svg)](./docs/api/index.html)
 
 Eventstore javascript client library written in typescript.
 
@@ -15,6 +21,7 @@ Main focus on this lib are:
 - available for typescript
 - highly documented
 - clean code
+- propper code readability
 - propper testing
 
 ## Documentation
