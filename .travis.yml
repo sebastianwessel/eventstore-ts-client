@@ -32,14 +32,11 @@ jobs:
       script: npm run test:integration
     - script: npm run lint
       name: "Lint"
-    - stage: sonarqube
+    - stage: codecoverage
       name: "Sonarqube gateway"
-      script: sonar-scanner
-    - stage: codecov
-      name: "Report coverage"
       script:
+        - sonar-scanner
         - npm install codecov -g
-#        - nyc --clean=false report --reporter=json > coverage/coverage.json
         - codecov
     - stage: build
       name: "Build lib"
@@ -57,8 +54,7 @@ jobs:
 
 stages:
   - test
-  - sonarqube
-  - codecov
+  - codecoverage
   - name: build
     if: branch = master
   - name: npm release
