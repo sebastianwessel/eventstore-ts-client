@@ -14,7 +14,7 @@
 
 Eventstore javascript client library written in typescript.
 
-This repo is **under havy development and not ready for use**
+This repo is **under heavy development and not ready for use**
 
 Main focus on this lib are:
 
@@ -47,11 +47,14 @@ npm i --save eventstore-ts-client
 
 ## Building
 
-To build this lib just run:
+To build this lib just clone this repo and run:
 
 ```bash
+npm install
 npm run build
 ```
+
+*Maybe you need to change file attributes of scripts inside of `scripts/` folder to be executable*
 
 ## Test lib
 
