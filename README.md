@@ -2,6 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/sebastianwessel/eventstore-ts-client.svg?branch=master)](https://travis-ci.org/sebastianwessel/eventstore-ts-client)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 [![codecov](https://codecov.io/gh/sebastianwessel/eventstore-ts-client/branch/master/graph/badge.svg)](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)
 [![doc coverage](./docs/api/badge.svg)](./docs/api/index.html)
 
