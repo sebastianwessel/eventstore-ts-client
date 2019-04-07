@@ -39,7 +39,7 @@ jobs:
       name: "Report coverage"
       script:
         - npm install codecov -g
-        - nyc report --reporter=json > coverage/coverage.json
+#        - nyc --clean=false report --reporter=json > coverage/coverage.json
         - codecov
     - stage: build
       name: "Build lib"
