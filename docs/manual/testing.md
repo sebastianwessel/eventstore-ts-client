@@ -1,1 +1,0 @@
-# Testing eventstore-ts-client

@@ -89,5 +89,5 @@
   "bugs": {
     "url": "https://github.com/sebastianwessel/eventstore-ts-client/issues"
   },
-  "homepage": "https://github.com/sebastianwessel/eventstore-ts-client#readme"
+  "homepage": "https://sebastianwessel.github.io/eventstore-ts-client/"
 }

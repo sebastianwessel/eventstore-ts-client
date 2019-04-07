@@ -1,6 +1,6 @@
 {
   "source": "./src",
-  "destination": "./docs/api",
+  "destination": "./docs",
   "plugins": [
     {"name": "esdoc-node"},
     {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
@@ -21,17 +21,19 @@
           "excludes": ["\\.config\\.js$","\\.config\\.ts$"]
         },
         "brand": {
-          "title":"eventstore-ts-client",
-          "description": "Eventstore javascript client library written in typescript",
-          "repository": "https://github.com/sebastianwessel/eventstore-ts-client"
+          "title":"eventstore-ts-client | Eventstore typescript / ES6 javascript client lib",
+          "description": "Eventstore typescript / ES6 javascript client lib written in typescript",
+          "repository": "https://github.com/sebastianwessel/eventstore-ts-client",
+          "site": "https://sebastianwessel.github.io/eventstore-ts-client/",
+          "author": "https://sebastianwessel.de"
         },
         "manual": {
           "index": "./readme.md",
           "globalIndex": true,
-          "asset": "./docs/manual/asset",
+          "asset": "./manual/asset",
           "files": [
-            "./docs/manual/readme.md",
-            "./docs/manual/eventstore.md"
+            "./manual/readme.md",
+            "./manual/eventstore.md"
           ]
         }
       }
