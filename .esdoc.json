@@ -33,7 +33,10 @@
           "asset": "./manual/asset",
           "files": [
             "./manual/readme.md",
-            "./manual/eventstore.md"
+            "./manual/eventstore.md",
+            "./manual/streams.md",
+            "./manual/events.md",
+            "./manual/testing.md"
           ]
         }
       }

@@ -1,1 +1,1 @@
-# Testing eventstore-ts-client
+# Testing
