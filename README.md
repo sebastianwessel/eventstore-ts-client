@@ -1,6 +1,9 @@
 # Eventstore typescript / ES6 javascript client lib
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![Build Status](https://travis-ci.org/sebastianwessel/eventstore-ts-client.svg?branch=master)](https://travis-ci.org/sebastianwessel/eventstore-ts-client)
+[![codecov](https://codecov.io/gh/sebastianwessel/eventstore-ts-client/branch/master/graph/badge.svg)](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)
+[![doc coverage](./docs/api/badge.svg)](./docs/api/index.html)
 
 Eventstore javascript client library written in typescript
 
