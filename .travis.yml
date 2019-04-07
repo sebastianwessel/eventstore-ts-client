@@ -41,7 +41,7 @@ jobs:
       script: echo "Deploying to npm ..."
       deploy:
         provider: npm
-        email: "b@chromatin.ca"
+        email: "mail@sebastianwessel.de"
         api_key: $NPM_API_KEY
         gem: eventstore-ts-client
         on: deploy-npm-release
