@@ -10,6 +10,8 @@ cache:
   directories:
     - node_modules
     - coverage
+    - .nyc_output
+    - dist
 
 script: echo "Running tests against $(node -v) ..."
 
