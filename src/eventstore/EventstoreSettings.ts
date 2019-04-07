@@ -40,6 +40,7 @@ const defaultConnectionSettings: EventstoreSettings = {
   useSSL: false,
   logger: bunyan.createLogger({
     name: 'eventstore-ts-client'
+    //level: 'debug'
   }),
   requireMaster: true,
 
