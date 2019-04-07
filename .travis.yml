@@ -1,6 +1,3 @@
-sudo: false
-dist: trusty
-
 language: node_js
 
 node_js:
@@ -44,7 +41,8 @@ jobs:
         email: "mail@sebastianwessel.de"
         api_key: $NPM_API_KEY
         gem: eventstore-ts-client
-        on: deploy-npm-release
+        on:
+          branch: master
 
 stages:
   - test
