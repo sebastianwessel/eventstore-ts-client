@@ -79,7 +79,7 @@ export class Stream {
     requireMaster?: boolean
   ): Promise<void> {
     const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) => {
-      if (!event.isNew) {
+      if (!event.isNew()) {
         throw eventstoreError.newEventstoreOperationError(
           `Event ${event.name} is already stored in eventstore`
         )
@@ -95,7 +95,7 @@ export class Stream {
     })
     await new Promise((resolve, reject) => {
       const setToWritten = (): void => {
-        events.forEach((event) => (event.isNew = false))
+        events.forEach((event) => event.freeze())
         resolve()
       }
 
