@@ -10,7 +10,7 @@
 [![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
-[![ ](https://sebastianwessel.github.io/eventstore-ts-client/badge.svg)](https://sebastianwessel.github.io/eventstore-ts-client)
+[![doc coverage](https://sebastianwessel.github.io/eventstore-ts-client/badge.svg)](https://sebastianwessel.github.io/eventstore-ts-client)
 
 Eventstore javascript client library written in typescript.
 
