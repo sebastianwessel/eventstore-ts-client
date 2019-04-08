@@ -10,8 +10,8 @@
     "lint:fix": "eslint . --fix",
     "test":"npm run lint && npm run test:unit && npm run test:integration && npm run combine-coverage",
     "test:integration": "./scipts/integrationTest.sh",
-    "test:coverageIntegration": "nyc --temp-directory=./.nyc_integration --reporter=text-summary mocha test/integrationTests/**/*.test.ts",
-    "test:unit": "nyc --temp-directory=./.nyc_unit --reporter=text-summary mocha test/unitTests/**/*.test.ts",
+    "test:coverageIntegration": "nyc --temp-directory=./.nyc_integration --reporter=text-summary --reporter=lcov --reporter=json mocha test/integrationTests/**/*.test.ts",
+    "test:unit": "nyc --temp-directory=./.nyc_unit --reporter=text-summary --reporter=lcov --reporter=json  mocha test/unitTests/**/*.test.ts",
     "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
     "combine-coverage":"./scipts/combineCoverage.sh && nyc merge .nyc_output ./coverage/coverage.json && nyc report -t ./coverage"
