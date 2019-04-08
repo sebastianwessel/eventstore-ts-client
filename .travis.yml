@@ -10,6 +10,8 @@ cache:
     - node_modules
     - coverage
     - .nyc_output
+    - .nyc_integration
+    - .nyc_unit
     - dist
 
 script: echo "Running tests against $(node -v) ..."
@@ -30,11 +32,12 @@ jobs:
     - stage: test
       name: "Integration tests"
       script: npm run test:integration
-    - script: npm run lint
-      name: "Lint"
+    - script: npm run test:unit
+      name: "Unit tests"
     - stage: codecoverage
       name: "Sonarqube gateway"
       script:
+        - npm run combine-coverage
         - sonar-scanner
         - npm install codecov -g
         - codecov

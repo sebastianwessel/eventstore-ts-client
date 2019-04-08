@@ -1,6 +1,5 @@
 
 {
-  "clean":false,
   "extension": [
     ".ts",
     ".tsx"
