@@ -22,8 +22,8 @@ Main focus on this lib are:
 - available for ES6 with async/await syntax
 - well documented
 - clean code
-- propper code readability
-- propper testing
+- proper code readability
+- proper testing
 - nice error handling
 
 ## Documentation
