@@ -10,14 +10,12 @@
     "test/**",
     "docs/**",
     "manual/**",
-    "dist/**",
-    "coverage/**",
-    ".nyc_**/**",
-    "node_modules/**"
+    "dist/**"
   ],
   "reporter": [
     "lcov",
-    "text"
+    "text",
+    "json"
   ],
   "all": true
 }
