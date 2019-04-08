@@ -17,7 +17,7 @@ describe('Event emit tests', () => {
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvent)
-      expect(newEvent.isNew).to.be.false
+      expect(newEvent.isNew()).to.be.false
     } catch (err) {
       assert.fail(err)
     }
@@ -32,9 +32,9 @@ describe('Event emit tests', () => {
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvents)
-      expect(newEvents[0].isNew).to.be.false
-      expect(newEvents[1].isNew).to.be.false
-      expect(newEvents[2].isNew).to.be.false
+      expect(newEvents[0].isNew()).to.be.false
+      expect(newEvents[1].isNew()).to.be.false
+      expect(newEvents[2].isNew()).to.be.false
     } catch (err) {
       assert.fail(err)
     }
@@ -49,9 +49,9 @@ describe('Event emit tests', () => {
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvents)
-      expect(newEvents[0].isNew).to.be.false
-      expect(newEvents[1].isNew).to.be.false
-      expect(newEvents[2].isNew).to.be.false
+      expect(newEvents[0].isNew()).to.be.false
+      expect(newEvents[1].isNew()).to.be.false
+      expect(newEvents[2].isNew()).to.be.false
     } catch (err) {
       assert.fail(err)
     }
