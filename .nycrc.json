@@ -11,14 +11,13 @@
     "docs/**",
     "manual/**",
     "dist/**",
-    "coverage/**"
+    "coverage/**",
+    ".nyc_**/**",
+    "node_modules/**"
   ],
   "reporter": [
     "lcov",
-    "html",
-    "json",
-    "text-lcov",
-    "text-summary"
+    "text"
   ],
   "all": true
 }
