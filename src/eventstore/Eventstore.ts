@@ -22,7 +22,7 @@ export class Eventstore extends EventEmitter {
   protected connection: TCPConnection
 
   /**
-   *Creates an instance of Eventstore.
+   * Creates an instance of Eventstore.
    * @param {(EventstoreSettings | object)} [connectionConfiguration={}]
    * @memberof Eventstore
    */
@@ -122,6 +122,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
+   * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
@@ -139,6 +140,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
+   * Alias for {@see <stream>}
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
@@ -151,6 +153,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
+   * Alias for {@see <stream>}
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
