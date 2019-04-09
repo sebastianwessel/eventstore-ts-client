@@ -1,4 +1,4 @@
-# Manual
+# General
 
 This library tries to help you to communicate with eventstore in a smooth way.
 

@@ -1,0 +1,6 @@
+ignore:
+  - "docs"
+  - "manual"
+  - "node_modules"
+  - "scripts"
+  - "test"

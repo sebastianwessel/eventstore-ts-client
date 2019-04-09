@@ -1,20 +1,30 @@
 # Eventstore typescript / ES6 javascript client lib
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-[![Build Status](https://travis-ci.org/sebastianwessel/eventstore-ts-client.svg?branch=master)](https://travis-ci.org/sebastianwessel/eventstore-ts-client)
-[![codecov](https://codecov.io/gh/sebastianwessel/eventstore-ts-client/branch/master/graph/badge.svg)](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)
-[![doc coverage](./docs/api/badge.svg)](./docs/api/index.html)
+[![Build Status](https://travis-ci.com/sebastianwessel/eventstore-ts-client.svg?branch=master)](https://travis-ci.com/sebastianwessel/eventstore-ts-client)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=alert_status)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=coverage)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=ncloc)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=security_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=reliability_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
+[![doc coverage](https://sebastianwessel.github.io/eventstore-ts-client/badge.svg)](https://sebastianwessel.github.io/eventstore-ts-client)
 
 Eventstore javascript client library written in typescript.
 
-This repo is **under havy development and not ready for use**
+This repo is **under heavy development and not ready for use**
 
 Main focus on this lib are:
 
 - available for typescript
-- highly documented
+- available for ES6 with async/await syntax
+- well documented
 - clean code
-- propper testing
+- proper code readability
+- proper testing
+- nice error handling
 
 ## Documentation
 
@@ -37,11 +47,14 @@ npm i --save eventstore-ts-client
 
 ## Building
 
-To build this lib just run:
+To build this lib just clone this repo and run:
 
 ```bash
+npm install
 npm run build
 ```
+
+*Maybe you need to change file attributes of scripts inside of `scripts/` folder to be executable*
 
 ## Test lib
 

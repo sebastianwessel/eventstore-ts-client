@@ -18,12 +18,30 @@ export interface StreamOptions {
     password: string
   }
 }
+
+/**
+ * Base class for handling a stream
+ *
+ * @export
+ * @class Stream
+ */
 export class Stream {
+  /** @type {Eventstore} */
   protected esConnection: Eventstore
+  /** @type {Bunyan} */
   public log: bunyan
+  /** @type {string} */
   protected streamId: string
+  /** @type {StreamOptions} */
   protected options: StreamOptions
 
+  /**
+   * Creates an instance of Stream.
+   * @param {Eventstore} eventstore
+   * @param {string} streamId
+   * @param {StreamOptions} options
+   * @memberof Stream
+   */
   public constructor(eventstore: Eventstore, streamId: string, options: StreamOptions) {
     this.esConnection = eventstore
     this.streamId = streamId
@@ -34,17 +52,34 @@ export class Stream {
     this.options = options
   }
 
+  /**
+   * Return current logger instance
+   *
+   * @readonly
+   * @type {bunyan}
+   * @memberof Stream
+   */
   public get logger(): bunyan {
     return this.log
   }
 
+  /**
+   * Appends array of events to stream
+   *
+   * @protected
+   * @param {Event[]} events
+   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
+   * @param {boolean} [requireMaster]
+   * @returns {Promise<void>}
+   * @memberof Stream
+   */
   protected async appendEvents(
     events: Event[],
     expectedVersion?: ExpectedVersion | number | Long,
     requireMaster?: boolean
   ): Promise<void> {
     const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) => {
-      if (!event.isNew) {
+      if (!event.isNew()) {
         throw eventstoreError.newEventstoreOperationError(
           `Event ${event.name} is already stored in eventstore`
         )
@@ -60,7 +95,7 @@ export class Stream {
     })
     await new Promise((resolve, reject) => {
       const setToWritten = (): void => {
-        events.forEach((event) => (event.isNew = false))
+        events.forEach((event) => event.freeze())
         resolve()
       }
 
@@ -79,6 +114,15 @@ export class Stream {
     })
   }
 
+  /**
+   * Append single event or array of events to stream
+   *
+   * @param {(Event | Event[])} event
+   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
+   * @param {boolean} [requireMaster]
+   * @returns {Promise<void>}
+   * @memberof Stream
+   */
   public async append(
     event: Event | Event[],
     expectedVersion?: ExpectedVersion | number | Long,
@@ -133,7 +177,7 @@ export class Stream {
 
   /**
    * Delete a stream - can't be called directly
-   * Use softDelete() or hardDelete() instead
+   * Use {@link <softDelete>} or {@link <hardDelete>} instead
    *
    * @protected
    * @param {boolean} hardDelete

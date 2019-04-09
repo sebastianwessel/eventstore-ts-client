@@ -1,3 +1,5 @@
 /docs
 /dist
 /node_modules
+/.nyc**
+/coverage

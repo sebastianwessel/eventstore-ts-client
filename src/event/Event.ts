@@ -7,138 +7,256 @@ import * as model from '../protobuf/model'
 const protobuf = model.eventstore.proto
 
 export class Event {
-  protected eventStreamId: string | null = null
-  protected eventNumber: Long | number | null = null
+  public streamId: string | null = null
+  public eventNumber: Long | number | null = null
   protected eventId: string = uuid()
   protected eventType: string
   protected dataContentType: number | null = null
   protected metadataContentType: number | null = null
-  protected data: object = {}
-  protected metadata:
+  protected rawData: Uint8Array | null = null
+  protected rawMetadata: Uint8Array | null = null
+  protected objectData: object | null = null
+  protected objectMetadata:
     | {
         $correlationId?: string
         $causationId?: string
       } & {[k: string]: string | number | boolean | object | Long | Date}
     | null = null
-  protected created: number | Long | null = null
-  protected createdEpoch: number | Long | null = null
-  protected correlationId: string | null = null
-  protected causationId: string | null = null
+  protected objectCreated: number | Long | null = null
+  protected objectCreatedEpoch: number | Long | null = null
+  protected objectCorrelationId: string | null = null
+  protected objectCausationId: string | null = null
 
-  public isNew: boolean = true
+  protected frozen: boolean = false
 
   public constructor(eventType: string, data: {} = {}, metadata?: {}) {
     this.eventType = eventType
-    this.data = data
-    this.metadata = metadata ? metadata : null
+    this.objectData = data
+    this.objectMetadata = metadata ? metadata : null
   }
 
-  public getStreamId(): string | null {
-    return this.eventStreamId
+  /**
+   * Freezes event instance.
+   * Done when this event is already stored at eventstore.
+   *
+   * @memberof Event
+   */
+  public freeze(): void {
+    this.frozen = true
+    Object.freeze(this.objectData)
+    Object.freeze(this.objectMetadata)
   }
 
-  public getEventNumber(): Long | number | null {
-    return this.eventNumber
+  /**
+   * Returns true if event is not stored at eventstore and false if event was written to eventstore
+   *
+   * @returns {boolean}
+   * @memberof Event
+   */
+  public isNew(): boolean {
+    return !this.frozen
   }
 
-  public getEventId(): string {
-    return this.eventId
-  }
-
-  public setEventId(newId: string): void {
-    if (!this.isNew) {
+  /**
+   * Helper function to throw while changeing an event which is already stored in eventstore
+   *
+   * @protected
+   * @memberof Event
+   * @throws {EventstoreOperationError}
+   */
+  protected throwIfNotNewEvent(fieldName: string): void {
+    if (this.frozen) {
       throw eventstoreError.newEventstoreOperationError(
-        'Chaning of eventId is not allowed for stored events'
+        `Chaning of ${fieldName} is not allowed for stored events`
       )
     }
+  }
+
+  /**
+   * Setter for event id
+   *
+   * @param {string} newId - new id to be assigned to event
+   * @memberof Event
+   */
+  public set id(newId: string) {
+    this.throwIfNotNewEvent('eventId')
     this.eventId = newId
   }
 
-  public getData(): {} {
-    return this.data
+  /**
+   * Getter for event id
+   *
+   * @readonly
+   * @type {string}
+   * @memberof Event
+   */
+  public get id(): string {
+    return this.eventId
   }
 
-  public setData(newData: {}): void {
-    if (!this.isNew) {
-      throw eventstoreError.newEventstoreOperationError(
-        'Chaning of event data is not allowed for stored events'
-      )
+  /**
+   * Getter for event data
+   *
+   * @type {object}
+   * @memberof Event
+   */
+  public get data(): {} {
+    if (this.objectData) {
+      return this.objectData
     }
-    this.data = newData
-  }
-
-  public getMetadata(): {} | null {
-    return this.metadata
-  }
-
-  public setMetadata(newMetadata: {}): void {
-    if (!this.isNew) {
-      throw eventstoreError.newEventstoreOperationError(
-        'Chaning of event metadata is not allowed for stored events'
-      )
+    if (this.rawData) {
+      this.objectData = JSON.parse(Buffer.from(this.rawData).toString())
     }
-    this.metadata = newMetadata
+    return this.objectData || {}
   }
 
-  public getCreated(): number | Long | null {
-    return this.created
+  /**
+   * Setter for event data
+   *
+   * @memberof Event
+   */
+  public set data(newData: {}) {
+    this.throwIfNotNewEvent('eventData')
+    //add as new object to prevent unwanted changes
+    this.objectData = {...newData}
   }
 
-  public getCreatedEpoch(): number | Long | null {
-    return this.createdEpoch
-  }
-
-  public getCorrelationId(): string | null {
-    return this.correlationId
-  }
-
-  public setCorrelationId(correlationId: string): void {
-    if (!this.isNew) {
-      throw eventstoreError.newEventstoreOperationError(
-        'Chaning of event correlationId is not allowed for stored events'
-      )
-    }
-    this.correlationId = correlationId
-  }
-
-  public getCausationId(): string | null {
-    return this.causationId
-  }
-
-  public setCausationId(causationId: string): void {
-    if (!this.isNew) {
-      throw eventstoreError.newEventstoreOperationError(
-        'Chaning of event causationId is not allowed for stored events'
-      )
-    }
-    this.causationId = causationId
-  }
-
-  public fromRaw(rawEvent: model.eventstore.proto.IEventRecord): void {
-    this.isNew = false
-    this.eventStreamId = rawEvent.eventStreamId
-    this.eventNumber = rawEvent.eventNumber
-    this.eventId = uuidFromBuffer(Buffer.from(rawEvent.eventId))
-    this.eventType = rawEvent.eventType
-    this.dataContentType = rawEvent.dataContentType
-    this.data = JSON.parse(Buffer.from(rawEvent.data).toString())
-    this.metadata = rawEvent.metadata ? JSON.parse(Buffer.from(rawEvent.metadata).toString()) : null
-    this.created = rawEvent.created ? rawEvent.created : null
-    this.createdEpoch = rawEvent.createdEpoch ? rawEvent.createdEpoch : null
-    if (this.metadata) {
-      this.correlationId = this.metadata.$correlationId ? this.metadata.$correlationId : null
-    }
-  }
-
-  public toRaw(): model.eventstore.proto.NewEvent {
-    if (this.correlationId) {
-      this.metadata = this.metadata ? this.metadata : {}
-      this.metadata.$correlationId = this.correlationId
-      if (this.causationId) {
-        this.metadata.$causationId = this.causationId
+  /**
+   * Getter for event metadata
+   *
+   * @type {object|null)}
+   * @memberof Event
+   */
+  public get metadata():
+    | {$correlationId?: string; $causationId?: string} & {
+        [k: string]: string | number | boolean | object | Long | Date
       }
+    | null {
+    if (this.objectMetadata) {
+      return this.objectMetadata
     }
+    if (this.rawMetadata) {
+      this.objectMetadata = JSON.parse(Buffer.from(this.rawMetadata).toString())
+    }
+    return this.objectMetadata
+  }
 
+  /**
+   * Setter for event metadata
+   *
+   * @memberof Event
+   */
+  public set metadata(
+    newMetadata:
+      | {$correlationId?: string; $causationId?: string} & {
+          [k: string]: string | number | boolean | object | Long | Date
+        }
+      | null
+  ) {
+    this.throwIfNotNewEvent('eventMetadata')
+    //add as new object to prevent unwanted changes
+    this.objectMetadata = {...newMetadata}
+  }
+
+  /**
+   * Setter for event correlationId
+   *
+   * @memberof Event
+   */
+  public set correlationId(newCorrelationId: string | null) {
+    this.throwIfNotNewEvent('correlationId')
+    if (!newCorrelationId) {
+      this.objectCorrelationId = newCorrelationId
+      if (this.objectMetadata && this.objectMetadata.$correlationId) {
+        delete this.objectMetadata.$correlationId
+      }
+      return
+    }
+    this.objectCorrelationId = newCorrelationId
+    if (this.metadata) {
+      this.metadata.$correlationId = this.objectCorrelationId
+    } else {
+      this.metadata = {$correlationId: this.objectCorrelationId}
+    }
+  }
+
+  /**
+   * Getter for event correlationId
+   *
+   * @type {(string | null)}
+   * @memberof Event
+   */
+  public get correlationId(): string | null {
+    if (this.metadata) {
+      this.objectCorrelationId = this.metadata.$correlationId || null
+    }
+    return this.objectCorrelationId
+  }
+
+  /**
+   * Setter for event causationId
+   *
+   * @memberof Event
+   */
+  public set causationId(newCausationId: string | null) {
+    this.throwIfNotNewEvent('causationId')
+    if (!newCausationId) {
+      this.objectCausationId = newCausationId
+      if (this.objectMetadata && this.objectMetadata.$causationId) {
+        delete this.objectMetadata.$causationId
+      }
+      return
+    }
+    this.objectCausationId = newCausationId
+    if (this.metadata) {
+      this.metadata.$causationId = this.objectCausationId
+    } else {
+      this.metadata = {$causationId: this.objectCausationId}
+    }
+  }
+
+  /**
+   * Getter for event causationId
+   *
+   * @type {(string | null)}
+   * @memberof Event
+   */
+  public get causationId(): string | null {
+    if (this.metadata) {
+      this.objectCausationId = this.metadata.$causationId || null
+    }
+    return this.objectCausationId
+  }
+
+  /**
+   * Returns a new instance of {Event} from protobuf result
+   *
+   * @static
+   * @param {model.eventstore.proto.IEventRecord} rawEvent
+   * @returns {Event}
+   * @memberof Event
+   */
+  public static fromRaw(rawEvent: model.eventstore.proto.IEventRecord): Event {
+    const event = new Event(rawEvent.eventType)
+    event.streamId = rawEvent.eventStreamId
+    event.eventNumber = rawEvent.eventNumber
+    event.eventId = uuidFromBuffer(Buffer.from(rawEvent.eventId))
+    event.dataContentType = rawEvent.dataContentType
+    event.rawData = rawEvent.data
+    event.rawMetadata = rawEvent.metadata || null
+    event.objectCreated = rawEvent.created ? rawEvent.created : null
+    event.objectCreatedEpoch = rawEvent.createdEpoch ? rawEvent.createdEpoch : null
+    event.freeze()
+    return event
+  }
+
+  /**
+   * Returns protobuf representation of this event
+   *
+   * @returns {model.eventstore.proto.NewEvent}
+   * @memberof Event
+   */
+  public toRaw(): model.eventstore.proto.NewEvent {
     const newEvent = {
       eventId: uuidToBuffer(this.eventId),
       eventType: this.eventType,
@@ -149,6 +267,23 @@ export class Event {
     return protobuf.NewEvent.fromObject(newEvent)
   }
 
+  /**
+   * Setter for name
+   *
+   * @memberof Event
+   */
+  public set name(newName: string) {
+    this.throwIfNotNewEvent('causationId')
+    this.eventType = newName
+  }
+
+  /**
+   * Getter for event name
+   *
+   * @readonly
+   * @type {string}
+   * @memberof Event
+   */
   public get name(): string {
     return this.eventType
   }
