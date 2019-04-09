@@ -103,7 +103,7 @@ fi
 ### Start integration tests and save code coverage
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
-npm run test:all
+npm run test:coverageIntegration
 testexit=0
 rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
 

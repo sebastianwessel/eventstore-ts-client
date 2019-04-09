@@ -3,10 +3,14 @@ dist: trusty
 language: node_js
 
 node_js:
-  - "10"
+  - "11"
+
+install:
+- nmp ci
 
 cache:
   directories:
+    - "$HOME/.npm"
     - node_modules
     - coverage
     - .nyc_output
@@ -32,14 +36,14 @@ jobs:
     - stage: test
       name: "Integration tests"
       script: npm run test:integration
-#    - script: npm run lint && npm run test:unit
-#      name: "Unit tests"
+    - script: npm run lint && npm run test:unit
+      name: "Unit tests"
     - stage: codecoverage
       name: "Sonarqube gateway"
       script:
-#        - npm run combine-coverage
-        - npx codecov
+#       - npm run combine-coverage
         - sonar-scanner
+        - rm ./doc/coverages && npx codecov
     - stage: build
       name: "Build lib"
       script: npm run build
