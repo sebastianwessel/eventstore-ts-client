@@ -38,9 +38,9 @@ jobs:
     - stage: codecoverage
       name: "Sonarqube gateway"
       script:
-#       - npm run combine-coverage
+        - npm run combine-coverage
         - sonar-scanner
-        - rm ./doc/coverages && npx codecov
+        - npx codecov
     - stage: build
       name: "Build lib"
       script: npm run build
