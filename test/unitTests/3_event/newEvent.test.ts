@@ -94,4 +94,10 @@ describe('New event instance tests', () => {
     const n = {...testMetadata, ...{$causationId: newCausationId}}
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(n))
   })
+
+  it('returns model.eventstore.proto.NewEvent instance', () => {
+    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
+    const result = newEvent.toRaw()
+    assert.strictEqual(result.constructor.name, 'NewEvent')
+  })
 })
