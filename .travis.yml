@@ -6,7 +6,7 @@ node_js:
   - "11"
 
 install:
-- nmp ci
+- npm ci
 
 cache:
   directories:
