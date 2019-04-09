@@ -15,7 +15,7 @@
     "test:unit": "nyc --temp-directory=./.nyc_unit --reporter=text mocha test/unitTests/**/*.test.ts",
     "document": "typedoc --theme markdown",
     "report-coverage": "cat ./coverage/lcov.info | coveralls",
-    "combine-coverage": "./scipts/combineCoverage.sh && nyc report --reporter=text --reporter=lcov --reporter=json && mv ./coverage/coverage-final.json ./coverage/coverage.json"
+    "combine-coverage": "./scipts/combineCoverage.sh && nyc report --reporter=json --reporter=text --reporter=lcov && mv ./coverage/coverage-final.json ./coverage/coverage.json"
   },
   "files": [
     "dist/**/*"
