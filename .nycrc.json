@@ -12,10 +12,5 @@
     "manual/**",
     "dist/**"
   ],
-  "reporter": [
-    "lcov",
-    "text",
-    "json"
-  ],
   "all": true
 }
