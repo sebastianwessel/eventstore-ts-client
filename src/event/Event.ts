@@ -29,9 +29,9 @@ export class Event {
 
   protected frozen: boolean = false
 
-  public constructor(eventType: string, data: {} = {}, metadata?: {}) {
+  public constructor(eventType: string, data?: {}, metadata?: {}) {
     this.eventType = eventType
-    this.objectData = data
+    this.objectData = data ? data : null
     this.objectMetadata = metadata ? metadata : null
   }
 
