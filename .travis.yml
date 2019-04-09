@@ -39,6 +39,7 @@ jobs:
       name: "Sonarqube gateway"
       script:
         - npm run combine-coverage
+        - git fetch --no-tags https://github.com/sebastianwessel/eventstore-ts-client.git +refs/heads/master:refs/remotes/origin/master
         - sonar-scanner
         - npx codecov
     - stage: build
