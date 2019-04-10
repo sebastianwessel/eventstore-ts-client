@@ -599,7 +599,7 @@ export class TCPConnection extends EventEmitter {
     const message: string = decoded.error || ''
     switch (decoded.result) {
       case protobuf.ReadEventCompleted.ReadEventResult.Success:
-        this.resolveCommandPromise(correlationId, decoded)
+        this.resolveCommandPromise(correlationId, decoded.event)
         return
         break
       case protobuf.ReadEventCompleted.ReadEventResult.NotFound:
