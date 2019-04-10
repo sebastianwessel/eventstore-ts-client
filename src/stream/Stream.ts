@@ -222,6 +222,45 @@ export class Stream {
     )
   }
 
+  public async getEventByNumber(
+    eventNumber: Long | number,
+    resolveLinks: boolean,
+    requireMaster?: boolean
+  ): Promise<Event> {
+    if (!requireMaster) {
+      requireMaster = this.options.requireMaster
+    }
+    const result: model.eventstore.proto.IResolvedIndexedEvent = await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.ReadEvent.fromObject({
+          eventStreamId: this.name,
+          eventNumber: eventNumber,
+          resolveLinkTos: resolveLinks,
+          requireMaster: requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.ReadEvent,
+            Buffer.from(protobuf.ReadEvent.encode(raw).finish()),
+            this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+
+    if (result.event) {
+      return Event.fromRaw(result.event)
+    } else if (result.link) {
+      return Event.fromRaw(result.link)
+    }
+    throw eventstoreError.newProtocolError('Result does not contain event or link')
+  }
+
   public async startTransaction(): Promise<Transaction> {
     return new Transaction(this, 'someid')
   }
