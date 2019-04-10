@@ -99,6 +99,20 @@ if $(curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSe
   print_style "fail\n" "danger";
 fi
 
+print_style 'creating test streams:\n';
+for dir in ./test/integrationTests/testSetup/testStreams/*/
+do
+    dir=${dir%*/}      # remove the trailing "/"
+    streamname=${dir##*/}    # print everything after the final "/"
+    print_style "stream ${streamname}: "
+    
+    if $(curl --output /dev/null --silent -i -d "@test/integrationTests/testSetup/testStreams/${streamname}/events.json" "http://127.0.0.1:2113/streams/${streamname}" -H "Content-Type:application/vnd.eventstore.events+json"); then
+      print_style "ok\n" "success";
+      else
+      print_style "fail\n" "danger";
+    fi
+done
+
 
 ### Start integration tests and save code coverage
 ###############################################
