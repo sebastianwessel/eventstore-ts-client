@@ -106,33 +106,35 @@ export class TCPConnection extends EventEmitter {
 
     this.log.debug(`Start connecting to ${host}:${port}`)
 
-    await new Promise((resolve, reject) => {
-      const errorListener = (err: Error): void => {
-        this.state = connectionState.closed
-        this.onError(err)
-        reject(err)
-      }
+    await new Promise(
+      (resolve, reject): void => {
+        const errorListener = (err: Error): void => {
+          this.state = connectionState.closed
+          this.onError(err)
+          reject(err)
+        }
 
-      const successListener = (): void => {
-        this.socket.removeListener('error', errorListener)
-        this.onConnect()
-        this.heartBeatCheckInterval = setInterval(() => {
-          if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
-            const err = eventstoreError.newTimeoutError(
-              `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
-            )
-            this.onError(err)
-          }
-        }, this.connectionConfig.heartbeatInterval)
-        resolve()
-        this.isUnexpectedClosed = false
-      }
+        const successListener = (): void => {
+          this.socket.removeListener('error', errorListener)
+          this.onConnect()
+          this.heartBeatCheckInterval = setInterval((): void => {
+            if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
+              const err = eventstoreError.newTimeoutError(
+                `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
+              )
+              this.onError(err)
+            }
+          }, this.connectionConfig.heartbeatInterval)
+          resolve()
+          this.isUnexpectedClosed = false
+        }
 
-      this.socket.once('error', errorListener)
-      this.socket.on('close', this.onClose.bind(this))
-      this.socket.on('data', this.onData.bind(this))
-      this.socket.connect(options, successListener)
-    })
+        this.socket.once('error', errorListener)
+        this.socket.on('close', this.onClose.bind(this))
+        this.socket.on('data', this.onData.bind(this))
+        this.socket.connect(options, successListener)
+      }
+    )
   }
 
   /**
@@ -144,37 +146,45 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      this.onDrain()
-      if (this.pendingRequests.size <= 0) {
-        this.state = connectionState.closed
-        this.isUnexpectedClosed = false
-        this.socket.end(() => {
-          this.socket.destroy()
-          resolve()
-        })
-      } else {
-        setTimeout(() => {
+    await new Promise(
+      (resolve, reject): void => {
+        this.onDrain()
+        if (this.pendingRequests.size <= 0) {
           this.state = connectionState.closed
           this.isUnexpectedClosed = false
-          if (this.pendingRequests.size > 0) {
-            this.socket.end(() => {
-              this.socket.destroy()
-              const err = eventstoreError.newConnectionError(
-                `Lost ${this.pendingRequests.size} answers`
-              )
-              reject(err)
-              this.onError(err)
-            })
-          } else {
-            this.socket.end(() => {
+          this.socket.end(
+            (): void => {
               this.socket.destroy()
               resolve()
-            })
-          }
-        }, 10000)
+            }
+          )
+        } else {
+          setTimeout((): void => {
+            this.state = connectionState.closed
+            this.isUnexpectedClosed = false
+            if (this.pendingRequests.size > 0) {
+              this.socket.end(
+                (): void => {
+                  this.socket.destroy()
+                  const err = eventstoreError.newConnectionError(
+                    `Lost ${this.pendingRequests.size} answers`
+                  )
+                  reject(err)
+                  this.onError(err)
+                }
+              )
+            } else {
+              this.socket.end(
+                (): void => {
+                  this.socket.destroy()
+                  resolve()
+                }
+              )
+            }
+          }, 10000)
+        }
       }
-    })
+    )
   }
 
   /**
