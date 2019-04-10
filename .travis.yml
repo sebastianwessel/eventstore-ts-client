@@ -35,7 +35,7 @@ jobs:
   include:
     - stage: test
       name: "Integration tests"
-      script: npm run test:integration
+      script: npm run test:coverageIntegration
     - script: 
         - npm run lint
         - npm run test:coverageUnit
