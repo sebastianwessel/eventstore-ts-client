@@ -1,7 +1,5 @@
 import {expect} from 'chai'
 import {Eventstore} from '../../../src'
-import * as assert from 'assert'
-
 describe('Stream basic tests', (): void => {
   const es = new Eventstore()
   before(
