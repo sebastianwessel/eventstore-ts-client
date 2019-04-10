@@ -72,32 +72,41 @@ printf "\b\b\e[0m "
 ###############################################
 print_style "\nsetting up eventstore config\n";
 print_style 'create read only user: ';
-if $(curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/readOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/); then
-  print_style "ok\n" "success";
-  else
+curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/readOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+res=$?
+if test "$res" != "0"; then
   print_style "fail\n" "danger";
+  else
+      print_style "ok\n" "success";
 fi
 
 print_style 'create write only user: '
-if $(curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/writeOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/); then
-  print_style "ok\n" "success";
-  else
+curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/writeOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+res=$?
+if test "$res" != "0"; then
   print_style "fail\n" "danger";
+  else
+      print_style "ok\n" "success";
 fi
 
 print_style 'create restricted user: ';
-if $(curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/restrictedUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/); then
-  print_style "ok\n" "success";
-  else
+curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/restrictedUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+res=$?
+if test "$res" != "0"; then
   print_style "fail\n" "danger";
+  else
+      print_style "ok\n" "success";
 fi
 
 print_style 'change default acl: ';
-if $(curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/defaultACL.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/%24settings/metadata/); then
-  print_style "ok\n" "success";
-  else
+curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/defaultACL.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/%24settings/metadata/
+res=$?
+if test "$res" != "0"; then
   print_style "fail\n" "danger";
+  else
+      print_style "ok\n" "success";
 fi
+
 
 print_style 'creating test streams:\n';
 for dir in ./test/integrationTests/testSetup/testStreams/*/
@@ -105,11 +114,12 @@ do
     dir=${dir%*/}      # remove the trailing "/"
     streamname=${dir##*/}    # print everything after the final "/"
     print_style "stream ${streamname}: "
-    
-    if $(curl --output /dev/null --silent -i -d "@test/integrationTests/testSetup/testStreams/${streamname}/events.json" "http://127.0.0.1:2113/streams/${streamname}" -H "Content-Type:application/vnd.eventstore.events+json"); then
-      print_style "ok\n" "success";
-      else
+    curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/testStreams/${streamname}/events.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/${streamname}
+    res=$?
+    if test "$res" != "0"; then
       print_style "fail\n" "danger";
+      else
+          print_style "ok\n" "success";
     fi
 done
 
