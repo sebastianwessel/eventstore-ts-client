@@ -146,6 +146,9 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
+    if (this.heartBeatCheckInterval) {
+      clearInterval(this.heartBeatCheckInterval)
+    }
     await new Promise(
       (resolve, reject): void => {
         this.onDrain()

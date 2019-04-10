@@ -80,7 +80,7 @@ export class Eventstore extends EventEmitter {
     if (!this.connection) {
       return
     }
-    return await this.connection.disconnect()
+    await this.connection.disconnect()
   }
 
   /**

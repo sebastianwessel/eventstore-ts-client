@@ -73,19 +73,21 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  protected async appendEvents(
+  protected appendEvents(
     events: Event[],
     expectedVersion?: ExpectedVersion | number | Long,
     requireMaster?: boolean
   ): Promise<void> {
-    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) => {
-      if (!event.isNew()) {
-        throw eventstoreError.newOperationError(
-          `Event ${event.name} is already stored in eventstore`
-        )
+    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map(
+      (event): model.eventstore.proto.NewEvent => {
+        if (!event.isNew()) {
+          throw eventstoreError.newOperationError(
+            `Event ${event.name} is already stored in eventstore`
+          )
+        }
+        return event.toRaw()
       }
-      return event.toRaw()
-    })
+    )
 
     const raw = protobuf.WriteEvents.fromObject({
       eventStreamId: this.streamId,
@@ -93,25 +95,27 @@ export class Stream {
       events: eventArrayTransformed,
       requireMaster: requireMaster !== undefined ? requireMaster : this.options.requireMaster
     })
-    await new Promise((resolve, reject) => {
-      const setToWritten = (): void => {
-        events.forEach((event) => event.freeze())
-        resolve()
-      }
+    return new Promise(
+      (resolve, reject): void => {
+        const setToWritten = (): void => {
+          events.forEach((event): void => event.freeze())
+          resolve()
+        }
 
-      this.esConnection
-        .getConnection()
-        .sendCommand(
-          uuid(),
-          EventstoreCommand.WriteEvents,
-          Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
-          this.options.credentials,
-          {
-            resolve: setToWritten,
-            reject
-          }
-        )
-    })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.WriteEvents,
+            Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
+            this.options.credentials,
+            {
+              resolve: setToWritten,
+              reject
+            }
+          )
+      }
+    )
   }
 
   /**
@@ -129,9 +133,9 @@ export class Stream {
     requireMaster?: boolean
   ): Promise<void> {
     if (Array.isArray(event)) {
-      return this.appendEvents(event, expectedVersion, requireMaster)
+      return await this.appendEvents(event, expectedVersion, requireMaster)
     } else {
-      return this.appendEvents([event], expectedVersion, requireMaster)
+      return await this.appendEvents([event], expectedVersion, requireMaster)
     }
   }
 
@@ -151,12 +155,12 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  public hardDelete(
+  public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<void> {
     this.log.debug(`Hard delete Stream ${this.streamId}`)
-    return this.delete(true, expectedVersion, requireMaster)
+    await this.delete(true, expectedVersion, requireMaster)
   }
 
   /**
@@ -167,12 +171,12 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  public softDelete(
+  public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<void> {
     this.log.debug(`Soft delete Stream ${this.streamId}`)
-    return this.delete(false, expectedVersion, requireMaster)
+    await this.delete(false, expectedVersion, requireMaster)
   }
 
   /**
@@ -186,7 +190,7 @@ export class Stream {
    * @returns {Promise<void>}
    * @memberof Stream
    */
-  protected async delete(
+  protected delete(
     hardDelete: boolean,
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
@@ -194,26 +198,28 @@ export class Stream {
     if (!requireMaster) {
       requireMaster = this.options.requireMaster
     }
-    await new Promise((resolve, reject) => {
-      const raw = protobuf.DeleteStream.fromObject({
-        eventStreamId: this.streamId,
-        expectedVersion,
-        requireMaster,
-        hardDelete
-      })
-      this.esConnection
-        .getConnection()
-        .sendCommand(
-          uuid(),
-          EventstoreCommand.DeleteStream,
-          Buffer.from(protobuf.DeleteStream.encode(raw).finish()),
-          this.options.credentials,
-          {
-            resolve,
-            reject
-          }
-        )
-    })
+    return new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.DeleteStream.fromObject({
+          eventStreamId: this.streamId,
+          expectedVersion,
+          requireMaster,
+          hardDelete
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.DeleteStream,
+            Buffer.from(protobuf.DeleteStream.encode(raw).finish()),
+            this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
   }
 
   public async startTransaction(): Promise<Transaction> {
