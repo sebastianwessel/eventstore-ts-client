@@ -132,8 +132,8 @@ describe('event from raw', () => {
     metadataContentType: 1,
     data: Buffer.from(JSON.stringify(rawEventData)),
     metadata: Buffer.from(JSON.stringify(rawEventMetadata)),
-    objectCreated: Date.now(),
-    objectCreatedEpoch: Date.now()
+    created: Date.now(),
+    createdEpoch: Date.now()
   }
 
   const rawEventWithoutMeta = {
@@ -145,11 +145,11 @@ describe('event from raw', () => {
     metadataContentType: 1,
     data: Buffer.from(JSON.stringify(rawEventData)),
     metadata: null,
-    objectCreated: null,
-    objectCreatedEpoch: null
+    created: null,
+    createdEpoch: null
   }
 
-  it('returns event instance with metadata', () => {
+  it('returns event instance with full metadata', () => {
     const newEvent = Event.fromRaw(rawEventWithMeta)
     assert.strictEqual(newEvent.name, 'SomethingWasHappened')
     assert.strictEqual(newEvent.streamId, rawEventStreamId)
@@ -167,6 +167,19 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata, null)
     assert.strictEqual(newEvent.correlationId, null)
     assert.strictEqual(newEvent.causationId, null)
+  })
+
+  it('returns event instance without created informations', () => {
+    const raw = {...rawEventWithMeta}
+    delete raw.created
+    delete raw.createdEpoch
+    const newEvent = Event.fromRaw(rawEventWithMeta)
+    assert.strictEqual(newEvent.name, 'SomethingWasHappened')
+    assert.strictEqual(newEvent.streamId, rawEventStreamId)
+    assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
+    assert.strictEqual(newEvent.metadata.toString(), rawEventMetadata.toString())
+    assert.strictEqual(newEvent.correlationId, rawEventMetadata.$correlationId)
+    assert.strictEqual(newEvent.causationId, rawEventMetadata.$causationId)
   })
 
   it('sets metadata on setting correlationId', () => {
@@ -187,7 +200,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes correlationId from metadata', () => {
+  it('deletes correlationId also from metadata', () => {
     const newEvent = new Event(
       'SomethingWasHappened',
       {},
@@ -198,7 +211,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes causationId from metadata', () => {
+  it('deletes causationId also from metadata', () => {
     const newEvent = new Event(
       'SomethingWasHappened',
       {},
@@ -207,5 +220,31 @@ describe('event from raw', () => {
     newEvent.causationId = null
     const expected = {}
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it('deletes correlationId', () => {
+    const newEvent = new Event('SomethingWasHappened', {}, {})
+    newEvent.correlationId = null
+    const expected = {}
+    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it('deletes causationId', () => {
+    const newEvent = new Event('SomethingWasHappened', {}, {})
+    newEvent.causationId = null
+    const expected = {}
+    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it('returns null for correlationId if not set', () => {
+    const newEvent = new Event('SomethingWasHappened', {}, {})
+    newEvent.correlationId = null
+    assert.strictEqual(newEvent.correlationId, null)
+  })
+
+  it('returns null for causationId if not set', () => {
+    const newEvent = new Event('SomethingWasHappened', {}, {})
+    newEvent.causationId = null
+    assert.strictEqual(newEvent.causationId, null)
   })
 })
