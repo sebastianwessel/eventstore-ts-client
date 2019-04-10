@@ -2,17 +2,21 @@ import {expect} from 'chai'
 import {Eventstore} from '../../../src'
 import * as assert from 'assert'
 
-describe('Stream basic tests', () => {
+describe('Stream basic tests', (): void => {
   const es = new Eventstore()
-  before(async () => {
-    await es.connect()
-  })
+  before(
+    async (): Promise<void> => {
+      await es.connect()
+    }
+  )
 
-  after(async () => {
-    await es.disconnect()
-  })
+  after(
+    async (): Promise<void> => {
+      await es.disconnect()
+    }
+  )
 
-  it('returns a stream instance', async () => {
+  it('returns a stream instance', async (): Promise<void> => {
     try {
       const stream = await es.stream('hola')
       expect(stream).not.to.be.undefined

@@ -2,8 +2,8 @@ import {expect} from 'chai'
 import {Eventstore} from '../../../src'
 import * as assert from 'assert'
 
-describe('Connection test', () => {
-  it('can connect to eventstore', async () => {
+describe('Connection test', (): void => {
+  it('can connect to eventstore', async (): Promise<void> => {
     const es = new Eventstore()
     try {
       await es.connect()
@@ -17,21 +17,25 @@ describe('Connection test', () => {
   })
 })
 
-describe('Basic connection test', () => {
+describe('Basic connection test', (): void => {
   const es = new Eventstore({clientId: 'ts-client-test'})
-  before(async () => {
-    await es.connect()
-  })
+  before(
+    async (): Promise<void> => {
+      await es.connect()
+    }
+  )
 
-  after(async () => {
-    await es.disconnect()
-  })
+  after(
+    async (): Promise<void> => {
+      await es.disconnect()
+    }
+  )
 
-  it('returns clientId - name of connection', () => {
+  it('returns clientId - name of connection', (): void => {
     expect(es.name).to.be.equal('ts-client-test')
   })
 
-  it('can ping eventstore', async () => {
+  it('can ping eventstore', async (): Promise<void> => {
     try {
       await es.ping()
       assert.ok('get pong response from ping request')

@@ -14,7 +14,7 @@ interface TestEventDataSchema {
   }
 }
 
-describe('Existing event instance tests', () => {
+describe('Existing event instance tests', (): void => {
   const testData: TestEventDataSchema = {
     someString: 'some text',
     someNumber: 100,
@@ -31,13 +31,13 @@ describe('Existing event instance tests', () => {
     $causationId: uuid()
   }
 
-  it('returns false on existing event', () => {
+  it('returns false on existing event', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     assert.strictEqual(existingEvent.isNew(), false)
   })
 
-  it('throws on changeing name', () => {
+  it('throws on changeing name', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newName = 'EventRenamed'
@@ -49,7 +49,7 @@ describe('Existing event instance tests', () => {
     }
   })
 
-  it('throws on changeing eventId', () => {
+  it('throws on changeing eventId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newId = uuid()
@@ -61,7 +61,7 @@ describe('Existing event instance tests', () => {
     }
   })
 
-  it('throws on changeing eventData', () => {
+  it('throws on changeing eventData', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newData = {...testData, ...{someString: 'I was changed'}}
@@ -73,7 +73,7 @@ describe('Existing event instance tests', () => {
     }
   })
 
-  it('throws on changeing eventMetadata', () => {
+  it('throws on changeing eventMetadata', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newMetadata = {somethingNew: uuid()}
@@ -85,7 +85,7 @@ describe('Existing event instance tests', () => {
     }
   })
 
-  it('throws on changeing eventCorrelationId', () => {
+  it('throws on changeing eventCorrelationId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newCorrelationId = uuid()
@@ -97,7 +97,7 @@ describe('Existing event instance tests', () => {
     }
   })
 
-  it('throws on changeing eventCausationId', () => {
+  it('throws on changeing eventCausationId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     try {
@@ -109,7 +109,7 @@ describe('Existing event instance tests', () => {
   })
 })
 
-describe('event from raw', () => {
+describe('event from raw', (): void => {
   const rawEventId = uuid()
   const rawEventStreamId = 'stream-' + uuid()
   const rawCorrelationId = uuid()
@@ -149,7 +149,7 @@ describe('event from raw', () => {
     createdEpoch: null
   }
 
-  it('returns event instance with full metadata', () => {
+  it('returns event instance with full metadata', (): void => {
     const newEvent = Event.fromRaw(rawEventWithMeta)
     assert.strictEqual(newEvent.name, 'SomethingWasHappened')
     assert.strictEqual(newEvent.streamId, rawEventStreamId)
@@ -159,7 +159,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.causationId, rawEventMetadata.$causationId)
   })
 
-  it('returns event instance without metadata', () => {
+  it('returns event instance without metadata', (): void => {
     const newEvent = Event.fromRaw(rawEventWithoutMeta)
     assert.strictEqual(newEvent.name, 'SomethingWasHappened')
     assert.strictEqual(newEvent.streamId, rawEventStreamId)
@@ -169,7 +169,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.causationId, null)
   })
 
-  it('returns event instance without created informations', () => {
+  it('returns event instance without created informations', (): void => {
     const raw = {...rawEventWithMeta}
     delete raw.created
     delete raw.createdEpoch
@@ -182,7 +182,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.causationId, rawEventMetadata.$causationId)
   })
 
-  it('sets metadata on setting correlationId', () => {
+  it('sets metadata on setting correlationId', (): void => {
     const newEvent = new Event('SomethingWasHappened')
     newEvent.correlationId = rawEventMetadata.$correlationId
     const expected = {
@@ -191,7 +191,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('sets metadata on setting causationId', () => {
+  it('sets metadata on setting causationId', (): void => {
     const newEvent = new Event('SomethingWasHappened')
     newEvent.causationId = rawEventMetadata.$causationId
     const expected = {
@@ -200,7 +200,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes correlationId also from metadata', () => {
+  it('deletes correlationId also from metadata', (): void => {
     const newEvent = new Event(
       'SomethingWasHappened',
       {},
@@ -211,7 +211,7 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes causationId also from metadata', () => {
+  it('deletes causationId also from metadata', (): void => {
     const newEvent = new Event(
       'SomethingWasHappened',
       {},
@@ -222,27 +222,27 @@ describe('event from raw', () => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes correlationId', () => {
+  it('deletes correlationId', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.correlationId = null
     const expected = {}
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes causationId', () => {
+  it('deletes causationId', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.causationId = null
     const expected = {}
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('returns null for correlationId if not set', () => {
+  it('returns null for correlationId if not set', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.correlationId = null
     assert.strictEqual(newEvent.correlationId, null)
   })
 
-  it('returns null for causationId if not set', () => {
+  it('returns null for causationId if not set', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.causationId = null
     assert.strictEqual(newEvent.causationId, null)

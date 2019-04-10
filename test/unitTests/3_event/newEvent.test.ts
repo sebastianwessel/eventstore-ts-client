@@ -14,7 +14,7 @@ interface TestEventDataSchema {
   }
 }
 
-describe('New event instance tests', () => {
+describe('New event instance tests', (): void => {
   const testData: TestEventDataSchema = {
     someString: 'some text',
     someNumber: 100,
@@ -31,12 +31,12 @@ describe('New event instance tests', () => {
     $causationId: uuid()
   }
 
-  it('returns true on new event', () => {
+  it('returns true on new event', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     assert.strictEqual(newEvent.isNew(), true)
   })
 
-  it('can change name', () => {
+  it('can change name', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newName = 'EventRenamed'
     newEvent.name = newName
@@ -44,7 +44,7 @@ describe('New event instance tests', () => {
     expect(newEvent.name).to.be.equal(newName)
   })
 
-  it('can change eventId', () => {
+  it('can change eventId', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const oldId = newEvent.id
     const newId = uuid()
@@ -53,7 +53,7 @@ describe('New event instance tests', () => {
     expect(newEvent.id).to.be.equal(newId)
   })
 
-  it('can change eventData', () => {
+  it('can change eventData', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newData = {...testData, ...{someString: 'I was changed'}}
     newEvent.data = newData
@@ -62,7 +62,7 @@ describe('New event instance tests', () => {
     assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify(newData))
   })
 
-  it('can change eventMetadata', () => {
+  it('can change eventMetadata', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newMetadata = {somethingNew: uuid()}
     newEvent.metadata = newMetadata
@@ -71,7 +71,7 @@ describe('New event instance tests', () => {
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(newMetadata))
   })
 
-  it('can change eventCorrelationId', () => {
+  it('can change eventCorrelationId', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newCorrelationId = uuid()
     newEvent.correlationId = newCorrelationId
@@ -83,7 +83,7 @@ describe('New event instance tests', () => {
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(n))
   })
 
-  it('can change eventCausationId', () => {
+  it('can change eventCausationId', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newCausationId = uuid()
     newEvent.causationId = newCausationId
@@ -95,7 +95,7 @@ describe('New event instance tests', () => {
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(n))
   })
 
-  it('returns model.eventstore.proto.NewEvent instance', () => {
+  it('returns model.eventstore.proto.NewEvent instance', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const result = newEvent.toRaw()
     assert.strictEqual(result.constructor.name, 'NewEvent')
