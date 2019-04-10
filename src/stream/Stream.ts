@@ -80,7 +80,7 @@ export class Stream {
   ): Promise<void> {
     const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) => {
       if (!event.isNew()) {
-        throw eventstoreError.newEventstoreOperationError(
+        throw eventstoreError.newOperationError(
           `Event ${event.name} is already stored in eventstore`
         )
       }

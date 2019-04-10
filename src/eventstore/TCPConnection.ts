@@ -118,7 +118,7 @@ export class TCPConnection extends EventEmitter {
         this.onConnect()
         this.heartBeatCheckInterval = setInterval(() => {
           if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
-            const err = eventstoreError.newEventstoreTimeoutError(
+            const err = eventstoreError.newTimeoutError(
               `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
             )
             this.onError(err)

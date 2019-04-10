@@ -66,7 +66,7 @@ export class Event {
    */
   protected throwIfNotNewEvent(fieldName: string): void {
     if (this.frozen) {
-      throw eventstoreError.newEventstoreOperationError(
+      throw eventstoreError.newOperationError(
         `Chaning of ${fieldName} is not allowed for stored events`
       )
     }
