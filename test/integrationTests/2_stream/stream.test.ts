@@ -23,18 +23,10 @@ describe('Stream basic tests', (): void => {
   })
 
   it('can soft delete a stream', async (): Promise<void> => {
-    assert.doesNotThrow(
-      async (): Promise<void> => {
-        await es.stream('streamtosoftdelete').softDelete()
-      }
-    )
+    await es.stream('streamtosoftdelete').softDelete()
   })
 
   it('can hard delete a stream', async (): Promise<void> => {
-    assert.doesNotThrow(
-      async (): Promise<void> => {
-        await es.stream('streamtoharddelete').hardDelete()
-      }
-    )
+    await es.stream('streamtoharddelete').hardDelete()
   })
 })
