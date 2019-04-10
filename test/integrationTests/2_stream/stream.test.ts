@@ -16,13 +16,25 @@ describe('Stream basic tests', (): void => {
     }
   )
 
-  it('returns a stream instance', async (): Promise<void> => {
-    try {
-      const stream = await es.stream('hola')
-      expect(stream).not.to.be.undefined
-      expect(stream).not.to.be.null
-    } catch (err) {
-      assert.fail(err)
-    }
+  it('returns a stream instance', (): void => {
+    const stream = es.stream('hola')
+    expect(stream).not.to.be.undefined
+    expect(stream).not.to.be.null
+  })
+
+  it('can soft delete a stream', async (): Promise<void> => {
+    assert.doesNotThrow(
+      async (): Promise<void> => {
+        await es.stream('streamtosoftdelete').softDelete()
+      }
+    )
+  })
+
+  it('can hard delete a stream', async (): Promise<void> => {
+    assert.doesNotThrow(
+      async (): Promise<void> => {
+        await es.stream('streamtoharddelete').hardDelete()
+      }
+    )
   })
 })
