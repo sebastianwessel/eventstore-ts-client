@@ -248,7 +248,7 @@ export class Stream {
     credentials?: UserCredentials
   ): Promise<void> {
     if (this.isMetaStream()) {
-      throw eventstoreError.newImplementationError(
+      throw eventstoreError.newBadRequestError(
         `You can not delete metadata stream ${this.streamId}`
       )
     }
