@@ -3,7 +3,13 @@ import {Eventstore, Event} from '../../../src'
 import * as assert from 'assert'
 
 describe('Event emit tests', (): void => {
-  const es = new Eventstore()
+  const es = new Eventstore({
+    clientId: 'ts-client-test',
+    credentials: {
+      username: 'restrictedUser',
+      password: 'restrictedOnlyUserPassword'
+    }
+  })
   before(
     async (): Promise<void> => {
       await es.connect()

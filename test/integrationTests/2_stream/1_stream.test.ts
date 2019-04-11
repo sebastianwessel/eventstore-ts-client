@@ -1,7 +1,13 @@
 import {expect} from 'chai'
 import {Eventstore} from '../../../src'
 describe('Stream basic tests', (): void => {
-  const es = new Eventstore()
+  const es = new Eventstore({
+    clientId: 'ts-client-test',
+    credentials: {
+      username: 'restrictedUser',
+      password: 'restrictedOnlyUserPassword'
+    }
+  })
   before(
     async (): Promise<void> => {
       await es.connect()
