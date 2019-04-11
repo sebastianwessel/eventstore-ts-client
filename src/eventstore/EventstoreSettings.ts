@@ -1,14 +1,15 @@
 import * as bunyan from 'bunyan'
 import uuid = require('uuid/v4')
 
-interface EventstoreSettings {
+export interface UserCredentials {
+  username: string
+  password: string
+}
+export interface EventstoreSettings {
   useSSL: boolean
   host: string
   port: number
-  credentials: {
-    username: string
-    password: string
-  }
+  credentials: UserCredentials
   requireMaster: boolean
   logger: bunyan
 
@@ -73,4 +74,4 @@ let setConnectionSettings = (customSettings: object | EventstoreSettings): Event
   return {...defaultConnectionSettings, ...customSettings}
 }
 
-export {setConnectionSettings, EventstoreSettings}
+export {setConnectionSettings}
