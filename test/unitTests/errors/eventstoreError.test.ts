@@ -1,14 +1,14 @@
 import * as esError from '../../../src/errors'
 import * as assert from 'assert'
 
-describe('Eventstore error class', () => {
-  it('creates an error instance', () => {
+describe('Eventstore error class', (): void => {
+  it('creates an error instance', (): void => {
     const err = new esError.EventstoreError('some error')
     assert.strictEqual(err.name, 'EventstoreError')
     assert.strictEqual(err.message, 'some error')
   })
 
-  it('can have a causing error instance', () => {
+  it('can have a causing error instance', (): void => {
     const causedby = new Error('initial error')
     const err = new esError.EventstoreError('some error', 'NamedError', causedby)
     assert.strictEqual(err.name, 'NamedError')
@@ -17,25 +17,29 @@ describe('Eventstore error class', () => {
   })
 })
 
-describe('Eventstore error types', () => {
+describe('Eventstore error types', (): void => {
   const errorList = Object.keys(esError)
-    .map((key) => {
-      return key.match(/new(.*Error)/) ? key.slice(3) : null
-    })
-    .filter((key) => key != null)
+    .map(
+      (key): string | null => {
+        return key.match(/new(.*Error)/) ? key.slice(3) : null
+      }
+    )
+    .filter((key): boolean => key != null)
 
-  errorList.forEach((errorName) => {
-    it(`creates a ${errorName}`, () => {
-      const err = esError['new' + errorName]('some error')
-      assert.strictEqual(err.name, `Eventstore${errorName}`)
-    })
+  errorList.forEach(
+    (errorName): void => {
+      it(`creates a ${errorName}`, (): void => {
+        const err = esError['new' + errorName]('some error')
+        assert.strictEqual(err.name, `Eventstore${errorName}`)
+      })
 
-    it(`creates a ${errorName} with causing error reference`, () => {
-      const causedby = new Error('initial error')
-      const err = esError['new' + errorName]('some error', causedby)
-      assert.strictEqual(err.name, `Eventstore${errorName}`)
-    })
-  })
+      it(`creates a ${errorName} with causing error reference`, (): void => {
+        const causedby = new Error('initial error')
+        const err = esError['new' + errorName]('some error', causedby)
+        assert.strictEqual(err.name, `Eventstore${errorName}`)
+      })
+    }
+  )
 
   const errorsWithDefaultMsg = [
     'BadRequestError',
@@ -47,10 +51,12 @@ describe('Eventstore error types', () => {
     'OperationError'
   ]
 
-  errorsWithDefaultMsg.forEach((errorName) => {
-    it(`creates a ${errorName} without specifyed message`, () => {
-      const err = esError['new' + errorName]()
-      assert.strictEqual(err.name, `Eventstore${errorName}`)
-    })
-  })
+  errorsWithDefaultMsg.forEach(
+    (errorName): void => {
+      it(`creates a ${errorName} without specifyed message`, (): void => {
+        const err = esError['new' + errorName]()
+        assert.strictEqual(err.name, `Eventstore${errorName}`)
+      })
+    }
+  )
 })

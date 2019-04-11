@@ -22,7 +22,7 @@ describe('Event emit tests', (): void => {
     }
   )
 
-  it('emits single new event', async (): Promise<void> => {
+  it('appends single new event', async (): Promise<void> => {
     const newEvent = new Event('SingleEventWritten')
     const stream = await es.stream('testemitstream')
     try {
@@ -33,7 +33,7 @@ describe('Event emit tests', (): void => {
     }
   })
 
-  it('emits multiple new event', async (): Promise<void> => {
+  it('appends multiple new event', async (): Promise<void> => {
     const newEvents = [
       new Event('FirstEventWritten'),
       new Event('NextEventWritten'),

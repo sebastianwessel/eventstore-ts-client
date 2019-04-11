@@ -2,20 +2,20 @@ import {uuidToBuffer, uuidFromBuffer} from '../../../src/protobuf/uuidBufferConv
 import * as assert from 'assert'
 import uuid = require('uuid/v4')
 
-describe('uuid to buffer', () => {
+describe('uuid to buffer', (): void => {
   const testId = uuid()
 
-  it('converts a uuid to fomated buffer', () => {
+  it('converts a uuid to fomated buffer', (): void => {
     const result = uuidToBuffer(testId)
     assert.strictEqual(result.toString(), Buffer.from(testId.replace(/-/g, ''), 'hex').toString())
   })
 
-  it('returns a buffer for id=nulll', () => {
+  it('returns a buffer for id=nulll', (): void => {
     const result = uuidToBuffer(null)
     assert.strictEqual(result.toString(), Buffer.alloc(16).toString())
   })
 
-  it('throws on uuid size', () => {
+  it('throws on uuid size', (): void => {
     try {
       uuidToBuffer('00000000-0000-0000-0000-00000000000')
       assert.fail('has not thrown')
@@ -25,7 +25,7 @@ describe('uuid to buffer', () => {
     }
   })
 
-  it('throws on invalid uuid format', () => {
+  it('throws on invalid uuid format', (): void => {
     try {
       uuidToBuffer('000000000000000000000000000000000000')
       assert.fail('has not thrown')
@@ -36,21 +36,21 @@ describe('uuid to buffer', () => {
   })
 })
 
-describe('buffer to uuid', () => {
+describe('buffer to uuid', (): void => {
   const testId = uuid()
   const testBuffer = Buffer.from(testId.replace(/-/g, ''), 'hex')
 
-  it('converts buffer to uuid', () => {
+  it('converts buffer to uuid', (): void => {
     const result = uuidFromBuffer(testBuffer)
     assert.strictEqual(result, testId)
   })
 
-  it('converts buffer to uuid', () => {
+  it('converts buffer to uuid', (): void => {
     const result = uuidFromBuffer(Buffer.alloc(16))
     assert.strictEqual(result, '')
   })
 
-  it('throws on invalid buffer size', () => {
+  it('throws on invalid buffer size', (): void => {
     const invalidBuffer = Buffer.alloc(17, 'hex')
     try {
       uuidFromBuffer(invalidBuffer)
