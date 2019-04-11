@@ -9,6 +9,7 @@ import {StreamPosition} from './StreamPosition'
 import {Transaction} from './Transaction'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
+import Long = require('long')
 
 const protobuf = model.eventstore.proto
 
@@ -59,6 +60,10 @@ export class Stream {
    * @memberof Stream
    */
   public get name(): string {
+    return 'Stream: ' + this.streamId
+  }
+
+  public get id(): string {
     return this.streamId
   }
 
@@ -301,7 +306,7 @@ export class Stream {
     const result: model.eventstore.proto.IResolvedIndexedEvent = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.ReadEvent.fromObject({
-          eventStreamId: this.name,
+          eventStreamId: this.streamId,
           eventNumber: eventNumber,
           resolveLinkTos: resolveLinks,
           requireMaster: requireMaster
@@ -390,7 +395,7 @@ export class Stream {
     }
     try {
       const result = await this.esConnection
-        .fromStream(`$$${this.name}`, {
+        .fromStream(`$$${this.streamId}`, {
           resolveLinks: false,
           requireMaster,
           credentials: credentials || this.options.credentials
@@ -453,8 +458,44 @@ export class Stream {
     return new Event(this.streamId)
   }
 
-  public async startTransaction(): Promise<Transaction> {
-    return new Transaction(this, 'someid')
+  public async startTransaction(
+    expectedVersion: ExpectedVersion = ExpectedVersion.Any,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<Transaction> {
+    if (this.isMetaStream()) {
+      throw eventstoreError.newBadRequestError(
+        `Transactions fpr metadata stream ${this.streamId} not supported`
+      )
+    }
+    let rm: boolean = this.options.requireMaster || false
+    if (requireMaster !== undefined) {
+      rm = requireMaster
+    }
+    const transactionId: Long = await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.TransactionStart.fromObject({
+          eventStreamId: this.streamId,
+          expectedVersion: expectedVersion,
+          requireMaster: rm
+        })
+        raw.expectedVersion = expectedVersion
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.TransactionStart,
+            Buffer.from(protobuf.TransactionStart.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+
+    return new Transaction(this, transactionId, this.esConnection, rm, credentials)
   }
 
   public async subscribe(): Promise<void> {
