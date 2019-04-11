@@ -44,6 +44,8 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
+
+    this.connection.on('error', this.onError)
   }
 
   /**
@@ -67,6 +69,13 @@ export class Eventstore extends EventEmitter {
   public async connect(connectionConfiguration: EventstoreSettings | object = {}): Promise<void> {
     this.init(connectionConfiguration)
     await this.connection.connect()
+
+    try {
+      await this.authenticate()
+    } catch (err) {
+      await this.disconnect()
+      throw err
+    }
     await this.identifyClient()
   }
 
@@ -133,7 +142,7 @@ export class Eventstore extends EventEmitter {
     const defaultOptions: StreamOptions = {
       requireMaster: false,
       resolveLinks: true,
-      credentials: this.connectionConfig.credentials
+      credentials: null
     }
     return new Stream(this, streamName, {...defaultOptions, ...streamOptions})
   }
@@ -216,6 +225,28 @@ export class Eventstore extends EventEmitter {
         )
       }
     )
+  }
+
+  protected async authenticate(): Promise<void> {
+    await new Promise(
+      (resolve, reject): void => {
+        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        this.connection.sendCommand(
+          uuid(),
+          EventstoreCommand.Authenticate,
+          null,
+          this.connectionConfig.credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  protected onError(err: Error): void {
+    this.log.error({err}, err.name)
   }
   /*
 

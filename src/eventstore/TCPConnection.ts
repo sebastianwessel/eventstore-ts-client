@@ -479,6 +479,9 @@ export class TCPConnection extends EventEmitter {
       case EventstoreCommand.Pong:
         this.resolveCommandPromise(correlationId)
         break
+      case EventstoreCommand.Authenticated:
+        this.resolveCommandPromise(correlationId)
+        break
       default:
         err = new eventstoreError.EventstoreError(
           'Unhandled eventstore command : ' + EventstoreCommand[command] + ' -> ' + command,
