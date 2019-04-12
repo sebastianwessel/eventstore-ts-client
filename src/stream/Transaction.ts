@@ -79,9 +79,6 @@ export class Transaction {
         `Transaction ${this.transactionId} is already roled back`
       )
     }
-    if (!this.esConnection || !this.esConnection.isConnected) {
-      throw eventstoreError.newConnectionError('No valid eventstore connection provided')
-    }
     if (requireMaster === undefined) {
       requireMaster = this.requireMaster
     }
