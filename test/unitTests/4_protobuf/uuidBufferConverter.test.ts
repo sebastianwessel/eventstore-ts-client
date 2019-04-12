@@ -21,7 +21,6 @@ describe('uuid to buffer', (): void => {
       assert.fail('has not thrown')
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
-      assert.ok('has thrown')
     }
   })
 
@@ -31,7 +30,6 @@ describe('uuid to buffer', (): void => {
       assert.fail('has not thrown')
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
-      assert.ok('has thrown')
     }
   })
 })
@@ -57,7 +55,6 @@ describe('buffer to uuid', (): void => {
       assert.fail('has not thrown')
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
-      assert.ok('has thrown')
     }
   })
 })
