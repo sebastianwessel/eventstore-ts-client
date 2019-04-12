@@ -3,6 +3,7 @@ import uuid = require('uuid/v4')
 import {uuidFromBuffer, uuidToBuffer} from '../protobuf/uuidBufferConvert'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
+import {JSONValue} from '../JSON'
 
 const protobuf = model.eventstore.proto
 
@@ -15,12 +16,12 @@ export class Event {
   protected metadataContentType: number | null = null
   protected rawData: Uint8Array | null = null
   protected rawMetadata: Uint8Array | null = null
-  protected objectData: object | null = null
+  protected objectData: {[k: string]: JSONValue} | {} | null = null
   protected objectMetadata:
     | {
         $correlationId?: string
         $causationId?: string
-      } & {[k: string]: string | number | boolean | object | Long | Date}
+      } & {[k: string]: JSONValue} & {}
     | null = null
   protected objectCreated: number | Long | null = null
   protected objectCreatedEpoch: number | Long | null = null
@@ -100,7 +101,7 @@ export class Event {
    * @type {object}
    * @memberof Event
    */
-  public get data(): {} {
+  public get data(): {[k: string]: JSONValue} | {} {
     if (this.objectData) {
       return this.objectData
     }
@@ -115,7 +116,7 @@ export class Event {
    *
    * @memberof Event
    */
-  public set data(newData: {}) {
+  public set data(newData: {[k: string]: JSONValue} | {}) {
     this.throwIfNotNewEvent('eventData')
     //add as new object to prevent unwanted changes
     this.objectData = {...newData}
@@ -128,9 +129,7 @@ export class Event {
    * @memberof Event
    */
   public get metadata():
-    | {$correlationId?: string; $causationId?: string} & {
-        [k: string]: string | number | boolean | object | Long | Date
-      }
+    | {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue} & {}
     | null {
     if (this.objectMetadata) {
       return this.objectMetadata
@@ -148,9 +147,7 @@ export class Event {
    */
   public set metadata(
     newMetadata:
-      | {$correlationId?: string; $causationId?: string} & {
-          [k: string]: string | number | boolean | object | Long | Date
-        }
+      | {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue} & {}
       | null
   ) {
     this.throwIfNotNewEvent('eventMetadata')
