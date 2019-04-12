@@ -14,7 +14,7 @@ interface TestEventDataSchema {
   }
 }
 
-describe('Event class base tests', () => {
+describe('Event class base tests', (): void => {
   const testData: TestEventDataSchema = {
     someString: 'some text',
     someNumber: 100,
@@ -31,7 +31,7 @@ describe('Event class base tests', () => {
     $causationId: uuid()
   }
 
-  it('creates a event instance', () => {
+  it('creates a event instance', (): void => {
     const newEvent = new Event('EventWasHappened')
     assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify({}))
     expect(newEvent.data).to.be.exist
@@ -39,7 +39,7 @@ describe('Event class base tests', () => {
     expect(newEvent.id).to.be.exist
   })
 
-  it('creates a event instance with eventData', () => {
+  it('creates a event instance with eventData', (): void => {
     const newEvent = new Event('EventWasHappened', testData)
     expect(newEvent.data).to.be.exist
     assert.strictEqual(newEvent.data, testData)
@@ -47,7 +47,7 @@ describe('Event class base tests', () => {
     expect(newEvent.id).to.be.exist
   })
 
-  it('creates a event instance with eventData and metadata', () => {
+  it('creates a event instance with eventData and metadata', (): void => {
     const newEvent = new Event('EventWasHappened', testData, testMetadata)
     expect(newEvent.data).to.be.exist
     assert.strictEqual(newEvent.data, testData)

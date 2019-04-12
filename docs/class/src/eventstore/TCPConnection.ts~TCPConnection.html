@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,19 +59,19 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TCPConnection} from &apos;<span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber47">eventstore-ts-client/src/eventstore/TCPConnection.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TCPConnection} from &apos;<span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber50">eventstore-ts-client/src/eventstore/TCPConnection.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber47">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber50">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -1437,6 +1437,62 @@ In this case corresponding promise will be resolved with result received from ev
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-subscribeToStream">subscribeToStream</a></span></span><span class="code" data-ice="signature">(stream: <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-unsubscribeFromStream">unsubscribeFromStream</a></span></span><span class="code" data-ice="signature">(subscriptionId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -1459,7 +1515,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber35">source</a></span></span>
     </span>
   </h3>
 
@@ -1505,7 +1561,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber111">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -1548,7 +1604,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber50">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -1591,7 +1647,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber59">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber62">source</a></span></span>
     </span>
   </h3>
 
@@ -1634,7 +1690,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber84">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber87">source</a></span></span>
     </span>
   </h3>
 
@@ -1678,7 +1734,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber58">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber61">source</a></span></span>
     </span>
   </h3>
 
@@ -1721,7 +1777,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber119">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber120">source</a></span></span>
     </span>
   </h3>
 
@@ -1764,7 +1820,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber113">source</a></span></span>
     </span>
   </h3>
 
@@ -1807,7 +1863,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber55">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -1850,7 +1906,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
@@ -1893,7 +1949,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber59">source</a></span></span>
     </span>
   </h3>
 
@@ -1936,7 +1992,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber51">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber54">source</a></span></span>
     </span>
   </h3>
 
@@ -1979,7 +2035,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber116">source</a></span></span>
     </span>
   </h3>
 
@@ -2022,7 +2078,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber53">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber56">source</a></span></span>
     </span>
   </h3>
 
@@ -2065,7 +2121,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber60">source</a></span></span>
     </span>
   </h3>
 
@@ -2111,7 +2167,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber718">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber750">source</a></span></span>
     </span>
   </h3>
 
@@ -2197,7 +2253,7 @@ If result is an error this function rejectes corresponding command promise and r
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber94">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber97">source</a></span></span>
     </span>
   </h3>
 
@@ -2253,7 +2309,7 @@ If result is an error this function rejectes corresponding command promise and r
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber146">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber151">source</a></span></span>
     </span>
   </h3>
 
@@ -2311,7 +2367,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber480">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber499">source</a></span></span>
     </span>
   </h3>
 
@@ -2376,7 +2432,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber503">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber522">source</a></span></span>
     </span>
   </h3>
 
@@ -2441,7 +2497,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber526">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber545">source</a></span></span>
     </span>
   </h3>
 
@@ -2506,7 +2562,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber318">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber334">source</a></span></span>
     </span>
   </h3>
 
@@ -2578,7 +2634,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber277">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber293">source</a></span></span>
     </span>
   </h3>
 
@@ -2656,7 +2712,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber694">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber726">source</a></span></span>
     </span>
   </h3>
 
@@ -2721,7 +2777,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber699">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber731">source</a></span></span>
     </span>
   </h3>
 
@@ -2786,7 +2842,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber533">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber552">source</a></span></span>
     </span>
   </h3>
 
@@ -2851,7 +2907,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber582">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber601">source</a></span></span>
     </span>
   </h3>
 
@@ -2916,7 +2972,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber554">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber573">source</a></span></span>
     </span>
   </h3>
 
@@ -2981,7 +3037,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber618">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber637">source</a></span></span>
     </span>
   </h3>
 
@@ -3047,7 +3103,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber341">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber357">source</a></span></span>
     </span>
   </h3>
 
@@ -3107,7 +3163,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber629">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber648">source</a></span></span>
     </span>
   </h3>
 
@@ -3172,7 +3228,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber635">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber656">source</a></span></span>
     </span>
   </h3>
 
@@ -3237,7 +3293,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber640">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber666">source</a></span></span>
     </span>
   </h3>
 
@@ -3302,7 +3358,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber645">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber677">source</a></span></span>
     </span>
   </h3>
 
@@ -3367,7 +3423,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber652">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber684">source</a></span></span>
     </span>
   </h3>
 
@@ -3432,7 +3488,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber659">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber691">source</a></span></span>
     </span>
   </h3>
 
@@ -3497,7 +3553,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber666">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber698">source</a></span></span>
     </span>
   </h3>
 
@@ -3562,7 +3618,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber687">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber719">source</a></span></span>
     </span>
   </h3>
 
@@ -3627,7 +3683,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber847">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber939">source</a></span></span>
     </span>
   </h3>
 
@@ -3671,7 +3727,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber825">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber917">source</a></span></span>
     </span>
   </h3>
 
@@ -3715,7 +3771,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber831">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber923">source</a></span></span>
     </span>
   </h3>
 
@@ -3774,7 +3830,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber862">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber954">source</a></span></span>
     </span>
   </h3>
 
@@ -3818,7 +3874,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber812">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber904">source</a></span></span>
     </span>
   </h3>
 
@@ -3879,7 +3935,7 @@ Will not emit errors on business level</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber766">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber798">source</a></span></span>
     </span>
   </h3>
 
@@ -3946,7 +4002,7 @@ In this case corresponding promise will be rejected and removed from queue</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber791">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber823">source</a></span></span>
     </span>
   </h3>
 
@@ -4013,7 +4069,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber190">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber206">source</a></span></span>
     </span>
   </h3>
 
@@ -4069,6 +4125,160 @@ In this case corresponding promise will be resolved with result received from ev
 </div>
 
   
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-subscribeToStream">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">subscribeToStream</span><span class="code" data-ice="signature">(stream: <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber836">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">stream</td>
+      <td data-ice="type" class="code"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-unsubscribeFromStream">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">unsubscribeFromStream</span><span class="code" data-ice="signature">(subscriptionId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber867">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">subscriptionId</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
 
   
 

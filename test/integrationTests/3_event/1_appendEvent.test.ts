@@ -2,17 +2,27 @@ import {expect} from 'chai'
 import {Eventstore, Event} from '../../../src'
 import * as assert from 'assert'
 
-describe('Event emit tests', () => {
-  const es = new Eventstore()
-  before(async () => {
-    await es.connect()
+describe('Event emit tests', (): void => {
+  const es = new Eventstore({
+    clientId: 'ts-client-test',
+    credentials: {
+      username: 'restrictedUser',
+      password: 'restrictedOnlyUserPassword'
+    }
   })
+  before(
+    async (): Promise<void> => {
+      await es.connect()
+    }
+  )
 
-  after(async () => {
-    await es.disconnect()
-  })
+  after(
+    async (): Promise<void> => {
+      await es.disconnect()
+    }
+  )
 
-  it('emits single new event', async () => {
+  it('appends single new event', async (): Promise<void> => {
     const newEvent = new Event('SingleEventWritten')
     const stream = await es.stream('testemitstream')
     try {
@@ -23,7 +33,7 @@ describe('Event emit tests', () => {
     }
   })
 
-  it('emits multiple new event', async () => {
+  it('appends multiple new event', async (): Promise<void> => {
     const newEvents = [
       new Event('FirstEventWritten'),
       new Event('NextEventWritten'),
@@ -40,7 +50,7 @@ describe('Event emit tests', () => {
     }
   })
 
-  it('throws when emitting events already stored in eventstore', async () => {
+  it('throws when emitting events already stored in eventstore', async (): Promise<void> => {
     const newEvents = [
       new Event('FirstEventWritten'),
       new Event('NextEventWritten'),

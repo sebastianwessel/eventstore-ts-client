@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,7 +59,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -124,13 +124,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, name: <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-member-name">name</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Creates new instance of EventstoreError</p>
+</div>
       </div>
     </td>
     <td>
@@ -187,7 +188,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-member-rootCause">rootCause</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-member-rootCause">rootCause</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
         </p>
       </div>
       <div>
@@ -220,22 +221,54 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, name: <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-member-name">name</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber8">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber15">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Creates new instance of EventstoreError</p>
+</div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">message</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>error message</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">name</td>
+      <td data-ice="type" class="code"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html#instance-member-name">name</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>name of error</p>
+</td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">rootCause</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>causing error</p>
+</td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -270,7 +303,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -309,11 +342,11 @@
     
     
     
-    <span class="code" data-ice="name">rootCause</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">rootCause</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber9">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/errors/EventstoreError.ts.html#lineNumber24">source</a></span></span>
     </span>
   </h3>
 

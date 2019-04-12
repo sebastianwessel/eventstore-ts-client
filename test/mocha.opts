@@ -3,3 +3,4 @@
 --recursive
 --full-trace
 --bail
+--timeout 11000

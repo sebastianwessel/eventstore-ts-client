@@ -247,10 +247,7 @@ function newDoesNotExistError(
  * @param {(Error | null)} [rootCause=null]
  * @returns {EventstoreError}
  */
-function newEventstoreTimeoutError(
-  message: string = '',
-  rootCause: Error | null = null
-): EventstoreError {
+function newTimeoutError(message: string = '', rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Timeout error: ${message}`, 'EventstoreTimeoutError', rootCause)
 }
 
@@ -261,10 +258,7 @@ function newEventstoreTimeoutError(
  * @param {(Error | null)} [rootCause=null]
  * @returns {EventstoreError}
  */
-function newEventstoreOperationError(
-  message: string = '',
-  rootCause: Error | null = null
-): EventstoreError {
+function newOperationError(message: string = '', rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Operation error: ${message}`, 'EventstoreOperationError', rootCause)
 }
 
@@ -288,6 +282,6 @@ export {
   newUnspecificError,
   newDoesNotExistError,
   newImplementationError,
-  newEventstoreTimeoutError,
-  newEventstoreOperationError
+  newTimeoutError,
+  newOperationError
 }

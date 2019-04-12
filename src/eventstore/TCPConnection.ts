@@ -8,6 +8,9 @@ import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
 import {Subscription} from '../subscription'
+import {Stream} from '../stream'
+import {UserCredentials} from '../eventstore/EventstoreSettings'
+import uuid = require('uuid/v4')
 
 const protobuf = model.eventstore.proto
 
@@ -106,33 +109,35 @@ export class TCPConnection extends EventEmitter {
 
     this.log.debug(`Start connecting to ${host}:${port}`)
 
-    await new Promise((resolve, reject) => {
-      const errorListener = (err: Error): void => {
-        this.state = connectionState.closed
-        this.onError(err)
-        reject(err)
-      }
+    await new Promise(
+      (resolve, reject): void => {
+        const errorListener = (err: Error): void => {
+          this.state = connectionState.closed
+          this.onError(err)
+          reject(err)
+        }
 
-      const successListener = (): void => {
-        this.socket.removeListener('error', errorListener)
-        this.onConnect()
-        this.heartBeatCheckInterval = setInterval(() => {
-          if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
-            const err = eventstoreError.newEventstoreTimeoutError(
-              `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
-            )
-            this.onError(err)
-          }
-        }, this.connectionConfig.heartbeatInterval)
-        resolve()
-        this.isUnexpectedClosed = false
-      }
+        const successListener = (): void => {
+          this.socket.removeListener('error', errorListener)
+          this.onConnect()
+          this.heartBeatCheckInterval = setInterval((): void => {
+            if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
+              const err = eventstoreError.newTimeoutError(
+                `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
+              )
+              this.onError(err)
+            }
+          }, this.connectionConfig.heartbeatInterval)
+          resolve()
+          this.isUnexpectedClosed = false
+        }
 
-      this.socket.once('error', errorListener)
-      this.socket.on('close', this.onClose.bind(this))
-      this.socket.on('data', this.onData.bind(this))
-      this.socket.connect(options, successListener)
-    })
+        this.socket.once('error', errorListener)
+        this.socket.on('close', this.onClose.bind(this))
+        this.socket.on('data', this.onData.bind(this))
+        this.socket.connect(options, successListener)
+      }
+    )
   }
 
   /**
@@ -144,37 +149,48 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      this.onDrain()
-      if (this.pendingRequests.size <= 0) {
-        this.state = connectionState.closed
-        this.isUnexpectedClosed = false
-        this.socket.end(() => {
-          this.socket.destroy()
-          resolve()
-        })
-      } else {
-        setTimeout(() => {
+    if (this.heartBeatCheckInterval) {
+      clearInterval(this.heartBeatCheckInterval)
+    }
+    await new Promise(
+      (resolve, reject): void => {
+        this.onDrain()
+        if (this.pendingRequests.size <= 0) {
           this.state = connectionState.closed
           this.isUnexpectedClosed = false
-          if (this.pendingRequests.size > 0) {
-            this.socket.end(() => {
-              this.socket.destroy()
-              const err = eventstoreError.newConnectionError(
-                `Lost ${this.pendingRequests.size} answers`
-              )
-              reject(err)
-              this.onError(err)
-            })
-          } else {
-            this.socket.end(() => {
+          this.socket.end(
+            (): void => {
               this.socket.destroy()
               resolve()
-            })
-          }
-        }, 10000)
+            }
+          )
+        } else {
+          setTimeout((): void => {
+            this.state = connectionState.closed
+            this.isUnexpectedClosed = false
+            if (this.pendingRequests.size > 0) {
+              this.socket.end(
+                (): void => {
+                  this.socket.destroy()
+                  const err = eventstoreError.newConnectionError(
+                    `Lost ${this.pendingRequests.size} answers`
+                  )
+                  reject(err)
+                  this.onError(err)
+                }
+              )
+            } else {
+              this.socket.end(
+                (): void => {
+                  this.socket.destroy()
+                  resolve()
+                }
+              )
+            }
+          }, 10000)
+        }
       }
-    })
+    )
   }
 
   /**
@@ -183,7 +199,7 @@ export class TCPConnection extends EventEmitter {
    * @param {string} correlationId
    * @param {EventstoreCommand} command
    * @param {Buffer | null)} [data=null]
-   * @param {({username: string; password: string} | null)} [credentials=null]
+   * @param {(UserCredentials | null)} [credentials=null]
    * @param {({resolve: Function; reject: Function} | null)} [promise=null]
    * @memberof TCPConnection
    */
@@ -191,7 +207,7 @@ export class TCPConnection extends EventEmitter {
     correlationId: string,
     command: EventstoreCommand,
     data: Buffer | null = null,
-    credentials: {username: string; password: string} | null = null,
+    credentials: UserCredentials | null = null,
     promise: {resolve: Function; reject: Function} | null = null
   ): void {
     this.log.trace(`Sending ${EventstoreCommand[command]} with ${correlationId}`)
@@ -466,6 +482,9 @@ export class TCPConnection extends EventEmitter {
       case EventstoreCommand.Pong:
         this.resolveCommandPromise(correlationId)
         break
+      case EventstoreCommand.Authenticated:
+        this.resolveCommandPromise(correlationId)
+        break
       default:
         err = new eventstoreError.EventstoreError(
           'Unhandled eventstore command : ' + EventstoreCommand[command] + ' -> ' + command,
@@ -586,7 +605,7 @@ export class TCPConnection extends EventEmitter {
     const message: string = decoded.error || ''
     switch (decoded.result) {
       case protobuf.ReadEventCompleted.ReadEventResult.Success:
-        this.resolveCommandPromise(correlationId, decoded)
+        this.resolveCommandPromise(correlationId, decoded.event)
         return
         break
       case protobuf.ReadEventCompleted.ReadEventResult.NotFound:
@@ -628,18 +647,31 @@ export class TCPConnection extends EventEmitter {
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded.event)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit('event', decoded.event)
+    }
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
-    const decoded = protobuf.SubscriptionDropped.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded)
+    const decoded = protobuf.SubscriptionConfirmation.decode(payload)
+
+    this.resolveCommandPromise(correlationId, {
+      subscriptionId: correlationId,
+      lastCommitPosition: decoded.lastCommitPosition,
+      lastEventNumber: decoded.lastEventNumber
+    })
   }
 
   protected handleSubscriptionDropped(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionDropped.decode(payload)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit('dropped', decoded.reason)
+    }
+    if (this.pendingRequests.has(correlationId)) {
+      this.resolveCommandPromise(correlationId, decoded)
+    }
   }
 
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
@@ -799,6 +831,66 @@ export class TCPConnection extends EventEmitter {
       )
       this.onError(err)
     }
+  }
+
+  public subscribeToStream(
+    stream: Stream,
+    resolveLinkTos: boolean = true,
+    credentials: UserCredentials | null
+  ): Promise<Subscription> {
+    const newSubscription = new Subscription(uuid(), this, stream, resolveLinkTos, credentials)
+    this.subscriptionList.set(newSubscription.id, newSubscription)
+    return new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          newSubscription.isSubscribed = true
+          resolve(newSubscription)
+        }
+        const raw = protobuf.SubscribeToStream.fromObject({
+          eventStreamId: stream.id,
+          resolveLinkTos
+        })
+        this.sendCommand(
+          newSubscription.id,
+          EventstoreCommand.SubscribeToStream,
+          Buffer.from(protobuf.SubscribeToStream.encode(raw).finish()),
+          credentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  public async unsubscribeFromStream(subscriptionId: string): Promise<void> {
+    const subscription = this.subscriptionList.get(subscriptionId)
+    if (!subscription) {
+      throw eventstoreError.newImplementationError(
+        `Can not unsubscribe - subscription ${subscriptionId} not found`
+      )
+    }
+    const subscriptionList = this.subscriptionList
+    await new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          subscription.isSubscribed = false
+          subscriptionList.delete(subscriptionId)
+          resolve()
+        }
+        this.sendCommand(
+          subscription.id,
+          EventstoreCommand.UnsubscribeFromStream,
+          null,
+          subscription.getCredentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**

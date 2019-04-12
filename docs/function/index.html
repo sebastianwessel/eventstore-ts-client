@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,7 +59,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -206,64 +206,6 @@
         
         
         <div data-ice="description"><p>Returns new EventstoreError type of EventstoreDoesNotExistError</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
 </div>
       </div>
     </td>
@@ -518,6 +460,35 @@
           
           
           
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
         </p>
       </div>
@@ -605,6 +576,35 @@
           
           
           
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
         </p>
       </div>
@@ -663,13 +663,15 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultConnectionSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span>EventstoreSettings</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>EventstoreSettings</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Generates settings for connecting to eventstore
+It takes the default settings and overwrites fields which are given in parameter</p>
+</div>
       </div>
     </td>
     <td>
@@ -721,7 +723,7 @@ It returns an empty string for uuid set to null or throws {EventstoreProtocolErr
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span><span class="code" data-ice="signature">(uuid: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span>Buffer</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span><span class="code" data-ice="signature">(uuid: <span>string </span> | <span> null</span>): <span>Buffer</span></span>
         </p>
       </div>
       <div>
@@ -1074,162 +1076,6 @@ throws {EventstoreProtocolError} for invalid input string length</p>
   
   
   <div data-ice="description"><p>Returns new EventstoreError type of EventstoreDoesNotExistError</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">message</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">rootCause</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-newEventstoreOperationError">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">newEventstoreOperationError</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/errors/index.ts.html#lineNumber264">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {newEventstoreOperationError} from &apos;<span><a href="file/src/errors/index.ts.html#lineNumber264">eventstore-ts-client/src/errors/index.ts</a></span>&apos;</code></pre></div>
-  
-  
-  <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">message</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">rootCause</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-newEventstoreTimeoutError">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">newEventstoreTimeoutError</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/errors/index.ts.html#lineNumber250">source</a></span></span>
-    </span>
-  </h3>
-
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {newEventstoreTimeoutError} from &apos;<span><a href="file/src/errors/index.ts.html#lineNumber250">eventstore-ts-client/src/errors/index.ts</a></span>&apos;</code></pre></div>
-  
-  
-  <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
 </div>
 
   
@@ -1913,6 +1759,84 @@ throws {EventstoreProtocolError} for invalid input string length</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-newOperationError">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">newOperationError</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/errors/index.ts.html#lineNumber261">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {newOperationError} from &apos;<span><a href="file/src/errors/index.ts.html#lineNumber261">eventstore-ts-client/src/errors/index.ts</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">message</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">rootCause</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-function-newPrepareTimeoutError">
     <span class="access" data-ice="access">public</span>
     
@@ -2147,6 +2071,84 @@ throws {EventstoreProtocolError} for invalid input string length</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="static-function-newTimeoutError">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">newTimeoutError</span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/errors/index.ts.html#lineNumber250">source</a></span></span>
+    </span>
+  </h3>
+
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {newTimeoutError} from &apos;<span><a href="file/src/errors/index.ts.html#lineNumber250">eventstore-ts-client/src/errors/index.ts</a></span>&apos;</code></pre></div>
+  
+  
+  <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">message</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">rootCause</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="static-function-newUnspecificError">
     <span class="access" data-ice="access">public</span>
     
@@ -2310,18 +2312,20 @@ throws {EventstoreProtocolError} for invalid input string length</p>
     
     
     
-    <span class="code" data-ice="name">setConnectionSettings</span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultConnectionSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
+    <span class="code" data-ice="name">setConnectionSettings</span><span class="code" data-ice="signature">(customSettings: <span>EventstoreSettings</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>EventstoreSettings</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/EventstoreSettings.ts.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/EventstoreSettings.ts.html#lineNumber39">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setConnectionSettings} from &apos;<span><a href="file/src/eventstore/EventstoreSettings.ts.html#lineNumber32">eventstore-ts-client/src/eventstore/EventstoreSettings.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setConnectionSettings} from &apos;<span><a href="file/src/eventstore/EventstoreSettings.ts.html#lineNumber39">eventstore-ts-client/src/eventstore/EventstoreSettings.ts</a></span>&apos;</code></pre></div>
   
   
-  
+  <div data-ice="description"><p>Generates settings for connecting to eventstore
+It takes the default settings and overwrites fields which are given in parameter</p>
+</div>
 
   
 
@@ -2335,9 +2339,10 @@ throws {EventstoreProtocolError} for invalid input string length</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">customSettings</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>EventstoreSettings</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>custom settings</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -2349,8 +2354,9 @@ throws {EventstoreProtocolError} for invalid input string length</p>
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType">{...defaultConnectionSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</td>
-          
+          <td class="return-type code" data-ice="returnType"><span>EventstoreSettings</span></td>
+          <td class="return-desc" data-ice="returnDescription"><p>new combined settings</p>
+</td>
         </tr>
       </tbody>
     </table>
@@ -2385,11 +2391,11 @@ throws {EventstoreProtocolError} for invalid input string length</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber12">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber11">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {uuidFromBuffer} from &apos;<span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber12">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {uuidFromBuffer} from &apos;<span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber11">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Converts a uuid as string from buffer
@@ -2435,7 +2441,18 @@ It returns an empty string for uuid set to null or throws {EventstoreProtocolErr
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span>EventstoreProtocolError</span></p></td>
+        
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 
@@ -2454,15 +2471,15 @@ It returns an empty string for uuid set to null or throws {EventstoreProtocolErr
     
     
     
-    <span class="code" data-ice="name">uuidToBuffer</span><span class="code" data-ice="signature">(uuid: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span>Buffer</span></span>
+    <span class="code" data-ice="name">uuidToBuffer</span><span class="code" data-ice="signature">(uuid: <span>string </span> | <span> null</span>): <span>Buffer</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {uuidToBuffer} from &apos;<span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber37">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {uuidToBuffer} from &apos;<span><a href="file/src/protobuf/uuidBufferConvert.ts.html#lineNumber30">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>Converts a uuid string to buffer representattion
@@ -2481,7 +2498,7 @@ throws {EventstoreProtocolError} for invalid input string length</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">uuid</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="type" class="code"><span>string </span> | <span> null</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2508,7 +2525,18 @@ throws {EventstoreProtocolError} for invalid input string length</p>
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span>EventstoreProtocolError</span></p></td>
+        
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 

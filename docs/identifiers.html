@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,7 +59,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -241,64 +241,6 @@
         
         
         <div data-ice="description"><p>Returns new EventstoreError type of EventstoreDoesNotExistError</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-function">F</span>
-          
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          <span data-ice="kind-icon" class="kind-function">F</span>
-          
-          
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
 </div>
       </div>
     </td>
@@ -553,6 +495,35 @@
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreOperationError</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
           <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
         </p>
       </div>
@@ -618,6 +589,35 @@
         
         
         <div data-ice="description"><p>Returns new EventstoreError type of EventstoreStreamDeletedError</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-function">F</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span><span class="code" data-ice="signature">(message: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, rootCause: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Returns new EventstoreError type of EventstoreTimeoutError</p>
 </div>
       </div>
     </td>
@@ -805,13 +805,15 @@ This class handles basic communication with eventstore</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultConnectionSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span>EventstoreSettings</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span>): <span>EventstoreSettings</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Generates settings for connecting to eventstore
+It takes the default settings and overwrites fields which are given in parameter</p>
+</div>
       </div>
     </td>
     <td>
@@ -873,7 +875,7 @@ It returns an empty string for uuid set to null or throws {EventstoreProtocolErr
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span><span class="code" data-ice="signature">(uuid: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span>Buffer</span></span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span><span class="code" data-ice="signature">(uuid: <span>string </span> | <span> null</span>): <span>Buffer</span></span>
         </p>
       </div>
       <div>
@@ -947,7 +949,8 @@ throws {EventstoreProtocolError} for invalid input string length</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Base class for handling a stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -975,7 +978,8 @@ throws {EventstoreProtocolError} for invalid input string length</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Base class for handling transaction writes to stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -1007,13 +1011,14 @@ throws {EventstoreProtocolError} for invalid input string length</p>
           <span data-ice="kind-icon" class="kind-class">C</span>
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Base class for handling subscriptions</p>
+</div>
       </div>
     </td>
     <td>

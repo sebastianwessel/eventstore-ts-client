@@ -1,2 +1,2 @@
 export {Eventstore} from './Eventstore'
-export {EventstoreSettings} from './EventstoreSettings'
+export {EventstoreSettings, UserCredentials} from './EventstoreSettings'

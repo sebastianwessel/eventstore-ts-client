@@ -10,6 +10,7 @@
     "lint:fix": "eslint . --fix",
     "test": "npm run test:unit && npm run test:integration",
     "test:coverage": "npm run test:coverageUnit && npm run test:coverageIntegration && npm run combine-coverage",
+    "mocha:all": "mocha test/**/*.test.ts",
     "mocha:unit": "mocha test/unitTests/**/*.test.ts",
     "test:unit": "npm run mocha:unit",
     "test:coverageUnit": "nyc --temp-directory=./.nyc_unit --reporter=text npm run test:unit",
@@ -17,7 +18,8 @@
     "test:integration": "./scipts/integrationTest.sh",
     "test:coverageIntegration": "nyc --temp-directory=./.nyc_integration --reporter=text npm run test:integration",
     "document": "typedoc --theme markdown --out typedoc",
-    "combine-coverage": "./scipts/combineCoverage.sh && nyc report --reporter=json --reporter=text --reporter=lcov && mv ./coverage/coverage-final.json ./coverage/coverage.json"
+    "combine-coverage": "./scipts/combineCoverage.sh && nyc report --reporter=json --reporter=text --reporter=lcov && mv ./coverage/coverage-final.json ./coverage/coverage.json",
+    "allcoverage": "./scipts/allTest.sh"
   },
   "files": [
     "dist/**/*"
@@ -35,6 +37,9 @@
   },
   "dependencies": {
     "@types/bunyan": "^1.8.6",
+    "@types/long": "^4.0.0",
+    "@types/node": "^11.13.4",
+    "@types/uuid": "^3.4.4",
     "bunyan": "^1.8.12",
     "long": "^4.0.0",
     "protobufjs": "^6.8.8",
@@ -42,9 +47,7 @@
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
-    "@types/long": "^4.0.0",
     "@types/mocha": "^5.2.6",
-    "@types/uuid": "^3.4.4",
     "@typescript-eslint/eslint-plugin": "^1.6.0",
     "@typescript-eslint/parser": "^1.6.0",
     "acorn": "^6.1.1",
@@ -60,13 +63,13 @@
     "eslint-plugin-prettier": "^3.0.1",
     "git-pre-push": "0.0.5",
     "mocha": "^6.0.2",
-    "nyc": "11.8.0",
+    "nyc": "^13.3.0",
     "prettier": "^1.16.4",
     "source-map-support": "^0.5.12",
     "ts-node": "^8.0.3",
     "typedoc": "^0.14.2",
     "typedoc-plugin-markdown": "^1.1.27",
-    "typescript": "^3.4.2"
+    "typescript": "^3.4.3"
   },
   "repository": {
     "type": "git",

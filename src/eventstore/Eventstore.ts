@@ -44,6 +44,8 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
+
+    this.connection.on('error', this.onError)
   }
 
   /**
@@ -67,6 +69,13 @@ export class Eventstore extends EventEmitter {
   public async connect(connectionConfiguration: EventstoreSettings | object = {}): Promise<void> {
     this.init(connectionConfiguration)
     await this.connection.connect()
+
+    try {
+      await this.authenticate()
+    } catch (err) {
+      await this.disconnect()
+      throw err
+    }
     await this.identifyClient()
   }
 
@@ -80,7 +89,7 @@ export class Eventstore extends EventEmitter {
     if (!this.connection) {
       return
     }
-    return await this.connection.disconnect()
+    await this.connection.disconnect()
   }
 
   /**
@@ -126,14 +135,14 @@ export class Eventstore extends EventEmitter {
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
-   * @returns {Promise<Stream>}
+   * @returns {Stream}
    * @memberof Eventstore
    */
-  public async stream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+  public stream(streamName: string, streamOptions?: StreamOptions): Stream {
     const defaultOptions: StreamOptions = {
       requireMaster: false,
       resolveLinks: true,
-      credentials: this.connectionConfig.credentials
+      credentials: null
     }
     return new Stream(this, streamName, {...defaultOptions, ...streamOptions})
   }
@@ -144,10 +153,10 @@ export class Eventstore extends EventEmitter {
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
-   * @returns {Promise<Stream>}
+   * @returns {Stream}
    * @memberof Eventstore
    */
-  public async fromStream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+  public fromStream(streamName: string, streamOptions?: StreamOptions): Stream {
     return this.stream(streamName, streamOptions)
   }
 
@@ -157,10 +166,10 @@ export class Eventstore extends EventEmitter {
    *
    * @param {string} streamName
    * @param {StreamOptions} [streamOptions]
-   * @returns {Promise<Stream>}
+   * @returns {Stream}
    * @memberof Eventstore
    */
-  public async atStream(streamName: string, streamOptions?: StreamOptions): Promise<Stream> {
+  public atStream(streamName: string, streamOptions?: StreamOptions): Stream {
     return this.stream(streamName, streamOptions)
   }
 
@@ -171,18 +180,20 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   public async ping(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      this.connection.sendCommand(
-        uuid(),
-        EventstoreCommand.Ping,
-        null,
-        this.connectionConfig.credentials,
-        {
-          resolve,
-          reject
-        }
-      )
-    })
+    await new Promise(
+      (resolve, reject): void => {
+        this.connection.sendCommand(
+          uuid(),
+          EventstoreCommand.Ping,
+          null,
+          this.connectionConfig.credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**
@@ -195,23 +206,47 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   protected async identifyClient(): Promise<void> {
-    await new Promise((resolve, reject) => {
-      this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
-      const raw = protobuf.IdentifyClient.fromObject({
-        version: 1,
-        connectionName: this.connectionConfig.clientId
-      })
-      this.connection.sendCommand(
-        uuid(),
-        EventstoreCommand.IdentifyClient,
-        Buffer.from(protobuf.IdentifyClient.encode(raw).finish()),
-        this.connectionConfig.credentials,
-        {
-          resolve,
-          reject
-        }
-      )
-    })
+    await new Promise(
+      (resolve, reject): void => {
+        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        const raw = protobuf.IdentifyClient.fromObject({
+          version: 1,
+          connectionName: this.connectionConfig.clientId
+        })
+        this.connection.sendCommand(
+          uuid(),
+          EventstoreCommand.IdentifyClient,
+          Buffer.from(protobuf.IdentifyClient.encode(raw).finish()),
+          this.connectionConfig.credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  protected async authenticate(): Promise<void> {
+    await new Promise(
+      (resolve, reject): void => {
+        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        this.connection.sendCommand(
+          uuid(),
+          EventstoreCommand.Authenticate,
+          null,
+          this.connectionConfig.credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  protected onError(err: Error): void {
+    this.log.error({err}, err.name)
   }
   /*
 

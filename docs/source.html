@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,12 +59,12 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">138/177</span></h1>
+<div class="content" data-ice="content"><h1>Source <img data-ice="coverageBadge" src="./badge.svg"><span data-ice="totalCoverageCount" class="total-coverage-count">170/212</span></h1>
 
 <table class="files-summary" data-ice="files" data-use-coverage="true">
   <thead>
@@ -80,12 +80,20 @@
   <tbody>
     
   <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/errors/EventstoreError.ts.html#errorLines=17,8">src/errors/EventstoreError.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/JSON.d.ts.html">src/JSON.d.ts</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">307 byte</td>
+      <td style="display: none;" data-ice="lines">7</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 14:57:52 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/errors/EventstoreError.ts.html#errorLines=25">src/errors/EventstoreError.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></td>
-      <td class="coverage"><span data-ice="coverage">50 %</span><span data-ice="coverageCount" class="coverage-count">2/4</span></td>
-      <td style="display: none;" data-ice="size">383 byte</td>
-      <td style="display: none;" data-ice="lines">19</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">75 %</span><span data-ice="coverageCount" class="coverage-count">3/4</span></td>
+      <td style="display: none;" data-ice="size">610 byte</td>
+      <td style="display: none;" data-ice="lines">28</td>
+      <td style="display: none;" data-ice="updated">2019-04-03 20:34:17 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/errors/index.ts.html">src/errors/index.ts</a></span></td>
@@ -94,8 +102,6 @@
 <span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span>
 <span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span>
 <span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span>
-<span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span>
-<span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span>
 <span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span>
 <span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span>
 <span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span>
@@ -104,23 +110,25 @@
 <span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span>
 <span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span>
 <span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span>
+<span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span>
 <span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span>
 <span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span>
 <span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span>
+<span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span>
 <span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span>
 <span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">20/20</span></td>
-      <td style="display: none;" data-ice="size">8397 byte</td>
-      <td style="display: none;" data-ice="lines">293</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="size">8345 byte</td>
+      <td style="display: none;" data-ice="lines">287</td>
+      <td style="display: none;" data-ice="updated">2019-04-04 08:56:25 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/event/Event.ts.html#errorLines=101,12,4">src/event/Event.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/event/Event.ts.html#errorLines=115,12,4">src/event/Event.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></td>
-      <td class="coverage"><span data-ice="coverage">90 %</span><span data-ice="coverageCount" class="coverage-count">30/33</span></td>
-      <td style="display: none;" data-ice="size">4406 byte</td>
-      <td style="display: none;" data-ice="lines">155</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">91 %</span><span data-ice="coverageCount" class="coverage-count">32/35</span></td>
+      <td style="display: none;" data-ice="size">7317 byte</td>
+      <td style="display: none;" data-ice="lines">285</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 15:54:35 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/event/index.ts.html">src/event/index.ts</a></span></td>
@@ -133,42 +141,42 @@
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/eventstore/Eventstore.ts.html#errorLines=22,23,24,7">src/eventstore/Eventstore.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></td>
-      <td class="coverage"><span data-ice="coverage">78 %</span><span data-ice="coverageCount" class="coverage-count">15/19</span></td>
-      <td style="display: none;" data-ice="size">5681 byte</td>
-      <td style="display: none;" data-ice="lines">217</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">80 %</span><span data-ice="coverageCount" class="coverage-count">17/21</span></td>
+      <td style="display: none;" data-ice="size">6488 byte</td>
+      <td style="display: none;" data-ice="lines">255</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 13:06:37 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/eventstore/EventstoreSettings.ts.html#errorLines=2,32">src/eventstore/EventstoreSettings.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/eventstore/EventstoreSettings.ts.html#errorLines=2">src/eventstore/EventstoreSettings.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></td>
-      <td class="coverage"><span data-ice="coverage">0 %</span><span data-ice="coverageCount" class="coverage-count">0/2</span></td>
-      <td style="display: none;" data-ice="size">1593 byte</td>
-      <td style="display: none;" data-ice="lines">69</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">50 %</span><span data-ice="coverageCount" class="coverage-count">1/2</span></td>
+      <td style="display: none;" data-ice="size">1894 byte</td>
+      <td style="display: none;" data-ice="lines">77</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 19:57:02 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/eventstore/TCPConnection.ts.html#errorLines=111,112,115,119,16,17,18,19,20,21,22,23,24,34,8">src/eventstore/TCPConnection.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/eventstore/TCPConnection.ts.html#errorLines=112,113,116,120,17,18,19,20,21,22,23,24,25,35,9">src/eventstore/TCPConnection.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></td>
-      <td class="coverage"><span data-ice="coverage">73 %</span><span data-ice="coverageCount" class="coverage-count">42/57</span></td>
-      <td style="display: none;" data-ice="size">29916 byte</td>
-      <td style="display: none;" data-ice="lines">867</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">74 %</span><span data-ice="coverageCount" class="coverage-count">44/59</span></td>
+      <td style="display: none;" data-ice="size">32778 byte</td>
+      <td style="display: none;" data-ice="lines">959</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 19:39:45 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/eventstore/index.ts.html">src/eventstore/index.ts</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">96 byte</td>
+      <td style="display: none;" data-ice="size">113 byte</td>
       <td style="display: none;" data-ice="lines">2</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 10:52:17 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/index.ts.html">src/index.ts</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">149 byte</td>
-      <td style="display: none;" data-ice="lines">3</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="size">206 byte</td>
+      <td style="display: none;" data-ice="lines">4</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 10:52:26 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/protobuf/EventstoreCommand.ts.html">src/protobuf/EventstoreCommand.ts</a></span></td>
@@ -182,9 +190,9 @@
       <td data-ice="filePath"><span><a href="file/src/protobuf/ExpectedVersion.ts.html">src/protobuf/ExpectedVersion.ts</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">60 byte</td>
-      <td style="display: none;" data-ice="lines">4</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="size">101 byte</td>
+      <td style="display: none;" data-ice="lines">6</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 05:51:37 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/protobuf/model.d.ts.html">src/protobuf/model.d.ts</a></span></td>
@@ -207,41 +215,57 @@
       <td data-ice="identifier" class="identifiers"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span>
 <span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></td>
       <td class="coverage"><span data-ice="coverage">100 %</span><span data-ice="coverageCount" class="coverage-count">2/2</span></td>
-      <td style="display: none;" data-ice="size">1263 byte</td>
-      <td style="display: none;" data-ice="lines">46</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="size">1294 byte</td>
+      <td style="display: none;" data-ice="lines">48</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 07:54:18 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/stream/Stream.ts.html#errorLines=15,16,17,18,21,7">src/stream/Stream.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/stream/Stream.ts.html#errorLines=24,25,26,29,8">src/stream/Stream.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></td>
-      <td class="coverage"><span data-ice="coverage">75 %</span><span data-ice="coverageCount" class="coverage-count">18/24</span></td>
-      <td style="display: none;" data-ice="size">5794 byte</td>
-      <td style="display: none;" data-ice="lines">210</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">84 %</span><span data-ice="coverageCount" class="coverage-count">28/33</span></td>
+      <td style="display: none;" data-ice="size">18422 byte</td>
+      <td style="display: none;" data-ice="lines">641</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 19:41:23 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/stream/Transaction.ts.html#errorLines=27,28,8">src/stream/Transaction.ts</a></span></td>
+      <td data-ice="filePath"><span><a href="file/src/stream/StreamPosition.ts.html">src/stream/StreamPosition.ts</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">55 byte</td>
+      <td style="display: none;" data-ice="lines">4</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 05:53:32 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/stream/Transaction.ts.html#errorLines=4,44,45,46,47">src/stream/Transaction.ts</a></span></td>
       <td data-ice="identifier" class="identifiers"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></td>
-      <td class="coverage"><span data-ice="coverage">72 %</span><span data-ice="coverageCount" class="coverage-count">8/11</span></td>
-      <td style="display: none;" data-ice="size">666 byte</td>
-      <td style="display: none;" data-ice="lines">31</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td class="coverage"><span data-ice="coverage">72 %</span><span data-ice="coverageCount" class="coverage-count">13/18</span></td>
+      <td style="display: none;" data-ice="size">4999 byte</td>
+      <td style="display: none;" data-ice="lines">180</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 15:00:12 (UTC)</td>
     </tr>
 <tr data-ice="file">
       <td data-ice="filePath"><span><a href="file/src/stream/index.ts.html">src/stream/index.ts</a></span></td>
       <td data-ice="identifier" class="identifiers">-</td>
       <td class="coverage"><span data-ice="coverage">-</span></td>
-      <td style="display: none;" data-ice="size">47 byte</td>
-      <td style="display: none;" data-ice="lines">1</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td style="display: none;" data-ice="size">95 byte</td>
+      <td style="display: none;" data-ice="lines">2</td>
+      <td style="display: none;" data-ice="updated">2019-04-05 05:54:30 (UTC)</td>
     </tr>
 <tr data-ice="file">
-      <td data-ice="filePath"><span><a href="file/src/subscription/index.ts.html#errorLines=9">src/subscription/index.ts</a></span></td>
-      <td data-ice="identifier" class="identifiers"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></td>
-      <td class="coverage"><span data-ice="coverage">50 %</span><span data-ice="coverageCount" class="coverage-count">1/2</span></td>
-      <td style="display: none;" data-ice="size">151 byte</td>
-      <td style="display: none;" data-ice="lines">7</td>
-      <td style="display: none;" data-ice="updated">2019-04-01 15:48:44 (UTC)</td>
+      <td data-ice="filePath"><span><a href="file/src/subscription/Subscription.ts.html#errorLines=32,33,35,36,38">src/subscription/Subscription.ts</a></span></td>
+      <td data-ice="identifier" class="identifiers"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></td>
+      <td class="coverage"><span data-ice="coverage">66 %</span><span data-ice="coverageCount" class="coverage-count">10/15</span></td>
+      <td style="display: none;" data-ice="size">2256 byte</td>
+      <td style="display: none;" data-ice="lines">92</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 20:04:46 (UTC)</td>
+    </tr>
+<tr data-ice="file">
+      <td data-ice="filePath"><span><a href="file/src/subscription/index.ts.html">src/subscription/index.ts</a></span></td>
+      <td data-ice="identifier" class="identifiers">-</td>
+      <td class="coverage"><span data-ice="coverage">-</span></td>
+      <td style="display: none;" data-ice="size">44 byte</td>
+      <td style="display: none;" data-ice="lines">1</td>
+      <td style="display: none;" data-ice="updated">2019-04-06 20:03:28 (UTC)</td>
     </tr>
 </tbody>
 </table>

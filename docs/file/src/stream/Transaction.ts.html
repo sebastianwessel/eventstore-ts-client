@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,24 +59,56 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/stream/Transaction.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Stream} from &apos;./Stream&apos;
+import {Event} from &apos;../event&apos;
+import uuid = require(&apos;uuid/v4&apos;)
+import * as model from &apos;../protobuf/model&apos;
+import {EventstoreCommand} from &apos;../protobuf/EventstoreCommand&apos;
+import * as eventstoreError from &apos;../errors&apos;
+import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
+import {Eventstore} from &apos;../eventstore&apos;
 
+const protobuf = model.eventstore.proto
+
+/**
+ * Base class for handling transaction writes to stream
+ *
+ * @export
+ * @class Transaction
+ */
 export class Transaction {
-  protected transactionId: string
+  protected transactionId: Long
   protected stream: Stream
-
+  protected esConnection: Eventstore
   protected commited: boolean = false
   protected roledBack: boolean = false
+  protected requireMaster: boolean
+  protected credentials: UserCredentials | null = null
 
-  public constructor(stream: Stream, transactionId: string) {
+  /**
+   *  Creates an instance of Transaction.
+   * @param {Stream} stream
+   * @param {string} transactionId
+   * @memberof Transaction
+   */
+  public constructor(
+    stream: Stream,
+    transactionId: Long,
+    esConnection: Eventstore,
+    requireMaster: boolean,
+    credentials: UserCredentials | null = null
+  ) {
     this.stream = stream
     this.transactionId = transactionId
+    this.esConnection = esConnection
+    this.requireMaster = requireMaster
+    this.credentials = credentials
   }
 
   public get isCommited(): boolean {
@@ -87,14 +119,131 @@ export class Transaction {
     return this.roledBack
   }
 
-  public async append(): Promise&lt;void&gt; {}
-
-  public commit(): Promise&lt;void&gt; {
-    this.commited = true
-    return this.commitTransaction()
+  public async append(
+    event: Event | Event[],
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;Transaction&gt; {
+    if (Array.isArray(event)) {
+      return await this.appendEvents(event, requireMaster, credentials)
+    } else {
+      return await this.appendEvents([event], requireMaster, credentials)
+    }
   }
 
-  public async commitTransaction(): Promise&lt;void&gt; {}
+  protected async appendEvents(
+    events: Event[],
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;Transaction&gt; {
+    if (this.isCommited) {
+      throw eventstoreError.newInvalidTransactionError(
+        `Transaction ${this.transactionId} is already committed`
+      )
+    }
+    if (this.isRoledBack) {
+      throw eventstoreError.newInvalidTransactionError(
+        `Transaction ${this.transactionId} is already roled back`
+      )
+    }
+    if (requireMaster === undefined) {
+      requireMaster = this.requireMaster
+    }
+    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map(
+      (event): model.eventstore.proto.NewEvent =&gt; {
+        if (!event.isNew()) {
+          throw eventstoreError.newOperationError(
+            `Event ${event.name} is already stored in eventstore`
+          )
+        }
+        return event.toRaw()
+      }
+    )
+    const raw = protobuf.TransactionWrite.fromObject({
+      transactionId: this.transactionId,
+      events: eventArrayTransformed,
+      requireMaster: requireMaster
+    })
+    raw.transactionId = this.transactionId
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        const setToWritten = (id: Long): void =&gt; {
+          events.forEach((event): void =&gt; event.freeze())
+          resolve(id)
+        }
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.TransactionWrite,
+            Buffer.from(protobuf.TransactionWrite.encode(raw).finish()),
+            credentials || this.credentials,
+            {
+              resolve: setToWritten,
+              reject
+            }
+          )
+      }
+    )
+    return this
+  }
+
+  public async commit(
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;void&gt; {
+    if (this.isCommited) {
+      throw eventstoreError.newInvalidTransactionError(
+        `Transaction ${this.transactionId} is already committed`
+      )
+    }
+    if (this.isRoledBack) {
+      throw eventstoreError.newInvalidTransactionError(
+        `Transaction ${this.transactionId} is already roled back`
+      )
+    }
+    if (requireMaster === undefined) {
+      requireMaster = this.requireMaster
+    }
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        const rejectFunction = (err: Error): void =&gt; {
+          this.commited = true
+          this.roledBack = true
+          reject(err)
+        }
+        const raw = protobuf.TransactionCommit.fromObject({
+          transactionId: this.transactionId,
+          requireMaster: requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.TransactionCommit,
+            Buffer.from(protobuf.TransactionCommit.encode(raw).finish()),
+            credentials || this.credentials,
+            {
+              resolve,
+              reject: rejectFunction
+            }
+          )
+      }
+    )
+    this.commited = true
+  }
+
+  public roleBack(): void {
+    this.roledBack = true
+  }
+
+  public get id(): Long {
+    return this.transactionId
+  }
+
+  public get name(): string {
+    return &apos;Transaction: &apos; + this.transactionId
+  }
 }
 </code></pre>
 
