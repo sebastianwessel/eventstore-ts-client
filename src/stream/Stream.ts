@@ -10,6 +10,7 @@ import {Transaction} from './Transaction'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import Long = require('long')
+import {JSONValue} from '../JSON'
 
 const protobuf = model.eventstore.proto
 
@@ -129,7 +130,7 @@ export class Stream {
     credentials?: UserCredentials | null
   ): Promise<void> {
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
     }
     const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map(
       (event): model.eventstore.proto.NewEvent => {
@@ -258,7 +259,7 @@ export class Stream {
       )
     }
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
     }
     return new Promise(
       (resolve, reject): void => {
@@ -301,7 +302,7 @@ export class Stream {
     credentials?: UserCredentials
   ): Promise<Event | null> {
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
     }
     const result: model.eventstore.proto.IResolvedIndexedEvent = await new Promise(
       (resolve, reject): void => {
@@ -384,14 +385,20 @@ export class Stream {
   public async getMetadata(
     requireMaster?: boolean,
     credentials?: UserCredentials
-  ): Promise<{} | null> {
+  ): Promise<
+    | {
+        $correlationId?: string
+        $causationId?: string
+      } & {[k: string]: JSONValue}
+    | null
+  > {
     if (this.isMetaStream()) {
       throw eventstoreError.newBadRequestError(
         `You can not get metadata of metadata stream ${this.streamId}`
       )
     }
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
     }
     try {
       const result = await this.esConnection
@@ -446,18 +453,6 @@ export class Stream {
     )
   }
 
-  public async aggregate<T>(initState: T): Promise<T> {
-    return initState
-  }
-
-  public async getFirstEventOf(): Promise<Event | null> {
-    return new Event(this.streamId)
-  }
-
-  public async getLastEventOf(): Promise<Event | null> {
-    return new Event(this.streamId)
-  }
-
   public async startTransaction(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean,
@@ -468,18 +463,16 @@ export class Stream {
         `Transactions fpr metadata stream ${this.streamId} not supported`
       )
     }
-    let rm: boolean = this.options.requireMaster || false
-    if (requireMaster !== undefined) {
-      rm = requireMaster
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
     }
     const transactionId: Long = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.TransactionStart.fromObject({
           eventStreamId: this.streamId,
           expectedVersion: expectedVersion,
-          requireMaster: rm
+          requireMaster
         })
-        raw.expectedVersion = expectedVersion
         this.esConnection
           .getConnection()
           .sendCommand(
@@ -495,7 +488,72 @@ export class Stream {
       }
     )
 
-    return new Transaction(this, transactionId, this.esConnection, rm, credentials)
+    return new Transaction(this, transactionId, this.esConnection, requireMaster, credentials)
+  }
+
+  protected async readSlice(
+    direction: EventstoreCommand,
+    fromEventNumber: number | Long = 0,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    return await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.ReadStreamEvents.fromObject({
+          eventStreamId: this.streamId,
+          fromEventNumber,
+          maxCount,
+          resolveLinkTos,
+          requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            direction,
+            Buffer.from(protobuf.ReadStreamEvents.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+  }
+
+  public async readSliceForward(
+    fromEventNumber: number | Long = 0,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadStreamEventsForward,
+      fromEventNumber,
+      maxCount,
+      resolveLinkTos,
+      requireMaster,
+      credentials
+    )
+  }
+
+  public async aggregate<T>(initState: T): Promise<T> {
+    return initState
+  }
+
+  public async getFirstEventOf(): Promise<Event | null> {
+    return new Event(this.streamId)
+  }
+
+  public async getLastEventOf(): Promise<Event | null> {
+    return new Event(this.streamId)
   }
 
   public async subscribe(): Promise<void> {
