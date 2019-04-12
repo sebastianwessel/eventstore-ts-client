@@ -1,0 +1,113 @@
+{
+  "coverage": "80.18%",
+  "expectCount": 212,
+  "actualCount": 170,
+  "files": {
+    "src/errors/EventstoreError.ts": {
+      "expectCount": 4,
+      "actualCount": 3,
+      "undocumentLines": [
+        25
+      ]
+    },
+    "src/errors/index.ts": {
+      "expectCount": 20,
+      "actualCount": 20,
+      "undocumentLines": []
+    },
+    "src/event/Event.ts": {
+      "expectCount": 35,
+      "actualCount": 32,
+      "undocumentLines": [
+        4,
+        12,
+        115
+      ]
+    },
+    "src/eventstore/Eventstore.ts": {
+      "expectCount": 21,
+      "actualCount": 17,
+      "undocumentLines": [
+        7,
+        22,
+        23,
+        24
+      ]
+    },
+    "src/eventstore/EventstoreSettings.ts": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        2
+      ]
+    },
+    "src/eventstore/TCPConnection.ts": {
+      "expectCount": 59,
+      "actualCount": 44,
+      "undocumentLines": [
+        9,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        35,
+        112,
+        113,
+        116,
+        120
+      ]
+    },
+    "src/protobuf/model.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        4,
+        7,
+        12
+      ]
+    },
+    "src/protobuf/uuidBufferConvert.ts": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "src/stream/Stream.ts": {
+      "expectCount": 33,
+      "actualCount": 28,
+      "undocumentLines": [
+        8,
+        24,
+        25,
+        26,
+        29
+      ]
+    },
+    "src/stream/Transaction.ts": {
+      "expectCount": 18,
+      "actualCount": 13,
+      "undocumentLines": [
+        4,
+        44,
+        45,
+        46,
+        47
+      ]
+    },
+    "src/subscription/Subscription.ts": {
+      "expectCount": 15,
+      "actualCount": 10,
+      "undocumentLines": [
+        32,
+        33,
+        35,
+        36,
+        38
+      ]
+    }
+  }
+}

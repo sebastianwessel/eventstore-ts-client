@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 102,
+  "end": 119,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 102,
+    "end": 119,
     "loc": {
       "start": {
         "line": 1,
@@ -118,7 +118,7 @@
       {
         "type": "ExportNamedDeclaration",
         "start": 43,
-        "end": 101,
+        "end": 118,
         "loc": {
           "start": {
             "line": 2,
@@ -126,7 +126,7 @@
           },
           "end": {
             "line": 2,
-            "column": 58
+            "column": 75
           }
         },
         "declaration": null,
@@ -179,20 +179,69 @@
               },
               "name": "EventstoreSettings"
             }
+          },
+          {
+            "type": "ExportSpecifier",
+            "start": 72,
+            "end": 87,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 29
+              },
+              "end": {
+                "line": 2,
+                "column": 44
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 72,
+              "end": 87,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 29
+                },
+                "end": {
+                  "line": 2,
+                  "column": 44
+                },
+                "identifierName": "UserCredentials"
+              },
+              "name": "UserCredentials"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 72,
+              "end": 87,
+              "loc": {
+                "start": {
+                  "line": 2,
+                  "column": 29
+                },
+                "end": {
+                  "line": 2,
+                  "column": 44
+                },
+                "identifierName": "UserCredentials"
+              },
+              "name": "UserCredentials"
+            }
           }
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 78,
-          "end": 100,
+          "start": 95,
+          "end": 117,
           "loc": {
             "start": {
               "line": 2,
-              "column": 35
+              "column": 52
             },
             "end": {
               "line": 2,
-              "column": 57
+              "column": 74
             }
           },
           "extra": {
@@ -471,6 +520,58 @@
     },
     {
       "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 70,
+      "end": 71,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 27
+        },
+        "end": {
+          "line": 2,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "UserCredentials",
+      "start": 72,
+      "end": 87,
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 29
+        },
+        "end": {
+          "line": 2,
+          "column": 44
+        }
+      }
+    },
+    {
+      "type": {
         "label": "}",
         "beforeExpr": false,
         "startsExpr": false,
@@ -481,16 +582,16 @@
         "postfix": false,
         "binop": null
       },
-      "start": 71,
-      "end": 72,
+      "start": 88,
+      "end": 89,
       "loc": {
         "start": {
           "line": 2,
-          "column": 28
+          "column": 45
         },
         "end": {
           "line": 2,
-          "column": 29
+          "column": 46
         }
       }
     },
@@ -507,16 +608,16 @@
         "binop": null
       },
       "value": "from",
-      "start": 73,
-      "end": 77,
+      "start": 90,
+      "end": 94,
       "loc": {
         "start": {
           "line": 2,
-          "column": 30
+          "column": 47
         },
         "end": {
           "line": 2,
-          "column": 34
+          "column": 51
         }
       }
     },
@@ -534,16 +635,16 @@
         "updateContext": null
       },
       "value": "./EventstoreSettings",
-      "start": 78,
-      "end": 100,
+      "start": 95,
+      "end": 117,
       "loc": {
         "start": {
           "line": 2,
-          "column": 35
+          "column": 52
         },
         "end": {
           "line": 2,
-          "column": 57
+          "column": 74
         }
       }
     },
@@ -560,16 +661,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 100,
-      "end": 101,
+      "start": 117,
+      "end": 118,
       "loc": {
         "start": {
           "line": 2,
-          "column": 57
+          "column": 74
         },
         "end": {
           "line": 2,
-          "column": 58
+          "column": 75
         }
       }
     },
@@ -586,8 +687,8 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 102,
-      "end": 102,
+      "start": 119,
+      "end": 119,
       "loc": {
         "start": {
           "line": 3,

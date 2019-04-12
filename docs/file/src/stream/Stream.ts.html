@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,7 +59,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -72,25 +72,45 @@ import * as bunyan from &apos;bunyan&apos;
 import * as model from &apos;../protobuf/model&apos;
 import {EventstoreCommand} from &apos;../protobuf/EventstoreCommand&apos;
 import {ExpectedVersion} from &apos;../protobuf/ExpectedVersion&apos;
+import {StreamPosition} from &apos;./StreamPosition&apos;
 import {Transaction} from &apos;./Transaction&apos;
+import {Subscription} from &apos;../subscription&apos;
 import * as eventstoreError from &apos;../errors&apos;
+import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
+import Long = require(&apos;long&apos;)
+import {JSONValue} from &apos;../JSON&apos;
 
 const protobuf = model.eventstore.proto
 
 export interface StreamOptions {
   requireMaster?: boolean
   resolveLinks?: boolean
-  credentials?: {
-    username: string
-    password: string
-  }
+  credentials?: UserCredentials | null
 }
+
+/**
+ * Base class for handling a stream
+ *
+ * @export
+ * @class Stream
+ */
 export class Stream {
+  /** @type {Eventstore} */
   protected esConnection: Eventstore
+  /** @type {Bunyan} */
   public log: bunyan
+  /** @type {string} */
   protected streamId: string
+  /** @type {StreamOptions} */
   protected options: StreamOptions
 
+  /**
+   * Creates an instance of Stream.
+   * @param {Eventstore} eventstore
+   * @param {string} streamId
+   * @param {StreamOptions} options
+   * @memberof Stream
+   */
   public constructor(eventstore: Eventstore, streamId: string, options: StreamOptions) {
     this.esConnection = eventstore
     this.streamId = streamId
@@ -101,69 +121,155 @@ export class Stream {
     this.options = options
   }
 
+  /**
+   * Return name of stream instance
+   *
+   * @readonly
+   * @type {string}
+   * @memberof Stream
+   */
+  public get name(): string {
+    return &apos;Stream: &apos; + this.streamId
+  }
+
+  public get id(): string {
+    return this.streamId
+  }
+
+  /**
+   * Return current logger instance
+   *
+   * @readonly
+   * @type {bunyan}
+   * @memberof Stream
+   */
   public get logger(): bunyan {
     return this.log
   }
 
-  protected async appendEvents(
+  /**
+   * Enforces to use master node for any read/write operation
+   *
+   * @returns {Stream}
+   * @memberof Stream
+   */
+  public requiresMaster(): Stream {
+    this.options.requireMaster = true
+    return this
+  }
+
+  /**
+   * Set credentials for any read/write operation
+   *
+   * @param {UserCredentials} credentials
+   * @returns {Stream}
+   * @memberof Stream
+   */
+  public withCredentials(credentials: UserCredentials): Stream {
+    this.options.credentials = credentials
+    return this
+  }
+
+  /**
+   * Enforce to resolve linkson read operations
+   *
+   * @returns {Stream}
+   * @memberof Stream
+   */
+  public resolveAllLinks(): Stream {
+    this.options.resolveLinks = true
+    return this
+  }
+
+  /**
+   * Appends array of events to stream
+   *
+   * @protected
+   * @param {Event[]} events
+   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
+   * @param {boolean} [requireMaster]
+   * @returns {Promise&lt;void&gt;}
+   * @memberof Stream
+   */
+  protected appendEvents(
     events: Event[],
-    expectedVersion?: ExpectedVersion | number | Long,
-    requireMaster?: boolean
+    expectedVersion: ExpectedVersion | number | Long = -2,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
   ): Promise&lt;void&gt; {
-    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map((event) =&gt; {
-      if (!event.isNew) {
-        throw eventstoreError.newEventstoreOperationError(
-          `Event ${event.name} is already stored in eventstore`
-        )
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map(
+      (event): model.eventstore.proto.NewEvent =&gt; {
+        if (!event.isNew()) {
+          throw eventstoreError.newOperationError(
+            `Event ${event.name} is already stored in eventstore`
+          )
+        }
+        return event.toRaw()
       }
-      return event.toRaw()
-    })
+    )
 
     const raw = protobuf.WriteEvents.fromObject({
       eventStreamId: this.streamId,
-      expectedVersion: expectedVersion !== undefined ? expectedVersion : ExpectedVersion.Any,
+      expectedVersion: expectedVersion,
       events: eventArrayTransformed,
-      requireMaster: requireMaster !== undefined ? requireMaster : this.options.requireMaster
+      requireMaster: requireMaster
     })
-    await new Promise((resolve, reject) =&gt; {
-      const setToWritten = (): void =&gt; {
-        events.forEach((event) =&gt; (event.isNew = false))
-        resolve()
-      }
+    return new Promise(
+      (resolve, reject): void =&gt; {
+        const setToWritten = (): void =&gt; {
+          events.forEach((event): void =&gt; event.freeze())
+          resolve()
+        }
 
-      this.esConnection
-        .getConnection()
-        .sendCommand(
-          uuid(),
-          EventstoreCommand.WriteEvents,
-          Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
-          this.options.credentials,
-          {
-            resolve: setToWritten,
-            reject
-          }
-        )
-    })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.WriteEvents,
+            Buffer.from(protobuf.WriteEvents.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve: setToWritten,
+              reject
+            }
+          )
+      }
+    )
   }
 
+  /**
+   * Inidcates if given stream is a metadata stream or a regular steam
+   *
+   * @returns {boolean} - true if metadata stream
+   * @memberof Stream
+   */
+  public isMetaStream(): boolean {
+    return this.streamId.startsWith(&apos;$$&apos;)
+  }
+
+  /**
+   * Append single event or array of events to stream
+   *
+   * @param {(Event | Event[])} event
+   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
+   * @param {boolean} [requireMaster]
+   * @returns {Promise&lt;void&gt;}
+   * @memberof Stream
+   */
   public async append(
     event: Event | Event[],
-    expectedVersion?: ExpectedVersion | number | Long,
-    requireMaster?: boolean
+    expectedVersion: ExpectedVersion | number | Long = -2,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
   ): Promise&lt;void&gt; {
     if (Array.isArray(event)) {
-      return this.appendEvents(event, expectedVersion, requireMaster)
+      return await this.appendEvents(event, expectedVersion, requireMaster, credentials)
     } else {
-      return this.appendEvents([event], expectedVersion, requireMaster)
+      return await this.appendEvents([event], expectedVersion, requireMaster, credentials)
     }
-  }
-
-  public async subscribe(): Promise&lt;void&gt; {
-    return
-  }
-
-  public async catchupSubscribe(): Promise&lt;void&gt; {
-    return
   }
 
   /**
@@ -174,12 +280,12 @@ export class Stream {
    * @returns {Promise&lt;void&gt;}
    * @memberof Stream
    */
-  public hardDelete(
+  public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise&lt;void&gt; {
     this.log.debug(`Hard delete Stream ${this.streamId}`)
-    return this.delete(true, expectedVersion, requireMaster)
+    await this.delete(true, expectedVersion, requireMaster)
   }
 
   /**
@@ -190,17 +296,17 @@ export class Stream {
    * @returns {Promise&lt;void&gt;}
    * @memberof Stream
    */
-  public softDelete(
+  public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise&lt;void&gt; {
     this.log.debug(`Soft delete Stream ${this.streamId}`)
-    return this.delete(false, expectedVersion, requireMaster)
+    await this.delete(false, expectedVersion, requireMaster)
   }
 
   /**
    * Delete a stream - can&apos;t be called directly
-   * Use softDelete() or hardDelete() instead
+   * Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead
    *
    * @protected
    * @param {boolean} hardDelete
@@ -209,58 +315,383 @@ export class Stream {
    * @returns {Promise&lt;void&gt;}
    * @memberof Stream
    */
-  protected async delete(
+  protected delete(
     hardDelete: boolean,
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
-    requireMaster?: boolean
+    requireMaster?: boolean,
+    credentials?: UserCredentials
   ): Promise&lt;void&gt; {
-    if (!requireMaster) {
+    if (this.isMetaStream()) {
+      throw eventstoreError.newBadRequestError(
+        `You can not delete metadata stream ${this.streamId}`
+      )
+    }
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    return new Promise(
+      (resolve, reject): void =&gt; {
+        const raw = protobuf.DeleteStream.fromObject({
+          eventStreamId: this.streamId,
+          expectedVersion,
+          requireMaster,
+          hardDelete
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.DeleteStream,
+            Buffer.from(protobuf.DeleteStream.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+  }
+
+  /**
+   * Get event at specified position from stream
+   *
+   * @param {(Long | number)} eventNumber
+   * @param {boolean} [resolveLinks=true]
+   * @param {boolean} [requireMaster]
+   * @param {UserCredentials} [credentials]
+   * @returns {Promise&lt;Event&gt;}
+   * @memberof Stream
+   */
+  public async getEventByNumber(
+    eventNumber: Long | number,
+    resolveLinks: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials
+  ): Promise&lt;Event | null&gt; {
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    const result: model.eventstore.proto.IResolvedIndexedEvent = await new Promise(
+      (resolve, reject): void =&gt; {
+        const raw = protobuf.ReadEvent.fromObject({
+          eventStreamId: this.streamId,
+          eventNumber: eventNumber,
+          resolveLinkTos: resolveLinks,
+          requireMaster: requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.ReadEvent,
+            Buffer.from(protobuf.ReadEvent.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+
+    if (result.event) {
+      return Event.fromRaw(result.event)
+    } else if (result.link) {
+      return Event.fromRaw(result.link)
+    }
+    return null
+  }
+
+  /**
+   * Returns first event from stream
+   *
+   * @param {boolean} [resolveLinks=true]
+   * @param {boolean} [requireMaster]
+   * @param {UserCredentials} [credentials]
+   * @returns {(Promise&lt;Event | null&gt;)}
+   * @memberof Stream
+   */
+  public async getFirstEvent(
+    resolveLinks: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials
+  ): Promise&lt;Event | null&gt; {
+    return await this.getEventByNumber(
+      StreamPosition.Start,
+      resolveLinks,
+      requireMaster,
+      credentials
+    )
+  }
+
+  /**
+   * Returns last event from stream
+   *
+   * @param {boolean} [resolveLinks=true]
+   * @param {boolean} [requireMaster]
+   * @param {UserCredentials} [credentials]
+   * @returns {(Promise&lt;Event | null&gt;)}
+   * @memberof Stream
+   */
+  public async getLastEvent(
+    resolveLinks: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials
+  ): Promise&lt;Event | null&gt; {
+    return await this.getEventByNumber(StreamPosition.End, resolveLinks, requireMaster, credentials)
+  }
+
+  /**
+   * Returns stream metadata if set or
+   *
+   * @param {boolean} [requireMaster]
+   * @returns {Promise&lt;object&gt;}
+   * @memberof Stream
+   * @throws {EventstoreBadRequestError}
+   */
+  public async getMetadata(
+    requireMaster?: boolean,
+    credentials?: UserCredentials
+  ): Promise&lt;
+    | {
+        $correlationId?: string
+        $causationId?: string
+      } &amp; {[k: string]: JSONValue}
+    | null
+  &gt; {
+    if (this.isMetaStream()) {
+      throw eventstoreError.newBadRequestError(
+        `You can not get metadata of metadata stream ${this.streamId}`
+      )
+    }
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    try {
+      const result = await this.esConnection
+        .fromStream(`$$${this.streamId}`, {
+          resolveLinks: false,
+          requireMaster,
+          credentials: credentials || this.options.credentials
+        })
+        .getLastEvent()
+
+      if (result) {
+        result.freeze()
+        return {...result.data}
+      } else return null
+    } catch (err) {
+      if (err.name === &apos;EventstoreNoStreamError&apos;) {
+        return null
+      }
+      throw err
+    }
+  }
+
+  /**
+   * Set metadata for stream
+   *
+   * @param {Object} newMetadata
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;void&gt;}
+   * @memberof Stream
+   * @throws {EventstoreBadRequestError}
+   */
+  public async setMetadata(
+    newMetadata: {},
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;void&gt; {
+    if (this.isMetaStream()) {
+      throw eventstoreError.newBadRequestError(
+        `You can not set metadata for metadata stream ${this.streamId}`
+      )
+    }
+    if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
     }
-    await new Promise((resolve, reject) =&gt; {
-      const raw = protobuf.DeleteStream.fromObject({
-        eventStreamId: this.streamId,
-        expectedVersion,
-        requireMaster,
-        hardDelete
-      })
-      this.esConnection
-        .getConnection()
-        .sendCommand(
-          uuid(),
-          EventstoreCommand.DeleteStream,
-          Buffer.from(protobuf.DeleteStream.encode(raw).finish()),
-          this.options.credentials,
-          {
-            resolve,
-            reject
-          }
-        )
-    })
+    const newMetaEvent = new Event(&apos;$metadata&apos;, newMetadata)
+    await this.append(
+      newMetaEvent,
+      ExpectedVersion.Any,
+      requireMaster,
+      credentials || this.options.credentials
+    )
   }
 
-  public async startTransaction(): Promise&lt;Transaction&gt; {
-    return new Transaction(this, &apos;someid&apos;)
+  /**
+   * Creates a new instance of {Transaction} for current stream
+   *
+   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;Transaction&gt;}
+   * @memberof Stream
+   */
+  public async startTransaction(
+    expectedVersion: ExpectedVersion = ExpectedVersion.Any,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;Transaction&gt; {
+    if (this.isMetaStream()) {
+      throw eventstoreError.newBadRequestError(
+        `Transactions fpr metadata stream ${this.streamId} not supported`
+      )
+    }
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    const transactionId: Long = await new Promise(
+      (resolve, reject): void =&gt; {
+        const raw = protobuf.TransactionStart.fromObject({
+          eventStreamId: this.streamId,
+          expectedVersion: expectedVersion,
+          requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.TransactionStart,
+            Buffer.from(protobuf.TransactionStart.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+
+    return new Transaction(this, transactionId, this.esConnection, requireMaster, credentials)
   }
 
-  public async getMetadata(): Promise&lt;object&gt; {
-    return {}
+  /**
+   * Reads a slice from current stream in given direction starting at given position
+   *
+   * @protected
+   * @param {EventstoreCommand} direction - read direction forward/backward
+   * @param {(number | Long)} [fromEventNumber=0] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt;}
+   * @memberof Stream
+   */
+  protected async readSlice(
+    direction: EventstoreCommand,
+    fromEventNumber: number | Long = 0,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt; {
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+    }
+    return await new Promise(
+      (resolve, reject): void =&gt; {
+        const raw = protobuf.ReadStreamEvents.fromObject({
+          eventStreamId: this.streamId,
+          fromEventNumber,
+          maxCount,
+          resolveLinkTos,
+          requireMaster
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            direction,
+            Buffer.from(protobuf.ReadStreamEvents.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
   }
 
-  public async setMetadata(newMetadata: object): Promise&lt;object&gt; {
-    return {...newMetadata}
+  /**
+   * Read a slice from stream in forward direction starting at given position
+   *
+   * @param {(number | Long)} [fromEventNumber=0] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt;}
+   * @memberof Stream
+   */
+  public async readSliceForward(
+    fromEventNumber: number | Long = 0,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt; {
+    return await this.readSlice(
+      EventstoreCommand.ReadStreamEventsForward,
+      fromEventNumber,
+      maxCount,
+      resolveLinkTos,
+      requireMaster,
+      credentials
+    )
+  }
+
+  /**
+   * Read a slice from stream in backward direction starting at given position
+   *
+   * @param {(number | Long)} [fromEventNumber=-1] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt;}
+   * @memberof Stream
+   */
+  public async readSliceBackward(
+    fromEventNumber: number | Long = -1,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;model.eventstore.proto.ReadStreamEventsCompleted&gt; {
+    return await this.readSlice(
+      EventstoreCommand.ReadStreamEventsBackward,
+      fromEventNumber,
+      maxCount,
+      resolveLinkTos,
+      requireMaster,
+      credentials
+    )
+  }
+
+  /**
+   * Subscribe to current stream and return a subscription
+   *
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise&lt;Subscription&gt;}
+   * @memberof Stream
+   */
+  public async subscribe(
+    resolveLinkTos: boolean = true,
+    credentials?: UserCredentials | null
+  ): Promise&lt;Subscription&gt; {
+    return await this.esConnection
+      .getConnection()
+      .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
   }
 
   public async aggregate&lt;T&gt;(initState: T): Promise&lt;T&gt; {
     return initState
-  }
-
-  public async getFirstEvent(): Promise&lt;Event | null&gt; {
-    return new Event(this.streamId)
-  }
-
-  public async getLastEvent(): Promise&lt;Event | null&gt; {
-    return new Event(this.streamId)
   }
 
   public async getFirstEventOf(): Promise&lt;Event | null&gt; {
@@ -271,8 +702,8 @@ export class Stream {
     return new Event(this.streamId)
   }
 
-  public get name(): string {
-    return this.streamId
+  public async catchupSubscribe(): Promise&lt;void&gt; {
+    return
   }
 }
 </code></pre>

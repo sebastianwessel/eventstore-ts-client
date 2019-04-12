@@ -35,8 +35,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreOperationError">newEventstoreOperationError</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newEventstoreTimeoutError">newEventstoreTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
@@ -45,9 +43,11 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
@@ -59,7 +59,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/index.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -75,6 +75,9 @@ import {EventstoreCommand} from &apos;../protobuf/EventstoreCommand&apos;
 import * as eventstoreError from &apos;../errors&apos;
 import * as model from &apos;../protobuf/model&apos;
 import {Subscription} from &apos;../subscription&apos;
+import {Stream} from &apos;../stream&apos;
+import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
+import uuid = require(&apos;uuid/v4&apos;)
 
 const protobuf = model.eventstore.proto
 
@@ -173,33 +176,35 @@ export class TCPConnection extends EventEmitter {
 
     this.log.debug(`Start connecting to ${host}:${port}`)
 
-    await new Promise((resolve, reject) =&gt; {
-      const errorListener = (err: Error): void =&gt; {
-        this.state = connectionState.closed
-        this.onError(err)
-        reject(err)
-      }
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        const errorListener = (err: Error): void =&gt; {
+          this.state = connectionState.closed
+          this.onError(err)
+          reject(err)
+        }
 
-      const successListener = (): void =&gt; {
-        this.socket.removeListener(&apos;error&apos;, errorListener)
-        this.onConnect()
-        this.heartBeatCheckInterval = setInterval(() =&gt; {
-          if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout &lt; Date.now()) {
-            const err = eventstoreError.newEventstoreTimeoutError(
-              `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
-            )
-            this.onError(err)
-          }
-        }, this.connectionConfig.heartbeatInterval)
-        resolve()
-        this.isUnexpectedClosed = false
-      }
+        const successListener = (): void =&gt; {
+          this.socket.removeListener(&apos;error&apos;, errorListener)
+          this.onConnect()
+          this.heartBeatCheckInterval = setInterval((): void =&gt; {
+            if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout &lt; Date.now()) {
+              const err = eventstoreError.newTimeoutError(
+                `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
+              )
+              this.onError(err)
+            }
+          }, this.connectionConfig.heartbeatInterval)
+          resolve()
+          this.isUnexpectedClosed = false
+        }
 
-      this.socket.once(&apos;error&apos;, errorListener)
-      this.socket.on(&apos;close&apos;, this.onClose.bind(this))
-      this.socket.on(&apos;data&apos;, this.onData.bind(this))
-      this.socket.connect(options, successListener)
-    })
+        this.socket.once(&apos;error&apos;, errorListener)
+        this.socket.on(&apos;close&apos;, this.onClose.bind(this))
+        this.socket.on(&apos;data&apos;, this.onData.bind(this))
+        this.socket.connect(options, successListener)
+      }
+    )
   }
 
   /**
@@ -211,37 +216,48 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise&lt;void&gt; {
-    await new Promise((resolve, reject) =&gt; {
-      this.onDrain()
-      if (this.pendingRequests.size &lt;= 0) {
-        this.state = connectionState.closed
-        this.isUnexpectedClosed = false
-        this.socket.end(() =&gt; {
-          this.socket.destroy()
-          resolve()
-        })
-      } else {
-        setTimeout(() =&gt; {
+    if (this.heartBeatCheckInterval) {
+      clearInterval(this.heartBeatCheckInterval)
+    }
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        this.onDrain()
+        if (this.pendingRequests.size &lt;= 0) {
           this.state = connectionState.closed
           this.isUnexpectedClosed = false
-          if (this.pendingRequests.size &gt; 0) {
-            this.socket.end(() =&gt; {
-              this.socket.destroy()
-              const err = eventstoreError.newConnectionError(
-                `Lost ${this.pendingRequests.size} answers`
-              )
-              reject(err)
-              this.onError(err)
-            })
-          } else {
-            this.socket.end(() =&gt; {
+          this.socket.end(
+            (): void =&gt; {
               this.socket.destroy()
               resolve()
-            })
-          }
-        }, 10000)
+            }
+          )
+        } else {
+          setTimeout((): void =&gt; {
+            this.state = connectionState.closed
+            this.isUnexpectedClosed = false
+            if (this.pendingRequests.size &gt; 0) {
+              this.socket.end(
+                (): void =&gt; {
+                  this.socket.destroy()
+                  const err = eventstoreError.newConnectionError(
+                    `Lost ${this.pendingRequests.size} answers`
+                  )
+                  reject(err)
+                  this.onError(err)
+                }
+              )
+            } else {
+              this.socket.end(
+                (): void =&gt; {
+                  this.socket.destroy()
+                  resolve()
+                }
+              )
+            }
+          }, 10000)
+        }
       }
-    })
+    )
   }
 
   /**
@@ -250,7 +266,7 @@ export class TCPConnection extends EventEmitter {
    * @param {string} correlationId
    * @param {EventstoreCommand} command
    * @param {Buffer | null)} [data=null]
-   * @param {({username: string; password: string} | null)} [credentials=null]
+   * @param {(UserCredentials | null)} [credentials=null]
    * @param {({resolve: Function; reject: Function} | null)} [promise=null]
    * @memberof TCPConnection
    */
@@ -258,7 +274,7 @@ export class TCPConnection extends EventEmitter {
     correlationId: string,
     command: EventstoreCommand,
     data: Buffer | null = null,
-    credentials: {username: string; password: string} | null = null,
+    credentials: UserCredentials | null = null,
     promise: {resolve: Function; reject: Function} | null = null
   ): void {
     this.log.trace(`Sending ${EventstoreCommand[command]} with ${correlationId}`)
@@ -533,6 +549,9 @@ export class TCPConnection extends EventEmitter {
       case EventstoreCommand.Pong:
         this.resolveCommandPromise(correlationId)
         break
+      case EventstoreCommand.Authenticated:
+        this.resolveCommandPromise(correlationId)
+        break
       default:
         err = new eventstoreError.EventstoreError(
           &apos;Unhandled eventstore command : &apos; + EventstoreCommand[command] + &apos; -&gt; &apos; + command,
@@ -653,7 +672,7 @@ export class TCPConnection extends EventEmitter {
     const message: string = decoded.error || &apos;&apos;
     switch (decoded.result) {
       case protobuf.ReadEventCompleted.ReadEventResult.Success:
-        this.resolveCommandPromise(correlationId, decoded)
+        this.resolveCommandPromise(correlationId, decoded.event)
         return
         break
       case protobuf.ReadEventCompleted.ReadEventResult.NotFound:
@@ -695,18 +714,31 @@ export class TCPConnection extends EventEmitter {
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded.event)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit(&apos;event&apos;, decoded.event)
+    }
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
-    const decoded = protobuf.SubscriptionDropped.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded)
+    const decoded = protobuf.SubscriptionConfirmation.decode(payload)
+
+    this.resolveCommandPromise(correlationId, {
+      subscriptionId: correlationId,
+      lastCommitPosition: decoded.lastCommitPosition,
+      lastEventNumber: decoded.lastEventNumber
+    })
   }
 
   protected handleSubscriptionDropped(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionDropped.decode(payload)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit(&apos;dropped&apos;, decoded.reason)
+    }
+    if (this.pendingRequests.has(correlationId)) {
+      this.resolveCommandPromise(correlationId, decoded)
+    }
   }
 
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
@@ -866,6 +898,66 @@ export class TCPConnection extends EventEmitter {
       )
       this.onError(err)
     }
+  }
+
+  public subscribeToStream(
+    stream: Stream,
+    resolveLinkTos: boolean = true,
+    credentials: UserCredentials | null
+  ): Promise&lt;Subscription&gt; {
+    const newSubscription = new Subscription(uuid(), this, stream, resolveLinkTos, credentials)
+    this.subscriptionList.set(newSubscription.id, newSubscription)
+    return new Promise(
+      (resolve, reject): void =&gt; {
+        const resolveFunction = (): void =&gt; {
+          newSubscription.isSubscribed = true
+          resolve(newSubscription)
+        }
+        const raw = protobuf.SubscribeToStream.fromObject({
+          eventStreamId: stream.id,
+          resolveLinkTos
+        })
+        this.sendCommand(
+          newSubscription.id,
+          EventstoreCommand.SubscribeToStream,
+          Buffer.from(protobuf.SubscribeToStream.encode(raw).finish()),
+          credentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  public async unsubscribeFromStream(subscriptionId: string): Promise&lt;void&gt; {
+    const subscription = this.subscriptionList.get(subscriptionId)
+    if (!subscription) {
+      throw eventstoreError.newImplementationError(
+        `Can not unsubscribe - subscription ${subscriptionId} not found`
+      )
+    }
+    const subscriptionList = this.subscriptionList
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        const resolveFunction = (): void =&gt; {
+          subscription.isSubscribed = false
+          subscriptionList.delete(subscriptionId)
+          resolve()
+        }
+        this.sendCommand(
+          subscription.id,
+          EventstoreCommand.UnsubscribeFromStream,
+          null,
+          subscription.getCredentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**

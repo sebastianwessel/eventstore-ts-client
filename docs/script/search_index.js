@@ -30,9 +30,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "eventstore-ts-client/src/subscription/index.ts~subscription",
-    "class/src/subscription/index.ts~Subscription.html",
-    "<span>Subscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/index.ts</span>",
+    "eventstore-ts-client/src/subscription/subscription.ts~subscription",
+    "class/src/subscription/Subscription.ts~Subscription.html",
+    "<span>Subscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/Subscription.ts</span>",
     "class"
   ],
   [
@@ -75,18 +75,6 @@ window.esdocSearchIndex = [
     "eventstore-ts-client/src/errors/index.ts~newdoesnotexisterror",
     "function/index.html#static-function-newDoesNotExistError",
     "<span>newDoesNotExistError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
-    "function"
-  ],
-  [
-    "eventstore-ts-client/src/errors/index.ts~neweventstoreoperationerror",
-    "function/index.html#static-function-newEventstoreOperationError",
-    "<span>newEventstoreOperationError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
-    "function"
-  ],
-  [
-    "eventstore-ts-client/src/errors/index.ts~neweventstoretimeouterror",
-    "function/index.html#static-function-newEventstoreTimeoutError",
-    "<span>newEventstoreTimeoutError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
     "function"
   ],
   [
@@ -138,6 +126,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "eventstore-ts-client/src/errors/index.ts~newoperationerror",
+    "function/index.html#static-function-newOperationError",
+    "<span>newOperationError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
+    "function"
+  ],
+  [
     "eventstore-ts-client/src/errors/index.ts~newpreparetimeouterror",
     "function/index.html#static-function-newPrepareTimeoutError",
     "<span>newPrepareTimeoutError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
@@ -153,6 +147,12 @@ window.esdocSearchIndex = [
     "eventstore-ts-client/src/errors/index.ts~newstreamdeletederror",
     "function/index.html#static-function-newStreamDeletedError",
     "<span>newStreamDeletedError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
+    "function"
+  ],
+  [
+    "eventstore-ts-client/src/errors/index.ts~newtimeouterror",
+    "function/index.html#static-function-newTimeoutError",
+    "<span>newTimeoutError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
     "function"
   ],
   [
@@ -187,68 +187,518 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html#lineNumber19",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber42",
     "Basic connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html#lineNumber30",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber59",
     "Basic connection test can ping eventstore",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html#lineNumber27",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber56",
     "Basic connection test returns clientId - name of connection",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html#lineNumber4",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber4",
     "Connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html#lineNumber5",
-    "Connection test can connect to eventstore",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber5",
+    "Connection test can connect to eventstore single node",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/emitEvent.test.ts.html#lineNumber4",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber24",
+    "Connection test it throws on invalid credentials",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber4",
+    "Event class base tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber19",
+    "Event class base tests creates a event instance",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber26",
+    "Event class base tests creates a event instance with eventData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber33",
+    "Event class base tests creates a event instance with eventData and metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber4",
     "Event emit tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/emitEvent.test.ts.html#lineNumber23",
-    "Event emit tests emits multiple new event",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber3",
+    "Event emit tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/emitEvent.test.ts.html#lineNumber12",
-    "Event emit tests emits single new event",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber29",
+    "Event emit tests appends multiple new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/emitEvent.test.ts.html#lineNumber40",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber18",
+    "Event emit tests appends single new event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber35",
+    "Event emit tests receives events",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber17",
+    "Event emit tests subscribes and unsubscribes to a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber46",
     "Event emit tests throws when emitting events already stored in eventstore",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/stream.test.ts.html#lineNumber4",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber3",
+    "Eventstore error class",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber9",
+    "Eventstore error class can have a causing error instance",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber4",
+    "Eventstore error class creates an error instance",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber17",
+    "Eventstore error types",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber24",
+    "Eventstore error types ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber28",
+    "Eventstore error types ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber44",
+    "Eventstore error types ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber4",
+    "Existing event instance tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber19",
+    "Existing event instance tests returns false on existing event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber84",
+    "Existing event instance tests throws on changeing eventCausationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber72",
+    "Existing event instance tests throws on changeing eventCorrelationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber48",
+    "Existing event instance tests throws on changeing eventData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber36",
+    "Existing event instance tests throws on changeing eventId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber60",
+    "Existing event instance tests throws on changeing eventMetadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber24",
+    "Existing event instance tests throws on changeing name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber4",
+    "New event instance tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber62",
+    "New event instance tests can change eventCausationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber52",
+    "New event instance tests can change eventCorrelationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber38",
+    "New event instance tests can change eventData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber30",
+    "New event instance tests can change eventId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber45",
+    "New event instance tests can change eventMetadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber23",
+    "New event instance tests can change name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber72",
+    "New event instance tests returns model.eventstore.proto.NewEvent instance",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber19",
+    "New event instance tests returns true on new event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber3",
+    "Read events from stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber30",
+    "Read events from stream reads a slice backward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber17",
+    "Read events from stream reads a slice forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber3",
+    "Read stream basic tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber17",
+    "Read stream basic tests Read one event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber18",
+    "Read stream basic tests Read one event returns a event by given eventNumber",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber27",
+    "Read stream basic tests Read one event returns first event of stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber36",
+    "Read stream basic tests Read one event returns last event of stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber46",
+    "Read stream basic tests Stream metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber47",
+    "Read stream basic tests Stream metadata returns null for existing stream with no metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber53",
+    "Read stream basic tests Stream metadata returns null for not existing stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber3",
     "Stream basic tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/stream.test.ts.html#lineNumber12",
-    "Stream basic tests returns a stream instance",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber50",
+    "Stream basic tests can hard delete a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber47",
+    "Stream basic tests can soft delete a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber27",
+    "Stream basic tests returns a stream instance for function atStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber22",
+    "Stream basic tests returns a stream instance for function fromStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber17",
+    "Stream basic tests returns a stream instance for function stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber32",
+    "Stream basic tests returns same stream on requiresMaster",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber42",
+    "Stream basic tests returns same stream on resolveAllLinks",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber37",
+    "Stream basic tests returns same stream on withCredentials",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber3",
+    "Transaction tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber25",
+    "Transaction tests appends events to transaction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber17",
+    "Transaction tests creates a new transaction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber81",
+    "Transaction tests it throws on commiting roled back transactions",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber107",
+    "Transaction tests it throws on invalid transaction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber42",
+    "Transaction tests it throws on re-commiting",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber70",
+    "Transaction tests it throws on writing of already stored events",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber56",
+    "Transaction tests it throws on writing to already commited transactions",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber94",
+    "Transaction tests it throws on writing to roled back transactions",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber32",
+    "buffer to uuid",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber35",
+    "buffer to uuid converts buffer to uuid",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber39",
+    "buffer to uuid converts buffer to uuid",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber43",
+    "buffer to uuid throws on invalid buffer size",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber96",
+    "event from raw",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber197",
+    "event from raw deletes causationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber185",
+    "event from raw deletes causationId also from metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber191",
+    "event from raw deletes correlationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber179",
+    "event from raw deletes correlationId also from metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber133",
+    "event from raw returns event instance with full metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber151",
+    "event from raw returns event instance without created informations",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber142",
+    "event from raw returns event instance without metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber208",
+    "event from raw returns null for causationId if not set",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber203",
+    "event from raw returns null for correlationId if not set",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber171",
+    "event from raw sets metadata on setting causationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber163",
+    "event from raw sets metadata on setting correlationId",
     "test"
   ],
   [
@@ -534,6 +984,12 @@ window.esdocSearchIndex = [
     "external"
   ],
   [
+    "src/json.d.ts",
+    "file/src/JSON.d.ts.html",
+    "src/JSON.d.ts",
+    "file"
+  ],
+  [
     "src/errors/eventstoreerror.ts",
     "file/src/errors/EventstoreError.ts.html",
     "src/errors/EventstoreError.ts",
@@ -571,7 +1027,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/event/event.ts~event#causationid",
-    "class/src/event/Event.ts~Event.html#instance-member-causationId",
+    "class/src/event/Event.ts~Event.html#instance-set-causationId",
+    "src/event/Event.ts~Event#causationId",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#causationid",
+    "class/src/event/Event.ts~Event.html#instance-get-causationId",
     "src/event/Event.ts~Event#causationId",
     "member"
   ],
@@ -583,25 +1045,25 @@ window.esdocSearchIndex = [
   ],
   [
     "src/event/event.ts~event#correlationid",
-    "class/src/event/Event.ts~Event.html#instance-member-correlationId",
+    "class/src/event/Event.ts~Event.html#instance-set-correlationId",
     "src/event/Event.ts~Event#correlationId",
     "member"
   ],
   [
-    "src/event/event.ts~event#created",
-    "class/src/event/Event.ts~Event.html#instance-member-created",
-    "src/event/Event.ts~Event#created",
-    "member"
-  ],
-  [
-    "src/event/event.ts~event#createdepoch",
-    "class/src/event/Event.ts~Event.html#instance-member-createdEpoch",
-    "src/event/Event.ts~Event#createdEpoch",
+    "src/event/event.ts~event#correlationid",
+    "class/src/event/Event.ts~Event.html#instance-get-correlationId",
+    "src/event/Event.ts~Event#correlationId",
     "member"
   ],
   [
     "src/event/event.ts~event#data",
-    "class/src/event/Event.ts~Event.html#instance-member-data",
+    "class/src/event/Event.ts~Event.html#instance-get-data",
+    "src/event/Event.ts~Event#data",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#data",
+    "class/src/event/Event.ts~Event.html#instance-set-data",
     "src/event/Event.ts~Event#data",
     "member"
   ],
@@ -624,86 +1086,50 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/event/event.ts~event#eventstreamid",
-    "class/src/event/Event.ts~Event.html#instance-member-eventStreamId",
-    "src/event/Event.ts~Event#eventStreamId",
-    "member"
-  ],
-  [
     "src/event/event.ts~event#eventtype",
     "class/src/event/Event.ts~Event.html#instance-member-eventType",
     "src/event/Event.ts~Event#eventType",
     "member"
   ],
   [
-    "src/event/event.ts~event#fromraw",
-    "class/src/event/Event.ts~Event.html#instance-method-fromRaw",
-    "src/event/Event.ts~Event#fromRaw",
+    "src/event/event.ts~event#freeze",
+    "class/src/event/Event.ts~Event.html#instance-method-freeze",
+    "src/event/Event.ts~Event#freeze",
     "method"
   ],
   [
-    "src/event/event.ts~event#getcausationid",
-    "class/src/event/Event.ts~Event.html#instance-method-getCausationId",
-    "src/event/Event.ts~Event#getCausationId",
-    "method"
+    "src/event/event.ts~event#frozen",
+    "class/src/event/Event.ts~Event.html#instance-member-frozen",
+    "src/event/Event.ts~Event#frozen",
+    "member"
   ],
   [
-    "src/event/event.ts~event#getcorrelationid",
-    "class/src/event/Event.ts~Event.html#instance-method-getCorrelationId",
-    "src/event/Event.ts~Event#getCorrelationId",
-    "method"
+    "src/event/event.ts~event#id",
+    "class/src/event/Event.ts~Event.html#instance-set-id",
+    "src/event/Event.ts~Event#id",
+    "member"
   ],
   [
-    "src/event/event.ts~event#getcreated",
-    "class/src/event/Event.ts~Event.html#instance-method-getCreated",
-    "src/event/Event.ts~Event#getCreated",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#getcreatedepoch",
-    "class/src/event/Event.ts~Event.html#instance-method-getCreatedEpoch",
-    "src/event/Event.ts~Event#getCreatedEpoch",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#getdata",
-    "class/src/event/Event.ts~Event.html#instance-method-getData",
-    "src/event/Event.ts~Event#getData",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#geteventid",
-    "class/src/event/Event.ts~Event.html#instance-method-getEventId",
-    "src/event/Event.ts~Event#getEventId",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#geteventnumber",
-    "class/src/event/Event.ts~Event.html#instance-method-getEventNumber",
-    "src/event/Event.ts~Event#getEventNumber",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#getmetadata",
-    "class/src/event/Event.ts~Event.html#instance-method-getMetadata",
-    "src/event/Event.ts~Event#getMetadata",
-    "method"
-  ],
-  [
-    "src/event/event.ts~event#getstreamid",
-    "class/src/event/Event.ts~Event.html#instance-method-getStreamId",
-    "src/event/Event.ts~Event#getStreamId",
-    "method"
+    "src/event/event.ts~event#id",
+    "class/src/event/Event.ts~Event.html#instance-get-id",
+    "src/event/Event.ts~Event#id",
+    "member"
   ],
   [
     "src/event/event.ts~event#isnew",
-    "class/src/event/Event.ts~Event.html#instance-member-isNew",
+    "class/src/event/Event.ts~Event.html#instance-method-isNew",
     "src/event/Event.ts~Event#isNew",
+    "method"
+  ],
+  [
+    "src/event/event.ts~event#metadata",
+    "class/src/event/Event.ts~Event.html#instance-get-metadata",
+    "src/event/Event.ts~Event#metadata",
     "member"
   ],
   [
     "src/event/event.ts~event#metadata",
-    "class/src/event/Event.ts~Event.html#instance-member-metadata",
+    "class/src/event/Event.ts~Event.html#instance-set-metadata",
     "src/event/Event.ts~Event#metadata",
     "member"
   ],
@@ -715,44 +1141,86 @@ window.esdocSearchIndex = [
   ],
   [
     "src/event/event.ts~event#name",
+    "class/src/event/Event.ts~Event.html#instance-set-name",
+    "src/event/Event.ts~Event#name",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#name",
     "class/src/event/Event.ts~Event.html#instance-get-name",
     "src/event/Event.ts~Event#name",
     "member"
   ],
   [
-    "src/event/event.ts~event#setcausationid",
-    "class/src/event/Event.ts~Event.html#instance-method-setCausationId",
-    "src/event/Event.ts~Event#setCausationId",
-    "method"
+    "src/event/event.ts~event#objectcausationid",
+    "class/src/event/Event.ts~Event.html#instance-member-objectCausationId",
+    "src/event/Event.ts~Event#objectCausationId",
+    "member"
   ],
   [
-    "src/event/event.ts~event#setcorrelationid",
-    "class/src/event/Event.ts~Event.html#instance-method-setCorrelationId",
-    "src/event/Event.ts~Event#setCorrelationId",
-    "method"
+    "src/event/event.ts~event#objectcorrelationid",
+    "class/src/event/Event.ts~Event.html#instance-member-objectCorrelationId",
+    "src/event/Event.ts~Event#objectCorrelationId",
+    "member"
   ],
   [
-    "src/event/event.ts~event#setdata",
-    "class/src/event/Event.ts~Event.html#instance-method-setData",
-    "src/event/Event.ts~Event#setData",
-    "method"
+    "src/event/event.ts~event#objectcreated",
+    "class/src/event/Event.ts~Event.html#instance-member-objectCreated",
+    "src/event/Event.ts~Event#objectCreated",
+    "member"
   ],
   [
-    "src/event/event.ts~event#seteventid",
-    "class/src/event/Event.ts~Event.html#instance-method-setEventId",
-    "src/event/Event.ts~Event#setEventId",
-    "method"
+    "src/event/event.ts~event#objectcreatedepoch",
+    "class/src/event/Event.ts~Event.html#instance-member-objectCreatedEpoch",
+    "src/event/Event.ts~Event#objectCreatedEpoch",
+    "member"
   ],
   [
-    "src/event/event.ts~event#setmetadata",
-    "class/src/event/Event.ts~Event.html#instance-method-setMetadata",
-    "src/event/Event.ts~Event#setMetadata",
+    "src/event/event.ts~event#objectdata",
+    "class/src/event/Event.ts~Event.html#instance-member-objectData",
+    "src/event/Event.ts~Event#objectData",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#objectmetadata",
+    "class/src/event/Event.ts~Event.html#instance-member-objectMetadata",
+    "src/event/Event.ts~Event#objectMetadata",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#rawdata",
+    "class/src/event/Event.ts~Event.html#instance-member-rawData",
+    "src/event/Event.ts~Event#rawData",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#rawmetadata",
+    "class/src/event/Event.ts~Event.html#instance-member-rawMetadata",
+    "src/event/Event.ts~Event#rawMetadata",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#streamid",
+    "class/src/event/Event.ts~Event.html#instance-member-streamId",
+    "src/event/Event.ts~Event#streamId",
+    "member"
+  ],
+  [
+    "src/event/event.ts~event#throwifnotnewevent",
+    "class/src/event/Event.ts~Event.html#instance-method-throwIfNotNewEvent",
+    "src/event/Event.ts~Event#throwIfNotNewEvent",
     "method"
   ],
   [
     "src/event/event.ts~event#toraw",
     "class/src/event/Event.ts~Event.html#instance-method-toRaw",
     "src/event/Event.ts~Event#toRaw",
+    "method"
+  ],
+  [
+    "src/event/event.ts~event.fromraw",
+    "class/src/event/Event.ts~Event.html#static-method-fromRaw",
+    "src/event/Event.ts~Event.fromRaw",
     "method"
   ],
   [
@@ -771,6 +1239,12 @@ window.esdocSearchIndex = [
     "src/eventstore/eventstore.ts~eventstore#atstream",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-atStream",
     "src/eventstore/Eventstore.ts~Eventstore#atStream",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#authenticate",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-authenticate",
+    "src/eventstore/Eventstore.ts~Eventstore#authenticate",
     "method"
   ],
   [
@@ -841,13 +1315,13 @@ window.esdocSearchIndex = [
   ],
   [
     "src/eventstore/eventstore.ts~eventstore#logger",
-    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-set-logger",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-get-logger",
     "src/eventstore/Eventstore.ts~Eventstore#logger",
     "member"
   ],
   [
     "src/eventstore/eventstore.ts~eventstore#logger",
-    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-get-logger",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-set-logger",
     "src/eventstore/Eventstore.ts~Eventstore#logger",
     "member"
   ],
@@ -856,6 +1330,12 @@ window.esdocSearchIndex = [
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-get-name",
     "src/eventstore/Eventstore.ts~Eventstore#name",
     "member"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#onerror",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-onError",
+    "src/eventstore/Eventstore.ts~Eventstore#onError",
+    "method"
   ],
   [
     "src/eventstore/eventstore.ts~eventstore#ping",
@@ -1152,10 +1632,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/eventstore/tcpconnection.ts~tcpconnection#subscribetostream",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-subscribeToStream",
+    "src/eventstore/TCPConnection.ts~TCPConnection#subscribeToStream",
+    "method"
+  ],
+  [
     "src/eventstore/tcpconnection.ts~tcpconnection#subscriptionlist",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-subscriptionList",
     "src/eventstore/TCPConnection.ts~TCPConnection#subscriptionList",
     "member"
+  ],
+  [
+    "src/eventstore/tcpconnection.ts~tcpconnection#unsubscribefromstream",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-unsubscribeFromStream",
+    "src/eventstore/TCPConnection.ts~TCPConnection#unsubscribeFromStream",
+    "method"
   ],
   [
     "src/eventstore/index.ts",
@@ -1248,6 +1740,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/stream/stream.ts~stream#geteventbynumber",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-getEventByNumber",
+    "src/stream/Stream.ts~Stream#getEventByNumber",
+    "method"
+  ],
+  [
     "src/stream/stream.ts~stream#getfirstevent",
     "class/src/stream/Stream.ts~Stream.html#instance-method-getFirstEvent",
     "src/stream/Stream.ts~Stream#getFirstEvent",
@@ -1284,6 +1782,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/stream.ts~stream#id",
+    "class/src/stream/Stream.ts~Stream.html#instance-get-id",
+    "src/stream/Stream.ts~Stream#id",
+    "member"
+  ],
+  [
+    "src/stream/stream.ts~stream#ismetastream",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-isMetaStream",
+    "src/stream/Stream.ts~Stream#isMetaStream",
+    "method"
+  ],
+  [
     "src/stream/stream.ts~stream#log",
     "class/src/stream/Stream.ts~Stream.html#instance-member-log",
     "src/stream/Stream.ts~Stream#log",
@@ -1306,6 +1816,36 @@ window.esdocSearchIndex = [
     "class/src/stream/Stream.ts~Stream.html#instance-member-options",
     "src/stream/Stream.ts~Stream#options",
     "member"
+  ],
+  [
+    "src/stream/stream.ts~stream#readslice",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-readSlice",
+    "src/stream/Stream.ts~Stream#readSlice",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#readslicebackward",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-readSliceBackward",
+    "src/stream/Stream.ts~Stream#readSliceBackward",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#readsliceforward",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-readSliceForward",
+    "src/stream/Stream.ts~Stream#readSliceForward",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#requiresmaster",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-requiresMaster",
+    "src/stream/Stream.ts~Stream#requiresMaster",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#resolvealllinks",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-resolveAllLinks",
+    "src/stream/Stream.ts~Stream#resolveAllLinks",
+    "method"
   ],
   [
     "src/stream/stream.ts~stream#setmetadata",
@@ -1338,6 +1878,18 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/stream.ts~stream#withcredentials",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-withCredentials",
+    "src/stream/Stream.ts~Stream#withCredentials",
+    "method"
+  ],
+  [
+    "src/stream/streamposition.ts",
+    "file/src/stream/StreamPosition.ts.html",
+    "src/stream/StreamPosition.ts",
+    "file"
+  ],
+  [
     "src/stream/transaction.ts",
     "file/src/stream/Transaction.ts.html",
     "src/stream/Transaction.ts",
@@ -1350,15 +1902,15 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stream/transaction.ts~transaction#commit",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-method-commit",
-    "src/stream/Transaction.ts~Transaction#commit",
+    "src/stream/transaction.ts~transaction#appendevents",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-method-appendEvents",
+    "src/stream/Transaction.ts~Transaction#appendEvents",
     "method"
   ],
   [
-    "src/stream/transaction.ts~transaction#committransaction",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-method-commitTransaction",
-    "src/stream/Transaction.ts~Transaction#commitTransaction",
+    "src/stream/transaction.ts~transaction#commit",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-method-commit",
+    "src/stream/Transaction.ts~Transaction#commit",
     "method"
   ],
   [
@@ -1374,6 +1926,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/transaction.ts~transaction#credentials",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-member-credentials",
+    "src/stream/Transaction.ts~Transaction#credentials",
+    "member"
+  ],
+  [
+    "src/stream/transaction.ts~transaction#esconnection",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-member-esConnection",
+    "src/stream/Transaction.ts~Transaction#esConnection",
+    "member"
+  ],
+  [
+    "src/stream/transaction.ts~transaction#id",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-get-id",
+    "src/stream/Transaction.ts~Transaction#id",
+    "member"
+  ],
+  [
     "src/stream/transaction.ts~transaction#iscommited",
     "class/src/stream/Transaction.ts~Transaction.html#instance-get-isCommited",
     "src/stream/Transaction.ts~Transaction#isCommited",
@@ -1384,6 +1954,24 @@ window.esdocSearchIndex = [
     "class/src/stream/Transaction.ts~Transaction.html#instance-get-isRoledBack",
     "src/stream/Transaction.ts~Transaction#isRoledBack",
     "member"
+  ],
+  [
+    "src/stream/transaction.ts~transaction#name",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-get-name",
+    "src/stream/Transaction.ts~Transaction#name",
+    "member"
+  ],
+  [
+    "src/stream/transaction.ts~transaction#requiremaster",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-member-requireMaster",
+    "src/stream/Transaction.ts~Transaction#requireMaster",
+    "member"
+  ],
+  [
+    "src/stream/transaction.ts~transaction#roleback",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-method-roleBack",
+    "src/stream/Transaction.ts~Transaction#roleBack",
+    "method"
   ],
   [
     "src/stream/transaction.ts~transaction#roledback",
@@ -1410,33 +1998,201 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/subscription/subscription.ts",
+    "file/src/subscription/Subscription.ts.html",
+    "src/subscription/Subscription.ts",
+    "file"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#constructor",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-constructor-constructor",
+    "src/subscription/Subscription.ts~Subscription#constructor",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#credentials",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-credentials",
+    "src/subscription/Subscription.ts~Subscription#credentials",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#getcredentials",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-get-getCredentials",
+    "src/subscription/Subscription.ts~Subscription#getCredentials",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#getresolvelinktos",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-getResolveLinkTos",
+    "src/subscription/Subscription.ts~Subscription#getResolveLinkTos",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#id",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-get-id",
+    "src/subscription/Subscription.ts~Subscription#id",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#issubscribed",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-isSubscribed",
+    "src/subscription/Subscription.ts~Subscription#isSubscribed",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#log",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-log",
+    "src/subscription/Subscription.ts~Subscription#log",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#name",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-get-name",
+    "src/subscription/Subscription.ts~Subscription#name",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#ondropped",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-onDropped",
+    "src/subscription/Subscription.ts~Subscription#onDropped",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#resolvelinktos",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-resolveLinkTos",
+    "src/subscription/Subscription.ts~Subscription#resolveLinkTos",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#stream",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-stream",
+    "src/subscription/Subscription.ts~Subscription#stream",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#subscriptionid",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-subscriptionId",
+    "src/subscription/Subscription.ts~Subscription#subscriptionId",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#tcpconnection",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-tcpConnection",
+    "src/subscription/Subscription.ts~Subscription#tcpConnection",
+    "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#unsubscribe",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-unsubscribe",
+    "src/subscription/Subscription.ts~Subscription#unsubscribe",
+    "method"
+  ],
+  [
     "src/subscription/index.ts",
     "file/src/subscription/index.ts.html",
     "src/subscription/index.ts",
     "file"
   ],
   [
-    "src/subscription/index.ts~subscription#constructor",
-    "class/src/subscription/index.ts~Subscription.html#instance-constructor-constructor",
-    "src/subscription/index.ts~Subscription#constructor",
-    "method"
-  ],
-  [
-    "test/integrationtests/1_eventstore/connection.test.ts",
-    "test-file/test/integrationTests/1_eventstore/connection.test.ts.html",
-    "test/integrationTests/1_eventstore/connection.test.ts",
+    "test/integrationtests/1_eventstore/1_connection.test.ts",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html",
+    "test/integrationTests/1_eventstore/1_connection.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/stream.test.ts",
-    "test-file/test/integrationTests/2_stream/stream.test.ts.html",
-    "test/integrationTests/2_stream/stream.test.ts",
+    "test/integrationtests/2_stream/1_stream.test.ts",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html",
+    "test/integrationTests/2_stream/1_stream.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/3_event/emitevent.test.ts",
-    "test-file/test/integrationTests/3_event/emitEvent.test.ts.html",
-    "test/integrationTests/3_event/emitEvent.test.ts",
+    "test/integrationtests/2_stream/2_readstreambasic.test.ts",
+    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html",
+    "test/integrationTests/2_stream/2_readStreamBasic.test.ts",
     "testFile"
+  ],
+  [
+    "test/integrationtests/3_event/1_appendevent.test.ts",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html",
+    "test/integrationTests/3_event/1_appendEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/3_event/2_readevent.test.ts",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html",
+    "test/integrationTests/3_event/2_readEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/4_transaction/1_transaction.test.ts",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html",
+    "test/integrationTests/4_transaction/1_transaction.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/5_subscription/subscription.test.ts",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html",
+    "test/integrationTests/5_subscription/subscription.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/3_event/eventbase.test.ts",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html",
+    "test/unitTests/3_event/eventBase.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/3_event/existingevent.test.ts",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html",
+    "test/unitTests/3_event/existingEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/3_event/newevent.test.ts",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html",
+    "test/unitTests/3_event/newEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/4_protobuf/uuidbufferconverter.test.ts",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html",
+    "test/unitTests/4_protobuf/uuidBufferConverter.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/5_errors/eventstoreerror.test.ts",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html",
+    "test/unitTests/5_errors/eventstoreError.test.ts",
+    "testFile"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber3",
+    "uuid to buffer",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber5",
+    "uuid to buffer converts a uuid to fomated buffer",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber9",
+    "uuid to buffer returns a buffer for id=nulll",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber22",
+    "uuid to buffer throws on invalid uuid format",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber13",
+    "uuid to buffer throws on uuid size",
+    "test"
   ]
 ]
