@@ -453,6 +453,15 @@ export class Stream {
     )
   }
 
+  /**
+   * Creates a new instance of {Transaction} for current stream
+   *
+   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<Transaction>}
+   * @memberof Stream
+   */
   public async startTransaction(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean,
@@ -491,6 +500,19 @@ export class Stream {
     return new Transaction(this, transactionId, this.esConnection, requireMaster, credentials)
   }
 
+  /**
+   * Reads a slice from current stream in given direction starting at given position
+   *
+   * @protected
+   * @param {EventstoreCommand} direction - read direction forward/backward
+   * @param {(number | Long)} [fromEventNumber=0] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
+   * @memberof Stream
+   */
   protected async readSlice(
     direction: EventstoreCommand,
     fromEventNumber: number | Long = 0,
@@ -527,6 +549,17 @@ export class Stream {
     )
   }
 
+  /**
+   * Read a slice from stream in forward direction starting at given position
+   *
+   * @param {(number | Long)} [fromEventNumber=0] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
+   * @memberof Stream
+   */
   public async readSliceForward(
     fromEventNumber: number | Long = 0,
     maxCount: number = 100,
@@ -536,6 +569,34 @@ export class Stream {
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await this.readSlice(
       EventstoreCommand.ReadStreamEventsForward,
+      fromEventNumber,
+      maxCount,
+      resolveLinkTos,
+      requireMaster,
+      credentials
+    )
+  }
+
+  /**
+   * Read a slice from stream in backward direction starting at given position
+   *
+   * @param {(number | Long)} [fromEventNumber=-1] - read start position
+   * @param {number} [maxCount=100] - maximum count of events to read
+   * @param {boolean} [resolveLinkTos=true] - resolve event links
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
+   * @memberof Stream
+   */
+  public async readSliceBackward(
+    fromEventNumber: number | Long = -1,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadStreamEventsBackward,
       fromEventNumber,
       maxCount,
       resolveLinkTos,
