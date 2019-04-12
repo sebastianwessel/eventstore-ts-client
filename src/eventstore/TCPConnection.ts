@@ -8,6 +8,9 @@ import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
 import {Subscription} from '../subscription'
+import {Stream} from '../stream'
+import {UserCredentials} from '../eventstore/EventstoreSettings'
+import uuid = require('uuid/v4')
 
 const protobuf = model.eventstore.proto
 
@@ -196,7 +199,7 @@ export class TCPConnection extends EventEmitter {
    * @param {string} correlationId
    * @param {EventstoreCommand} command
    * @param {Buffer | null)} [data=null]
-   * @param {({username: string; password: string} | null)} [credentials=null]
+   * @param {(UserCredentials | null)} [credentials=null]
    * @param {({resolve: Function; reject: Function} | null)} [promise=null]
    * @memberof TCPConnection
    */
@@ -204,7 +207,7 @@ export class TCPConnection extends EventEmitter {
     correlationId: string,
     command: EventstoreCommand,
     data: Buffer | null = null,
-    credentials: {username: string; password: string} | null = null,
+    credentials: UserCredentials | null = null,
     promise: {resolve: Function; reject: Function} | null = null
   ): void {
     this.log.trace(`Sending ${EventstoreCommand[command]} with ${correlationId}`)
@@ -644,18 +647,31 @@ export class TCPConnection extends EventEmitter {
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded.event)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit('event', decoded.event)
+    }
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
-    const decoded = protobuf.SubscriptionDropped.decode(payload)
-    this.resolveCommandPromise(correlationId, decoded)
+    const decoded = protobuf.SubscriptionConfirmation.decode(payload)
+
+    this.resolveCommandPromise(correlationId, {
+      subscriptionId: correlationId,
+      lastCommitPosition: decoded.lastCommitPosition,
+      lastEventNumber: decoded.lastEventNumber
+    })
   }
 
   protected handleSubscriptionDropped(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionDropped.decode(payload)
-    /*TODO*/
+    const subscription = this.subscriptionList.get(correlationId) || null
+    if (subscription) {
+      subscription.emit('dropped', decoded.reason)
+    }
+    if (this.pendingRequests.has(correlationId)) {
+      this.resolveCommandPromise(correlationId, decoded)
+    }
   }
 
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
@@ -815,6 +831,66 @@ export class TCPConnection extends EventEmitter {
       )
       this.onError(err)
     }
+  }
+
+  public subscribeToStream(
+    stream: Stream,
+    resolveLinkTos: boolean = true,
+    credentials: UserCredentials | null
+  ): Promise<Subscription> {
+    const newSubscription = new Subscription(uuid(), this, stream, resolveLinkTos, credentials)
+    this.subscriptionList.set(newSubscription.id, newSubscription)
+    return new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          newSubscription.isSubscribed = true
+          resolve(newSubscription)
+        }
+        const raw = protobuf.SubscribeToStream.fromObject({
+          eventStreamId: stream.id,
+          resolveLinkTos
+        })
+        this.sendCommand(
+          newSubscription.id,
+          EventstoreCommand.SubscribeToStream,
+          Buffer.from(protobuf.SubscribeToStream.encode(raw).finish()),
+          credentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  public async unsubscribeFromStream(subscriptionId: string): Promise<void> {
+    const subscription = this.subscriptionList.get(subscriptionId)
+    if (!subscription) {
+      throw eventstoreError.newImplementationError(
+        `Can not unsubscribe - subscription ${subscriptionId} not found`
+      )
+    }
+    const subscriptionList = this.subscriptionList
+    await new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          subscription.isSubscribed = false
+          subscriptionList.delete(subscriptionId)
+          resolve()
+        }
+        this.sendCommand(
+          subscription.id,
+          EventstoreCommand.UnsubscribeFromStream,
+          null,
+          subscription.getCredentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**

@@ -7,6 +7,7 @@ import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import {ExpectedVersion} from '../protobuf/ExpectedVersion'
 import {StreamPosition} from './StreamPosition'
 import {Transaction} from './Transaction'
+import {Subscription} from '../subscription'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import Long = require('long')
@@ -605,6 +606,23 @@ export class Stream {
     )
   }
 
+  /**
+   * Subscribe to current stream and return a subscription
+   *
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<Subscription>}
+   * @memberof Stream
+   */
+  public async subscribe(
+    resolveLinkTos: boolean = true,
+    credentials?: UserCredentials | null
+  ): Promise<Subscription> {
+    return await this.esConnection
+      .getConnection()
+      .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
+  }
+
   public async aggregate<T>(initState: T): Promise<T> {
     return initState
   }
@@ -615,10 +633,6 @@ export class Stream {
 
   public async getLastEventOf(): Promise<Event | null> {
     return new Event(this.streamId)
-  }
-
-  public async subscribe(): Promise<void> {
-    return
   }
 
   public async catchupSubscribe(): Promise<void> {
