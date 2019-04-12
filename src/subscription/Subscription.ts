@@ -1,13 +1,9 @@
 import {EventEmitter} from 'events'
-import {Event} from '../event'
 import * as model from '../protobuf/model'
-import {EventstoreCommand} from '../protobuf/EventstoreCommand'
-import * as eventstoreError from '../errors'
-import {Eventstore, UserCredentials} from '../eventstore'
+import {UserCredentials} from '../eventstore'
 import {Stream} from '../stream'
 import {TCPConnection} from '../eventstore/TCPConnection'
-
-const protobuf = model.eventstore.proto
+import * as bunyan from 'bunyan'
 
 /**
  * Base class for handling subscriptions

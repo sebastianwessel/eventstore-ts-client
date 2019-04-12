@@ -1,1 +1,1 @@
-export {Subscription} from './subscription'
+export {Subscription} from './Subscription'
