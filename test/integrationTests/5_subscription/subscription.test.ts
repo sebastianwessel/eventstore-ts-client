@@ -1,7 +1,7 @@
 import {Eventstore, Event} from '../../../src'
 import * as assert from 'assert'
 
-describe('Event emit tests', (): void => {
+describe('Stream subscription tests', (): void => {
   const es = new Eventstore({
     clientId: 'ts-client-test',
     credentials: {
