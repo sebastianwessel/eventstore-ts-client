@@ -26,6 +26,8 @@ export class Subscription extends EventEmitter {
   protected stream: Stream
   protected resolveLinkTos: boolean
   protected log: bunyan
+  public commitPosition: Long | number | null = null
+  public preparePosition: Long | number | null = null
 
   /**
    * Creates an instance of Subscription.
@@ -113,8 +115,13 @@ export class Subscription extends EventEmitter {
    * @param {{event: Event; commitPosition: Long; preparePosition: Long}} info
    * @memberof Subscription
    */
-  protected onEvent(info: {event: Event; commitPosition: Long; preparePosition: Long}): void {
-    this.log.debug({eventName: info.event.name, eventId: info.event.id}, 'Event received')
+  protected onEvent(event: Event, commitPosition: Long, preparePosition: Long): void {
+    this.commitPosition = commitPosition
+    this.preparePosition = preparePosition
+    this.log.debug(
+      {eventName: event.name, eventId: event.id, commitPosition, preparePosition},
+      'Event received'
+    )
   }
 
   /**

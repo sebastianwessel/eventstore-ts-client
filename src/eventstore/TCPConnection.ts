@@ -664,16 +664,13 @@ export class TCPConnection extends EventEmitter {
         )
         return
       }
-      subscription.emit('event', {
+      subscription.emit('event', event, decoded.event.commitPosition, decoded.event.preparePosition)
+      subscription.emit(
+        `event-${event.name.toLocaleLowerCase()}`,
         event,
-        commitPosition: decoded.event.commitPosition,
-        preparePosition: decoded.event.preparePosition
-      })
-      subscription.emit(`event-${event.name.toLocaleLowerCase()}`, {
-        event,
-        commitPosition: decoded.event.commitPosition,
-        preparePosition: decoded.event.preparePosition
-      })
+        decoded.event.commitPosition,
+        decoded.event.preparePosition
+      )
     } else {
       this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
       this.emit(

@@ -48,6 +48,7 @@ describe('Event emit tests', (): void => {
     } catch (err) {
       assert.fail(err)
     }
+
     const result: {event: Event; commitPosition: Long; preparePosition: Long} = await Promise.race([
       new Promise(
         (resolve, reject): void => {
@@ -56,7 +57,14 @@ describe('Event emit tests', (): void => {
       ),
       new Promise(
         async (resolve, reject): Promise<void> => {
-          subscription.on('event', resolve)
+          const resolveFunction = (
+            event: Event,
+            commitPosition: Long,
+            preparePosition: Long
+          ): void => {
+            resolve({event, commitPosition, preparePosition})
+          }
+          subscription.on('event', resolveFunction)
           try {
             await stream.append(newEvent)
           } catch (err) {
