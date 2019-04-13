@@ -562,7 +562,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceForward(
-    fromEventNumber: number | Long = 0,
+    fromEventNumber: number | Long = StreamPosition.Start,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
@@ -590,7 +590,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceBackward(
-    fromEventNumber: number | Long = -1,
+    fromEventNumber: number | Long = StreamPosition.End,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
