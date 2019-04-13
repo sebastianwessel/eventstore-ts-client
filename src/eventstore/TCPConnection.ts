@@ -656,7 +656,12 @@ export class TCPConnection extends EventEmitter {
       } else if (decoded.event.link) {
         event = Event.fromRaw(decoded.event.link)
       } else {
-        //TODO: add error handling
+        subscription.emit(
+          'error',
+          eventstoreError.newProtocolError(
+            'Received stream event with empty event and empty link field'
+          )
+        )
         return
       }
       subscription.emit('event', {
@@ -670,7 +675,7 @@ export class TCPConnection extends EventEmitter {
         preparePosition: decoded.event.preparePosition
       })
     }
-    //TODO: add error handling
+    this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
