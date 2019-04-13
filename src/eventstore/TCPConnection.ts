@@ -199,9 +199,9 @@ export class TCPConnection extends EventEmitter {
    *
    * @param {string} correlationId
    * @param {EventstoreCommand} command
-   * @param {Buffer | null)} [data=null]
-   * @param {(UserCredentials | null)} [credentials=null]
-   * @param {({resolve: Function; reject: Function} | null)} [promise=null]
+   * @param {?Buffer)} [data=null]
+   * @param {?(UserCredentials)} [credentials=null]
+   * @param {(?{resolve: Function; reject: Function})} [promise=null]
    * @memberof TCPConnection
    */
   public sendCommand(
@@ -674,8 +674,15 @@ export class TCPConnection extends EventEmitter {
         commitPosition: decoded.event.commitPosition,
         preparePosition: decoded.event.preparePosition
       })
+    } else {
+      this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
+      this.emit(
+        'error',
+        eventstoreError.newImplementationError(
+          `Received StreamEventAppeared for unknown id ${correlationId}`
+        )
+      )
     }
-    this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
