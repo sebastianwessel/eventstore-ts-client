@@ -1,6 +1,5 @@
 import {Eventstore, Event} from '../../../src'
 import * as assert from 'assert'
-import * as model from '../../../src/protobuf/model'
 
 describe('Event emit tests', (): void => {
   const es = new Eventstore({
@@ -49,7 +48,7 @@ describe('Event emit tests', (): void => {
     } catch (err) {
       assert.fail(err)
     }
-    const result: model.eventstore.proto.ResolvedEvent = await Promise.race([
+    const result: {event: Event; commitPosition: Long; preparePosition: Long} = await Promise.race([
       new Promise(
         (resolve, reject): void => {
           setTimeout(reject, 1000)
@@ -66,7 +65,7 @@ describe('Event emit tests', (): void => {
         }
       )
     ])
-    assert.strictEqual(result.event.eventType, newEvent.name)
+    assert.strictEqual(result.event.id, newEvent.id)
     try {
       await subscription.unsubscribe()
       assert.strictEqual(subscription.isSubscribed, false)
@@ -74,17 +73,4 @@ describe('Event emit tests', (): void => {
       assert.fail(err)
     }
   })
-
-  /** 
-  it('appends single new event', async (): Promise<void> => {
-    
-    const stream = await es.stream('testemitstream')
-    try {
-      await stream.append(newEvent)
-      expect(newEvent.isNew()).to.be.false
-    } catch (err) {
-      assert.fail(err)
-    }
-  })
-  */
 })
