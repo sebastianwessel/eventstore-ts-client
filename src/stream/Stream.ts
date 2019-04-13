@@ -7,7 +7,11 @@ import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import {ExpectedVersion} from '../protobuf/ExpectedVersion'
 import {StreamPosition} from './StreamPosition'
 import {Transaction} from './Transaction'
-import {Subscription} from '../subscription'
+import {
+  Subscription,
+  PersitentSubscriptionConfig,
+  setPersitentSubscriptionConfig
+} from '../subscription'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import Long = require('long')
@@ -621,6 +625,36 @@ export class Stream {
     return await this.esConnection
       .getConnection()
       .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
+  }
+
+  public async createPersistentSubscription(
+    subscriptionGroupName: string,
+    customConfig: PersitentSubscriptionConfig | {} = {},
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    const settings = setPersitentSubscriptionConfig(customConfig)
+
+    await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.CreatePersistentSubscription.fromObject({
+          subscriptionGroupName,
+          eventStreamId: this.id,
+          ...settings
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.CreatePersistentSubscription,
+            Buffer.from(protobuf.CreatePersistentSubscription.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
   }
 
   public async aggregate<T>(initState: T): Promise<T> {
