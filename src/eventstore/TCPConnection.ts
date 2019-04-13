@@ -11,6 +11,7 @@ import {Subscription} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
+import {Event} from '../event'
 
 const protobuf = model.eventstore.proto
 
@@ -647,10 +648,29 @@ export class TCPConnection extends EventEmitter {
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
-    const subscription = this.subscriptionList.get(correlationId) || null
+    const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
-      subscription.emit('event', decoded.event)
+      let event
+      if (decoded.event.event) {
+        event = Event.fromRaw(decoded.event.event)
+      } else if (decoded.event.link) {
+        event = Event.fromRaw(decoded.event.link)
+      } else {
+        //TODO: add error handling
+        return
+      }
+      subscription.emit('event', {
+        event,
+        commitPosition: decoded.event.commitPosition,
+        preparePosition: decoded.event.preparePosition
+      })
+      subscription.emit(`event-${event.name.toLocaleLowerCase()}`, {
+        event,
+        commitPosition: decoded.event.commitPosition,
+        preparePosition: decoded.event.preparePosition
+      })
     }
+    //TODO: add error handling
   }
 
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
@@ -844,6 +864,7 @@ export class TCPConnection extends EventEmitter {
       (resolve, reject): void => {
         const resolveFunction = (): void => {
           newSubscription.isSubscribed = true
+          newSubscription.emit('subscribed')
           resolve(newSubscription)
         }
         const raw = protobuf.SubscribeToStream.fromObject({
