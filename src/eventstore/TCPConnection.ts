@@ -508,14 +508,25 @@ export class TCPConnection extends EventEmitter {
     ) {
       this.resolveCommandPromise(correlationId)
     } else {
-      const err = new eventstoreError.EventstoreError(
+      const errorMsg =
         `${
           protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult[
             decoded.result
           ]
-        } ` + (decoded.reason || ''),
-        'EventstoreCreatePersistentSubscriptionError'
-      )
+        } ` + (decoded.reason || '')
+      let err
+      switch (decoded.result) {
+        case protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult
+          .AccessDenied:
+          err = eventstoreError.newAccessDeniedError(errorMsg)
+          break
+        case protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult
+          .AlreadyExists:
+          err = eventstoreError.newAlreadyExistError(errorMsg)
+          break
+        default:
+          err = eventstoreError.newUnspecificError(errorMsg)
+      }
       this.rejectCommandPromise(correlationId, err)
     }
   }
