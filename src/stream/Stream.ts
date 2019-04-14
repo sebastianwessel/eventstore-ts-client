@@ -10,7 +10,8 @@ import {Transaction} from './Transaction'
 import {
   Subscription,
   PersitentSubscriptionConfig,
-  setPersitentSubscriptionConfig
+  setPersitentSubscriptionConfig,
+  PersitentSubscription
 } from '../subscription'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
@@ -631,7 +632,7 @@ export class Stream {
     subscriptionGroupName: string,
     customConfig: PersitentSubscriptionConfig | {} = {},
     credentials?: UserCredentials | null
-  ): Promise<void> {
+  ): Promise<PersitentSubscription> {
     const settings = setPersitentSubscriptionConfig(customConfig)
 
     await new Promise(
@@ -655,6 +656,7 @@ export class Stream {
           )
       }
     )
+    return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
   }
 
   public async aggregate<T>(initState: T): Promise<T> {
