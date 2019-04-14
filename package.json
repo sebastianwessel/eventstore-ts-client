@@ -55,6 +55,7 @@
     "esdoc": "^1.1.0",
     "esdoc-ecmascript-proposal-plugin": "^1.0.0",
     "esdoc-integrate-manual-plugin": "^1.0.0",
+    "esdoc-node": "^1.0.4",
     "esdoc-standard-plugin": "^1.0.0",
     "esdoc-typescript-plugin": "^1.0.1",
     "eslint": "^5.16.0",
@@ -67,8 +68,6 @@
     "prettier": "^1.16.4",
     "source-map-support": "^0.5.12",
     "ts-node": "^8.0.3",
-    "typedoc": "^0.14.2",
-    "typedoc-plugin-markdown": "^1.1.27",
     "typescript": "^3.4.3"
   },
   "repository": {
