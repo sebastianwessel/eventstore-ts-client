@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -59,7 +60,10 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -74,7 +78,12 @@ import {EventstoreCommand} from &apos;../protobuf/EventstoreCommand&apos;
 import {ExpectedVersion} from &apos;../protobuf/ExpectedVersion&apos;
 import {StreamPosition} from &apos;./StreamPosition&apos;
 import {Transaction} from &apos;./Transaction&apos;
-import {Subscription} from &apos;../subscription&apos;
+import {
+  Subscription,
+  PersitentSubscriptionConfig,
+  setPersitentSubscriptionConfig,
+  PersitentSubscription
+} from &apos;../subscription&apos;
 import * as eventstoreError from &apos;../errors&apos;
 import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
 import Long = require(&apos;long&apos;)
@@ -629,7 +638,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceForward(
-    fromEventNumber: number | Long = 0,
+    fromEventNumber: number | Long = StreamPosition.Start,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
@@ -657,7 +666,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceBackward(
-    fromEventNumber: number | Long = -1,
+    fromEventNumber: number | Long = StreamPosition.End,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
@@ -688,6 +697,37 @@ export class Stream {
     return await this.esConnection
       .getConnection()
       .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
+  }
+
+  public async createPersistentSubscription(
+    subscriptionGroupName: string,
+    customConfig: PersitentSubscriptionConfig | {} = {},
+    credentials?: UserCredentials | null
+  ): Promise&lt;PersitentSubscription&gt; {
+    const settings = setPersitentSubscriptionConfig(customConfig)
+
+    await new Promise(
+      (resolve, reject): void =&gt; {
+        const raw = protobuf.CreatePersistentSubscription.fromObject({
+          subscriptionGroupName,
+          eventStreamId: this.id,
+          ...settings
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.CreatePersistentSubscription,
+            Buffer.from(protobuf.CreatePersistentSubscription.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+    return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
   }
 
   public async aggregate&lt;T&gt;(initState: T): Promise&lt;T&gt; {

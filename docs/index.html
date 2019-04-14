@@ -128,23 +128,23 @@ npm run build</code>
 <li><code>atStream(&apos;streamId&apos;)</code></li>
 </ul><p>Technicaly they do same, but with these different named function calls you can improve readablility of your code.
 You can use it like:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
 
 await eventstore
-      .connect()
       .stream(&apos;streamId&apos;)
       .softDelete()</code>
 </code></pre><p>or if you know you will do some read operation:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
 
 const metadata = await eventstore
-      .connect()
       .fromStream(&apos;userstream&apos;)
       .getMetadata()</code>
 </code></pre><p>or if you do some write operation do it this way:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 
 const eventUsernameChanged = new Event(&apos;UsernameChanged&apos;)
+await eventstore.connect()
 
 await eventstore
-      .connect()
       .atStream(&apos;userstream&apos;)
       .write(eventUsernameChanged)</code>
 </code></pre></div>

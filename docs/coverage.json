@@ -1,7 +1,7 @@
 {
-  "coverage": "80.18%",
-  "expectCount": 212,
-  "actualCount": 170,
+  "coverage": "79.13%",
+  "expectCount": 230,
+  "actualCount": 182,
   "files": {
     "src/errors/EventstoreError.ts": {
       "expectCount": 4,
@@ -11,8 +11,8 @@
       ]
     },
     "src/errors/index.ts": {
-      "expectCount": 20,
-      "actualCount": 20,
+      "expectCount": 21,
+      "actualCount": 21,
       "undocumentLines": []
     },
     "src/event/Event.ts": {
@@ -45,8 +45,7 @@
       "expectCount": 59,
       "actualCount": 44,
       "undocumentLines": [
-        9,
-        17,
+        10,
         18,
         19,
         20,
@@ -55,11 +54,12 @@
         23,
         24,
         25,
-        35,
-        112,
+        26,
+        36,
         113,
-        116,
-        120
+        114,
+        117,
+        121
       ]
     },
     "src/protobuf/model.js": {
@@ -77,14 +77,14 @@
       "undocumentLines": []
     },
     "src/stream/Stream.ts": {
-      "expectCount": 33,
-      "actualCount": 28,
+      "expectCount": 34,
+      "actualCount": 29,
       "undocumentLines": [
-        8,
-        24,
+        9,
         25,
         26,
-        29
+        27,
+        30
       ]
     },
     "src/stream/Transaction.ts": {
@@ -98,15 +98,33 @@
         47
       ]
     },
-    "src/subscription/Subscription.ts": {
-      "expectCount": 15,
-      "actualCount": 10,
+    "src/subscription/PersistentSubscriptionConfig.ts": {
+      "expectCount": 3,
+      "actualCount": 0,
       "undocumentLines": [
-        32,
-        33,
-        35,
-        36,
-        38
+        2,
+        7,
+        22
+      ]
+    },
+    "src/subscription/PersitentSubscription.ts": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        18,
+        19,
+        20
+      ]
+    },
+    "src/subscription/Subscription.ts": {
+      "expectCount": 20,
+      "actualCount": 15,
+      "undocumentLines": [
+        46,
+        47,
+        49,
+        50,
+        55
       ]
     }
   }

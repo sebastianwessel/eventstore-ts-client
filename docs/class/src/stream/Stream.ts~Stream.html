@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -59,19 +60,22 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber30">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber35">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber30">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber35">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -452,6 +456,34 @@
           <span data-ice="async">async</span>
           
           <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-catchupSubscribe">catchupSubscribe</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-createPersistentSubscription">createPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, customConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -1037,7 +1069,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber23">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber24">source</a></span></span>
     </span>
   </h3>
 
@@ -1112,7 +1144,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -1155,7 +1187,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber68">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
@@ -1198,7 +1230,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber27">source</a></span></span>
     </span>
   </h3>
 
@@ -1241,7 +1273,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber79">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber84">source</a></span></span>
     </span>
   </h3>
 
@@ -1285,7 +1317,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
@@ -1329,7 +1361,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber29">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
@@ -1372,7 +1404,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -1418,7 +1450,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber626">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber662">source</a></span></span>
     </span>
   </h3>
 
@@ -1489,7 +1521,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber195">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber200">source</a></span></span>
     </span>
   </h3>
 
@@ -1579,7 +1611,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber127">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber132">source</a></span></span>
     </span>
   </h3>
 
@@ -1669,7 +1701,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber638">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber674">source</a></span></span>
     </span>
   </h3>
 
@@ -1713,6 +1745,89 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-createPersistentSubscription">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">createPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, customConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber631">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">subscriptionGroupName</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">customConfig</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-delete">
     <span class="access" data-ice="access">public</span>
     
@@ -1724,7 +1839,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber251">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber256">source</a></span></span>
     </span>
   </h3>
 
@@ -1815,7 +1930,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber299">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber304">source</a></span></span>
     </span>
   </h3>
 
@@ -1905,7 +2020,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber348">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber353">source</a></span></span>
     </span>
   </h3>
 
@@ -1989,7 +2104,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber630">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber666">source</a></span></span>
     </span>
   </h3>
 
@@ -2044,7 +2159,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber370">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber375">source</a></span></span>
     </span>
   </h3>
 
@@ -2128,7 +2243,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber634">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber670">source</a></span></span>
     </span>
   </h3>
 
@@ -2183,7 +2298,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber386">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber391">source</a></span></span>
     </span>
   </h3>
 
@@ -2261,7 +2376,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber216">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber221">source</a></span></span>
     </span>
   </h3>
 
@@ -2339,7 +2454,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber182">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber187">source</a></span></span>
     </span>
   </h3>
 
@@ -2395,7 +2510,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber517">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber522">source</a></span></span>
     </span>
   </h3>
 
@@ -2497,7 +2612,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber592">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber597">source</a></span></span>
     </span>
   </h3>
 
@@ -2593,7 +2708,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber564">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber569">source</a></span></span>
     </span>
   </h3>
 
@@ -2689,7 +2804,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber89">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber94">source</a></span></span>
     </span>
   </h3>
 
@@ -2745,7 +2860,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber112">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber117">source</a></span></span>
     </span>
   </h3>
 
@@ -2801,7 +2916,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber435">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber440">source</a></span></span>
     </span>
   </h3>
 
@@ -2885,7 +3000,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber232">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber237">source</a></span></span>
     </span>
   </h3>
 
@@ -2963,7 +3078,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber466">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber471">source</a></span></span>
     </span>
   </h3>
 
@@ -3047,7 +3162,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber617">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber622">source</a></span></span>
     </span>
   </h3>
 
@@ -3125,7 +3240,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber101">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber106">source</a></span></span>
     </span>
   </h3>
 

@@ -24,6 +24,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "eventstore-ts-client/src/subscription/persitentsubscription.ts~persitentsubscription",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html",
+    "<span>PersitentSubscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersitentSubscription.ts</span>",
+    "class"
+  ],
+  [
     "eventstore-ts-client/src/stream/stream.ts~stream",
     "class/src/stream/Stream.ts~Stream.html",
     "<span>Stream</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/stream/Stream.ts</span>",
@@ -34,6 +40,12 @@ window.esdocSearchIndex = [
     "class/src/subscription/Subscription.ts~Subscription.html",
     "<span>Subscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/Subscription.ts</span>",
     "class"
+  ],
+  [
+    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~systemconsumerstrategies",
+    "variable/index.html#static-variable-SystemConsumerStrategies",
+    "<span>SystemConsumerStrategies</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
+    "variable"
   ],
   [
     "eventstore-ts-client/src/eventstore/tcpconnection.ts~tcpconnection",
@@ -51,6 +63,12 @@ window.esdocSearchIndex = [
     "eventstore-ts-client/src/errors/index.ts~newaccessdeniederror",
     "function/index.html#static-function-newAccessDeniedError",
     "<span>newAccessDeniedError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
+    "function"
+  ],
+  [
+    "eventstore-ts-client/src/errors/index.ts~newalreadyexisterror",
+    "function/index.html#static-function-newAlreadyExistError",
+    "<span>newAlreadyExistError</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/errors/index.ts</span>",
     "function"
   ],
   [
@@ -174,6 +192,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~setpersitentsubscriptionconfig",
+    "function/index.html#static-function-setPersitentSubscriptionConfig",
+    "<span>setPersitentSubscriptionConfig</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
+    "function"
+  ],
+  [
     "eventstore-ts-client/src/protobuf/uuidbufferconvert.ts~uuidfrombuffer",
     "function/index.html#static-function-uuidFromBuffer",
     "<span>uuidFromBuffer</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</span>",
@@ -253,12 +277,6 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber3",
-    "Event emit tests",
-    "test"
-  ],
-  [
-    "",
     "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber29",
     "Event emit tests appends multiple new event",
     "test"
@@ -267,18 +285,6 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber18",
     "Event emit tests appends single new event",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber35",
-    "Event emit tests receives events",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber17",
-    "Event emit tests subscribes and unsubscribes to a stream",
     "test"
   ],
   [
@@ -433,6 +439,42 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber3",
+    "Persitent subscription test",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber4",
+    "Persitent subscription test with admin user rights",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber40",
+    "Persitent subscription test with admin user rights",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber18",
+    "Persitent subscription test with admin user rights creates a persistent subscription",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber29",
+    "Persitent subscription test with admin user rights throws on creating persistent subscription with same names again",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber54",
+    "Persitent subscription test with admin user rights throws on none admin right",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber3",
     "Read events from stream",
     "test"
@@ -549,6 +591,24 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber37",
     "Stream basic tests returns same stream on withCredentials",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber3",
+    "Stream subscription tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber35",
+    "Stream subscription tests receives events",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber17",
+    "Stream subscription tests subscribes and unsubscribes to a stream",
     "test"
   ],
   [
@@ -1728,6 +1788,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/stream.ts~stream#createpersistentsubscription",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-createPersistentSubscription",
+    "src/stream/Stream.ts~Stream#createPersistentSubscription",
+    "method"
+  ],
+  [
     "src/stream/stream.ts~stream#delete",
     "class/src/stream/Stream.ts~Stream.html#instance-method-delete",
     "src/stream/Stream.ts~Stream#delete",
@@ -1998,10 +2064,70 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/subscription/persistentsubscriptionconfig.ts",
+    "file/src/subscription/PersistentSubscriptionConfig.ts.html",
+    "src/subscription/PersistentSubscriptionConfig.ts",
+    "file"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts",
+    "file/src/subscription/PersitentSubscription.ts.html",
+    "src/subscription/PersitentSubscription.ts",
+    "file"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#connect",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-connect",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#connect",
+    "method"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#constructor",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-constructor-constructor",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#constructor",
+    "method"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#delete",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-delete",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#delete",
+    "method"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#esconnection",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-esConnection",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#esConnection",
+    "member"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#stream",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-stream",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#stream",
+    "member"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#subscriptiongroupname",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-subscriptionGroupName",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#subscriptionGroupName",
+    "member"
+  ],
+  [
+    "src/subscription/persitentsubscription.ts~persitentsubscription#update",
+    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-update",
+    "src/subscription/PersitentSubscription.ts~PersitentSubscription#update",
+    "method"
+  ],
+  [
     "src/subscription/subscription.ts",
     "file/src/subscription/Subscription.ts.html",
     "src/subscription/Subscription.ts",
     "file"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#commitposition",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-commitPosition",
+    "src/subscription/Subscription.ts~Subscription#commitPosition",
+    "member"
   ],
   [
     "src/subscription/subscription.ts~subscription#constructor",
@@ -2056,6 +2182,30 @@ window.esdocSearchIndex = [
     "class/src/subscription/Subscription.ts~Subscription.html#instance-method-onDropped",
     "src/subscription/Subscription.ts~Subscription#onDropped",
     "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#onerror",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-onError",
+    "src/subscription/Subscription.ts~Subscription#onError",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#onevent",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-onEvent",
+    "src/subscription/Subscription.ts~Subscription#onEvent",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#onsubscribed",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-onSubscribed",
+    "src/subscription/Subscription.ts~Subscription#onSubscribed",
+    "method"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#prepareposition",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-preparePosition",
+    "src/subscription/Subscription.ts~Subscription#preparePosition",
+    "member"
   ],
   [
     "src/subscription/subscription.ts~subscription#resolvelinktos",
@@ -2127,6 +2277,12 @@ window.esdocSearchIndex = [
     "test/integrationtests/4_transaction/1_transaction.test.ts",
     "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html",
     "test/integrationTests/4_transaction/1_transaction.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/5_subscription/persitentsubscription.test.ts",
+    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html",
+    "test/integrationTests/5_subscription/persitentSubscription.test.ts",
     "testFile"
   ],
   [

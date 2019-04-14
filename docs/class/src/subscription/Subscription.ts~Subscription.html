@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -59,19 +60,22 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Subscription} from &apos;<span><a href="file/src/subscription/Subscription.ts.html#lineNumber15">eventstore-ts-client/src/subscription/Subscription.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Subscription} from &apos;<span><a href="file/src/subscription/Subscription.ts.html#lineNumber21">eventstore-ts-client/src/subscription/Subscription.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/subscription/Subscription.ts.html#lineNumber15">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/subscription/Subscription.ts.html#lineNumber21">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -147,6 +151,34 @@
   <tbody>
   
   <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-member-commitPosition">commitPosition</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
     <td>
       <span class="access" data-ice="access">public</span>
       
@@ -330,6 +362,34 @@
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-member-preparePosition">preparePosition</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-member-resolveLinkTos">resolveLinkTos</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
         </p>
       </div>
@@ -483,7 +543,95 @@
       <div>
         
         
+        <div data-ice="description"><p>Called when subscription was dropped</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-method-onError">onError</a></span></span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>)</span>
+        </p>
+      </div>
+      <div>
         
+        
+        <div data-ice="description"><p>Called when error appears</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-method-onEvent">onEvent</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, commitPosition: <span>Long</span>, preparePosition: <span>Long</span>)</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Called when subscription receives a event</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-method-onSubscribed">onSubscribed</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Called when subscription is established</p>
+</div>
       </div>
     </td>
     <td>
@@ -594,6 +742,49 @@
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-commitPosition">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">commitPosition</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber29">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-member-credentials">
     <span class="access" data-ice="access">public</span>
     
@@ -605,7 +796,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -648,7 +839,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber68">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber79">source</a></span></span>
     </span>
   </h3>
 
@@ -691,7 +882,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber53">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
@@ -735,7 +926,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber17">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber23">source</a></span></span>
     </span>
   </h3>
 
@@ -778,7 +969,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber55">source</a></span></span>
     </span>
   </h3>
 
@@ -821,7 +1012,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -830,6 +1021,49 @@
   
   <div data-ice="description"><p>Returns subscription nam</p>
 </div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-preparePosition">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">preparePosition</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber30">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
 
   
 
@@ -865,7 +1099,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber50">source</a></span></span>
     </span>
   </h3>
 
@@ -908,7 +1142,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
@@ -951,7 +1185,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
@@ -994,7 +1228,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
@@ -1040,7 +1274,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber72">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber83">source</a></span></span>
     </span>
   </h3>
 
@@ -1095,14 +1329,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber87">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Called when subscription was dropped</p>
+</div>
 
   
 
@@ -1143,6 +1378,182 @@
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-onError">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">onError</span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber147">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Called when error appears</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">err</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-onEvent">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">onEvent</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, commitPosition: <span>Long</span>, preparePosition: <span>Long</span>)</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber118">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Called when subscription receives a event</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">event</td>
+      <td data-ice="type" class="code"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">commitPosition</td>
+      <td data-ice="type" class="code"><span>Long</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">preparePosition</td>
+      <td data-ice="type" class="code"><span>Long</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-onSubscribed">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">onSubscribed</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber133">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Called when subscription is established</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-unsubscribe">
     <span class="access" data-ice="access">public</span>
     
@@ -1154,7 +1565,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber82">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber93">source</a></span></span>
     </span>
   </h3>
 
