@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/eventstore/getConnectInfo.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Eventstore typescript / ES6 javascript client lib written in typescript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="eventstore-ts-client | Eventstore typescript / ES6 javascript client lib"><meta property="twitter:description" content="Eventstore typescript / ES6 javascript client lib written in typescript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sebastianwessel/eventstore-ts-client"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNoStreamError">newNoStreamError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotAuthenticatedError">newNotAuthenticatedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/eventstore/getConnectInfo.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as dns from &apos;dns&apos;
+import * as util from &apos;util&apos;
+import * as request from &apos;request-promise-native&apos;
+import * as bunyan from &apos;bunyan&apos;
+import {JSONValue} from &apos;../JSON&apos;
+import {URL} from &apos;url&apos;
+import {EventstoreSettings} from &apos;./EventstoreSettings&apos;
+
+export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise&lt;string[]&gt; =&gt; {
+  const lookup = util.promisify(dns.lookup)
+  const dnsOptions = {
+    family: 4,
+    hints: dns.ADDRCONFIG | dns.V4MAPPED,
+    all: true
+  }
+  log.debug({dnsServer}, &apos;Fetch ip list from dns&apos;)
+  let ipList: string[] = []
+
+  try {
+    const result:
+      | {address: string | dns.LookupAddress[]; family?: number}
+      | dns.LookupAddress[] = await lookup(dnsServer, dnsOptions)
+
+    if (Array.isArray(result)) {
+      ipList = result.map((entry: dns.LookupAddress): string =&gt; entry.address)
+    }
+    log.debug({dnsServer, ipList}, &apos;Finished dns lookup&apos;)
+  } catch (err) {
+    log.error({err}, &apos;Failed to fetch dns information&apos;)
+  }
+
+  return ipList
+}
+
+export const fetchgossipJson = async (
+  host: string,
+  port: number,
+  useHttps: boolean,
+  timeout: number,
+  log: bunyan
+): Promise&lt;
+  | JSONValue &amp; {
+      members: {
+        state: string
+        externalTcpIp: string
+        externalTcpPort: number
+        externalSecureTcpPort: number
+        isAlive: boolean
+      }[]
+    }
+  | null
+&gt; =&gt; {
+  let gossipInfo = null
+  const protocol = useHttps ? &apos;https&apos; : &apos;http&apos;
+  try {
+    log.debug({host, protocol, port}, &apos;Try to fetch gossip info&apos;)
+    gossipInfo = await request.get({
+      uri: `${protocol}://${host}:${port}/gossip?fomat=json`,
+      json: true,
+      timeout
+    })
+  } catch (err) {
+    log.error({err}, &apos;No gossip info found&apos;)
+  }
+  return gossipInfo
+}
+
+export const getMasterNodeInfo = (
+  gossipInfo: JSONValue &amp; {
+    members: {
+      state: string
+      externalTcpIp: string
+      externalTcpPort: number
+      externalSecureTcpPort: number
+      isAlive: boolean
+    }[]
+  }
+): {ip: string; tcpPort: number; tcpSecurePort: number} | null =&gt; {
+  let nodeInfo = null
+
+  const aliveList = gossipInfo.members.filter(
+    (entry): boolean =&gt; entry.isAlive &amp;&amp; entry.state.toLowerCase() === &apos;master&apos;
+  )
+  if (aliveList.length &gt; 0) {
+    nodeInfo = {
+      ip: aliveList[0].externalTcpIp,
+      tcpPort: aliveList[0].externalTcpPort,
+      tcpSecurePort: aliveList[0].externalSecureTcpPort
+    }
+  }
+
+  return nodeInfo
+}
+
+export const getRandomNodeInfo = (
+  gossipInfo: JSONValue &amp; {
+    members: {
+      state: string
+      externalTcpIp: string
+      externalTcpPort: number
+      externalSecureTcpPort: number
+      isAlive: boolean
+    }[]
+  }
+): {ip: string; tcpPort: number; tcpSecurePort: number} | null =&gt; {
+  let nodeInfo = null
+
+  const aliveList = gossipInfo.members.filter(
+    (entry): boolean =&gt; {
+      const skipItWhen = [&apos;manager&apos;, &apos;shuttingdown&apos;, &apos;shutdown&apos;]
+      return entry.isAlive &amp;&amp; !skipItWhen.includes(entry.state)
+    }
+  )
+  if (aliveList.length &gt; 0) {
+    const pos = Math.floor(Math.random() * aliveList.length)
+    nodeInfo = {
+      ip: aliveList[pos].externalTcpIp,
+      tcpPort: aliveList[pos].externalTcpPort,
+      tcpSecurePort: aliveList[pos].externalSecureTcpPort
+    }
+  }
+
+  return nodeInfo
+}
+
+export const getIpAndPort = async (
+  currentSettings: EventstoreSettings,
+  log: bunyan
+): Promise&lt;EventstoreSettings&gt; =&gt; {
+  let gossipJson:
+    | JSONValue &amp; {
+        members: {
+          state: string
+          externalTcpIp: string
+          externalTcpPort: number
+          externalSecureTcpPort: number
+          isAlive: boolean
+        }[]
+      }
+    | null = null
+
+  if (currentSettings.uri &amp;&amp; currentSettings.uri !== &apos;&apos;) {
+    const esUrl = new URL(currentSettings.uri)
+
+    if (esUrl.username &amp;&amp; esUrl.username !== &apos;&apos;) {
+      currentSettings.credentials.username = esUrl.username
+    }
+    if (esUrl.password &amp;&amp; esUrl.password !== &apos;&apos;) {
+      currentSettings.credentials.password = esUrl.password
+    }
+
+    if (currentSettings.uri.toLowerCase().startsWith(&apos;tcp&apos;)) {
+      //single node connection
+      log.debug(&apos;Config for single node connection found&apos;)
+      currentSettings.port = parseInt(esUrl.port) || 1113
+      currentSettings.host = esUrl.hostname
+      return currentSettings
+    } else if (currentSettings.uri.toLowerCase().startsWith(&apos;discover&apos;)) {
+      log.debug(&apos;Config for discover node connection found&apos;)
+      //gossip
+      gossipJson = await fetchgossipJson(
+        esUrl.hostname,
+        parseInt(esUrl.port),
+        currentSettings.useHttps,
+        currentSettings.gossipTimeout,
+        log
+      )
+    }
+  } else {
+    //if we have a dns server we look for cluster node ip&apos;s
+    if (currentSettings.clusterDns &amp;&amp; currentSettings.clusterDns !== &apos;&apos;) {
+      const ipList = await getIpListFromDns(currentSettings.clusterDns, log)
+      if (ipList.length &gt; 0) {
+        log.debug(`Found ${ipList.length} entries in DNS record`)
+        //add dns lookup ip list
+        const updatedList = ipList.concat(currentSettings.gossipSeeds)
+        //remove duplicates from list
+        currentSettings.gossipSeeds = [...new Set(updatedList)]
+      }
+    }
+
+    //if we&apos;ve a list of ip&apos;s we try to fetch gossipJson
+    if (currentSettings.gossipSeeds.length &gt; 0) {
+      log.debug(
+        `Try to find gossipJson from seed list of ${currentSettings.gossipSeeds.length} entries`
+      )
+      let found = false
+      for (
+        let x = 0, xMax = currentSettings.gossipSeeds.length;
+        x &lt; xMax &amp;&amp; !found &amp;&amp; x &lt; currentSettings.maxDiscoverAttempts;
+        x++
+      ) {
+        const res = await await fetchgossipJson(
+          currentSettings.gossipSeeds[x],
+          currentSettings.externalGossipPort,
+          currentSettings.useHttps,
+          currentSettings.gossipTimeout,
+          log
+        )
+        if (res) {
+          found = true
+          gossipJson = res
+        }
+      }
+    } else {
+      log.debug(&apos;Gossip seed list empty&apos;)
+    }
+  }
+
+  if (!gossipJson) {
+    log.warn(&apos;Could not get any gossip info&apos;)
+    return currentSettings
+  }
+
+  let nodeInfo: {ip: string; tcpPort: number; tcpSecurePort: number} | null = null
+
+  if (currentSettings.requireMaster) {
+    nodeInfo = getMasterNodeInfo(gossipJson)
+    log.debug({nodeInfo}, &apos;Selecting master node&apos;)
+  } else {
+    nodeInfo = getRandomNodeInfo(gossipJson)
+    log.debug({nodeInfo}, &apos;Selecting unspecific node&apos;)
+  }
+
+  if (nodeInfo) {
+    currentSettings.host = nodeInfo.ip
+    currentSettings.port = currentSettings.useSSL ? nodeInfo.tcpSecurePort : nodeInfo.tcpPort
+  }
+
+  return currentSettings
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

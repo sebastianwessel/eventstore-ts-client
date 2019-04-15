@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -54,12 +55,20 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -71,10 +80,16 @@ import {UserCredentials} from &apos;../eventstore&apos;
 import {Stream} from &apos;../stream&apos;
 import {TCPConnection} from &apos;../eventstore/TCPConnection&apos;
 import * as bunyan from &apos;bunyan&apos;
+import {Event} from &apos;../event&apos;
 
 /**
  * Base class for handling subscriptions
  *
+ * @emits {subscribed} when subscription is established
+ * @emits {event} when a new event receives
+ * @emits {event-eventname} when event of name eventname is received
+ * @emits {dropped} when subscription gets dropped
+ * @emits {error} when some error occured
  * @export
  * @class Subscription
  * @extends {EventEmitter}
@@ -87,6 +102,8 @@ export class Subscription extends EventEmitter {
   protected stream: Stream
   protected resolveLinkTos: boolean
   protected log: bunyan
+  public commitPosition: Long | number | null = null
+  public preparePosition: Long | number | null = null
 
   /**
    * Creates an instance of Subscription.
@@ -106,7 +123,10 @@ export class Subscription extends EventEmitter {
     this.credentials = credentials
     this.stream = stream
     this.resolveLinkTos = resolveLinkTos
+    this.on(&apos;subscribed&apos;, this.onSubscribed)
     this.on(&apos;dropped&apos;, this.onDropped)
+    this.on(&apos;event&apos;, this.onEvent)
+    this.on(&apos;error&apos;, this.onError)
     this.log = stream.logger.child({module: &apos;Subscription&apos;, subscriptionId: this.id})
   }
 
@@ -151,10 +171,57 @@ export class Subscription extends EventEmitter {
     await this.tcpConnection.unsubscribeFromStream(this.id)
   }
 
+  /**
+   * Called when subscription was dropped
+   *
+   * @protected
+   * @param {model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason} reason
+   * @memberof Subscription
+   */
   protected onDropped(
     reason: model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason
   ): void {
     this.log.debug({reason}, &apos;Subscription dropped&apos;)
+  }
+
+  /**
+   * Called when subscription receives a event
+   *
+   * @protected
+   * @param {{event: Event; commitPosition: Long; preparePosition: Long}} info
+   * @memberof Subscription
+   */
+  protected onEvent(event: Event, commitPosition: Long, preparePosition: Long): void {
+    this.commitPosition = commitPosition
+    this.preparePosition = preparePosition
+    this.log.debug(
+      {eventName: event.name, eventId: event.id, commitPosition, preparePosition},
+      &apos;Event received&apos;
+    )
+  }
+
+  /**
+   * Called when subscription is established
+   *
+   * @protected
+   * @memberof Subscription
+   */
+  protected onSubscribed(): void {
+    this.log.debug(
+      {subscriptionId: this.subscriptionId, stream: this.stream.id},
+      &apos;Subscription started&apos;
+    )
+  }
+
+  /**
+   * Called when error appears
+   *
+   * @protected
+   * @param {Error} err
+   * @memberof Subscription
+   */
+  protected onError(err: Error): void {
+    this.log.error({err, subscriptionId: this.subscriptionId}, &apos;Error on subscription&apos;)
   }
 }
 </code></pre>

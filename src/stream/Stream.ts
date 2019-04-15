@@ -7,7 +7,12 @@ import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import {ExpectedVersion} from '../protobuf/ExpectedVersion'
 import {StreamPosition} from './StreamPosition'
 import {Transaction} from './Transaction'
-import {Subscription} from '../subscription'
+import {
+  Subscription,
+  PersitentSubscriptionConfig,
+  setPersitentSubscriptionConfig,
+  PersitentSubscription
+} from '../subscription'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import Long = require('long')
@@ -446,12 +451,18 @@ export class Stream {
       requireMaster = this.options.requireMaster
     }
     const newMetaEvent = new Event('$metadata', newMetadata)
-    await this.append(
-      newMetaEvent,
-      ExpectedVersion.Any,
-      requireMaster,
-      credentials || this.options.credentials
-    )
+    await this.esConnection
+      .fromStream(`$$${this.streamId}`, {
+        resolveLinks: false,
+        requireMaster,
+        credentials: credentials || this.options.credentials
+      })
+      .append(
+        newMetaEvent,
+        ExpectedVersion.Any,
+        requireMaster,
+        credentials || this.options.credentials
+      )
   }
 
   /**
@@ -562,7 +573,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceForward(
-    fromEventNumber: number | Long = 0,
+    fromEventNumber: number | Long = StreamPosition.Start,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
@@ -590,7 +601,7 @@ export class Stream {
    * @memberof Stream
    */
   public async readSliceBackward(
-    fromEventNumber: number | Long = -1,
+    fromEventNumber: number | Long = StreamPosition.End,
     maxCount: number = 100,
     resolveLinkTos: boolean = true,
     requireMaster?: boolean,
@@ -621,6 +632,47 @@ export class Stream {
     return await this.esConnection
       .getConnection()
       .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
+  }
+
+  /**
+   * Creates a persitent subscription for current stream
+   * This operation needs admin rights and a master connection
+   *
+   * @param {string} subscriptionGroupName
+   * @param {(PersitentSubscriptionConfig | {})} [customConfig={}]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<PersitentSubscription>}
+   * @memberof Stream
+   */
+  public async createPersistentSubscription(
+    subscriptionGroupName: string,
+    customConfig: PersitentSubscriptionConfig | {} = {},
+    credentials?: UserCredentials | null
+  ): Promise<PersitentSubscription> {
+    const settings = setPersitentSubscriptionConfig(customConfig)
+
+    await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.CreatePersistentSubscription.fromObject({
+          subscriptionGroupName,
+          eventStreamId: this.id,
+          ...settings
+        })
+        this.esConnection
+          .getConnection()
+          .sendCommand(
+            uuid(),
+            EventstoreCommand.CreatePersistentSubscription,
+            Buffer.from(protobuf.CreatePersistentSubscription.encode(raw).finish()),
+            credentials || this.options.credentials,
+            {
+              resolve,
+              reject
+            }
+          )
+      }
+    )
+    return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
   }
 
   public async aggregate<T>(initState: T): Promise<T> {

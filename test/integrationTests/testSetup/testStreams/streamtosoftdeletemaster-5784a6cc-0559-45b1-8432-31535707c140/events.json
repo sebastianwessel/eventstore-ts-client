@@ -1,0 +1,16 @@
+[
+  {
+      "eventId": "cd5040c8-10e9-4362-b48b-e0f303dada3d",
+      "eventType": "EventType",
+      "data": {
+          "a": "1"
+      }
+  },
+  {
+      "eventId": "55e819ed-24b0-480c-b36a-5ae103cc37cd",
+      "eventType": "EventType",
+      "data": {
+          "b": "2"
+      }
+  }
+]

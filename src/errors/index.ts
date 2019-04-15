@@ -234,10 +234,24 @@ function newImplementationError(
  * @returns {EventstoreError}
  */
 function newDoesNotExistError(
-  message: string = '',
+  message: string = 'Does not exist',
   rootCause: Error | null = null
 ): EventstoreError {
-  return new EventstoreError(`Does not exist: ${message}`, 'EventstoreDoesNotExistError', rootCause)
+  return new EventstoreError(`${message}`, 'EventstoreDoesNotExistError', rootCause)
+}
+
+/**
+ * Returns new EventstoreError type of EventstoreAlreadyExistError
+ *
+ * @param {string} [message='']
+ * @param {(Error | null)} [rootCause=null]
+ * @returns {EventstoreError}
+ */
+function newAlreadyExistError(
+  message: string = 'Already exists',
+  rootCause: Error | null = null
+): EventstoreError {
+  return new EventstoreError(`${message}`, 'EventstoreAlreadyExistError', rootCause)
 }
 
 /**
@@ -281,6 +295,7 @@ export {
   newNotModifiedError,
   newUnspecificError,
   newDoesNotExistError,
+  newAlreadyExistError,
   newImplementationError,
   newTimeoutError,
   newOperationError

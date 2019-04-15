@@ -4,10 +4,16 @@ import {UserCredentials} from '../eventstore'
 import {Stream} from '../stream'
 import {TCPConnection} from '../eventstore/TCPConnection'
 import * as bunyan from 'bunyan'
+import {Event} from '../event'
 
 /**
  * Base class for handling subscriptions
  *
+ * @emits {subscribed} when subscription is established
+ * @emits {event} when a new event receives
+ * @emits {event-eventname} when event of name eventname is received
+ * @emits {dropped} when subscription gets dropped
+ * @emits {error} when some error occured
  * @export
  * @class Subscription
  * @extends {EventEmitter}
@@ -20,6 +26,8 @@ export class Subscription extends EventEmitter {
   protected stream: Stream
   protected resolveLinkTos: boolean
   protected log: bunyan
+  public commitPosition: Long | number | null = null
+  public preparePosition: Long | number | null = null
 
   /**
    * Creates an instance of Subscription.
@@ -39,7 +47,10 @@ export class Subscription extends EventEmitter {
     this.credentials = credentials
     this.stream = stream
     this.resolveLinkTos = resolveLinkTos
+    this.on('subscribed', this.onSubscribed)
     this.on('dropped', this.onDropped)
+    this.on('event', this.onEvent)
+    this.on('error', this.onError)
     this.log = stream.logger.child({module: 'Subscription', subscriptionId: this.id})
   }
 
@@ -84,9 +95,56 @@ export class Subscription extends EventEmitter {
     await this.tcpConnection.unsubscribeFromStream(this.id)
   }
 
+  /**
+   * Called when subscription was dropped
+   *
+   * @protected
+   * @param {model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason} reason
+   * @memberof Subscription
+   */
   protected onDropped(
     reason: model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason
   ): void {
     this.log.debug({reason}, 'Subscription dropped')
+  }
+
+  /**
+   * Called when subscription receives a event
+   *
+   * @protected
+   * @param {{event: Event; commitPosition: Long; preparePosition: Long}} info
+   * @memberof Subscription
+   */
+  protected onEvent(event: Event, commitPosition: Long, preparePosition: Long): void {
+    this.commitPosition = commitPosition
+    this.preparePosition = preparePosition
+    this.log.debug(
+      {eventName: event.name, eventId: event.id, commitPosition, preparePosition},
+      'Event received'
+    )
+  }
+
+  /**
+   * Called when subscription is established
+   *
+   * @protected
+   * @memberof Subscription
+   */
+  protected onSubscribed(): void {
+    this.log.debug(
+      {subscriptionId: this.subscriptionId, stream: this.stream.id},
+      'Subscription started'
+    )
+  }
+
+  /**
+   * Called when error appears
+   *
+   * @protected
+   * @param {Error} err
+   * @memberof Subscription
+   */
+  protected onError(err: Error): void {
+    this.log.error({err, subscriptionId: this.subscriptionId}, 'Error on subscription')
   }
 }

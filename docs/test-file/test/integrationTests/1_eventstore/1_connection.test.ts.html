@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -54,12 +55,20 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -68,11 +77,122 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {expect} from &apos;chai&apos;
 import {Eventstore} from &apos;../../../src&apos;
 import * as assert from &apos;assert&apos;
+import * as bunyan from &apos;bunyan&apos;
 
 describe(&apos;Connection test&apos;, (): void =&gt; {
-  it(&apos;can connect to eventstore single node&apos;, async (): Promise&lt;void&gt; =&gt; {
+  it(&apos;returns false if not connected&apos;, async (): Promise&lt;void&gt; =&gt; {
     const es = new Eventstore({
-      clientId: &apos;ts-client-test&apos;,
+      uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113&apos;
+    })
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;does nothing if not connected&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113&apos;
+    })
+    await es.disconnect()
+    expect(true).to.be.true
+  })
+
+  it(&apos;set a logger&apos;, (): void =&gt; {
+    const es = new Eventstore({
+      uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113&apos;
+    })
+    es.logger = bunyan.createLogger({name: &apos;unittest&apos;})
+    expect(true).to.be.true
+  })
+
+  it(&apos;can connect to eventstore single node unsecure&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113&apos;
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;can connect to eventstore single node to defsult port&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net&apos;
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;can connect to eventstore cluster unsecure&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;finds cluster node over dns (require master)&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;&apos;,
+      clusterDns: &apos;escluster.net&apos;,
+      credentials: {
+        username: &apos;restrictedUser&apos;,
+        password: &apos;restrictedOnlyUserPassword&apos;
+      }
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;finds cluster node over dns&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;&apos;,
+      requireMaster: false,
+      clusterDns: &apos;escluster.net&apos;,
+      credentials: {
+        username: &apos;restrictedUser&apos;,
+        password: &apos;restrictedOnlyUserPassword&apos;
+      }
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;finds cluster node from seed list&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;&apos;,
+      gossipSeeds: [&apos;172.22.0.2&apos;, &apos;172.22.0.3&apos;, &apos;172.22.0.4&apos;],
       credentials: {
         username: &apos;restrictedUser&apos;,
         password: &apos;restrictedOnlyUserPassword&apos;
@@ -91,11 +211,8 @@ describe(&apos;Connection test&apos;, (): void =&gt; {
 
   it(&apos;it throws on invalid credentials&apos;, async (): Promise&lt;void&gt; =&gt; {
     const es = new Eventstore({
-      clientId: &apos;ts-client-test&apos;,
-      credentials: {
-        username: &apos;invalidUser&apos;,
-        password: &apos;wrongpassword&apos;
-      }
+      uri: &apos;tcp://invalidUser:wrongpassword@cluster1.escluster.net:1113&apos;,
+      clientId: &apos;ts-client-test&apos;
     })
     try {
       await es.connect()
@@ -109,11 +226,8 @@ describe(&apos;Connection test&apos;, (): void =&gt; {
 
 describe(&apos;Basic connection test&apos;, (): void =&gt; {
   const es = new Eventstore({
-    clientId: &apos;ts-client-test&apos;,
-    credentials: {
-      username: &apos;restrictedUser&apos;,
-      password: &apos;restrictedOnlyUserPassword&apos;
-    }
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {

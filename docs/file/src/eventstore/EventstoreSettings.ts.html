@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -54,12 +55,20 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -73,7 +82,9 @@ export interface UserCredentials {
   password: string
 }
 export interface EventstoreSettings {
+  uri: string
   useSSL: boolean
+  useHttps: boolean
   host: string
   port: number
   credentials: UserCredentials
@@ -99,35 +110,45 @@ export interface EventstoreSettings {
 }
 
 const defaultConnectionSettings: EventstoreSettings = {
-  credentials: {
-    password: &apos;changeit&apos;,
-    username: &apos;admin&apos;
-  },
-  host: &apos;127.0.0.1&apos;,
-  port: 1113,
-  useSSL: false,
-  logger: bunyan.createLogger({
-    name: &apos;eventstore-ts-client&apos;
-    //level: &apos;debug&apos;
-  }),
+  uri: &apos;tcp://admin@changeit@127.0.0.1:1113&apos;,
   requireMaster: true,
+
+  maxDiscoverAttempts: 10,
+  clusterDns: &apos;&apos;,
+  externalGossipPort: 2112,
+  gossipTimeout: 1000,
+  gossipSeeds: [],
+
+  useSSL: false, //use tcp encrypted?
+  useHttps: false, //fetch gossip info over https?
+  validateServer: false,
+
+  maxReconnections: 10,
+  reconnectionDelay: 100,
+
+  clientId: `ts-client-${uuid()}`,
 
   maxQueueSize: 5000,
   maxConcurrentItems: 5000,
   maxRetries: 10,
-  maxReconnections: 10,
-  reconnectionDelay: 100,
+
   operationTimeout: 7 * 1000,
   operationTimeoutCheckPeriod: 1000,
-  validateServer: false,
+
   heartbeatInterval: 750,
   heartbeatTimeout: 1500,
-  clusterDns: &apos;&apos;,
-  maxDiscoverAttempts: 10,
-  externalGossipPort: 0,
-  gossipTimeout: 1000,
-  gossipSeeds: [],
-  clientId: `ts-client-${uuid()}`
+
+  logger: bunyan.createLogger({
+    name: &apos;eventstore-ts-client&apos;
+    //level: &apos;debug&apos;
+  }),
+
+  host: &apos;&apos;, //dummy entry will be overwritten by internal functions
+  port: 0, //dummy entry will be overwritten by internal functions
+  credentials: {
+    password: &apos;&apos;, //dummy entry will be overwritten by internal functions
+    username: &apos;&apos; //dummy entry will be overwritten by internal functions
+  }
 }
 
 /**

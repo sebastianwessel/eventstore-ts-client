@@ -10,7 +10,7 @@ describe('uuid to buffer', (): void => {
     assert.strictEqual(result.toString(), Buffer.from(testId.replace(/-/g, ''), 'hex').toString())
   })
 
-  it('returns a buffer for id=nulll', (): void => {
+  it('returns a buffer for id=null', (): void => {
     const result = uuidToBuffer(null)
     assert.strictEqual(result.toString(), Buffer.alloc(16).toString())
   })

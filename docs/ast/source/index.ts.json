@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 218,
+  "end": 306,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 5,
+      "line": 6,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 218,
+    "end": 306,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 5,
+        "line": 6,
         "column": 0
       }
     },
@@ -472,6 +472,142 @@
             "raw": "'./stream'"
           },
           "value": "./stream"
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 218,
+        "end": 305,
+        "loc": {
+          "start": {
+            "line": 5,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 87
+          }
+        },
+        "declaration": null,
+        "specifiers": [
+          {
+            "type": "ExportSpecifier",
+            "start": 227,
+            "end": 254,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 9
+              },
+              "end": {
+                "line": 5,
+                "column": 36
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 227,
+              "end": 254,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 9
+                },
+                "end": {
+                  "line": 5,
+                  "column": 36
+                },
+                "identifierName": "PersitentSubscriptionConfig"
+              },
+              "name": "PersitentSubscriptionConfig"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 227,
+              "end": 254,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 9
+                },
+                "end": {
+                  "line": 5,
+                  "column": 36
+                },
+                "identifierName": "PersitentSubscriptionConfig"
+              },
+              "name": "PersitentSubscriptionConfig"
+            }
+          },
+          {
+            "type": "ExportSpecifier",
+            "start": 256,
+            "end": 280,
+            "loc": {
+              "start": {
+                "line": 5,
+                "column": 38
+              },
+              "end": {
+                "line": 5,
+                "column": 62
+              }
+            },
+            "local": {
+              "type": "Identifier",
+              "start": 256,
+              "end": 280,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 38
+                },
+                "end": {
+                  "line": 5,
+                  "column": 62
+                },
+                "identifierName": "SystemConsumerStrategies"
+              },
+              "name": "SystemConsumerStrategies"
+            },
+            "exported": {
+              "type": "Identifier",
+              "start": 256,
+              "end": 280,
+              "loc": {
+                "start": {
+                  "line": 5,
+                  "column": 38
+                },
+                "end": {
+                  "line": 5,
+                  "column": 62
+                },
+                "identifierName": "SystemConsumerStrategies"
+              },
+              "name": "SystemConsumerStrategies"
+            }
+          }
+        ],
+        "source": {
+          "type": "StringLiteral",
+          "start": 288,
+          "end": 304,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 70
+            },
+            "end": {
+              "line": 5,
+              "column": 86
+            }
+          },
+          "extra": {
+            "rawValue": "./subscription",
+            "raw": "'./subscription'"
+          },
+          "value": "./subscription"
         }
       }
     ],
@@ -1317,6 +1453,241 @@
     },
     {
       "type": {
+        "label": "export",
+        "keyword": "export",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "export",
+      "start": 218,
+      "end": 224,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 6
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "{",
+        "beforeExpr": true,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 225,
+      "end": 226,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 7
+        },
+        "end": {
+          "line": 5,
+          "column": 8
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "PersitentSubscriptionConfig",
+      "start": 227,
+      "end": 254,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 9
+        },
+        "end": {
+          "line": 5,
+          "column": 36
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ",",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 254,
+      "end": 255,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 36
+        },
+        "end": {
+          "line": 5,
+          "column": 37
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "SystemConsumerStrategies",
+      "start": 256,
+      "end": 280,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 38
+        },
+        "end": {
+          "line": 5,
+          "column": 62
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "}",
+        "beforeExpr": false,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "start": 281,
+      "end": 282,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 63
+        },
+        "end": {
+          "line": 5,
+          "column": 64
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "name",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null
+      },
+      "value": "from",
+      "start": 283,
+      "end": 287,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 65
+        },
+        "end": {
+          "line": 5,
+          "column": 69
+        }
+      }
+    },
+    {
+      "type": {
+        "label": "string",
+        "beforeExpr": false,
+        "startsExpr": true,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "value": "./subscription",
+      "start": 288,
+      "end": 304,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 70
+        },
+        "end": {
+          "line": 5,
+          "column": 86
+        }
+      }
+    },
+    {
+      "type": {
+        "label": ";",
+        "beforeExpr": true,
+        "startsExpr": false,
+        "rightAssociative": false,
+        "isLoop": false,
+        "isAssign": false,
+        "prefix": false,
+        "postfix": false,
+        "binop": null,
+        "updateContext": null
+      },
+      "start": 304,
+      "end": 305,
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 86
+        },
+        "end": {
+          "line": 5,
+          "column": 87
+        }
+      }
+    },
+    {
+      "type": {
         "label": "eof",
         "beforeExpr": false,
         "startsExpr": false,
@@ -1328,15 +1699,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 218,
-      "end": 218,
+      "start": 306,
+      "end": 306,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 5,
+          "line": 6,
           "column": 0
         }
       }

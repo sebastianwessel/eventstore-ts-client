@@ -31,6 +31,7 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
@@ -54,12 +55,20 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
@@ -67,15 +76,11 @@
 <div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/5_subscription/subscription.test.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Eventstore, Event} from &apos;../../../src&apos;
 import * as assert from &apos;assert&apos;
-import * as model from &apos;../../../src/protobuf/model&apos;
 
-describe(&apos;Event emit tests&apos;, (): void =&gt; {
+describe(&apos;Stream subscription tests&apos;, (): void =&gt; {
   const es = new Eventstore({
-    clientId: &apos;ts-client-test&apos;,
-    credentials: {
-      username: &apos;restrictedUser&apos;,
-      password: &apos;restrictedOnlyUserPassword&apos;
-    }
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {
@@ -106,6 +111,79 @@ describe(&apos;Event emit tests&apos;, (): void =&gt; {
     }
   })
 
+  it(&apos;returns subscription name&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.name, null)
+    assert.notStrictEqual(subscription.name, undefined)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;returns subscription resolve link setting&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;returns true for resolve links flag&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;logs on error&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+      subscription.emit(&apos;error&apos;, new Error(&apos;Log some error&apos;))
+    } catch (err) {
+      assert.fail(err)
+    }
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
   it(&apos;receives events&apos;, async (): Promise&lt;void&gt; =&gt; {
     const newEvent = new Event(&apos;SingleEventWritten&apos;)
     const stream = await es.stream(&apos;subscribestream&apos;)
@@ -116,7 +194,8 @@ describe(&apos;Event emit tests&apos;, (): void =&gt; {
     } catch (err) {
       assert.fail(err)
     }
-    const result: model.eventstore.proto.ResolvedEvent = await Promise.race([
+
+    const result: {event: Event; commitPosition: Long; preparePosition: Long} = await Promise.race([
       new Promise(
         (resolve, reject): void =&gt; {
           setTimeout(reject, 1000)
@@ -124,7 +203,14 @@ describe(&apos;Event emit tests&apos;, (): void =&gt; {
       ),
       new Promise(
         async (resolve, reject): Promise&lt;void&gt; =&gt; {
-          subscription.on(&apos;event&apos;, resolve)
+          const resolveFunction = (
+            event: Event,
+            commitPosition: Long,
+            preparePosition: Long
+          ): void =&gt; {
+            resolve({event, commitPosition, preparePosition})
+          }
+          subscription.on(&apos;event&apos;, resolveFunction)
           try {
             await stream.append(newEvent)
           } catch (err) {
@@ -133,7 +219,7 @@ describe(&apos;Event emit tests&apos;, (): void =&gt; {
         }
       )
     ])
-    assert.strictEqual(result.event.eventType, newEvent.name)
+    assert.strictEqual(result.event.id, newEvent.id)
     try {
       await subscription.unsubscribe()
       assert.strictEqual(subscription.isSubscribed, false)
@@ -141,19 +227,6 @@ describe(&apos;Event emit tests&apos;, (): void =&gt; {
       assert.fail(err)
     }
   })
-
-  /** 
-  it(&apos;appends single new event&apos;, async (): Promise&lt;void&gt; =&gt; {
-    
-    const stream = await es.stream(&apos;testemitstream&apos;)
-    try {
-      await stream.append(newEvent)
-      expect(newEvent.isNew()).to.be.false
-    } catch (err) {
-      assert.fail(err)
-    }
-  })
-  */
 })
 </code></pre>
 

@@ -11,6 +11,8 @@ import {Subscription} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
+import {Event} from '../event'
+import {getIpAndPort} from './getConnectInfo'
 
 const protobuf = model.eventstore.proto
 
@@ -48,6 +50,7 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  *
  */
 export class TCPConnection extends EventEmitter {
+  protected initialConfig: EventstoreSettings
   protected connectionConfig: EventstoreSettings
   protected socket: net.Socket
   protected connectionId: string | null = null
@@ -64,6 +67,7 @@ export class TCPConnection extends EventEmitter {
 
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
+    this.initialConfig = {...connectionConfiguration}
     this.connectionConfig = connectionConfiguration
     this.log = this.connectionConfig.logger.child
       ? this.connectionConfig.logger.child({module: 'TCPConnection'})
@@ -97,8 +101,14 @@ export class TCPConnection extends EventEmitter {
   public async connect(): Promise<void> {
     this.state = connectionState.init
 
+    this.connectionConfig = await getIpAndPort({...this.initialConfig}, this.log)
+
     const port = this.connectionConfig.port
     const host = this.connectionConfig.host
+
+    if (!port || !host || port === 0 || host === '') {
+      throw eventstoreError.newConnectionError('Invalid connection settings on host and port')
+    }
 
     const options = {
       port,
@@ -149,6 +159,9 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
+    if (!this.isConnected) {
+      return
+    }
     if (this.heartBeatCheckInterval) {
       clearInterval(this.heartBeatCheckInterval)
     }
@@ -198,9 +211,9 @@ export class TCPConnection extends EventEmitter {
    *
    * @param {string} correlationId
    * @param {EventstoreCommand} command
-   * @param {Buffer | null)} [data=null]
-   * @param {(UserCredentials | null)} [credentials=null]
-   * @param {({resolve: Function; reject: Function} | null)} [promise=null]
+   * @param {?Buffer)} [data=null]
+   * @param {?(UserCredentials)} [credentials=null]
+   * @param {(?{resolve: Function; reject: Function})} [promise=null]
    * @memberof TCPConnection
    */
   public sendCommand(
@@ -507,14 +520,25 @@ export class TCPConnection extends EventEmitter {
     ) {
       this.resolveCommandPromise(correlationId)
     } else {
-      const err = new eventstoreError.EventstoreError(
+      const errorMsg =
         `${
           protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult[
             decoded.result
           ]
-        } ` + (decoded.reason || ''),
-        'EventstoreCreatePersistentSubscriptionError'
-      )
+        } ` + (decoded.reason || '')
+      let err
+      switch (decoded.result) {
+        case protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult
+          .AccessDenied:
+          err = eventstoreError.newAccessDeniedError(errorMsg)
+          break
+        case protobuf.CreatePersistentSubscriptionCompleted.CreatePersistentSubscriptionResult
+          .AlreadyExists:
+          err = eventstoreError.newAlreadyExistError(errorMsg)
+          break
+        default:
+          err = eventstoreError.newUnspecificError(errorMsg)
+      }
       this.rejectCommandPromise(correlationId, err)
     }
   }
@@ -647,9 +671,37 @@ export class TCPConnection extends EventEmitter {
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
-    const subscription = this.subscriptionList.get(correlationId) || null
+    const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
-      subscription.emit('event', decoded.event)
+      let event
+      if (decoded.event.event) {
+        event = Event.fromRaw(decoded.event.event)
+      } else if (decoded.event.link) {
+        event = Event.fromRaw(decoded.event.link)
+      } else {
+        subscription.emit(
+          'error',
+          eventstoreError.newProtocolError(
+            'Received stream event with empty event and empty link field'
+          )
+        )
+        return
+      }
+      subscription.emit('event', event, decoded.event.commitPosition, decoded.event.preparePosition)
+      subscription.emit(
+        `event-${event.name.toLocaleLowerCase()}`,
+        event,
+        decoded.event.commitPosition,
+        decoded.event.preparePosition
+      )
+    } else {
+      this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
+      this.emit(
+        'error',
+        eventstoreError.newImplementationError(
+          `Received StreamEventAppeared for unknown id ${correlationId}`
+        )
+      )
     }
   }
 
@@ -844,6 +896,7 @@ export class TCPConnection extends EventEmitter {
       (resolve, reject): void => {
         const resolveFunction = (): void => {
           newSubscription.isSubscribed = true
+          newSubscription.emit('subscribed')
           resolve(newSubscription)
         }
         const raw = protobuf.SubscribeToStream.fromObject({

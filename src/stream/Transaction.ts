@@ -56,7 +56,7 @@ export class Transaction {
     event: Event | Event[],
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise<Transaction> {
+  ): Promise<void> {
     if (Array.isArray(event)) {
       return await this.appendEvents(event, requireMaster, credentials)
     } else {
@@ -68,7 +68,7 @@ export class Transaction {
     events: Event[],
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise<Transaction> {
+  ): Promise<void> {
     if (this.isCommited) {
       throw eventstoreError.newInvalidTransactionError(
         `Transaction ${this.transactionId} is already committed`
@@ -118,7 +118,6 @@ export class Transaction {
           )
       }
     )
-    return this
   }
 
   public async commit(

@@ -1,5 +1,6 @@
 
 {
+  "extends": "@istanbuljs/nyc-config-typescript",
   "extension": [
     ".ts",
     ".tsx"
@@ -12,5 +13,6 @@
     "manual/**",
     "dist/**"
   ],
+  "cache": true,
   "all": true
 }
