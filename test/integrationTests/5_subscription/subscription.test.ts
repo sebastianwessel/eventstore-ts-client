@@ -35,6 +35,79 @@ describe('Stream subscription tests', (): void => {
     }
   })
 
+  it('returns subscription name', async (): Promise<void> => {
+    const stream = await es.stream('subscribestream')
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.name, null)
+    assert.notStrictEqual(subscription.name, undefined)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('returns subscription resolve link setting', async (): Promise<void> => {
+    const stream = await es.stream('subscribestream')
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('returns true for resolve links flag', async (): Promise<void> => {
+    const stream = await es.stream('subscribestream')
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('logs on error', async (): Promise<void> => {
+    const stream = await es.stream('subscribestream')
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+      subscription.emit('error', new Error('Log some error'))
+    } catch (err) {
+      assert.fail(err)
+    }
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
   it('receives events', async (): Promise<void> => {
     const newEvent = new Event('SingleEventWritten')
     const stream = await es.stream('subscribestream')

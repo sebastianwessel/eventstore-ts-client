@@ -1,11 +1,48 @@
 import {expect} from 'chai'
 import {Eventstore} from '../../../src'
 import * as assert from 'assert'
+import * as bunyan from 'bunyan'
 
 describe('Connection test', (): void => {
+  it('returns false if not connected', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
+    })
+    expect(es.isConnected).not.to.true
+  })
+
+  it('does nothing if not connected', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
+    })
+    await es.disconnect()
+  })
+
+  it('set a logger', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
+    })
+    es.logger = bunyan.createLogger({name: 'unittest'})
+  })
+
   it('can connect to eventstore single node unsecure', async (): Promise<void> => {
     const es = new Eventstore({
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
+    })
+    try {
+      await es.connect()
+      assert.ok('connected')
+      await es.disconnect()
+      assert.ok('disconnects')
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it('can connect to eventstore single node to defsult port', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net'
     })
     try {
       await es.connect()
@@ -33,9 +70,30 @@ describe('Connection test', (): void => {
     expect(es.isConnected).not.to.true
   })
 
+  it('finds cluster node over dns (require master)', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: '',
+      clusterDns: 'escluster.net',
+      credentials: {
+        username: 'restrictedUser',
+        password: 'restrictedOnlyUserPassword'
+      }
+    })
+    try {
+      await es.connect()
+      assert.ok('connected')
+      await es.disconnect()
+      assert.ok('disconnects')
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
   it('finds cluster node over dns', async (): Promise<void> => {
     const es = new Eventstore({
       uri: '',
+      requireMaster: false,
       clusterDns: 'escluster.net',
       credentials: {
         username: 'restrictedUser',

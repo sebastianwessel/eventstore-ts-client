@@ -45,6 +45,27 @@ describe('Transaction tests', (): void => {
     assert.strictEqual(lastEvent.id, multiEvents[2].id)
   })
 
+  it('appends events to transaction requiered master', async (): Promise<void> => {
+    const singleEvent = new Event('SingleEventWritten')
+    const multiEvents = [
+      new Event('FirstEventWritten'),
+      new Event('NextEventWritten'),
+      new Event('LastEventWritten')
+    ]
+    const transaction = await es
+      .atStream('transactionwritetestmaster')
+      .requiresMaster()
+      .startTransaction()
+    await transaction.append(singleEvent)
+    await transaction.append(multiEvents)
+    await transaction.commit()
+    assert.ok('has committed')
+    const firstEvent = await es.fromStream('transactionwritetestmaster').getFirstEvent()
+    assert.strictEqual(firstEvent.id, singleEvent.id)
+    const lastEvent = await es.fromStream('transactionwritetestmaster').getLastEvent()
+    assert.strictEqual(lastEvent.id, multiEvents[2].id)
+  })
+
   it('it throws on re-commiting', async (): Promise<void> => {
     const singleEvent = new Event('SingleEventWritten')
     const transaction = await es.atStream('transactionwritetest').startTransaction()
@@ -119,6 +140,15 @@ describe('Transaction tests', (): void => {
       assert.fail('has not thrown')
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreWrongExpectedVersionError')
+    }
+  })
+
+  it('it throws on metastreams', async (): Promise<void> => {
+    try {
+      await es.atStream('$$transactionwritetest').startTransaction()
+      assert.fail('has not thrown')
+    } catch (err) {
+      assert.strictEqual(err.name, 'EventstoreBadRequestError')
     }
   })
 })

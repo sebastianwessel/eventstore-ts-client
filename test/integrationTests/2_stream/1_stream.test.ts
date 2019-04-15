@@ -17,6 +17,12 @@ describe('Stream basic tests', (): void => {
     }
   )
 
+  it('returns a stream name', (): void => {
+    const stream = es.stream('hola')
+    expect(stream.name).not.to.be.undefined
+    expect(stream.name).not.to.be.null
+  })
+
   it('returns a stream instance for function stream', (): void => {
     const stream = es.stream('hola')
     expect(stream).not.to.be.undefined
@@ -54,10 +60,25 @@ describe('Stream basic tests', (): void => {
   })
 
   it('can soft delete a stream', async (): Promise<void> => {
-    await es.stream('streamtosoftdelete').softDelete()
+    await es.stream('streamtosoftdelete-773f2fc6-ed4b-4f37-9b5b-4d737b181ac3').softDelete()
+  })
+
+  it('can soft delete a stream on master node', async (): Promise<void> => {
+    await es
+      .stream('streamtosoftdeletemaster-5784a6cc-0559-45b1-8432-31535707c140')
+      .requiresMaster()
+      .softDelete()
   })
 
   it('can hard delete a stream', async (): Promise<void> => {
-    await es.stream('streamtoharddelete').hardDelete()
+    await es.stream('streamtoharddelete-1d772e21-f670-4493-8d72-cb9ab1d03edb').hardDelete()
+  })
+
+  it('throws on delete metastream', async (): Promise<void> => {
+    try {
+      await es.stream('$$streamtosoftdelete').softDelete()
+    } catch (err) {
+      expect(err.name).to.be.equal('EventstoreBadRequestError')
+    }
   })
 })

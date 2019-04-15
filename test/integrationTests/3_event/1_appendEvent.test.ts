@@ -1,5 +1,5 @@
 import {expect} from 'chai'
-import {Eventstore, Event} from '../../../src'
+import {Eventstore, Event, ExpectedVersion} from '../../../src'
 import * as assert from 'assert'
 
 describe('Event emit tests', (): void => {
@@ -24,6 +24,39 @@ describe('Event emit tests', (): void => {
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvent)
+      expect(newEvent.isNew()).to.be.false
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('appends single new event with require master', async (): Promise<void> => {
+    const newEvent = new Event('SingleEventWritten')
+    const stream = await es.stream('testemitstreamMaster')
+    try {
+      await stream.append(newEvent, ExpectedVersion.Any, true)
+      expect(newEvent.isNew()).to.be.false
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('appends single new event with require master', async (): Promise<void> => {
+    const newEvent = new Event('SingleEventWritten')
+    const stream = await es.stream('testemitstreamMaster')
+    try {
+      await stream.requiresMaster().append(newEvent, ExpectedVersion.Any, true)
+      expect(newEvent.isNew()).to.be.false
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it('appends single new event without require master', async (): Promise<void> => {
+    const newEvent = new Event('SingleEventWritten')
+    const stream = await es.stream('testemitstreamMaster')
+    try {
+      await stream.append(newEvent, ExpectedVersion.Any, false)
       expect(newEvent.isNew()).to.be.false
     } catch (err) {
       assert.fail(err)
