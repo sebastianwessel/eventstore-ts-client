@@ -127,10 +127,12 @@ done
 ### Start integration tests and save code coverage
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
-npm run mocha:integration
-testexit=0
-rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
-
+#npm run mocha:integration
+#testexit=0
+#rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
+docker build -t sebastianwessel/eventstore-ts-client . 
+docker run --name testcontainer --network estest_clusternetwork -v $PWD:/usr/src/app sebastianwessel/eventstore-ts-client:latest
+docker container rm testcontainer
 
 ### shut down eventstore cluster and remove docker containers
 ###############################################

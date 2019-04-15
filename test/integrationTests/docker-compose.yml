@@ -14,8 +14,6 @@ services:
    ports:
      - 1113:1113
      - 2113:2113
-   volumes:
-     - "~/Data/eventstoredns3node/node1:/var/lib/eventstore"
    restart: always
    healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:2113/stats || exit 1"]
@@ -25,6 +23,7 @@ services:
      clusternetwork:
        aliases: 
         - escluster.net
+        - cluster1.escluster.net
        
   eventstore2:
    image: eventstore/eventstore:latest
@@ -38,8 +37,6 @@ services:
    ports:
      - 1123:1123
      - 2123:2123
-   volumes:
-     - "~/Data/eventstoredns3node/node2:/var/lib/eventstore"
    restart: always
    healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:2123/stats || exit 1"]
@@ -49,6 +46,7 @@ services:
      clusternetwork:
        aliases: 
         - escluster.net
+        - cluster2.escluster.net
    
   eventstore3:
    image: eventstore/eventstore:latest
@@ -62,8 +60,6 @@ services:
    ports:
      - 1133:1133
      - 2133:2133
-   volumes:
-     - "~/Data/eventstoredns3node/node3:/var/lib/eventstore"
    restart: always
    healthcheck:
       test: ["CMD-SHELL", "curl -sf http://localhost:2133/stats || exit 1"]
@@ -73,6 +69,7 @@ services:
      clusternetwork:
        aliases: 
         - escluster.net
+        - cluster3.escluster.net
 
 networks:
   clusternetwork:

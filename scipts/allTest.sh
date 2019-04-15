@@ -127,10 +127,16 @@ done
 ### Start integration tests and save code coverage
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
-nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all
-testexit=0
-rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
+#nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all
+#testexit=0
+#rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
 
+print_style 'creating docker test container:\n';
+docker build -t sebastianwessel/eventstore-ts-client . 
+print_style 'starting docker test container:\n';
+docker run --name=testcontainer --network=estest_clusternetwork --network-alias=escluster.net -v $PWD:/usr/src/app sebastianwessel/eventstore-ts-client:latest
+print_style 'delete docker test container: ';
+docker container rm testcontainer
 
 ### shut down eventstore cluster and remove docker containers
 ###############################################
