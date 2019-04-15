@@ -451,12 +451,18 @@ export class Stream {
       requireMaster = this.options.requireMaster
     }
     const newMetaEvent = new Event('$metadata', newMetadata)
-    await this.append(
-      newMetaEvent,
-      ExpectedVersion.Any,
-      requireMaster,
-      credentials || this.options.credentials
-    )
+    await this.esConnection
+      .fromStream(`$$${this.streamId}`, {
+        resolveLinks: false,
+        requireMaster,
+        credentials: credentials || this.options.credentials
+      })
+      .append(
+        newMetaEvent,
+        ExpectedVersion.Any,
+        requireMaster,
+        credentials || this.options.credentials
+      )
   }
 
   /**
