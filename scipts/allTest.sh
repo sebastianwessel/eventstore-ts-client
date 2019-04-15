@@ -39,6 +39,9 @@ fi
 print_style 'starting docker' "info\n";
 docker-compose -f ./test/integrationTests/docker-compose.yml -p estest up -d
 
+print_style 'creating docker test container:\n';
+docker build -t sebastianwessel/eventstore-ts-client .
+
 print_style "waiting for eventstore cluster to be available\n";
 until $(curl --output /dev/null --silent --fail http://localhost:2113/stats); do
     printf "\b\b\e[96m${sp:i++%${#sp}:1}"
@@ -130,9 +133,7 @@ print_style "\nstart integration tests with code coverage generation\n";
 #nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all
 #testexit=0
 #rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
-
-print_style 'creating docker test container:\n';
-docker build -t sebastianwessel/eventstore-ts-client . 
+ 
 print_style 'starting docker test container:\n';
 docker run --name=testcontainer --network=estest_clusternetwork --network-alias=escluster.net -v $PWD:/usr/src/app sebastianwessel/eventstore-ts-client:latest
 print_style 'delete docker test container: ';

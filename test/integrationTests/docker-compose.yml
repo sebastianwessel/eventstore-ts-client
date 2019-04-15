@@ -11,6 +11,7 @@ services:
      - EVENTSTORE_EXT_HTTP_PORT=2113
      - EVENTSTORE_EXT_TCP_PORT=1113
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2113/
+     - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.2
    ports:
      - 1113:1113
      - 2113:2113
@@ -21,6 +22,7 @@ services:
       timeout: 2s
    networks:
      clusternetwork:
+       ipv4_address: 172.22.0.2
        aliases: 
         - escluster.net
         - cluster1.escluster.net
@@ -34,6 +36,7 @@ services:
      - EVENTSTORE_EXT_HTTP_PORT=2123
      - EVENTSTORE_EXT_TCP_PORT=1123
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2123/
+     - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.3
    ports:
      - 1123:1123
      - 2123:2123
@@ -44,6 +47,7 @@ services:
       timeout: 2s
    networks:
      clusternetwork:
+       ipv4_address: 172.22.0.3
        aliases: 
         - escluster.net
         - cluster2.escluster.net
@@ -57,6 +61,7 @@ services:
      - EVENTSTORE_EXT_HTTP_PORT=2133
      - EVENTSTORE_EXT_TCP_PORT=1133
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2133/
+     - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.4
    ports:
      - 1133:1133
      - 2133:2133
@@ -67,6 +72,7 @@ services:
       timeout: 2s
    networks:
      clusternetwork:
+       ipv4_address: 172.22.0.4
        aliases: 
         - escluster.net
         - cluster3.escluster.net
@@ -74,3 +80,7 @@ services:
 networks:
   clusternetwork:
     driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.0.0/16
