@@ -135,7 +135,7 @@ print_style "\nstart integration tests with code coverage generation\n";
 #rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
  
 print_style 'starting docker test container:\n';
-docker run --name=testcontainer --network=estest_clusternetwork --network-alias=escluster.net -v $PWD:/usr/src/app sebastianwessel/eventstore-ts-client:latest
+docker run --name=testcontainer --network=estest_clusternetwork --network-alias=escluster.net -v $PWD:/home/travis/build/sebastianwessel/eventstore-ts-client/ sebastianwessel/eventstore-ts-client:latest
 print_style 'delete docker test container: ';
 docker container rm testcontainer
 
