@@ -1,6 +1,6 @@
 {
-  "coverage": "79.13%",
-  "expectCount": 230,
+  "coverage": "77.11%",
+  "expectCount": 236,
   "actualCount": 182,
   "files": {
     "src/errors/EventstoreError.ts": {
@@ -42,11 +42,10 @@
       ]
     },
     "src/eventstore/TCPConnection.ts": {
-      "expectCount": 59,
+      "expectCount": 60,
       "actualCount": 44,
       "undocumentLines": [
-        10,
-        18,
+        11,
         19,
         20,
         21,
@@ -55,11 +54,24 @@
         24,
         25,
         26,
-        36,
-        113,
+        27,
+        37,
         114,
-        117,
-        121
+        115,
+        116,
+        119,
+        123
+      ]
+    },
+    "src/eventstore/getConnectInfo.ts": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        26,
+        42,
+        54,
+        70
       ]
     },
     "src/protobuf/model.js": {

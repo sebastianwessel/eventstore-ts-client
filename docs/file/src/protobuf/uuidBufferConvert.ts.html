@@ -55,6 +55,11 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
@@ -80,7 +85,7 @@
  * @returns {string}
  * @throws {EventstoreProtocolError}
  */
-const uuidFromBuffer = (buffer: Buffer): string =&gt; {
+function uuidFromBuffer(buffer: Buffer): string {
   if (buffer.length !== 16) {
     throw eventstoreError.newProtocolError(`Invalid buffer length for uuid: ${buffer.length}`)
   }
@@ -105,7 +110,7 @@ const uuidFromBuffer = (buffer: Buffer): string =&gt; {
  * @returns {Buffer}
  * @throws {EventstoreProtocolError}
  */
-const uuidToBuffer = (uuid: string | null): Buffer =&gt; {
+function uuidToBuffer(uuid: string | null): Buffer {
   if (!uuid) {
     return Buffer.alloc(16)
   }
@@ -116,7 +121,7 @@ const uuidToBuffer = (uuid: string | null): Buffer =&gt; {
   return Buffer.from(hexStr, &apos;hex&apos;)
 }
 
-export {uuidFromBuffer, uuidToBuffer}
+export {uuidToBuffer, uuidFromBuffer}
 </code></pre>
 
 </div>

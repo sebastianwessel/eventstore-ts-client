@@ -55,6 +55,11 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
@@ -74,11 +79,8 @@ import * as assert from &apos;assert&apos;
 
 describe(&apos;Transaction tests&apos;, (): void =&gt; {
   const es = new Eventstore({
-    clientId: &apos;ts-client-test&apos;,
-    credentials: {
-      username: &apos;restrictedUser&apos;,
-      password: &apos;restrictedOnlyUserPassword&apos;
-    }
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {
@@ -116,6 +118,27 @@ describe(&apos;Transaction tests&apos;, (): void =&gt; {
     const firstEvent = await es.fromStream(&apos;transactionwritetest&apos;).getFirstEvent()
     assert.strictEqual(firstEvent.id, singleEvent.id)
     const lastEvent = await es.fromStream(&apos;transactionwritetest&apos;).getLastEvent()
+    assert.strictEqual(lastEvent.id, multiEvents[2].id)
+  })
+
+  it(&apos;appends events to transaction requiered master&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const singleEvent = new Event(&apos;SingleEventWritten&apos;)
+    const multiEvents = [
+      new Event(&apos;FirstEventWritten&apos;),
+      new Event(&apos;NextEventWritten&apos;),
+      new Event(&apos;LastEventWritten&apos;)
+    ]
+    const transaction = await es
+      .atStream(&apos;transactionwritetestmaster&apos;)
+      .requiresMaster()
+      .startTransaction()
+    await transaction.append(singleEvent)
+    await transaction.append(multiEvents)
+    await transaction.commit()
+    assert.ok(&apos;has committed&apos;)
+    const firstEvent = await es.fromStream(&apos;transactionwritetestmaster&apos;).getFirstEvent()
+    assert.strictEqual(firstEvent.id, singleEvent.id)
+    const lastEvent = await es.fromStream(&apos;transactionwritetestmaster&apos;).getLastEvent()
     assert.strictEqual(lastEvent.id, multiEvents[2].id)
   })
 
@@ -193,6 +216,15 @@ describe(&apos;Transaction tests&apos;, (): void =&gt; {
       assert.fail(&apos;has not thrown&apos;)
     } catch (err) {
       assert.strictEqual(err.name, &apos;EventstoreWrongExpectedVersionError&apos;)
+    }
+  })
+
+  it(&apos;it throws on metastreams&apos;, async (): Promise&lt;void&gt; =&gt; {
+    try {
+      await es.atStream(&apos;$$transactionwritetest&apos;).startTransaction()
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreBadRequestError&apos;)
     }
   })
 })

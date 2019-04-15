@@ -55,6 +55,11 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
@@ -73,11 +78,8 @@
 import {Eventstore} from &apos;../../../src&apos;
 describe(&apos;Stream basic tests&apos;, (): void =&gt; {
   const es = new Eventstore({
-    clientId: &apos;ts-client-test&apos;,
-    credentials: {
-      username: &apos;restrictedUser&apos;,
-      password: &apos;restrictedOnlyUserPassword&apos;
-    }
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {
@@ -90,6 +92,12 @@ describe(&apos;Stream basic tests&apos;, (): void =&gt; {
       await es.disconnect()
     }
   )
+
+  it(&apos;returns a stream name&apos;, (): void =&gt; {
+    const stream = es.stream(&apos;hola&apos;)
+    expect(stream.name).not.to.be.undefined
+    expect(stream.name).not.to.be.null
+  })
 
   it(&apos;returns a stream instance for function stream&apos;, (): void =&gt; {
     const stream = es.stream(&apos;hola&apos;)
@@ -128,11 +136,26 @@ describe(&apos;Stream basic tests&apos;, (): void =&gt; {
   })
 
   it(&apos;can soft delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
-    await es.stream(&apos;streamtosoftdelete&apos;).softDelete()
+    await es.stream(&apos;streamtosoftdelete-773f2fc6-ed4b-4f37-9b5b-4d737b181ac3&apos;).softDelete()
+  })
+
+  it(&apos;can soft delete a stream on master node&apos;, async (): Promise&lt;void&gt; =&gt; {
+    await es
+      .stream(&apos;streamtosoftdeletemaster-5784a6cc-0559-45b1-8432-31535707c140&apos;)
+      .requiresMaster()
+      .softDelete()
   })
 
   it(&apos;can hard delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
-    await es.stream(&apos;streamtoharddelete&apos;).hardDelete()
+    await es.stream(&apos;streamtoharddelete-1d772e21-f670-4493-8d72-cb9ab1d03edb&apos;).hardDelete()
+  })
+
+  it(&apos;throws on delete metastream&apos;, async (): Promise&lt;void&gt; =&gt; {
+    try {
+      await es.stream(&apos;$$streamtosoftdelete&apos;).softDelete()
+    } catch (err) {
+      expect(err.name).to.be.equal(&apos;EventstoreBadRequestError&apos;)
+    }
   })
 })
 </code></pre>

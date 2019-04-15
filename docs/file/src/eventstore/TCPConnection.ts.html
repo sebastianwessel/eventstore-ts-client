@@ -55,6 +55,11 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
@@ -83,6 +88,7 @@ import {Stream} from &apos;../stream&apos;
 import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
 import uuid = require(&apos;uuid/v4&apos;)
 import {Event} from &apos;../event&apos;
+import {getIpAndPort} from &apos;./getConnectInfo&apos;
 
 const protobuf = model.eventstore.proto
 
@@ -120,6 +126,7 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  *
  */
 export class TCPConnection extends EventEmitter {
+  protected initialConfig: EventstoreSettings
   protected connectionConfig: EventstoreSettings
   protected socket: net.Socket
   protected connectionId: string | null = null
@@ -136,6 +143,7 @@ export class TCPConnection extends EventEmitter {
 
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
+    this.initialConfig = {...connectionConfiguration}
     this.connectionConfig = connectionConfiguration
     this.log = this.connectionConfig.logger.child
       ? this.connectionConfig.logger.child({module: &apos;TCPConnection&apos;})
@@ -169,8 +177,14 @@ export class TCPConnection extends EventEmitter {
   public async connect(): Promise&lt;void&gt; {
     this.state = connectionState.init
 
+    this.connectionConfig = await getIpAndPort({...this.initialConfig}, this.log)
+
     const port = this.connectionConfig.port
     const host = this.connectionConfig.host
+
+    if (!port || !host || port === 0 || host === &apos;&apos;) {
+      throw eventstoreError.newConnectionError(&apos;Invalid connection settings on host and port&apos;)
+    }
 
     const options = {
       port,
@@ -221,6 +235,9 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise&lt;void&gt; {
+    if (!this.isConnected) {
+      return
+    }
     if (this.heartBeatCheckInterval) {
       clearInterval(this.heartBeatCheckInterval)
     }

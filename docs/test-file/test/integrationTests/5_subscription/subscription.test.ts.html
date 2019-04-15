@@ -55,6 +55,11 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
@@ -74,11 +79,8 @@ import * as assert from &apos;assert&apos;
 
 describe(&apos;Stream subscription tests&apos;, (): void =&gt; {
   const es = new Eventstore({
-    clientId: &apos;ts-client-test&apos;,
-    credentials: {
-      username: &apos;restrictedUser&apos;,
-      password: &apos;restrictedOnlyUserPassword&apos;
-    }
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {
@@ -98,6 +100,79 @@ describe(&apos;Stream subscription tests&apos;, (): void =&gt; {
     try {
       subscription = await stream.subscribe()
       assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;returns subscription name&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.name, null)
+    assert.notStrictEqual(subscription.name, undefined)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;returns subscription resolve link setting&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;returns true for resolve links flag&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+    } catch (err) {
+      assert.fail(err)
+    }
+    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    try {
+      await subscription.unsubscribe()
+      assert.strictEqual(subscription.isSubscribed, false)
+    } catch (err) {
+      assert.fail(err)
+    }
+  })
+
+  it(&apos;logs on error&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const stream = await es.stream(&apos;subscribestream&apos;)
+    let subscription
+    try {
+      subscription = await stream.subscribe()
+      assert.strictEqual(subscription.isSubscribed, true)
+      subscription.emit(&apos;error&apos;, new Error(&apos;Log some error&apos;))
     } catch (err) {
       assert.fail(err)
     }
