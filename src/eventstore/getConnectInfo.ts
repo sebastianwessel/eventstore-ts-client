@@ -1,6 +1,6 @@
 import * as dns from 'dns'
 import * as util from 'util'
-import * as request from 'request-promise-native'
+import request = require('request-promise-native')
 import * as bunyan from 'bunyan'
 import {JSONValue} from '../JSON'
 import {URL} from 'url'
@@ -54,7 +54,7 @@ const fetchgossipJson = async (
   const protocol = useHttps ? 'https' : 'http'
   try {
     log.debug({host, protocol, port}, 'Try to fetch gossip info')
-    gossipInfo = await request.get({
+    gossipInfo = await request({
       uri: `${protocol}://${host}:${port}/gossip?fomat=json`,
       json: true,
       timeout
