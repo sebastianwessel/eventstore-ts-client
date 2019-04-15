@@ -9,7 +9,7 @@ import * as eventstoreError from '../errors'
  * @returns {string}
  * @throws {EventstoreProtocolError}
  */
-export const uuidFromBuffer = (buffer: Buffer): string => {
+function uuidFromBuffer(buffer: Buffer): string {
   if (buffer.length !== 16) {
     throw eventstoreError.newProtocolError(`Invalid buffer length for uuid: ${buffer.length}`)
   }
@@ -34,7 +34,7 @@ export const uuidFromBuffer = (buffer: Buffer): string => {
  * @returns {Buffer}
  * @throws {EventstoreProtocolError}
  */
-export const uuidToBuffer = (uuid: string | null): Buffer => {
+function uuidToBuffer(uuid: string | null): Buffer {
   if (!uuid) {
     return Buffer.alloc(16)
   }
@@ -44,3 +44,5 @@ export const uuidToBuffer = (uuid: string | null): Buffer => {
   }
   return Buffer.from(hexStr, 'hex')
 }
+
+export {uuidToBuffer, uuidFromBuffer}
