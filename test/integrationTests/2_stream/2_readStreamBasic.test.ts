@@ -2,11 +2,8 @@ import * as assert from 'assert'
 import {Eventstore} from '../../../src'
 describe('Read stream basic tests', (): void => {
   const es = new Eventstore({
-    clientId: 'ts-client-test',
-    credentials: {
-      username: 'restrictedUser',
-      password: 'restrictedOnlyUserPassword'
-    }
+    uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
+    clientId: 'ts-client-test'
   })
   before(
     async (): Promise<void> => {

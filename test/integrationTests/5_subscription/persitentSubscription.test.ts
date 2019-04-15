@@ -4,11 +4,8 @@ import * as assert from 'assert'
 describe('Persitent subscription test', (): void => {
   describe('with admin user rights', (): void => {
     const es = new Eventstore({
-      clientId: 'ts-client-test',
-      credentials: {
-        username: 'admin',
-        password: 'changeit'
-      }
+      uri: 'discover://admin:changeit@cluster1.escluster.net:2112',
+      clientId: 'ts-client-test'
     })
     before(
       async (): Promise<void> => {
@@ -48,11 +45,8 @@ describe('Persitent subscription test', (): void => {
 
   describe('with admin user rights', (): void => {
     const es = new Eventstore({
-      clientId: 'ts-client-test',
-      credentials: {
-        username: 'restrictedUser',
-        password: 'restrictedOnlyUserPassword'
-      }
+      uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
+      clientId: 'ts-client-test'
     })
     before(
       async (): Promise<void> => {
