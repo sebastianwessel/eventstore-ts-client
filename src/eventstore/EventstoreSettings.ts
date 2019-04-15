@@ -6,6 +6,7 @@ export interface UserCredentials {
   password: string
 }
 export interface EventstoreSettings {
+  uri: string
   useSSL: boolean
   host: string
   port: number
@@ -32,35 +33,44 @@ export interface EventstoreSettings {
 }
 
 const defaultConnectionSettings: EventstoreSettings = {
-  credentials: {
-    password: 'changeit',
-    username: 'admin'
-  },
-  host: '127.0.0.1',
-  port: 1113,
-  useSSL: false,
-  logger: bunyan.createLogger({
-    name: 'eventstore-ts-client'
-    //level: 'debug'
-  }),
+  uri: 'tcp://admin@changeit@127.0.0.1:1113',
   requireMaster: true,
+
+  maxDiscoverAttempts: 10,
+  clusterDns: '',
+  externalGossipPort: 2112,
+  gossipTimeout: 1000,
+  gossipSeeds: [],
+
+  useSSL: false,
+  validateServer: false,
+
+  maxReconnections: 10,
+  reconnectionDelay: 100,
+
+  clientId: `ts-client-${uuid()}`,
 
   maxQueueSize: 5000,
   maxConcurrentItems: 5000,
   maxRetries: 10,
-  maxReconnections: 10,
-  reconnectionDelay: 100,
+
   operationTimeout: 7 * 1000,
   operationTimeoutCheckPeriod: 1000,
-  validateServer: false,
+
   heartbeatInterval: 750,
   heartbeatTimeout: 1500,
-  clusterDns: '',
-  maxDiscoverAttempts: 10,
-  externalGossipPort: 0,
-  gossipTimeout: 1000,
-  gossipSeeds: [],
-  clientId: `ts-client-${uuid()}`
+
+  logger: bunyan.createLogger({
+    name: 'eventstore-ts-client'
+    //level: 'debug'
+  }),
+
+  host: '', //dummy entry will be overwritten by internal functions
+  port: 0, //dummy entry will be overwritten by internal functions
+  credentials: {
+    password: '', //dummy entry will be overwritten by internal functions
+    username: '' //dummy entry will be overwritten by internal functions
+  }
 }
 
 /**

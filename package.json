@@ -11,6 +11,7 @@
     "test": "npm run test:unit && npm run test:integration",
     "test:coverage": "npm run test:coverageUnit && npm run test:coverageIntegration && npm run combine-coverage",
     "mocha:all": "mocha test/**/*.test.ts",
+    "nyc:all": "nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all",
     "mocha:unit": "mocha test/unitTests/**/*.test.ts",
     "test:unit": "npm run mocha:unit",
     "test:coverageUnit": "nyc --temp-directory=./.nyc_unit --reporter=text npm run test:unit",
@@ -39,10 +40,13 @@
     "@types/bunyan": "^1.8.6",
     "@types/long": "^4.0.0",
     "@types/node": "^11.13.4",
+    "@types/request-promise-native": "^1.0.15",
     "@types/uuid": "^3.4.4",
     "bunyan": "^1.8.12",
     "long": "^4.0.0",
     "protobufjs": "^6.8.8",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.7",
     "uuid4": "^1.1.4"
   },
   "devDependencies": {
