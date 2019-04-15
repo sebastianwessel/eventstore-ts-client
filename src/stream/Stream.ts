@@ -628,6 +628,16 @@ export class Stream {
       .subscribeToStream(this, resolveLinkTos, credentials || this.options.credentials || null)
   }
 
+  /**
+   * Creates a persitent subscription for current stream
+   * This operation needs admin rights and a master connection
+   *
+   * @param {string} subscriptionGroupName
+   * @param {(PersitentSubscriptionConfig | {})} [customConfig={}]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<PersitentSubscription>}
+   * @memberof Stream
+   */
   public async createPersistentSubscription(
     subscriptionGroupName: string,
     customConfig: PersitentSubscriptionConfig | {} = {},
