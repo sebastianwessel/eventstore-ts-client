@@ -12,6 +12,7 @@ import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
 import {Event} from '../event'
+import {getIpAndPort} from './getConnectInfo'
 
 const protobuf = model.eventstore.proto
 
@@ -49,6 +50,7 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  *
  */
 export class TCPConnection extends EventEmitter {
+  protected initialConfig: EventstoreSettings
   protected connectionConfig: EventstoreSettings
   protected socket: net.Socket
   protected connectionId: string | null = null
@@ -65,6 +67,7 @@ export class TCPConnection extends EventEmitter {
 
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
+    this.initialConfig = {...connectionConfiguration}
     this.connectionConfig = connectionConfiguration
     this.log = this.connectionConfig.logger.child
       ? this.connectionConfig.logger.child({module: 'TCPConnection'})
@@ -98,8 +101,14 @@ export class TCPConnection extends EventEmitter {
   public async connect(): Promise<void> {
     this.state = connectionState.init
 
+    this.connectionConfig = await getIpAndPort({...this.initialConfig}, this.log)
+
     const port = this.connectionConfig.port
     const host = this.connectionConfig.host
+
+    if (!port || !host || port === 0 || host === '') {
+      throw eventstoreError.newConnectionError('Invalid connection settings on host and port')
+    }
 
     const options = {
       port,

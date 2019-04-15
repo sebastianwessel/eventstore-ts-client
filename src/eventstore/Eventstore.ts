@@ -30,7 +30,7 @@ export class Eventstore extends EventEmitter {
     super()
     this.connectionConfig = setConnectionSettings(connectionConfiguration)
     this.log = this.connectionConfig.logger
-    this.connection = new TCPConnection(this.connectionConfig)
+    this.connection = new TCPConnection({...this.connectionConfig})
   }
 
   /**

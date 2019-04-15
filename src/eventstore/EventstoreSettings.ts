@@ -8,6 +8,7 @@ export interface UserCredentials {
 export interface EventstoreSettings {
   uri: string
   useSSL: boolean
+  useHttps: boolean
   host: string
   port: number
   credentials: UserCredentials
@@ -42,7 +43,8 @@ const defaultConnectionSettings: EventstoreSettings = {
   gossipTimeout: 1000,
   gossipSeeds: [],
 
-  useSSL: false,
+  useSSL: false, //use tcp encrypted?
+  useHttps: false, //fetch gossip info over https?
   validateServer: false,
 
   maxReconnections: 10,
