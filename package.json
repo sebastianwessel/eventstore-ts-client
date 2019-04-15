@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "scripts": {
-    "build": "./scipts/build.sh",
+    "build": "./scripts/build.sh",
     "lint": "eslint --cache .",
     "lint:fix": "eslint . --fix",
     "test": "npm run test:unit && npm run test:integration",
@@ -16,11 +16,11 @@
     "test:unit": "npm run mocha:unit",
     "test:coverageUnit": "nyc --temp-directory=./.nyc_unit --reporter=text npm run test:unit",
     "mocha:integration": "mocha test/integrationTests/**/*.test.ts",
-    "test:integration": "./scipts/integrationTest.sh",
+    "test:integration": "./scripts/integrationTest.sh",
     "test:coverageIntegration": "nyc --temp-directory=./.nyc_integration --reporter=text npm run test:integration",
     "document": "typedoc --theme markdown --out typedoc",
-    "combine-coverage": "./scipts/combineCoverage.sh && nyc report --reporter=json --reporter=text --reporter=lcov && mv ./coverage/coverage-final.json ./coverage/coverage.json",
-    "allcoverage": "./scipts/allTest.sh"
+    "combine-coverage": "./scripts/combineCoverage.sh && nyc report --reporter=json --reporter=text --reporter=lcov && mv ./coverage/coverage-final.json ./coverage/coverage.json",
+    "allcoverage": "./scripts/allTest.sh"
   },
   "files": [
     "dist/**/*"
