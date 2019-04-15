@@ -6,7 +6,7 @@ import {JSONValue} from '../JSON'
 import {URL} from 'url'
 import {EventstoreSettings} from './EventstoreSettings'
 
-const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<string[]> => {
+export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<string[]> => {
   const lookup = util.promisify(dns.lookup)
   const dnsOptions = {
     family: 4,
@@ -32,7 +32,7 @@ const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<string[
   return ipList
 }
 
-const fetchgossipJson = async (
+export const fetchgossipJson = async (
   host: string,
   port: number,
   useHttps: boolean,
@@ -65,7 +65,7 @@ const fetchgossipJson = async (
   return gossipInfo
 }
 
-const getMasterNodeInfo = (
+export const getMasterNodeInfo = (
   gossipInfo: JSONValue & {
     members: {
       state: string
@@ -76,9 +76,6 @@ const getMasterNodeInfo = (
     }[]
   }
 ): {ip: string; tcpPort: number; tcpSecurePort: number} | null => {
-  if (!gossipInfo) {
-    return null
-  }
   let nodeInfo = null
 
   const aliveList = gossipInfo.members.filter(
@@ -95,7 +92,7 @@ const getMasterNodeInfo = (
   return nodeInfo
 }
 
-const getRandomNodeInfo = (
+export const getRandomNodeInfo = (
   gossipInfo: JSONValue & {
     members: {
       state: string
@@ -106,9 +103,6 @@ const getRandomNodeInfo = (
     }[]
   }
 ): {ip: string; tcpPort: number; tcpSecurePort: number} | null => {
-  if (!gossipInfo) {
-    return null
-  }
   let nodeInfo = null
 
   const aliveList = gossipInfo.members.filter(
