@@ -16,13 +16,15 @@ describe('Connection test', (): void => {
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
     })
     await es.disconnect()
+    expect(true).to.be.true
   })
 
-  it('set a logger', async (): Promise<void> => {
+  it('set a logger', (): void => {
     const es = new Eventstore({
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'
     })
     es.logger = bunyan.createLogger({name: 'unittest'})
+    expect(true).to.be.true
   })
 
   it('can connect to eventstore single node unsecure', async (): Promise<void> => {

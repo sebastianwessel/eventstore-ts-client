@@ -159,6 +159,9 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
+    if (!this.isConnected) {
+      return
+    }
     if (this.heartBeatCheckInterval) {
       clearInterval(this.heartBeatCheckInterval)
     }
