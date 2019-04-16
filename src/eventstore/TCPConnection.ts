@@ -302,7 +302,6 @@ export class TCPConnection extends EventEmitter {
       buf[FLAGS_OFFSET] = flags
 
       uuidToBuffer(correlationId).copy(buf, CORRELATION_ID_OFFSET, 0, GUID_LENGTH)
-
       if (credentials) {
         buf.writeUInt8(credentials.username.length, DATA_OFFSET)
         buf.write(credentials.username, DATA_OFFSET + 1)
@@ -491,11 +490,11 @@ export class TCPConnection extends EventEmitter {
       case EventstoreCommand.ReadStreamEventsForwardCompleted:
         this.handleReadStreamEventsCompleted(correlationId, payload)
         break
-
+      /*
       case EventstoreCommand.ScavengeDatabaseCompleted:
         this.handleScavengeDatabaseResponse(correlationId, payload)
         break
-
+*/
       case EventstoreCommand.StreamEventAppeared:
         this.handleStreamEventAppeared(correlationId, payload)
         break
@@ -681,14 +680,7 @@ export class TCPConnection extends EventEmitter {
     this.rejectCommandPromise(correlationId, err)
   }
 
-  /**
-   * Handle scavenge database command response
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
-   */
+  /*
   protected handleScavengeDatabaseResponse(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ScavengeDatabaseResponse.decode(payload)
     if ((decoded.result = protobuf.ScavengeDatabaseResponse.ScavengeResult.Unauthorized)) {
@@ -699,6 +691,7 @@ export class TCPConnection extends EventEmitter {
 
     this.resolveCommandPromise(correlationId, decoded)
   }
+  */
 
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
