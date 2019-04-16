@@ -72,6 +72,22 @@ describe('Connection test', (): void => {
     expect(es.isConnected).not.to.true
   })
 
+  it('can connect to eventstore cluster secure tcp', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
+      useSSL: true
+    })
+    try {
+      await es.connect()
+      assert.ok('connected')
+      await es.disconnect()
+      assert.ok('disconnects')
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
   it('finds cluster node over dns (require master)', async (): Promise<void> => {
     const es = new Eventstore({
       uri: '',
