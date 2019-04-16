@@ -3,7 +3,8 @@ import {Eventstore} from '../../../src'
 describe('Stream basic tests', (): void => {
   const es = new Eventstore({
     uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
-    clientId: 'ts-client-test'
+    clientId: 'ts-client-test',
+    useSSL: true
   })
   before(
     async (): Promise<void> => {
