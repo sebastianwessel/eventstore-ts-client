@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -74,13 +75,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TCPConnection} from &apos;<span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber52">eventstore-ts-client/src/eventstore/TCPConnection.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {TCPConnection} from &apos;<span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber61">eventstore-ts-client/src/eventstore/TCPConnection.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber52">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber61">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -134,13 +135,14 @@ This class handles basic communication with eventstore</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: <span>EventstoreSettings</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Creates an instance of TCPConnection.</p>
+</div>
       </div>
     </td>
     <td>
@@ -691,7 +693,8 @@ It returns true for successful result otherwise it returns false.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command CreatePersistentSubscription</p>
+</div>
       </div>
     </td>
     <td>
@@ -719,7 +722,8 @@ It returns true for successful result otherwise it returns false.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command DeletePersistentSubscription</p>
+</div>
       </div>
     </td>
     <td>
@@ -747,7 +751,8 @@ It returns true for successful result otherwise it returns false.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command DeleteStreamCompleted</p>
+</div>
       </div>
     </td>
     <td>
@@ -839,7 +844,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handles persistent subscription confirmation</p>
+</div>
       </div>
     </td>
     <td>
@@ -867,7 +873,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handles persistent subscription stream event appeared</p>
+</div>
       </div>
     </td>
     <td>
@@ -895,7 +902,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command ReadAllEvents</p>
+</div>
       </div>
     </td>
     <td>
@@ -923,7 +931,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command ReadEvent</p>
+</div>
       </div>
     </td>
     <td>
@@ -951,35 +960,7 @@ Checks if</p>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-handleScavengeDatabaseResponse">handleScavengeDatabaseResponse</a></span></span><span class="code" data-ice="signature">(correlationId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, payload: <span>Buffer</span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Handle scavenge database command response</p>
+        <div data-ice="description"><p>Handle response for command ReadStreamEvents</p>
 </div>
       </div>
     </td>
@@ -1037,7 +1018,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle incoming event for subscription</p>
+</div>
       </div>
     </td>
     <td>
@@ -1065,7 +1047,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command Subscription</p>
+</div>
       </div>
     </td>
     <td>
@@ -1093,7 +1076,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle subscription drop</p>
+</div>
       </div>
     </td>
     <td>
@@ -1121,7 +1105,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command TransactionCommit</p>
+</div>
       </div>
     </td>
     <td>
@@ -1149,7 +1134,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handle response for command TransactionStart</p>
+</div>
       </div>
     </td>
     <td>
@@ -1177,7 +1163,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handles transaction write completed</p>
+</div>
       </div>
     </td>
     <td>
@@ -1205,7 +1192,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handles update persistent subscription completed</p>
+</div>
       </div>
     </td>
     <td>
@@ -1233,7 +1221,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Handles write events completed</p>
+</div>
       </div>
     </td>
     <td>
@@ -1319,7 +1308,8 @@ Checks if</p>
       <div>
         
         
-        
+        <div data-ice="description"><p>Emitted as soon as data arrives over tcp connection</p>
+</div>
       </div>
     </td>
     <td>
@@ -1377,6 +1367,35 @@ Checks if</p>
         
         
         <div data-ice="description"><p>Emit general low level connection errors (communication errors).</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-onSecureConnect">onSecureConnect</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Emit when connection secured</p>
 </div>
       </div>
     </td>
@@ -1494,7 +1513,8 @@ In this case corresponding promise will be resolved with result received from ev
       <div>
         
         
-        
+        <div data-ice="description"><p>Subscribes to stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -1522,7 +1542,8 @@ In this case corresponding promise will be resolved with result received from ev
       <div>
         
         
-        
+        <div data-ice="description"><p>Unsubscribes from stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -1548,22 +1569,39 @@ In this case corresponding promise will be resolved with result received from ev
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(connectionConfiguration: <span>EventstoreSettings</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Creates an instance of TCPConnection.</p>
+</div>
 
   
 
-  <div data-ice="properties">
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">connectionConfiguration</td>
+      <td data-ice="type" class="code"><span>EventstoreSettings</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
 </div>
 
   
@@ -1598,7 +1636,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber115">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber131">source</a></span></span>
     </span>
   </h3>
 
@@ -1641,7 +1679,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber65">source</a></span></span>
     </span>
   </h3>
 
@@ -1684,7 +1722,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber65">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
@@ -1727,7 +1765,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber114">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber130">source</a></span></span>
     </span>
   </h3>
 
@@ -1770,7 +1808,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber91">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber102">source</a></span></span>
     </span>
   </h3>
 
@@ -1814,7 +1852,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
@@ -1857,7 +1895,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber123">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber136">source</a></span></span>
     </span>
   </h3>
 
@@ -1900,7 +1938,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber116">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber132">source</a></span></span>
     </span>
   </h3>
 
@@ -1943,7 +1981,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber61">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber70">source</a></span></span>
     </span>
   </h3>
 
@@ -1986,7 +2024,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber69">source</a></span></span>
     </span>
   </h3>
 
@@ -2029,7 +2067,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber62">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -2072,7 +2110,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber66">source</a></span></span>
     </span>
   </h3>
 
@@ -2115,7 +2153,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber119">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber135">source</a></span></span>
     </span>
   </h3>
 
@@ -2158,7 +2196,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber59">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber68">source</a></span></span>
     </span>
   </h3>
 
@@ -2201,7 +2239,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber63">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber72">source</a></span></span>
     </span>
   </h3>
 
@@ -2247,7 +2285,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber802">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber947">source</a></span></span>
     </span>
   </h3>
 
@@ -2333,7 +2371,7 @@ If result is an error this function rejectes corresponding command promise and r
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber101">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber112">source</a></span></span>
     </span>
   </h3>
 
@@ -2389,7 +2427,7 @@ If result is an error this function rejectes corresponding command promise and r
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber161">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber206">source</a></span></span>
     </span>
   </h3>
 
@@ -2447,14 +2485,15 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber512">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber554">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command CreatePersistentSubscription</p>
+</div>
 
   
 
@@ -2512,14 +2551,15 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber546">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber596">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command DeletePersistentSubscription</p>
+</div>
 
   
 
@@ -2577,14 +2617,15 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber569">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber627">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command DeleteStreamCompleted</p>
+</div>
 
   
 
@@ -2642,7 +2683,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber347">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber381">source</a></span></span>
     </span>
   </h3>
 
@@ -2714,7 +2755,7 @@ If disconnect() is call no new outgoing requests accepted</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber306">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber340">source</a></span></span>
     </span>
   </h3>
 
@@ -2792,14 +2833,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber778">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber918">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handles persistent subscription confirmation</p>
+</div>
 
   
 
@@ -2857,14 +2899,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber783">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber928">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handles persistent subscription stream event appeared</p>
+</div>
 
   
 
@@ -2922,14 +2965,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber576">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber642">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command ReadAllEvents</p>
+</div>
 
   
 
@@ -2987,14 +3031,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber625">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber707">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command ReadEvent</p>
+</div>
 
   
 
@@ -3052,79 +3097,14 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber597">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber671">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">correlationId</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">payload</td>
-      <td data-ice="type" class="code"><span>Buffer</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-handleScavengeDatabaseResponse">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">handleScavengeDatabaseResponse</span><span class="code" data-ice="signature">(correlationId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, payload: <span>Buffer</span>)</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber661">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Handle scavenge database command response</p>
+  <div data-ice="description"><p>Handle response for command ReadStreamEvents</p>
 </div>
 
   
@@ -3183,7 +3163,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber370">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber404">source</a></span></span>
     </span>
   </h3>
 
@@ -3243,14 +3223,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber672">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber757">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle incoming event for subscription</p>
+</div>
 
   
 
@@ -3308,14 +3289,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber708">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber804">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command Subscription</p>
+</div>
 
   
 
@@ -3373,14 +3355,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber718">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber822">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle subscription drop</p>
+</div>
 
   
 
@@ -3438,14 +3421,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber729">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber841">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command TransactionCommit</p>
+</div>
 
   
 
@@ -3503,14 +3487,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber736">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber856">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handle response for command TransactionStart</p>
+</div>
 
   
 
@@ -3568,14 +3553,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber743">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber868">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handles transaction write completed</p>
+</div>
 
   
 
@@ -3633,14 +3619,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber750">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber880">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handles update persistent subscription completed</p>
+</div>
 
   
 
@@ -3698,14 +3685,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber771">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber906">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Handles write events completed</p>
+</div>
 
   
 
@@ -3763,7 +3751,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber992">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1157">source</a></span></span>
     </span>
   </h3>
 
@@ -3807,7 +3795,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber970">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1131">source</a></span></span>
     </span>
   </h3>
 
@@ -3851,14 +3839,15 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber976">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1141">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Emitted as soon as data arrives over tcp connection</p>
+</div>
 
   
 
@@ -3910,7 +3899,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1007">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1172">source</a></span></span>
     </span>
   </h3>
 
@@ -3954,7 +3943,7 @@ Checks if</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber957">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1114">source</a></span></span>
     </span>
   </h3>
 
@@ -4004,6 +3993,50 @@ Will not emit errors on business level</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-onSecureConnect">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">onSecureConnect</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1181">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Emit when connection secured</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-rejectCommandPromise">
     <span class="access" data-ice="access">public</span>
     
@@ -4015,7 +4048,7 @@ Will not emit errors on business level</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber850">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber995">source</a></span></span>
     </span>
   </h3>
 
@@ -4082,7 +4115,7 @@ In this case corresponding promise will be rejected and removed from queue</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber875">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1020">source</a></span></span>
     </span>
   </h3>
 
@@ -4149,7 +4182,7 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber219">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber264">source</a></span></span>
     </span>
   </h3>
 
@@ -4233,14 +4266,15 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber888">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1040">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Subscribes to stream</p>
+</div>
 
   
 
@@ -4316,14 +4350,15 @@ In this case corresponding promise will be resolved with result received from ev
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber920">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/TCPConnection.ts.html#lineNumber1077">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Unsubscribes from stream</p>
+</div>
 
   
 

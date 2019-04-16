@@ -30,6 +30,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "eventstore-ts-client/src/eventstore/position.ts~position",
+    "class/src/eventstore/Position.ts~Position.html",
+    "<span>Position</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/eventstore/Position.ts</span>",
+    "class"
+  ],
+  [
     "eventstore-ts-client/src/stream/stream.ts~stream",
     "class/src/stream/Stream.ts~Stream.html",
     "<span>Stream</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/stream/Stream.ts</span>",
@@ -241,86 +247,104 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber147",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber207",
     "Basic connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber161",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber221",
     "Basic connection test can ping eventstore",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber158",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber218",
     "Basic connection test returns clientId - name of connection",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber5",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber6",
     "Connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber56",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber72",
+    "Connection test can connect to eventstore cluster secure tcp",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber57",
     "Connection test can connect to eventstore cluster unsecure",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber41",
-    "Connection test can connect to eventstore single node to defsult port",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber42",
+    "Connection test can connect to eventstore single node to default port",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber26",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber27",
     "Connection test can connect to eventstore single node unsecure",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber12",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber88",
+    "Connection test can ssl connect to eventstore with cert & strict validation",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber13",
     "Connection test does nothing if not connected",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber112",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber172",
     "Connection test finds cluster node from seed list",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber91",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber151",
     "Connection test finds cluster node over dns",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber71",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber131",
     "Connection test finds cluster node over dns (require master)",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber132",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber192",
     "Connection test it throws on invalid credentials",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber6",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber7",
     "Connection test returns false if not connected",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber19",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber20",
     "Connection test set a logger",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber110",
+    "Connection test throws on invalid secure context",
     "test"
   ],
   [
@@ -355,37 +379,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber59",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber65",
     "Event emit tests appends multiple new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber15",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber16",
     "Event emit tests appends single new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber26",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber32",
     "Event emit tests appends single new event with require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber37",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber43",
     "Event emit tests appends single new event with require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber48",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber54",
     "Event emit tests appends single new event without require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber76",
+    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber82",
     "Event emit tests throws when emitting events already stored in eventstore",
     "test"
   ],
@@ -427,7 +451,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber44",
+    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber45",
     "Eventstore error types ",
     "test"
   ],
@@ -595,182 +619,86 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber3",
+    "Read all events",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber29",
+    "Read all events reads a slice from all events backward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber15",
+    "Read all events reads a slice from all events forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber53",
+    "Read all events throws on access denied (backward)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber43",
+    "Read all events throws on access denied (forward)",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber3",
     "Read events from stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber27",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber28",
     "Read events from stream reads a slice backward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber14",
+    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber15",
     "Read events from stream reads a slice forward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber3",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber3",
     "Read stream basic tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber53",
-    "Read stream basic tests Get stream metadata",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber60",
-    "Read stream basic tests Get stream metadata reads metadata for stream on master node",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber54",
-    "Read stream basic tests Get stream metadata returns null for existing stream with no metadata",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber67",
-    "Read stream basic tests Get stream metadata returns null for not existing stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber71",
-    "Read stream basic tests Get stream metadata throws on metadata stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber14",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber15",
     "Read stream basic tests Read one event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber15",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber16",
     "Read stream basic tests Read one event returns a event by given eventNumber",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber24",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber25",
     "Read stream basic tests Read one event returns a event by given eventNumber from master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber34",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber35",
     "Read stream basic tests Read one event returns first event of stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber43",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber44",
     "Read stream basic tests Read one event returns last event of stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber81",
-    "Read stream basic tests Set stream metadata",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber105",
-    "Read stream basic tests Set stream metadata throws on metadata stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber82",
-    "Read stream basic tests Set stream metadata writes stream metadata",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html#lineNumber93",
-    "Read stream basic tests Set stream metadata writes stream metadata (require master)",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber3",
-    "Stream basic tests",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber58",
-    "Stream basic tests can hard delete a stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber49",
-    "Stream basic tests can soft delete a stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber52",
-    "Stream basic tests can soft delete a stream on master node",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber29",
-    "Stream basic tests returns a stream instance for function atStream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber24",
-    "Stream basic tests returns a stream instance for function fromStream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber19",
-    "Stream basic tests returns a stream instance for function stream",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber14",
-    "Stream basic tests returns a stream name",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber34",
-    "Stream basic tests returns same stream on requiresMaster",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber44",
-    "Stream basic tests returns same stream on resolveAllLinks",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber39",
-    "Stream basic tests returns same stream on withCredentials",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber61",
-    "Stream basic tests throws on delete metastream",
     "test"
   ],
   [
@@ -781,38 +709,200 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber90",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber91",
     "Stream subscription tests logs on error",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber109",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber110",
     "Stream subscription tests receives events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber32",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber72",
+    "Stream subscription tests returns false for not resolve links",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber33",
     "Stream subscription tests returns subscription name",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber52",
-    "Stream subscription tests returns subscription resolve link setting",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber53",
+    "Stream subscription tests returns true for resolve links",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber71",
-    "Stream subscription tests returns true for resolve links flag",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber14",
+    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber15",
     "Stream subscription tests subscribes and unsubscribes to a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber3",
+    "Stream tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber3",
+    "Stream tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber15",
+    "Stream tests Basic tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber60",
+    "Stream tests Basic tests can hard delete a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber51",
+    "Stream tests Basic tests can soft delete a stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber54",
+    "Stream tests Basic tests can soft delete a stream on master node",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber31",
+    "Stream tests Basic tests returns a stream instance for function atStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber26",
+    "Stream tests Basic tests returns a stream instance for function fromStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber21",
+    "Stream tests Basic tests returns a stream instance for function stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber16",
+    "Stream tests Basic tests returns a stream name",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber36",
+    "Stream tests Basic tests returns same stream on requiresMaster",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber46",
+    "Stream tests Basic tests returns same stream on resolveAllLinks",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber41",
+    "Stream tests Basic tests returns same stream on withCredentials",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber63",
+    "Stream tests Basic tests throws on delete metastream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber15",
+    "Stream tests Get stream metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber22",
+    "Stream tests Get stream metadata reads metadata for stream on master node",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber16",
+    "Stream tests Get stream metadata returns null for existing stream with no metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber29",
+    "Stream tests Get stream metadata returns null for not existing stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber42",
+    "Stream tests Get stream metadata throws on invalid access rights",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber33",
+    "Stream tests Get stream metadata throws on metadata stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber55",
+    "Stream tests Set stream metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber84",
+    "Stream tests Set stream metadata throws on metadata stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber56",
+    "Stream tests Set stream metadata writes stream metadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber72",
+    "Stream tests Set stream metadata writes stream metadata (require master)",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber3",
+    "Test position class",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber9",
+    "Test position class creates a new instance from Long",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber4",
+    "Test position class creates a new instance from numbers",
     "test"
   ],
   [
@@ -823,61 +913,61 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber22",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber23",
     "Transaction tests appends events to transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber39",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber40",
     "Transaction tests appends events to transaction requiered master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber14",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber15",
     "Transaction tests creates a new transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber98",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber99",
     "Transaction tests it throws on commiting roled back transactions",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber124",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber125",
     "Transaction tests it throws on invalid transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber136",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber137",
     "Transaction tests it throws on metastreams",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber59",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber60",
     "Transaction tests it throws on re-commiting",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber87",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber88",
     "Transaction tests it throws on writing of already stored events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber73",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber74",
     "Transaction tests it throws on writing to already commited transactions",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber111",
+    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber112",
     "Transaction tests it throws on writing to roled back transactions",
     "test"
   ],
@@ -1620,6 +1710,24 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/eventstore.ts~eventstore#readslice",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSlice",
+    "src/eventstore/Eventstore.ts~Eventstore#readSlice",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#readslicebackward",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceBackward",
+    "src/eventstore/Eventstore.ts~Eventstore#readSliceBackward",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#readsliceforward",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward",
+    "src/eventstore/Eventstore.ts~Eventstore#readSliceForward",
+    "method"
+  ],
+  [
     "src/eventstore/eventstore.ts~eventstore#stream",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-stream",
     "src/eventstore/Eventstore.ts~Eventstore#stream",
@@ -1630,6 +1738,42 @@ window.esdocSearchIndex = [
     "file/src/eventstore/EventstoreSettings.ts.html",
     "src/eventstore/EventstoreSettings.ts",
     "file"
+  ],
+  [
+    "src/eventstore/position.ts",
+    "file/src/eventstore/Position.ts.html",
+    "src/eventstore/Position.ts",
+    "file"
+  ],
+  [
+    "src/eventstore/position.ts~position#commitposition",
+    "class/src/eventstore/Position.ts~Position.html#instance-member-commitPosition",
+    "src/eventstore/Position.ts~Position#commitPosition",
+    "member"
+  ],
+  [
+    "src/eventstore/position.ts~position#constructor",
+    "class/src/eventstore/Position.ts~Position.html#instance-constructor-constructor",
+    "src/eventstore/Position.ts~Position#constructor",
+    "method"
+  ],
+  [
+    "src/eventstore/position.ts~position#prepareposition",
+    "class/src/eventstore/Position.ts~Position.html#instance-member-preparePosition",
+    "src/eventstore/Position.ts~Position#preparePosition",
+    "member"
+  ],
+  [
+    "src/eventstore/position.ts~position.end",
+    "class/src/eventstore/Position.ts~Position.html#static-get-End",
+    "src/eventstore/Position.ts~Position.End",
+    "member"
+  ],
+  [
+    "src/eventstore/position.ts~position.start",
+    "class/src/eventstore/Position.ts~Position.html#static-get-Start",
+    "src/eventstore/Position.ts~Position.Start",
+    "member"
   ],
   [
     "src/eventstore/tcpconnection.ts",
@@ -1731,12 +1875,6 @@ window.esdocSearchIndex = [
     "src/eventstore/tcpconnection.ts~tcpconnection#handlereadstreameventscompleted",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-handleReadStreamEventsCompleted",
     "src/eventstore/TCPConnection.ts~TCPConnection#handleReadStreamEventsCompleted",
-    "method"
-  ],
-  [
-    "src/eventstore/tcpconnection.ts~tcpconnection#handlescavengedatabaseresponse",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-handleScavengeDatabaseResponse",
-    "src/eventstore/TCPConnection.ts~TCPConnection#handleScavengeDatabaseResponse",
     "method"
   ],
   [
@@ -1878,6 +2016,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/tcpconnection.ts~tcpconnection#onsecureconnect",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-onSecureConnect",
+    "src/eventstore/TCPConnection.ts~TCPConnection#onSecureConnect",
+    "method"
+  ],
+  [
     "src/eventstore/tcpconnection.ts~tcpconnection#pendingrequests",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-pendingRequests",
     "src/eventstore/TCPConnection.ts~TCPConnection#pendingRequests",
@@ -1986,12 +2130,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/stream/stream.ts~stream#aggregate",
-    "class/src/stream/Stream.ts~Stream.html#instance-method-aggregate",
-    "src/stream/Stream.ts~Stream#aggregate",
-    "method"
-  ],
-  [
     "src/stream/stream.ts~stream#append",
     "class/src/stream/Stream.ts~Stream.html#instance-method-append",
     "src/stream/Stream.ts~Stream#append",
@@ -2001,12 +2139,6 @@ window.esdocSearchIndex = [
     "src/stream/stream.ts~stream#appendevents",
     "class/src/stream/Stream.ts~Stream.html#instance-method-appendEvents",
     "src/stream/Stream.ts~Stream#appendEvents",
-    "method"
-  ],
-  [
-    "src/stream/stream.ts~stream#catchupsubscribe",
-    "class/src/stream/Stream.ts~Stream.html#instance-method-catchupSubscribe",
-    "src/stream/Stream.ts~Stream#catchupSubscribe",
     "method"
   ],
   [
@@ -2046,21 +2178,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stream/stream.ts~stream#getfirsteventof",
-    "class/src/stream/Stream.ts~Stream.html#instance-method-getFirstEventOf",
-    "src/stream/Stream.ts~Stream#getFirstEventOf",
-    "method"
-  ],
-  [
     "src/stream/stream.ts~stream#getlastevent",
     "class/src/stream/Stream.ts~Stream.html#instance-method-getLastEvent",
     "src/stream/Stream.ts~Stream#getLastEvent",
-    "method"
-  ],
-  [
-    "src/stream/stream.ts~stream#getlasteventof",
-    "class/src/stream/Stream.ts~Stream.html#instance-method-getLastEventOf",
-    "src/stream/Stream.ts~Stream#getLastEventOf",
     "method"
   ],
   [
@@ -2352,12 +2472,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/subscription/subscription.ts~subscription#commitposition",
-    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-commitPosition",
-    "src/subscription/Subscription.ts~Subscription#commitPosition",
-    "member"
-  ],
-  [
     "src/subscription/subscription.ts~subscription#constructor",
     "class/src/subscription/Subscription.ts~Subscription.html#instance-constructor-constructor",
     "src/subscription/Subscription.ts~Subscription#constructor",
@@ -2430,9 +2544,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/subscription/subscription.ts~subscription#prepareposition",
-    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-preparePosition",
-    "src/subscription/Subscription.ts~Subscription#preparePosition",
+    "src/subscription/subscription.ts~subscription#position",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-member-position",
+    "src/subscription/Subscription.ts~Subscription#position",
     "member"
   ],
   [
@@ -2478,15 +2592,27 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/integrationtests/1_eventstore/2_readallevents.test.ts",
+    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html",
+    "test/integrationTests/1_eventstore/2_readAllEvents.test.ts",
+    "testFile"
+  ],
+  [
     "test/integrationtests/2_stream/1_stream.test.ts",
     "test-file/test/integrationTests/2_stream/1_stream.test.ts.html",
     "test/integrationTests/2_stream/1_stream.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/2_readstreambasic.test.ts",
-    "test-file/test/integrationTests/2_stream/2_readStreamBasic.test.ts.html",
-    "test/integrationTests/2_stream/2_readStreamBasic.test.ts",
+    "test/integrationtests/2_stream/2_streammetadata.test.ts",
+    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html",
+    "test/integrationTests/2_stream/2_streamMetadata.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/2_stream/3_readstreambasic.test.ts",
+    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html",
+    "test/integrationTests/2_stream/3_readStreamBasic.test.ts",
     "testFile"
   ],
   [
@@ -2523,6 +2649,12 @@ window.esdocSearchIndex = [
     "test/unittests/1_eventstore/getconnectioninfo.test.ts",
     "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html",
     "test/unitTests/1_eventstore/getConnectionInfo.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/position.test.ts",
+    "test-file/test/unitTests/1_eventstore/position.test.ts.html",
+    "test/unitTests/1_eventstore/position.test.ts",
     "testFile"
   ],
   [

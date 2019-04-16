@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -76,14 +77,18 @@
 <div class="content" data-ice="content"><h1 data-ice="title">src/eventstore/EventstoreSettings.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as bunyan from &apos;bunyan&apos;
 import uuid = require(&apos;uuid/v4&apos;)
+import * as tls from &apos;tls&apos;
 
+/** typescript interface for user credentials */
 export interface UserCredentials {
   username: string
   password: string
 }
+/** typescript interface for settings */
 export interface EventstoreSettings {
   uri: string
   useSSL: boolean
+  secureContext: null | tls.SecureContextOptions
   useHttps: boolean
   host: string
   port: number
@@ -94,6 +99,7 @@ export interface EventstoreSettings {
   maxQueueSize: number
   maxConcurrentItems: number
   maxRetries: number
+  connectTimeout: number
   maxReconnections: number
   reconnectionDelay: number
   operationTimeout: number
@@ -109,6 +115,7 @@ export interface EventstoreSettings {
   clientId: string
 }
 
+/** default eventstore connection settings */
 const defaultConnectionSettings: EventstoreSettings = {
   uri: &apos;tcp://admin@changeit@127.0.0.1:1113&apos;,
   requireMaster: true,
@@ -120,9 +127,11 @@ const defaultConnectionSettings: EventstoreSettings = {
   gossipSeeds: [],
 
   useSSL: false, //use tcp encrypted?
+  secureContext: null,
   useHttps: false, //fetch gossip info over https?
   validateServer: false,
 
+  connectTimeout: 1000,
   maxReconnections: 10,
   reconnectionDelay: 100,
 

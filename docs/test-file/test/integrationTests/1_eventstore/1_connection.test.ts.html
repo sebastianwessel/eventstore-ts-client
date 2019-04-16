@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -78,6 +79,7 @@
 import {Eventstore} from &apos;../../../src&apos;
 import * as assert from &apos;assert&apos;
 import * as bunyan from &apos;bunyan&apos;
+import * as fs from &apos;fs&apos;
 
 describe(&apos;Connection test&apos;, (): void =&gt; {
   it(&apos;returns false if not connected&apos;, async (): Promise&lt;void&gt; =&gt; {
@@ -118,7 +120,7 @@ describe(&apos;Connection test&apos;, (): void =&gt; {
     expect(es.isConnected).not.to.true
   })
 
-  it(&apos;can connect to eventstore single node to defsult port&apos;, async (): Promise&lt;void&gt; =&gt; {
+  it(&apos;can connect to eventstore single node to default port&apos;, async (): Promise&lt;void&gt; =&gt; {
     const es = new Eventstore({
       uri: &apos;tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net&apos;
     })
@@ -144,6 +146,65 @@ describe(&apos;Connection test&apos;, (): void =&gt; {
       assert.ok(&apos;disconnects&apos;)
     } catch (err) {
       assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;can connect to eventstore cluster secure tcp&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+      useSSL: true
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;can ssl connect to eventstore with cert &amp; strict validation&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@escluster.net:2112&apos;,
+      useSSL: true,
+      validateServer: true,
+      secureContext: {
+        ca: fs.readFileSync(&apos;./test/integrationTests/testSetup/rootCA.crt&apos;),
+        key: fs.readFileSync(&apos;./test/integrationTests/testSetup/domain.key&apos;),
+        cert: fs.readFileSync(&apos;./test/integrationTests/testSetup/domain.crt&apos;)
+      }
+    })
+    try {
+      await es.connect()
+      assert.ok(&apos;connected&apos;)
+      await es.disconnect()
+      assert.ok(&apos;disconnects&apos;)
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it(&apos;throws on invalid secure context&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const es = new Eventstore({
+      uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@escluster.net:2112&apos;,
+      useSSL: true,
+      validateServer: true,
+      secureContext: {
+        ca: fs.readFileSync(&apos;./test/integrationTests/testSetup/rootCA.crt&apos;),
+        key: fs.readFileSync(&apos;./test/integrationTests/testSetup/invalid.key&apos;),
+        cert: fs.readFileSync(&apos;./test/integrationTests/testSetup/domain.crt&apos;)
+      }
+    })
+    try {
+      await es.connect()
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreConnectionError&apos;)
+      assert.ok(&apos;has thrown&apos;)
     }
     expect(es.isConnected).not.to.true
   })

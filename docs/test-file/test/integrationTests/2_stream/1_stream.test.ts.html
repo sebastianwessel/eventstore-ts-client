@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -76,10 +77,12 @@
 <div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/2_stream/1_stream.test.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {expect} from &apos;chai&apos;
 import {Eventstore} from &apos;../../../src&apos;
-describe(&apos;Stream basic tests&apos;, (): void =&gt; {
+
+describe(&apos;Stream tests&apos;, (): void =&gt; {
   const es = new Eventstore({
     uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
-    clientId: &apos;ts-client-test&apos;
+    clientId: &apos;ts-client-test&apos;,
+    useSSL: true
   })
   before(
     async (): Promise&lt;void&gt; =&gt; {
@@ -93,69 +96,71 @@ describe(&apos;Stream basic tests&apos;, (): void =&gt; {
     }
   )
 
-  it(&apos;returns a stream name&apos;, (): void =&gt; {
-    const stream = es.stream(&apos;hola&apos;)
-    expect(stream.name).not.to.be.undefined
-    expect(stream.name).not.to.be.null
-  })
+  describe(&apos;Basic tests&apos;, async (): Promise&lt;void&gt; =&gt; {
+    it(&apos;returns a stream name&apos;, (): void =&gt; {
+      const stream = es.stream(&apos;hola&apos;)
+      expect(stream.name).not.to.be.undefined
+      expect(stream.name).not.to.be.null
+    })
 
-  it(&apos;returns a stream instance for function stream&apos;, (): void =&gt; {
-    const stream = es.stream(&apos;hola&apos;)
-    expect(stream).not.to.be.undefined
-    expect(stream).not.to.be.null
-  })
+    it(&apos;returns a stream instance for function stream&apos;, (): void =&gt; {
+      const stream = es.stream(&apos;hola&apos;)
+      expect(stream).not.to.be.undefined
+      expect(stream).not.to.be.null
+    })
 
-  it(&apos;returns a stream instance for function fromStream&apos;, (): void =&gt; {
-    const stream = es.fromStream(&apos;hola&apos;)
-    expect(stream).not.to.be.undefined
-    expect(stream).not.to.be.null
-  })
+    it(&apos;returns a stream instance for function fromStream&apos;, (): void =&gt; {
+      const stream = es.fromStream(&apos;hola&apos;)
+      expect(stream).not.to.be.undefined
+      expect(stream).not.to.be.null
+    })
 
-  it(&apos;returns a stream instance for function atStream&apos;, (): void =&gt; {
-    const stream = es.fromStream(&apos;hola&apos;)
-    expect(stream).not.to.be.undefined
-    expect(stream).not.to.be.null
-  })
+    it(&apos;returns a stream instance for function atStream&apos;, (): void =&gt; {
+      const stream = es.fromStream(&apos;hola&apos;)
+      expect(stream).not.to.be.undefined
+      expect(stream).not.to.be.null
+    })
 
-  it(&apos;returns same stream on requiresMaster&apos;, (): void =&gt; {
-    const stream = es.stream(&apos;hola&apos;)
-    const result = stream.requiresMaster()
-    expect(stream).to.be.equal(result)
-  })
+    it(&apos;returns same stream on requiresMaster&apos;, (): void =&gt; {
+      const stream = es.stream(&apos;hola&apos;)
+      const result = stream.requiresMaster()
+      expect(stream).to.be.equal(result)
+    })
 
-  it(&apos;returns same stream on withCredentials&apos;, (): void =&gt; {
-    const stream = es.stream(&apos;hola&apos;)
-    const result = stream.withCredentials({username: &apos;otheruser&apos;, password: &apos;otherpassword&apos;})
-    expect(stream).to.be.equal(result)
-  })
+    it(&apos;returns same stream on withCredentials&apos;, (): void =&gt; {
+      const stream = es.stream(&apos;hola&apos;)
+      const result = stream.withCredentials({username: &apos;otheruser&apos;, password: &apos;otherpassword&apos;})
+      expect(stream).to.be.equal(result)
+    })
 
-  it(&apos;returns same stream on resolveAllLinks&apos;, (): void =&gt; {
-    const stream = es.stream(&apos;hola&apos;)
-    const result = stream.resolveAllLinks()
-    expect(stream).to.be.equal(result)
-  })
+    it(&apos;returns same stream on resolveAllLinks&apos;, (): void =&gt; {
+      const stream = es.stream(&apos;hola&apos;)
+      const result = stream.resolveAllLinks()
+      expect(stream).to.be.equal(result)
+    })
 
-  it(&apos;can soft delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
-    await es.stream(&apos;streamtosoftdelete-773f2fc6-ed4b-4f37-9b5b-4d737b181ac3&apos;).softDelete()
-  })
+    it(&apos;can soft delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
+      await es.stream(&apos;streamtosoftdelete-773f2fc6-ed4b-4f37-9b5b-4d737b181ac3&apos;).softDelete()
+    })
 
-  it(&apos;can soft delete a stream on master node&apos;, async (): Promise&lt;void&gt; =&gt; {
-    await es
-      .stream(&apos;streamtosoftdeletemaster-5784a6cc-0559-45b1-8432-31535707c140&apos;)
-      .requiresMaster()
-      .softDelete()
-  })
+    it(&apos;can soft delete a stream on master node&apos;, async (): Promise&lt;void&gt; =&gt; {
+      await es
+        .stream(&apos;streamtosoftdeletemaster-5784a6cc-0559-45b1-8432-31535707c140&apos;)
+        .requiresMaster()
+        .softDelete()
+    })
 
-  it(&apos;can hard delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
-    await es.stream(&apos;streamtoharddelete-1d772e21-f670-4493-8d72-cb9ab1d03edb&apos;).hardDelete()
-  })
+    it(&apos;can hard delete a stream&apos;, async (): Promise&lt;void&gt; =&gt; {
+      await es.stream(&apos;streamtoharddelete-1d772e21-f670-4493-8d72-cb9ab1d03edb&apos;).hardDelete()
+    })
 
-  it(&apos;throws on delete metastream&apos;, async (): Promise&lt;void&gt; =&gt; {
-    try {
-      await es.stream(&apos;$$streamtosoftdelete&apos;).softDelete()
-    } catch (err) {
-      expect(err.name).to.be.equal(&apos;EventstoreBadRequestError&apos;)
-    }
+    it(&apos;throws on delete metastream&apos;, async (): Promise&lt;void&gt; =&gt; {
+      try {
+        await es.stream(&apos;$$streamtosoftdelete&apos;).softDelete()
+      } catch (err) {
+        expect(err.name).to.be.equal(&apos;EventstoreBadRequestError&apos;)
+      }
+    })
   })
 })
 </code></pre>
