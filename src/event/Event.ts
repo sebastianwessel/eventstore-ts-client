@@ -12,8 +12,8 @@ export class Event {
   public eventNumber: Long | number | null = null
   protected eventId: string = uuid()
   protected eventType: string
-  protected dataContentType: number | null = null
-  protected metadataContentType: number | null = null
+  protected dataContentType: number | null = 1
+  protected metadataContentType: number | null = 1
   protected rawData: Uint8Array | null = null
   protected rawMetadata: Uint8Array | null = null
   protected objectData: {[k: string]: JSONValue} | null = null
@@ -255,10 +255,9 @@ export class Event {
     const newEvent = {
       eventId: uuidToBuffer(this.eventId),
       eventType: this.eventType,
-      data: this.data,
-      metadata: this.metadata
+      data: Buffer.from(JSON.stringify(this.data)),
+      metadata: this.metadata ? Buffer.from(JSON.stringify(this.metadata)) : null
     }
-
     return protobuf.NewEvent.fromObject(newEvent)
   }
 
