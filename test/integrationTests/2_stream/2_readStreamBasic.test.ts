@@ -98,11 +98,16 @@ describe('Read stream basic tests', (): void => {
 
   describe('Set stream metadata', async (): Promise<void> => {
     it('writes stream metadata', async (): Promise<void> => {
+      const testData = {foo: 'bar'}
       try {
         await es
           .stream('teneventsstream-ad44caa8-d701-48f2-ac1e-2ec147ff1df5')
-          .setMetadata({foo: 'bar'})
+          .setMetadata(testData)
         assert.ok('has written')
+        const result = await es
+          .stream('teneventsstream-ad44caa8-d701-48f2-ac1e-2ec147ff1df5')
+          .getMetadata()
+        assert.strictEqual(JSON.stringify(result), JSON.stringify(testData))
       } catch (err) {
         assert.fail(err)
       }

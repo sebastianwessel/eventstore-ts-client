@@ -21,11 +21,14 @@ describe('Event emit tests', (): void => {
   )
 
   it('appends single new event', async (): Promise<void> => {
-    const newEvent = new Event('SingleEventWritten')
+    const eventData = {some: 'fancy', data: 1}
+    const newEvent = new Event('SingleEventWritten', eventData)
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvent)
       expect(newEvent.isNew()).to.be.false
+      const confirm = await stream.getFirstEvent()
+      expect(JSON.stringify(confirm.data)).to.be.equal(JSON.stringify(eventData))
     } catch (err) {
       assert.fail(err)
     }
