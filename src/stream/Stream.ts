@@ -76,17 +76,6 @@ export class Stream {
   }
 
   /**
-   * Return current logger instance
-   *
-   * @readonly
-   * @type {bunyan}
-   * @memberof Stream
-   */
-  public get logger(): bunyan {
-    return this.log
-  }
-
-  /**
    * Enforces to use master node for any read/write operation
    *
    * @returns {Stream}
