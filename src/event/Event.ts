@@ -267,7 +267,7 @@ export class Event {
    * @memberof Event
    */
   public set name(newName: string) {
-    this.throwIfNotNewEvent('causationId')
+    this.throwIfNotNewEvent('name')
     this.eventType = newName
   }
 
