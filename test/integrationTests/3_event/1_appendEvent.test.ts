@@ -5,7 +5,8 @@ import * as assert from 'assert'
 describe('Event emit tests', (): void => {
   const es = new Eventstore({
     uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
-    clientId: 'ts-client-test'
+    clientId: 'ts-client-test',
+    useSSL: true
   })
   before(
     async (): Promise<void> => {
@@ -20,11 +21,16 @@ describe('Event emit tests', (): void => {
   )
 
   it('appends single new event', async (): Promise<void> => {
-    const newEvent = new Event('SingleEventWritten')
+    const eventData = {some: 'fancy', data: 1}
+    const metaData = {meta: 'data', foo: 2}
+    const newEvent = new Event('SingleEventWritten', eventData, metaData)
     const stream = await es.stream('testemitstream')
     try {
       await stream.append(newEvent)
       expect(newEvent.isNew()).to.be.false
+      const confirm = await stream.getFirstEvent()
+      expect(JSON.stringify(confirm.data)).to.be.equal(JSON.stringify(eventData))
+      expect(JSON.stringify(confirm.metadata)).to.be.equal(JSON.stringify(metaData))
     } catch (err) {
       assert.fail(err)
     }

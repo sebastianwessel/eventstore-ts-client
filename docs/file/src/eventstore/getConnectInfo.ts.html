@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -82,6 +83,11 @@ import {JSONValue} from &apos;../JSON&apos;
 import {URL} from &apos;url&apos;
 import {EventstoreSettings} from &apos;./EventstoreSettings&apos;
 
+/**
+ * dns lookup for given domain and returns list of corresponding ip&apos;s
+ * @param dnsServer
+ * @param log
+ */
 export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise&lt;string[]&gt; =&gt; {
   const lookup = util.promisify(dns.lookup)
   const dnsOptions = {
@@ -108,6 +114,15 @@ export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise&
   return ipList
 }
 
+/**
+ * tries to fetch gossip json information from given ip and port
+ *
+ * @param host
+ * @param port
+ * @param useHttps
+ * @param timeout
+ * @param log
+ */
 export const fetchgossipJson = async (
   host: string,
   port: number,
@@ -141,6 +156,10 @@ export const fetchgossipJson = async (
   return gossipInfo
 }
 
+/**
+ * Searches for master node inside of gossip json
+ * @param gossipInfo
+ */
 export const getMasterNodeInfo = (
   gossipInfo: JSONValue &amp; {
     members: {
@@ -168,6 +187,10 @@ export const getMasterNodeInfo = (
   return nodeInfo
 }
 
+/**
+ * Gets a random cluster node from gossip json
+ * @param gossipInfo
+ */
 export const getRandomNodeInfo = (
   gossipInfo: JSONValue &amp; {
     members: {
@@ -199,6 +222,11 @@ export const getRandomNodeInfo = (
   return nodeInfo
 }
 
+/**
+ * Updates connection informations depending on given settings
+ * @param currentSettings
+ * @param log
+ */
 export const getIpAndPort = async (
   currentSettings: EventstoreSettings,
   log: bunyan

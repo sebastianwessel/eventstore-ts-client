@@ -2,6 +2,7 @@ import {expect} from 'chai'
 import {Eventstore} from '../../../src'
 import * as assert from 'assert'
 import * as bunyan from 'bunyan'
+import * as fs from 'fs'
 
 describe('Connection test', (): void => {
   it('returns false if not connected', async (): Promise<void> => {
@@ -42,7 +43,7 @@ describe('Connection test', (): void => {
     expect(es.isConnected).not.to.true
   })
 
-  it('can connect to eventstore single node to defsult port', async (): Promise<void> => {
+  it('can connect to eventstore single node to default port', async (): Promise<void> => {
     const es = new Eventstore({
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net'
     })
@@ -68,6 +69,65 @@ describe('Connection test', (): void => {
       assert.ok('disconnects')
     } catch (err) {
       assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it('can connect to eventstore cluster secure tcp', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
+      useSSL: true
+    })
+    try {
+      await es.connect()
+      assert.ok('connected')
+      await es.disconnect()
+      assert.ok('disconnects')
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it('can ssl connect to eventstore with cert & strict validation', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'discover://restrictedUser:restrictedOnlyUserPassword@escluster.net:2112',
+      useSSL: true,
+      validateServer: true,
+      secureContext: {
+        ca: fs.readFileSync('./test/integrationTests/testSetup/rootCA.crt'),
+        key: fs.readFileSync('./test/integrationTests/testSetup/domain.key'),
+        cert: fs.readFileSync('./test/integrationTests/testSetup/domain.crt')
+      }
+    })
+    try {
+      await es.connect()
+      assert.ok('connected')
+      await es.disconnect()
+      assert.ok('disconnects')
+    } catch (err) {
+      assert.fail(err)
+    }
+    expect(es.isConnected).not.to.true
+  })
+
+  it('throws on invalid secure context', async (): Promise<void> => {
+    const es = new Eventstore({
+      uri: 'discover://restrictedUser:restrictedOnlyUserPassword@escluster.net:2112',
+      useSSL: true,
+      validateServer: true,
+      secureContext: {
+        ca: fs.readFileSync('./test/integrationTests/testSetup/rootCA.crt'),
+        key: fs.readFileSync('./test/integrationTests/testSetup/invalid.key'),
+        cert: fs.readFileSync('./test/integrationTests/testSetup/domain.crt')
+      }
+    })
+    try {
+      await es.connect()
+      assert.fail('has not thrown')
+    } catch (err) {
+      assert.strictEqual(err.name, 'EventstoreConnectionError')
+      assert.ok('has thrown')
     }
     expect(es.isConnected).not.to.true
   })

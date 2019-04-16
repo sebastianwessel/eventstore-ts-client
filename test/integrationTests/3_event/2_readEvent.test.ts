@@ -4,7 +4,8 @@ import * as assert from 'assert'
 describe('Read events from stream', (): void => {
   const es = new Eventstore({
     uri: 'discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112',
-    clientId: 'ts-client-test'
+    clientId: 'ts-client-test',
+    useSSL: true
   })
   before(
     async (): Promise<void> => {

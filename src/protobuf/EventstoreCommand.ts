@@ -1,3 +1,4 @@
+/** List of possible eventstore command/response flags */
 export enum EventstoreCommand {
   HeartbeatRequestCommand = 0x01,
   HeartbeatResponseCommand = 0x02,

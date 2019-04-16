@@ -47,6 +47,7 @@ describe('Eventstore error types', (): void => {
     'UnspecificError',
     'ImplementationError',
     'DoesNotExistError',
+    'AlreadyExistError',
     'TimeoutError',
     'OperationError'
   ]

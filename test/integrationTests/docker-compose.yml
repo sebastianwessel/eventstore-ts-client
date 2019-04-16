@@ -3,16 +3,19 @@ version: "3"
 services:
 
   eventstore1:
-   image: eventstore/eventstore:latest
+   image: sebastianwessel/eventstore-secure:latest
    env_file:
      - common-variables.env
    environment:
      - EVENTSTORE_CLUSTER_DNS=escluster.net
      - EVENTSTORE_EXT_HTTP_PORT=2113
      - EVENTSTORE_EXT_TCP_PORT=1113
+     - EVENTSTORE_EXT_SECURE_TCP_PORT=1115
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2113/
      - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.2
+     - EVENTSTORE_CERTIFICATE_FILE=/sslcerts/domain.p12
    ports:
+     - 1115:1115
      - 1113:1113
      - 2113:2113
    restart: always
@@ -20,6 +23,8 @@ services:
       test: ["CMD-SHELL", "curl -sf http://localhost:2113/stats || exit 1"]
       interval: 5s
       timeout: 2s
+   volumes:
+      - ./testSetup:/sslcerts:ro
    networks:
      clusternetwork:
        ipv4_address: 172.22.0.2
@@ -28,16 +33,19 @@ services:
         - cluster1.escluster.net
        
   eventstore2:
-   image: eventstore/eventstore:latest
+   image: sebastianwessel/eventstore-secure:latest
    env_file:
      - common-variables.env
    environment:
      - EVENTSTORE_CLUSTER_DNS=escluster.net
      - EVENTSTORE_EXT_HTTP_PORT=2123
      - EVENTSTORE_EXT_TCP_PORT=1123
+     - EVENTSTORE_EXT_SECURE_TCP_PORT=1125
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2123/
      - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.3
+     - EVENTSTORE_CERTIFICATE_FILE=/sslcerts/domain.p12
    ports:
+     - 1125:1125
      - 1123:1123
      - 2123:2123
    restart: always
@@ -45,6 +53,8 @@ services:
       test: ["CMD-SHELL", "curl -sf http://localhost:2123/stats || exit 1"]
       interval: 5s
       timeout: 2s
+   volumes:
+      - ./testSetup:/sslcerts:ro
    networks:
      clusternetwork:
        ipv4_address: 172.22.0.3
@@ -53,16 +63,19 @@ services:
         - cluster2.escluster.net
    
   eventstore3:
-   image: eventstore/eventstore:latest
+   image: sebastianwessel/eventstore-secure:latest
    env_file:
      - common-variables.env
    environment:
      - EVENTSTORE_CLUSTER_DNS=escluster.net
      - EVENTSTORE_EXT_HTTP_PORT=2133
      - EVENTSTORE_EXT_TCP_PORT=1133
+     - EVENTSTORE_EXT_SECURE_TCP_PORT=1135
      - EVENTSTORE_EXT_HTTP_PREFIXES=http://*:2133/
      - EVENTSTORE_EXT_IP_ADVERTISE_AS=172.22.0.4
+     - EVENTSTORE_CERTIFICATE_FILE=/sslcerts/domain.p12
    ports:
+     - 1135:1135
      - 1133:1133
      - 2133:2133
    restart: always
@@ -70,6 +83,8 @@ services:
       test: ["CMD-SHELL", "curl -sf http://localhost:2133/stats || exit 1"]
       interval: 5s
       timeout: 2s
+   volumes:
+      - ./testSetup:/sslcerts:ro
    networks:
      clusternetwork:
        ipv4_address: 172.22.0.4

@@ -1,12 +1,16 @@
 import {StreamPosition} from '../stream/StreamPosition'
 import Long = require('long')
 
+/** constant definition of consumer strategies */
 export const SystemConsumerStrategies = {
   DispatchToSingle: 'DispatchToSingle',
   RoundRobin: 'RoundRobin',
   Pinned: 'Pinned'
 }
 
+/**
+ * typescript interface for Persitent subscription config
+ */
 export interface PersitentSubscriptionConfig {
   resolveLinkTos: boolean
   startFrom: Long | number
@@ -23,6 +27,7 @@ export interface PersitentSubscriptionConfig {
   consumerStrategy: string
 }
 
+/** default persitent subscription config */
 const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
@@ -39,6 +44,10 @@ const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
   consumerStrategy: SystemConsumerStrategies.RoundRobin
 }
 
+/**
+ * merges given settings with default settings
+ * @param customSettings
+ */
 let setPersitentSubscriptionConfig = (
   customSettings: object | PersitentSubscriptionConfig
 ): PersitentSubscriptionConfig => {

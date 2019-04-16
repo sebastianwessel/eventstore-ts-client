@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -78,9 +79,19 @@
 import {UserCredentials, Eventstore} from &apos;../eventstore&apos;
 import {EventEmitter} from &apos;events&apos;
 
+/**
+ * Represents a persistent subscription
+ *
+ * @export
+ * @class PersitentSubscription
+ * @extends {EventEmitter}
+ */
 export class PersitentSubscription extends EventEmitter {
+  /** corresponding stream  */
   protected stream: Stream
+  /** connection to use */
   protected esConnection: Eventstore
+  /** name of subscription */
   protected subscriptionGroupName: string
 
   /**
@@ -97,10 +108,25 @@ export class PersitentSubscription extends EventEmitter {
     this.subscriptionGroupName = subscriptionGroupName
   }
 
+  /**
+   * Connects persitent subscription
+   * @param [credentials]
+   * @returns connect
+   */
   public async connect(credentials?: UserCredentials): Promise&lt;void&gt; {}
 
+  /**
+   * Deletes persitent subscription
+   * @param [credentials]
+   * @returns delete
+   */
   public async delete(credentials?: UserCredentials): Promise&lt;void&gt; {}
 
+  /**
+   * Updates persitent subscription
+   * @param [credentials]
+   * @returns update
+   */
   public async update(credentials?: UserCredentials): Promise&lt;void&gt; {}
 }
 </code></pre>

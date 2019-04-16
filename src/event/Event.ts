@@ -7,29 +7,56 @@ import {JSONValue} from '../JSON'
 
 const protobuf = model.eventstore.proto
 
+/**
+ * Represents a single event
+ *
+ * @export
+ * @class Event
+ */
 export class Event {
+  /** streamId */
   public streamId: string | null = null
+  /** event number in stream */
   public eventNumber: Long | number | null = null
+  /** unique event uuid4 */
   protected eventId: string = uuid()
+  /** eventtype = name of event */
   protected eventType: string
-  protected dataContentType: number | null = null
-  protected metadataContentType: number | null = null
+  /** flag if data is type of json */
+  protected dataContentType: number = 1
+  /** flag if metadata is type of json */
+  protected metadataContentType: number = 1
+  /** raw buffer representation of data */
   protected rawData: Uint8Array | null = null
+  /** raw buffer representation of metadata */
   protected rawMetadata: Uint8Array | null = null
+  /** js object  representation of data */
   protected objectData: {[k: string]: JSONValue} | null = null
+  /** js object  representation of metadata */
   protected objectMetadata:
     | {
         $correlationId?: string
         $causationId?: string
       } & {[k: string]: JSONValue}
     | null = null
+  /** creation date as timestamp */
   protected objectCreated: number | Long | null = null
+  /** creation date as timestamp */
   protected objectCreatedEpoch: number | Long | null = null
+  /** events correlation uuid4 */
   protected objectCorrelationId: string | null = null
+  /** events causation uuid4 */
   protected objectCausationId: string | null = null
-
+  /** indicates if event was written to eventstore */
   protected frozen: boolean = false
 
+  /**
+   *Creates an instance of Event.
+   * @param {string} eventType
+   * @param {{}} [data]
+   * @param {{}} [metadata]
+   * @memberof Event
+   */
   public constructor(eventType: string, data?: {}, metadata?: {}) {
     this.eventType = eventType
     this.objectData = data ? data : null
@@ -255,10 +282,9 @@ export class Event {
     const newEvent = {
       eventId: uuidToBuffer(this.eventId),
       eventType: this.eventType,
-      data: this.data,
-      metadata: this.metadata
+      data: Buffer.from(JSON.stringify(this.data)),
+      metadata: this.metadata ? Buffer.from(JSON.stringify(this.metadata)) : null
     }
-
     return protobuf.NewEvent.fromObject(newEvent)
   }
 
@@ -268,7 +294,7 @@ export class Event {
    * @memberof Event
    */
   public set name(newName: string) {
-    this.throwIfNotNewEvent('causationId')
+    this.throwIfNotNewEvent('name')
     this.eventType = newName
   }
 

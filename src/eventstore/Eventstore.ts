@@ -1,11 +1,13 @@
-import {setConnectionSettings, EventstoreSettings} from './EventstoreSettings'
+import {setConnectionSettings, EventstoreSettings, UserCredentials} from './EventstoreSettings'
 import {EventEmitter} from 'events'
 import {Stream, StreamOptions} from '../stream'
 import * as bunyan from 'bunyan'
 import {TCPConnection} from './TCPConnection'
 import uuid = require('uuid/v4')
+import Long = require('long')
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
+import {Position} from './Position'
 
 const protobuf = model.eventstore.proto
 
@@ -17,8 +19,11 @@ const protobuf = model.eventstore.proto
  * @extends {EventEmitter}
  */
 export class Eventstore extends EventEmitter {
+  /** connection config */
   protected connectionConfig: EventstoreSettings
-  protected log: bunyan
+  /** logger */
+  public log: bunyan
+  /** connection base */
   protected connection: TCPConnection
 
   /**
@@ -85,11 +90,8 @@ export class Eventstore extends EventEmitter {
    * @returns {Promise<void>}
    * @memberof Eventstore
    */
-  public async disconnect(): Promise<void> {
-    if (!this.connection || !this.isConnected) {
-      return
-    }
-    await this.connection.disconnect()
+  public disconnect(): Promise<void> {
+    return this.connection.disconnect()
   }
 
   /**
@@ -100,9 +102,6 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   public get isConnected(): boolean {
-    if (!this.connection) {
-      return false
-    }
     return this.connection.isConnected
   }
 
@@ -227,6 +226,13 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Authenticate with credentials from settings
+   *
+   * @protected
+   * @returns {Promise<void>}
+   * @memberof Eventstore
+   */
   protected async authenticate(): Promise<void> {
     await new Promise(
       (resolve, reject): void => {
@@ -245,11 +251,129 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Called from event listener connected to 'error'
+   *
+   * @protected
+   * @param {Error} err
+   * @memberof Eventstore
+   */
   protected onError(err: Error): void {
     this.log.error({err}, err.name)
   }
-  /*
 
-  public scavengeDatabase(): Promise<void> {}
+  /**
+   * Reads a slice of events from current stream
+   *
+   * @protected
+   * @param {EventstoreCommand} direction
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} requireMaster
+   * @param {(UserCredentials | null)} credentials
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
+  protected async readSlice(
+    direction: EventstoreCommand,
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster: boolean,
+    credentials: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.ReadAllEvents.fromObject({
+          commitPosition: position.commitPosition,
+          preparePosition: position.preparePosition,
+          maxCount,
+          resolveLinkTos,
+          requireMaster
+        })
+        this.connection.sendCommand(
+          uuid(),
+          direction,
+          Buffer.from(protobuf.ReadAllEvents.encode(raw).finish()),
+          credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  /**
+   * Reads a slice from current stream in forward direction
+   *
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
+  public async readSliceForward(
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadAllEventsForward,
+      position,
+      maxCount,
+      resolveLinkTos,
+      requireMaster || this.connectionConfig.requireMaster,
+      credentials || this.connectionConfig.credentials
+    )
+  }
+
+  /**
+   * Reads a slice from current stream in backward direction
+   *
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
+  public async readSliceBackward(
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadAllEventsBackward,
+      position,
+      maxCount,
+      resolveLinkTos,
+      requireMaster || this.connectionConfig.requireMaster,
+      credentials || this.connectionConfig.credentials
+    )
+  }
+
+  /*
+  Commented out because it seems that eventstore currently doesn't support this over tcp atm
+  public async scavengeDatabase(credentials?: UserCredentials): Promise<void> {
+    await new Promise(
+      (resolve, reject): void => {
+        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        this.connection.sendCommand(uuid(), EventstoreCommand.ScavengeDatabase, null, credentials, {
+          resolve,
+          reject
+        })
+      }
+    )
+  }
   */
 }

@@ -53,6 +53,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
@@ -92,12 +93,19 @@ const protobuf = model.eventstore.proto
  * @class Transaction
  */
 export class Transaction {
+  /** id of transaction */
   protected transactionId: Long
+  /** corresponding stream */
   protected stream: Stream
+  /** current connection */
   protected esConnection: Eventstore
+  /** indicates if transaction is commited */
   protected commited: boolean = false
+  /** indicates if transaction is roled back */
   protected roledBack: boolean = false
+  /** indicates if transaction needs master node */
   protected requireMaster: boolean
+  /** credentials for transaction */
   protected credentials: UserCredentials | null = null
 
   /**
@@ -120,14 +128,27 @@ export class Transaction {
     this.credentials = credentials
   }
 
+  /**
+   * Gets whether is commited
+   */
   public get isCommited(): boolean {
     return this.commited
   }
 
+  /**
+   * Gets whether is roled back
+   */
   public get isRoledBack(): boolean {
     return this.roledBack
   }
 
+  /**
+   * Appends single event or array of events to transaction
+   * @param event
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns append
+   */
   public async append(
     event: Event | Event[],
     requireMaster?: boolean,
@@ -140,6 +161,13 @@ export class Transaction {
     }
   }
 
+  /**
+   * Appends array of evens to transactio
+   * @param events
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns events
+   */
   protected async appendEvents(
     events: Event[],
     requireMaster?: boolean,
@@ -196,6 +224,12 @@ export class Transaction {
     )
   }
 
+  /**
+   * Commits transaction
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns commit
+   */
   public async commit(
     requireMaster?: boolean,
     credentials?: UserCredentials | null
@@ -241,14 +275,23 @@ export class Transaction {
     this.commited = true
   }
 
+  /**
+   * Roles back transaction
+   */
   public roleBack(): void {
     this.roledBack = true
   }
 
+  /**
+   * Gets transaction id
+   */
   public get id(): Long {
     return this.transactionId
   }
 
+  /**
+   * Gets transaction name
+   */
   public get name(): string {
     return &apos;Transaction: &apos; + this.transactionId
   }

@@ -1,13 +1,17 @@
 import * as bunyan from 'bunyan'
 import uuid = require('uuid/v4')
+import * as tls from 'tls'
 
+/** typescript interface for user credentials */
 export interface UserCredentials {
   username: string
   password: string
 }
+/** typescript interface for settings */
 export interface EventstoreSettings {
   uri: string
   useSSL: boolean
+  secureContext: null | tls.SecureContextOptions
   useHttps: boolean
   host: string
   port: number
@@ -18,6 +22,7 @@ export interface EventstoreSettings {
   maxQueueSize: number
   maxConcurrentItems: number
   maxRetries: number
+  connectTimeout: number
   maxReconnections: number
   reconnectionDelay: number
   operationTimeout: number
@@ -33,6 +38,7 @@ export interface EventstoreSettings {
   clientId: string
 }
 
+/** default eventstore connection settings */
 const defaultConnectionSettings: EventstoreSettings = {
   uri: 'tcp://admin@changeit@127.0.0.1:1113',
   requireMaster: true,
@@ -44,9 +50,11 @@ const defaultConnectionSettings: EventstoreSettings = {
   gossipSeeds: [],
 
   useSSL: false, //use tcp encrypted?
+  secureContext: null,
   useHttps: false, //fetch gossip info over https?
   validateServer: false,
 
+  connectTimeout: 1000,
   maxReconnections: 10,
   reconnectionDelay: 100,
 
