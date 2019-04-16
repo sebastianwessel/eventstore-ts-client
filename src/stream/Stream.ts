@@ -674,20 +674,4 @@ export class Stream {
     )
     return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
   }
-
-  public async aggregate<T>(initState: T): Promise<T> {
-    return initState
-  }
-
-  public async getFirstEventOf(): Promise<Event | null> {
-    return new Event(this.streamId)
-  }
-
-  public async getLastEventOf(): Promise<Event | null> {
-    return new Event(this.streamId)
-  }
-
-  public async catchupSubscribe(): Promise<void> {
-    return
-  }
 }
