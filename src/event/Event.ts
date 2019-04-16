@@ -12,8 +12,8 @@ export class Event {
   public eventNumber: Long | number | null = null
   protected eventId: string = uuid()
   protected eventType: string
-  protected dataContentType: number | null = 1
-  protected metadataContentType: number | null = 1
+  protected dataContentType: number = 1
+  protected metadataContentType: number = 1
   protected rawData: Uint8Array | null = null
   protected rawMetadata: Uint8Array | null = null
   protected objectData: {[k: string]: JSONValue} | null = null
