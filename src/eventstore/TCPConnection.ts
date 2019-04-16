@@ -103,7 +103,7 @@ export class TCPConnection extends EventEmitter {
     const port = this.connectionConfig.port
     const host = this.connectionConfig.host
 
-    if (!port || !host || port === 0 || host === '') {
+    if (port === 0 || host === '') {
       throw eventstoreError.newConnectionError('Invalid connection settings on host and port')
     }
 
@@ -255,24 +255,14 @@ export class TCPConnection extends EventEmitter {
     promise: {resolve: Function; reject: Function} | null = null
   ): void {
     this.log.trace(`Sending ${EventstoreCommand[command]} with ${correlationId}`)
-    if (this.state === connectionState.closed) {
-      throw eventstoreError.newConnectionError('Not connected to eventstore')
-    }
-
     if (
-      this.state === connectionState.drain &&
+      this.state !== connectionState.connected &&
       command !== EventstoreCommand.HeartbeatResponseCommand &&
       command !== EventstoreCommand.Pong
     ) {
-      throw eventstoreError.newConnectionError('Connection to eventstore is draining')
-    }
-
-    if (
-      this.state === connectionState.init &&
-      command !== EventstoreCommand.HeartbeatResponseCommand &&
-      command !== EventstoreCommand.Pong
-    ) {
-      throw eventstoreError.newConnectionError('Connection to eventstore is not established')
+      throw eventstoreError.newConnectionError(
+        'Connection to eventstore is: ' + connectionState[this.state]
+      )
     }
 
     if (promise) {
