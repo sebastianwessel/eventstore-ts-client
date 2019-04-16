@@ -1,5 +1,6 @@
 import Long = require('long')
 
+/** typescript interface for eventstore position in global log */
 export interface ESPosition {
   commitPosition: Long
   preparePosition: Long
@@ -12,9 +13,18 @@ export interface ESPosition {
  * @class Position
  */
 export class Position {
+  /** commit position part of position */
   public commitPosition: Long = Long.fromValue(0)
+
+  /** prepare position part of position */
   public preparePosition: Long = Long.fromValue(0)
 
+  /**
+   *Creates an instance of Position.
+   * @param {(Long | number)} commitPosition
+   * @param {(Long | number)} preparePosition
+   * @memberof Position
+   */
   public constructor(commitPosition: Long | number, preparePosition: Long | number) {
     this.commitPosition =
       typeof commitPosition === 'number' ? Long.fromValue(commitPosition) : commitPosition

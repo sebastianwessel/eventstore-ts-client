@@ -16,12 +16,19 @@ const protobuf = model.eventstore.proto
  * @class Transaction
  */
 export class Transaction {
+  /** id of transaction */
   protected transactionId: Long
+  /** corresponding stream */
   protected stream: Stream
+  /** current connection */
   protected esConnection: Eventstore
+  /** indicates if transaction is commited */
   protected commited: boolean = false
+  /** indicates if transaction is roled back */
   protected roledBack: boolean = false
+  /** indicates if transaction needs master node */
   protected requireMaster: boolean
+  /** credentials for transaction */
   protected credentials: UserCredentials | null = null
 
   /**
@@ -44,14 +51,27 @@ export class Transaction {
     this.credentials = credentials
   }
 
+  /**
+   * Gets whether is commited
+   */
   public get isCommited(): boolean {
     return this.commited
   }
 
+  /**
+   * Gets whether is roled back
+   */
   public get isRoledBack(): boolean {
     return this.roledBack
   }
 
+  /**
+   * Appends single event or array of events to transaction
+   * @param event
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns append
+   */
   public async append(
     event: Event | Event[],
     requireMaster?: boolean,
@@ -64,6 +84,13 @@ export class Transaction {
     }
   }
 
+  /**
+   * Appends array of evens to transactio
+   * @param events
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns events
+   */
   protected async appendEvents(
     events: Event[],
     requireMaster?: boolean,
@@ -120,6 +147,12 @@ export class Transaction {
     )
   }
 
+  /**
+   * Commits transaction
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns commit
+   */
   public async commit(
     requireMaster?: boolean,
     credentials?: UserCredentials | null
@@ -165,14 +198,23 @@ export class Transaction {
     this.commited = true
   }
 
+  /**
+   * Roles back transaction
+   */
   public roleBack(): void {
     this.roledBack = true
   }
 
+  /**
+   * Gets transaction id
+   */
   public get id(): Long {
     return this.transactionId
   }
 
+  /**
+   * Gets transaction name
+   */
   public get name(): string {
     return 'Transaction: ' + this.transactionId
   }

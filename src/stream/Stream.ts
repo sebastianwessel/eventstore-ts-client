@@ -20,6 +20,7 @@ import {JSONValue} from '../JSON'
 
 const protobuf = model.eventstore.proto
 
+/** typescript interface for stream options */
 export interface StreamOptions {
   requireMaster: boolean
   resolveLinks: boolean

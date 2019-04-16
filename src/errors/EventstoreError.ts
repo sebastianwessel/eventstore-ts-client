@@ -22,6 +22,8 @@ export class EventstoreError extends Error {
     rootCause: Error | null = null
   ) {
     super(message)
+
+    /** Set name of error */
     this.name = name
     this.rootCause = rootCause
   }

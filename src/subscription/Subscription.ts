@@ -1,6 +1,6 @@
 import {EventEmitter} from 'events'
 import * as model from '../protobuf/model'
-import {UserCredentials} from '../eventstore'
+import {UserCredentials, Position} from '../eventstore'
 import {Stream} from '../stream'
 import {TCPConnection} from '../eventstore/TCPConnection'
 import * as bunyan from 'bunyan'
@@ -19,15 +19,22 @@ import {Event} from '../event'
  * @extends {EventEmitter}
  */
 export class Subscription extends EventEmitter {
+  /** uuid4 of subscription */
   protected subscriptionId: string
+  /** indicates if subscription is running */
   public isSubscribed: boolean = false
+  /** connection to use */
   protected tcpConnection: TCPConnection
+  /** credentials for subscription */
   protected credentials: UserCredentials | null = null
+  /** instance of corresponding stream */
   protected stream: Stream
+  /** indicates if events should be full resolved */
   protected resolveLinkTos: boolean
-  protected log: bunyan
-  public commitPosition: Long | number | null = null
-  public preparePosition: Long | number | null = null
+  /** logger */
+  public log: bunyan
+  /** global log position */
+  protected position: Position | null = null
 
   /**
    * Creates an instance of Subscription.
@@ -76,10 +83,17 @@ export class Subscription extends EventEmitter {
     return 'Subscription: ' + this.subscriptionId
   }
 
+  /**
+   * Gets get credentials
+   */
   public get getCredentials(): UserCredentials | null {
     return this.credentials
   }
 
+  /**
+   * Gets resolve link tos
+   * @returns true if resolve link tos
+   */
   public getResolveLinkTos(): boolean {
     return this.resolveLinkTos
   }
@@ -109,19 +123,13 @@ export class Subscription extends EventEmitter {
   }
 
   /**
-   * Called when subscription receives a event
-   *
-   * @protected
-   * @param {{event: Event; commitPosition: Long; preparePosition: Long}} info
-   * @memberof Subscription
+   * Determines whether event on
+   * @param event
+   * @param position
    */
-  protected onEvent(event: Event, commitPosition: Long, preparePosition: Long): void {
-    this.commitPosition = commitPosition
-    this.preparePosition = preparePosition
-    this.log.debug(
-      {eventName: event.name, eventId: event.id, commitPosition, preparePosition},
-      'Event received'
-    )
+  protected onEvent(event: Event, position: Position): void {
+    this.position = position
+    this.log.debug({eventName: event.name, eventId: event.id}, 'Event received')
   }
 
   /**

@@ -13,9 +13,11 @@ import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
 import {Event} from '../event'
 import {getIpAndPort} from './getConnectInfo'
+import {Position} from './Position'
 
 const protobuf = model.eventstore.proto
 
+/** typescript enumeration of connection states */
 enum connectionState {
   closed,
   init,
@@ -23,16 +25,23 @@ enum connectionState {
   drain
 }
 
+/** raw tcp communication constant */
 const FLAGS_NONE = 0x00
+/** raw tcp communication constant */
 const FLAGS_AUTH = 0x01
-
+/** raw tcp communication constant */
 const UINT32_LENGTH = 4
+/** raw tcp communication constant */
 const GUID_LENGTH = 16
+/** raw tcp communication constant */
 const HEADER_LENGTH = 1 + 1 + GUID_LENGTH // Cmd + Flags + CorrelationId
-
+/** raw tcp communication constant */
 const COMMAND_OFFSET = UINT32_LENGTH
+/** raw tcp communication constant */
 const FLAGS_OFFSET = COMMAND_OFFSET + 1
+/** raw tcp communication constant */
 const CORRELATION_ID_OFFSET = FLAGS_OFFSET + 1
+/** raw tcp communication constant */
 const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags + CorrelationId
 
 /**
@@ -65,6 +74,11 @@ export class TCPConnection extends EventEmitter {
   protected heartBeatCheckInterval: NodeJS.Timeout | null = null
   protected lastHeartBeatTime: number
 
+  /**
+   *Creates an instance of TCPConnection.
+   * @param {EventstoreSettings} connectionConfiguration
+   * @memberof TCPConnection
+   */
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
     this.initialConfig = {...connectionConfiguration}
@@ -529,6 +543,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command CreatePersistentSubscription
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleCreatePersistentSubscriptionCompleted(
     correlationId: string,
     payload: Buffer
@@ -563,6 +585,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command DeletePersistentSubscription
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleDeletePersistentSubscriptionCompleted(
     correlationId: string,
     payload: Buffer
@@ -586,6 +616,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command DeleteStreamCompleted
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleDeleteStreamCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.DeleteStreamCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
@@ -593,6 +631,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command ReadAllEvents
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleReadAllEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadAllEventsCompleted.decode(payload)
     let err: eventstoreError.EventstoreError
@@ -614,6 +660,14 @@ export class TCPConnection extends EventEmitter {
     this.rejectCommandPromise(correlationId, err)
   }
 
+  /**
+   * Handle response for command ReadStreamEvents
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleReadStreamEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadStreamEventsCompleted.decode(payload)
     let err: eventstoreError.EventstoreError
@@ -642,6 +696,14 @@ export class TCPConnection extends EventEmitter {
     this.rejectCommandPromise(correlationId, err)
   }
 
+  /**
+   * Handle response for command ReadEvent
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleReadEventCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadEventCompleted.decode(payload)
 
@@ -671,6 +733,7 @@ export class TCPConnection extends EventEmitter {
   }
 
   /*
+  Commented out because currently not supportet by eventstore over tcp
   protected handleScavengeDatabaseResponse(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ScavengeDatabaseResponse.decode(payload)
     if ((decoded.result = protobuf.ScavengeDatabaseResponse.ScavengeResult.Unauthorized)) {
@@ -683,6 +746,14 @@ export class TCPConnection extends EventEmitter {
   }
   */
 
+  /**
+   * Handle incoming event for subscription
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
     const subscription = this.subscriptionList.get(correlationId)
@@ -701,12 +772,15 @@ export class TCPConnection extends EventEmitter {
         )
         return
       }
-      subscription.emit('event', event, decoded.event.commitPosition, decoded.event.preparePosition)
+      subscription.emit(
+        'event',
+        event,
+        new Position(decoded.event.commitPosition, decoded.event.preparePosition)
+      )
       subscription.emit(
         `event-${event.name.toLocaleLowerCase()}`,
         event,
-        decoded.event.commitPosition,
-        decoded.event.preparePosition
+        new Position(decoded.event.commitPosition, decoded.event.preparePosition)
       )
     } else {
       this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
@@ -719,6 +793,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command Subscription
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionConfirmation.decode(payload)
 
@@ -729,6 +811,14 @@ export class TCPConnection extends EventEmitter {
     })
   }
 
+  /**
+   * Handle subscription drop
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleSubscriptionDropped(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionDropped.decode(payload)
     const subscription = this.subscriptionList.get(correlationId) || null
@@ -740,6 +830,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command TransactionCommit
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionCommitCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
@@ -747,6 +845,14 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handle response for command TransactionStart
+   *
+   * @protected
+   * @param {string} correlationId
+   * @param {Buffer} payload
+   * @memberof TCPConnection
+   */
   protected handleTransactionStartCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionStartCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
@@ -754,6 +860,11 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handles transaction write completed
+   * @param correlationId
+   * @param payload
+   */
   protected handleTransactionWriteCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionWriteCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
@@ -761,6 +872,11 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handles update persistent subscription completed
+   * @param correlationId
+   * @param payload
+   */
   protected handleUpdatePersistentSubscriptionCompleted(
     correlationId: string,
     payload: Buffer
@@ -782,6 +898,11 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handles write events completed
+   * @param correlationId
+   * @param payload
+   */
   protected handleWriteEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.WriteEventsCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
@@ -789,11 +910,21 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Handles persistent subscription confirmation
+   * @param correlationId
+   * @param payload
+   */
   protected handlePersistentSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.PersistentSubscriptionConfirmation.decode(payload)
     this.resolveCommandPromise(correlationId, decoded)
   }
 
+  /**
+   * Handles persistent subscription stream event appeared
+   * @param correlationId
+   * @param payload
+   */
   protected handlePersistentSubscriptionStreamEventAppeared(
     correlationId: string,
     payload: Buffer
@@ -899,6 +1030,13 @@ export class TCPConnection extends EventEmitter {
     }
   }
 
+  /**
+   * Subscribes to stream
+   * @param stream
+   * @param [resolveLinkTos]
+   * @param credentials
+   * @returns to stream
+   */
   public subscribeToStream(
     stream: Stream,
     resolveLinkTos: boolean = true,
@@ -931,6 +1069,11 @@ export class TCPConnection extends EventEmitter {
     )
   }
 
+  /**
+   * Unsubscribes from stream
+   * @param subscriptionId
+   * @returns from stream
+   */
   public async unsubscribeFromStream(subscriptionId: string): Promise<void> {
     const subscription = this.subscriptionList.get(subscriptionId)
     if (!subscription) {
@@ -991,6 +1134,10 @@ export class TCPConnection extends EventEmitter {
     this.emit('connected')
   }
 
+  /**
+   * Emitted as soon as data arrives over tcp connection
+   * @param data
+   */
   protected onData(data: Buffer | null): void {
     while (data != null) {
       if (this.messageData === null) {

@@ -19,8 +19,11 @@ const protobuf = model.eventstore.proto
  * @extends {EventEmitter}
  */
 export class Eventstore extends EventEmitter {
+  /** connection config */
   protected connectionConfig: EventstoreSettings
-  protected log: bunyan
+  /** logger */
+  public log: bunyan
+  /** connection base */
   protected connection: TCPConnection
 
   /**
@@ -223,6 +226,13 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Authenticate with credentials from settings
+   *
+   * @protected
+   * @returns {Promise<void>}
+   * @memberof Eventstore
+   */
   protected async authenticate(): Promise<void> {
     await new Promise(
       (resolve, reject): void => {
@@ -241,10 +251,30 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Called from event listener connected to 'error'
+   *
+   * @protected
+   * @param {Error} err
+   * @memberof Eventstore
+   */
   protected onError(err: Error): void {
     this.log.error({err}, err.name)
   }
 
+  /**
+   * Reads a slice of events from current stream
+   *
+   * @protected
+   * @param {EventstoreCommand} direction
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} requireMaster
+   * @param {(UserCredentials | null)} credentials
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
   protected async readSlice(
     direction: EventstoreCommand,
     position: Position,
@@ -276,6 +306,17 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Reads a slice from current stream in forward direction
+   *
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
   public async readSliceForward(
     position: Position,
     maxCount: number = 100,
@@ -293,6 +334,17 @@ export class Eventstore extends EventEmitter {
     )
   }
 
+  /**
+   * Reads a slice from current stream in backward direction
+   *
+   * @param {Position} position
+   * @param {number} [maxCount=100]
+   * @param {boolean} [resolveLinkTos=true]
+   * @param {boolean} [requireMaster]
+   * @param {(UserCredentials | null)} [credentials]
+   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
+   * @memberof Eventstore
+   */
   public async readSliceBackward(
     position: Position,
     maxCount: number = 100,
@@ -311,6 +363,7 @@ export class Eventstore extends EventEmitter {
   }
 
   /*
+  Commented out because it seems that eventstore currently doesn't support this over tcp atm
   public async scavengeDatabase(credentials?: UserCredentials): Promise<void> {
     await new Promise(
       (resolve, reject): void => {

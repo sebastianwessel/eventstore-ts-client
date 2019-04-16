@@ -6,6 +6,11 @@ import {JSONValue} from '../JSON'
 import {URL} from 'url'
 import {EventstoreSettings} from './EventstoreSettings'
 
+/**
+ * dns lookup for given domain and returns list of corresponding ip's
+ * @param dnsServer
+ * @param log
+ */
 export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<string[]> => {
   const lookup = util.promisify(dns.lookup)
   const dnsOptions = {
@@ -32,6 +37,15 @@ export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<
   return ipList
 }
 
+/**
+ * tries to fetch gossip json information from given ip and port
+ *
+ * @param host
+ * @param port
+ * @param useHttps
+ * @param timeout
+ * @param log
+ */
 export const fetchgossipJson = async (
   host: string,
   port: number,
@@ -65,6 +79,10 @@ export const fetchgossipJson = async (
   return gossipInfo
 }
 
+/**
+ * Searches for master node inside of gossip json
+ * @param gossipInfo
+ */
 export const getMasterNodeInfo = (
   gossipInfo: JSONValue & {
     members: {
@@ -92,6 +110,10 @@ export const getMasterNodeInfo = (
   return nodeInfo
 }
 
+/**
+ * Gets a random cluster node from gossip json
+ * @param gossipInfo
+ */
 export const getRandomNodeInfo = (
   gossipInfo: JSONValue & {
     members: {
@@ -123,6 +145,11 @@ export const getRandomNodeInfo = (
   return nodeInfo
 }
 
+/**
+ * Updates connection informations depending on given settings
+ * @param currentSettings
+ * @param log
+ */
 export const getIpAndPort = async (
   currentSettings: EventstoreSettings,
   log: bunyan
