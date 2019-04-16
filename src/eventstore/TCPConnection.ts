@@ -52,7 +52,7 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
 export class TCPConnection extends EventEmitter {
   protected initialConfig: EventstoreSettings
   protected connectionConfig: EventstoreSettings
-  protected socket: net.Socket
+  protected socket: net.Socket | tls.TLSSocket
   protected connectionId: string | null = null
   protected pendingRequests: Map<string, {resolve: Function; reject: Function}> = new Map()
   public log: bunyan
@@ -75,9 +75,6 @@ export class TCPConnection extends EventEmitter {
 
     this.socket = new net.Socket()
 
-    if (this.connectionConfig.useSSL) {
-      this.socket = new tls.TLSSocket(this.socket)
-    }
     this.lastHeartBeatTime = Date.now()
   }
 
@@ -110,13 +107,6 @@ export class TCPConnection extends EventEmitter {
       throw eventstoreError.newConnectionError('Invalid connection settings on host and port')
     }
 
-    const options = {
-      port,
-      host,
-      servername: host,
-      rejectUnauthorized: false
-    }
-
     this.log.debug(`Start connecting to ${host}:${port}`)
 
     await new Promise(
@@ -128,7 +118,13 @@ export class TCPConnection extends EventEmitter {
         }
 
         const successListener = (): void => {
+          if (this.socket instanceof tls.TLSSocket) {
+            if (!this.socket.authorized) {
+              this.log.warn({err: this.socket.authorizationError}, 'SSL authorization warning')
+            }
+          }
           this.socket.removeListener('error', errorListener)
+          this.socket.on('error', this.onError.bind(this))
           this.onConnect()
           this.heartBeatCheckInterval = setInterval((): void => {
             if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
@@ -142,10 +138,36 @@ export class TCPConnection extends EventEmitter {
           this.isUnexpectedClosed = false
         }
 
-        this.socket.once('error', errorListener)
+        if (this.connectionConfig.useSSL) {
+          let secureContext
+          if (this.connectionConfig.secureContext) {
+            secureContext = tls.createSecureContext(this.connectionConfig.secureContext)
+          }
+
+          const options = {
+            port,
+            host,
+            servername: host,
+            requestCert: this.connectionConfig.validateServer,
+            rejectUnauthorized: this.connectionConfig.validateServer,
+            timeout: this.connectionConfig.connectTimeout,
+            secureContext
+          }
+          this.socket = tls.connect(options, successListener)
+        } else {
+          const options = {
+            port,
+            host,
+            servername: host,
+            timeout: this.connectionConfig.connectTimeout
+          }
+          this.socket = net.connect(options, successListener)
+        }
+
+        this.socket.once('error', errorListener.bind(this))
         this.socket.on('close', this.onClose.bind(this))
         this.socket.on('data', this.onData.bind(this))
-        this.socket.connect(options, successListener)
+        this.socket.on('secureConnect', this.onSecureConnect.bind(this))
       }
     )
   }
@@ -1008,5 +1030,13 @@ export class TCPConnection extends EventEmitter {
     this.log.debug('Eventstore connection draining')
     this.state = connectionState.drain
     this.emit('drain')
+  }
+
+  /**
+   * Emit when connection secured
+   */
+  protected onSecureConnect(): void {
+    this.log.debug('Eventstore connection secured')
+    this.emit('secureConnect')
   }
 }
