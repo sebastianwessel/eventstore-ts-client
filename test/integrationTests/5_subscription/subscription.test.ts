@@ -55,7 +55,7 @@ describe('Stream subscription tests', (): void => {
     }
   })
 
-  it('returns subscription resolve link setting', async (): Promise<void> => {
+  it('returns true for resolve links', async (): Promise<void> => {
     const stream = await es.stream('subscribestream')
     let subscription
     try {
@@ -64,7 +64,7 @@ describe('Stream subscription tests', (): void => {
     } catch (err) {
       assert.fail(err)
     }
-    assert.notStrictEqual(subscription.getResolveLinkTos(), true)
+    assert.strictEqual(subscription.getResolveLinkTos(), true)
     try {
       await subscription.unsubscribe()
       assert.strictEqual(subscription.isSubscribed, false)
@@ -73,16 +73,16 @@ describe('Stream subscription tests', (): void => {
     }
   })
 
-  it('returns true for resolve links flag', async (): Promise<void> => {
+  it('returns false for not resolve links', async (): Promise<void> => {
     const stream = await es.stream('subscribestream')
     let subscription
     try {
-      subscription = await stream.subscribe()
+      subscription = await stream.subscribe(false)
       assert.strictEqual(subscription.isSubscribed, true)
     } catch (err) {
       assert.fail(err)
     }
-    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    assert.strictEqual(subscription.getResolveLinkTos(), false)
     try {
       await subscription.unsubscribe()
       assert.strictEqual(subscription.isSubscribed, false)
