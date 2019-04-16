@@ -18,11 +18,10 @@ export class PersitentSubscription extends EventEmitter {
   protected subscriptionGroupName: string
 
   /**
-   *Creates an instance of PersitentSubscription.
-   * @param {Stream} stream
-   * @param {Eventstore} esConnection
-   * @param {string} subscriptionGroupName
-   * @memberof PersitentSubscription
+   * Creates an instance of persitent subscription.
+   * @param stream
+   * @param esConnection
+   * @param subscriptionGroupName
    */
   public constructor(stream: Stream, esConnection: Eventstore, subscriptionGroupName: string) {
     super()

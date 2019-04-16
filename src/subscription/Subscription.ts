@@ -37,9 +37,12 @@ export class Subscription extends EventEmitter {
   protected position: Position | null = null
 
   /**
-   * Creates an instance of Subscription.
-   * @param {string} subscriptionId
-   * @memberof Subscription
+   * Creates an instance of subscription.
+   * @param subscriptionId
+   * @param tcpConnection
+   * @param stream
+   * @param resolveLinkTos
+   * @param credentials
    */
   public constructor(
     subscriptionId: string,
