@@ -1,11 +1,13 @@
-import {setConnectionSettings, EventstoreSettings} from './EventstoreSettings'
+import {setConnectionSettings, EventstoreSettings, UserCredentials} from './EventstoreSettings'
 import {EventEmitter} from 'events'
 import {Stream, StreamOptions} from '../stream'
 import * as bunyan from 'bunyan'
 import {TCPConnection} from './TCPConnection'
 import uuid = require('uuid/v4')
+import Long = require('long')
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
+import {Position} from './Position'
 
 const protobuf = model.eventstore.proto
 
@@ -242,8 +244,83 @@ export class Eventstore extends EventEmitter {
   protected onError(err: Error): void {
     this.log.error({err}, err.name)
   }
-  /*
 
-  public scavengeDatabase(): Promise<void> {}
+  protected async readSlice(
+    direction: EventstoreCommand,
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster: boolean,
+    credentials: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.ReadAllEvents.fromObject({
+          commitPosition: position.commitPosition,
+          preparePosition: position.preparePosition,
+          maxCount,
+          resolveLinkTos,
+          requireMaster
+        })
+        this.connection.sendCommand(
+          uuid(),
+          direction,
+          Buffer.from(protobuf.ReadAllEvents.encode(raw).finish()),
+          credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+  }
+
+  public async readSliceForward(
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadAllEventsForward,
+      position,
+      maxCount,
+      resolveLinkTos,
+      requireMaster || this.connectionConfig.requireMaster,
+      credentials || this.connectionConfig.credentials
+    )
+  }
+
+  public async readSliceBackward(
+    position: Position,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    return await this.readSlice(
+      EventstoreCommand.ReadAllEventsBackward,
+      position,
+      maxCount,
+      resolveLinkTos,
+      requireMaster || this.connectionConfig.requireMaster,
+      credentials || this.connectionConfig.credentials
+    )
+  }
+
+  /*
+  public async scavengeDatabase(credentials?: UserCredentials): Promise<void> {
+    await new Promise(
+      (resolve, reject): void => {
+        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        this.connection.sendCommand(uuid(), EventstoreCommand.ScavengeDatabase, null, credentials, {
+          resolve,
+          reject
+        })
+      }
+    )
+  }
   */
 }
