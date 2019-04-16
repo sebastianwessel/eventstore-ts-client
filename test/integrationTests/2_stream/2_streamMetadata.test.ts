@@ -48,7 +48,20 @@ describe('Stream tests', (): void => {
         assert.strictEqual(err.name, 'EventstoreBadRequestError')
       }
     })
+
+    it('throws on invalid access rights', async (): Promise<void> => {
+      try {
+        await es
+          .stream('$teneventsstream-ad44caa8-d701-48f2-ac1e-2ec147ff1df5')
+          .withCredentials({username: 'invalid', password: 'wrong'})
+          .getMetadata()
+        assert.fail('has not thrown')
+      } catch (err) {
+        assert.strictEqual(err.name, 'EventstoreNotAuthenticatedError')
+      }
+    })
   })
+
   describe('Set stream metadata', async (): Promise<void> => {
     it('writes stream metadata', async (): Promise<void> => {
       const testData = {foo: 'bar'}
