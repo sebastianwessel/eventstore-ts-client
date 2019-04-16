@@ -85,11 +85,8 @@ export class Eventstore extends EventEmitter {
    * @returns {Promise<void>}
    * @memberof Eventstore
    */
-  public async disconnect(): Promise<void> {
-    if (!this.connection || !this.isConnected) {
-      return
-    }
-    await this.connection.disconnect()
+  public disconnect(): Promise<void> {
+    return this.connection.disconnect()
   }
 
   /**
