@@ -100,9 +100,6 @@ export class Eventstore extends EventEmitter {
    * @memberof Eventstore
    */
   public get isConnected(): boolean {
-    if (!this.connection) {
-      return false
-    }
     return this.connection.isConnected
   }
 
