@@ -21,9 +21,9 @@ import {JSONValue} from '../JSON'
 const protobuf = model.eventstore.proto
 
 export interface StreamOptions {
-  requireMaster?: boolean
-  resolveLinks?: boolean
-  credentials?: UserCredentials | null
+  requireMaster: boolean
+  resolveLinks: boolean
+  credentials: UserCredentials | null
 }
 
 /**
@@ -136,7 +136,7 @@ export class Stream {
     credentials?: UserCredentials | null
   ): Promise<void> {
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     const eventArrayTransformed: model.eventstore.proto.NewEvent[] = events.map(
       (event): model.eventstore.proto.NewEvent => {
@@ -265,7 +265,7 @@ export class Stream {
       )
     }
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     return new Promise(
       (resolve, reject): void => {
@@ -308,7 +308,7 @@ export class Stream {
     credentials?: UserCredentials
   ): Promise<Event | null> {
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     const result: model.eventstore.proto.IResolvedIndexedEvent = await new Promise(
       (resolve, reject): void => {
@@ -404,7 +404,7 @@ export class Stream {
       )
     }
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     try {
       const result = await this.esConnection
@@ -485,7 +485,7 @@ export class Stream {
       )
     }
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     const transactionId: Long = await new Promise(
       (resolve, reject): void => {
@@ -534,7 +534,7 @@ export class Stream {
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     if (requireMaster === undefined) {
-      requireMaster = this.options.requireMaster === undefined ? false : this.options.requireMaster
+      requireMaster = this.options.requireMaster
     }
     return await new Promise(
       (resolve, reject): void => {
