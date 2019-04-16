@@ -64,7 +64,7 @@ describe('Stream subscription tests', (): void => {
     } catch (err) {
       assert.fail(err)
     }
-    assert.notStrictEqual(subscription.getResolveLinkTos, true)
+    assert.notStrictEqual(subscription.getResolveLinkTos(), true)
     try {
       await subscription.unsubscribe()
       assert.strictEqual(subscription.isSubscribed, false)
