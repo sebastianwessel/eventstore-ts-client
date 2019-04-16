@@ -113,7 +113,7 @@ export class TCPConnection extends EventEmitter {
       (resolve, reject): void => {
         const errorListener = (err: Error): void => {
           this.state = connectionState.closed
-          this.onError(err)
+          this.onError(eventstoreError.newConnectionError(err.message, err))
           reject(err)
         }
 
@@ -141,7 +141,15 @@ export class TCPConnection extends EventEmitter {
         if (this.connectionConfig.useSSL) {
           let secureContext
           if (this.connectionConfig.secureContext) {
-            secureContext = tls.createSecureContext(this.connectionConfig.secureContext)
+            try {
+              secureContext = tls.createSecureContext(this.connectionConfig.secureContext)
+            } catch (err) {
+              const conErr = eventstoreError.newConnectionError(
+                'Error creating secure context',
+                err
+              )
+              reject(conErr)
+            }
           }
 
           const options = {
@@ -153,6 +161,7 @@ export class TCPConnection extends EventEmitter {
             timeout: this.connectionConfig.connectTimeout,
             secureContext
           }
+
           this.socket = tls.connect(options, successListener)
         } else {
           const options = {
@@ -977,10 +986,14 @@ export class TCPConnection extends EventEmitter {
    * @memberof TCPConnection
    */
   protected onError(err?: Error): void {
-    const errorMessage =
-      err !== undefined ? `${err.name}: ${err.message}` : 'Eventstore connection error'
-    this.log.error({err}, errorMessage)
-    this.emit('error', err)
+    let errorMessage
+    let error = err ? err : eventstoreError.newConnectionError('Eventstore connection error')
+
+    if (error.name === 'Error') {
+      error = eventstoreError.newConnectionError(error.message, err)
+    }
+    this.log.error({err: error}, errorMessage)
+    this.emit('error', error)
   }
 
   /**
@@ -1019,7 +1032,7 @@ export class TCPConnection extends EventEmitter {
     }
     this.emit('close')
     if (this.isUnexpectedClosed) {
-      this.emit('error')
+      this.emit('error', eventstoreError.newConnectionError('Connection closed unexpected'))
     }
   }
 
