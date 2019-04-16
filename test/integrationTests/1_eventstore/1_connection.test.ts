@@ -42,7 +42,7 @@ describe('Connection test', (): void => {
     expect(es.isConnected).not.to.true
   })
 
-  it('can connect to eventstore single node to defsult port', async (): Promise<void> => {
+  it('can connect to eventstore single node to default port', async (): Promise<void> => {
     const es = new Eventstore({
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net'
     })
