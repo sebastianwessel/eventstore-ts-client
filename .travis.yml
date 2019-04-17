@@ -11,11 +11,8 @@ git:
 cache:
   directories:
     - "$HOME/.npm"
-#    - node_modules
     - coverage
     - .nyc_output
-#    - .nyc_integration
-#    - .nyc_unit
     - dist
 
 script: echo "Running tests against $(node -v) ..."
@@ -35,16 +32,10 @@ jobs:
   include:
     - stage: test
       name: "Integration tests"
-      script: npm run allcoverage
-#      script: npm run test:coverageIntegration
-#    - script: 
-#        - npm run lint
-#        - npm run test:coverageUnit
-#      name: "Unit tests"
+      script: npm run test
     - stage: codecoverage
       name: "Sonarqube gateway"
       script:
-#        - npm run combine-coverage
         - git fetch --no-tags https://github.com/sebastianwessel/eventstore-ts-client.git +refs/heads/master:refs/remotes/origin/master
         - sonar-scanner
         - npx codecov

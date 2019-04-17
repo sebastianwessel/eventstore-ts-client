@@ -130,9 +130,6 @@ done
 ### Start integration tests and save code coverage
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
-#nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all
-#testexit=0
-#rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
  
 print_style 'starting docker test container:\n';
 docker run --name=testcontainer --network=estest_clusternetwork --network-alias=mocha.escluster.net -v $PWD:/home/travis/build/sebastianwessel/eventstore-ts-client/ sebastianwessel/eventstore-ts-client:latest
