@@ -3,7 +3,7 @@ import {Event} from '../../../src'
 import {StreamWalker} from '../../../src/StreamWalker'
 import * as assert from 'assert'
 
-describe.only('Async iterator test', (): void => {
+describe('Async iterator test', (): void => {
   const testData: Event[] = []
 
   before(() => {
