@@ -7,13 +7,15 @@ import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
-import {Subscription} from '../subscription'
+import {Subscription, PersitentSubscription} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
 import {Event} from '../event'
 import {getIpAndPort} from './getConnectInfo'
 import {Position} from './Position'
+import {WriteResult} from './Eventstore'
+import Long from 'long'
 
 const protobuf = model.eventstore.proto
 
@@ -70,6 +72,7 @@ export class TCPConnection extends EventEmitter {
   protected messageCurrentLength: number = 0
   protected messageData: Buffer | null = null
   protected subscriptionList: Map<string, Subscription> = new Map()
+  protected persitentSubscriptionList: Map<string, PersitentSubscription> = new Map()
   protected isUnexpectedClosed: boolean = true
   protected heartBeatCheckInterval: NodeJS.Timeout | null = null
   protected lastHeartBeatTime: number
@@ -627,7 +630,10 @@ export class TCPConnection extends EventEmitter {
   protected handleDeleteStreamCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.DeleteStreamCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
-      this.resolveCommandPromise(correlationId)
+      this.resolveCommandPromise(
+        correlationId,
+        new Position(decoded.commitPosition, decoded.preparePosition)
+      )
     }
   }
 
@@ -841,7 +847,12 @@ export class TCPConnection extends EventEmitter {
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionCommitCompleted.decode(payload)
     if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
-      this.resolveCommandPromise(correlationId, decoded)
+      const result: WriteResult = {
+        firstEventNumber: decoded.firstEventNumber,
+        lastEventNumber: decoded.lastEventNumber,
+        position: new Position(decoded.commitPosition, decoded.preparePosition)
+      }
+      this.resolveCommandPromise(correlationId, result)
     }
   }
 
@@ -1101,6 +1112,45 @@ export class TCPConnection extends EventEmitter {
         )
       }
     )
+  }
+
+  /**
+   * Connects to persitent subscription
+   * @param subscription
+   * @param [allowInflightMessages]
+   * @param [credentials]
+   * @returns to persitent subscription
+   */
+  public async connectToPersitentSubscription(
+    subscription: PersitentSubscription,
+    allowInflightMessages: boolean = false,
+    credentials?: UserCredentials | null
+  ): Promise<model.eventstore.proto.PersistentSubscriptionConfirmation> {
+    const result: model.eventstore.proto.PersistentSubscriptionConfirmation = await new Promise(
+      (resolve, reject): void => {
+        const raw = protobuf.ConnectToPersistentSubscription.fromObject({
+          subscriptionId: subscription.subscriptionGroupName,
+          eventStreamId: subscription.stream.id,
+          allowInflightMessages
+        })
+        this.sendCommand(
+          subscription.subsciptionId,
+          EventstoreCommand.ConnectToPersistentSubscription,
+          Buffer.from(protobuf.ConnectToPersistentSubscription.encode(raw).finish()),
+          credentials,
+          {
+            resolve,
+            reject
+          }
+        )
+      }
+    )
+    subscription.lastCommitPosition = Long.fromValue(result.lastCommitPosition)
+    subscription.lastEventNumber = result.lastEventNumber
+      ? Long.fromValue(result.lastEventNumber)
+      : null
+    this.persitentSubscriptionList.set(subscription.subsciptionId, subscription)
+    return result
   }
 
   /**

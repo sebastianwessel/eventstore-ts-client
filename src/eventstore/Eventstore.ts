@@ -11,6 +11,12 @@ import {Position} from './Position'
 
 const protobuf = model.eventstore.proto
 
+export interface WriteResult {
+  firstEventNumber: Long | number
+  lastEventNumber: Long | number
+  position: Position
+}
+
 /**
  * Base class to communicate with eventstore
  *
