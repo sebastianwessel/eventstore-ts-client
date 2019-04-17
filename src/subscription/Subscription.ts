@@ -61,7 +61,7 @@ export class Subscription extends EventEmitter {
     this.on('dropped', this.onDropped)
     this.on('event', this.onEvent)
     this.on('error', this.onError)
-    this.log = stream.logger.child({module: 'Subscription', subscriptionId: this.id})
+    this.log = stream.log.child({module: 'Subscription', subscriptionId: this.id})
   }
 
   /**
