@@ -114,16 +114,18 @@ fi
 print_style 'creating test streams:\n';
 for dir in ./test/integrationTests/testSetup/testStreams/*/
 do
+  for filename in ${dir}*.json; do
     dir=${dir%*/}      # remove the trailing "/"
     streamname=${dir##*/}    # print everything after the final "/"
     print_style "stream ${streamname}: "
-    curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/testStreams/${streamname}/events.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/${streamname}
+    curl --output /dev/null --silent --fail -i -d @${filename} -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/${streamname}
     res=$?
     if test "$res" != "0"; then
       print_style "fail\n" "danger";
       else
           print_style "ok\n" "success";
     fi
+  done
 done
 
 
