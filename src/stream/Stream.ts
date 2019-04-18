@@ -1,4 +1,4 @@
-import {Eventstore} from '../eventstore'
+import {Eventstore, WriteResult, Position} from '../eventstore'
 import {Event} from '../event'
 import uuid = require('uuid/v4')
 import * as bunyan from 'bunyan'
@@ -17,6 +17,7 @@ import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import Long = require('long')
 import {JSONValue} from '../JSON'
+import {StreamWalker} from '../StreamWalker'
 
 const protobuf = model.eventstore.proto
 
@@ -124,7 +125,7 @@ export class Stream {
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise<void> {
+  ): Promise<WriteResult> {
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
     }
@@ -192,7 +193,7 @@ export class Stream {
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise<void> {
+  ): Promise<WriteResult> {
     if (Array.isArray(event)) {
       return await this.appendEvents(event, expectedVersion, requireMaster, credentials)
     } else {
@@ -211,9 +212,9 @@ export class Stream {
   public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
-  ): Promise<void> {
+  ): Promise<Position> {
     this.log.debug(`Hard delete Stream ${this.streamId}`)
-    await this.delete(true, expectedVersion, requireMaster)
+    return await this.delete(true, expectedVersion, requireMaster)
   }
 
   /**
@@ -227,9 +228,9 @@ export class Stream {
   public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
-  ): Promise<void> {
+  ): Promise<Position> {
     this.log.debug(`Soft delete Stream ${this.streamId}`)
-    await this.delete(false, expectedVersion, requireMaster)
+    return await this.delete(false, expectedVersion, requireMaster)
   }
 
   /**
@@ -248,7 +249,7 @@ export class Stream {
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean,
     credentials?: UserCredentials
-  ): Promise<void> {
+  ): Promise<Position> {
     if (this.isMetaStream()) {
       throw eventstoreError.newBadRequestError(
         `You can not delete metadata stream ${this.streamId}`
@@ -606,6 +607,73 @@ export class Stream {
       credentials
     )
   }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  protected async walkStream(
+    forward: boolean = true,
+    start: Long | number = StreamPosition.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ) {
+    const getSlice = forward ? this.readSliceForward : this.readSliceBackward
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.options.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Long | number) {
+      let index = 0
+      //fetch first slice
+      let readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+      let result = await readResult
+      if (!result.isEndOfStream) {
+        //we have more so start fetching in background
+        begin = result.nextEventNumber
+        readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+      }
+      let reachedEnd = false
+      while (!reachedEnd) {
+        if (index < result.events.length) {
+          const entry = result.events[index++]
+          if (entry.event) {
+            yield Event.fromRaw(entry.event)
+          } else if (entry.link) {
+            yield Event.fromRaw(entry.link)
+          }
+        } else if (result.isEndOfStream) {
+          reachedEnd = true
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          if (!result.isEndOfStream) {
+            //if there are more events start fetching in background
+            begin = result.nextEventNumber
+            readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+          }
+
+          if (index < result.events.length) {
+            const entry = result.events[index++]
+            if (entry.event) {
+              yield Event.fromRaw(entry.event)
+            } else if (entry.link) {
+              yield Event.fromRaw(entry.link)
+            }
+          } else if (result.isEndOfStream) {
+            reachedEnd = true
+            return null
+          }
+        }
+      }
+      return null
+    }
+
+    return new StreamWalker(asyncGenerator(start))
+  }
 
   /**
    * Subscribe to current stream and return a subscription
@@ -662,6 +730,23 @@ export class Stream {
           )
       }
     )
-    return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
+    return new PersitentSubscription(
+      this,
+      this.esConnection,
+      this.options.credentials,
+      subscriptionGroupName
+    )
+  }
+
+  public getPersitentSubscription(
+    subscriptionGroupName: string,
+    credentials?: UserCredentials | null
+  ): PersitentSubscription {
+    return new PersitentSubscription(
+      this,
+      this.esConnection,
+      credentials || this.options.credentials,
+      subscriptionGroupName
+    )
   }
 }
