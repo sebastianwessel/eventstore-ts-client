@@ -17,9 +17,10 @@ const eventNameList = [
   'EventJ'
 ]
 
+let count = 0
+
 const generateHundredFile = (fileName) => {
   const testData = []
-  let count = 0
   for (let x = 0, xMax = 100; x < xMax; x++) {
     eventNameList.forEach((name) => {
       testData.push({
