@@ -138,6 +138,8 @@ docker run --name=testcontainer --network=estest_clusternetwork --network-alias=
 print_style 'delete docker test container: ';
 docker container rm testcontainer
 
+sed -i -e "s/\/home\/travis\/build\/sebastianwessel\/eventstore-ts-client/${PWD//\//\\/}/g" ./coverage/lcov.info
+
 ### shut down eventstore cluster and remove docker containers
 ###############################################
 print_style "shutting down docker containers\n";
