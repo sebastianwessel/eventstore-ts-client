@@ -616,7 +616,8 @@ export class Stream {
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ) {
-    const getSlice = forward ? this.readSliceForward : this.readSliceBackward
+    const that = this
+    const getSlice = forward ? 'readSliceForward' : 'readSliceBackward'
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
     }
@@ -627,12 +628,12 @@ export class Stream {
     const asyncGenerator = async function*(begin: Long | number) {
       let index = 0
       //fetch first slice
-      let readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+      let readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
       let result = await readResult
       if (!result.isEndOfStream) {
         //we have more so start fetching in background
         begin = result.nextEventNumber
-        readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+        readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
       }
       let reachedEnd = false
       while (!reachedEnd) {
@@ -653,7 +654,7 @@ export class Stream {
           if (!result.isEndOfStream) {
             //if there are more events start fetching in background
             begin = result.nextEventNumber
-            readResult = getSlice(begin, maxCount, resolveLinkTos, requireMaster, credentials)
+            readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
           }
 
           if (index < result.events.length) {
@@ -673,6 +674,26 @@ export class Stream {
     }
 
     return new StreamWalker(asyncGenerator(start))
+  }
+
+  public async walkStreamForward(
+    start: Long | number = StreamPosition.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    return await this.walkStream(true, start, maxCount, resolveLinkTos, requireMaster, credentials)
+  }
+
+  public async walkStreamBackward(
+    start: Long | number = StreamPosition.End,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    return await this.walkStream(false, start, maxCount, resolveLinkTos, requireMaster, credentials)
   }
 
   /**
