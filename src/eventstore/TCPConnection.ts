@@ -74,8 +74,6 @@ export class TCPConnection extends EventEmitter {
   protected subscriptionList: Map<string, Subscription> = new Map()
   protected persitentSubscriptionList: Map<string, PersitentSubscription> = new Map()
   protected isUnexpectedClosed: boolean = true
-  protected heartBeatCheckInterval: NodeJS.Timeout | null = null
-  protected lastHeartBeatTime: number
 
   /**
    *Creates an instance of TCPConnection.
@@ -143,14 +141,6 @@ export class TCPConnection extends EventEmitter {
           this.socket.removeListener('error', errorListener)
           this.socket.on('error', this.onError.bind(this))
           this.onConnect()
-          this.heartBeatCheckInterval = setInterval((): void => {
-            if (this.lastHeartBeatTime + this.connectionConfig.heartbeatTimeout < Date.now()) {
-              const err = eventstoreError.newTimeoutError(
-                `Heartbeat missing more than ${this.connectionConfig.heartbeatTimeout}ms`
-              )
-              this.onError(err)
-            }
-          }, this.connectionConfig.heartbeatInterval)
           resolve()
           this.isUnexpectedClosed = false
         }
@@ -209,9 +199,6 @@ export class TCPConnection extends EventEmitter {
   public async disconnect(): Promise<void> {
     if (!this.isConnected) {
       return
-    }
-    if (this.heartBeatCheckInterval) {
-      clearInterval(this.heartBeatCheckInterval)
     }
     await new Promise(
       (resolve, reject): void => {
@@ -629,7 +616,13 @@ export class TCPConnection extends EventEmitter {
    */
   protected handleDeleteStreamCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.DeleteStreamCompleted.decode(payload)
-    if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
+    if (
+      this.checkOperationResult(
+        correlationId,
+        decoded.result,
+        'handleDeleteStream: ' + decoded.message
+      )
+    ) {
       this.resolveCommandPromise(
         correlationId,
         new Position(decoded.commitPosition, decoded.preparePosition)
@@ -846,7 +839,13 @@ export class TCPConnection extends EventEmitter {
    */
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionCommitCompleted.decode(payload)
-    if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
+    if (
+      this.checkOperationResult(
+        correlationId,
+        decoded.result,
+        'handleTransactionCommit: ' + decoded.message
+      )
+    ) {
       const result: WriteResult = {
         firstEventNumber: decoded.firstEventNumber,
         lastEventNumber: decoded.lastEventNumber,
@@ -866,7 +865,13 @@ export class TCPConnection extends EventEmitter {
    */
   protected handleTransactionStartCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionStartCompleted.decode(payload)
-    if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
+    if (
+      this.checkOperationResult(
+        correlationId,
+        decoded.result,
+        'handleTransactionStart: ' + decoded.message
+      )
+    ) {
       this.resolveCommandPromise(correlationId, decoded.transactionId)
     }
   }
@@ -878,7 +883,13 @@ export class TCPConnection extends EventEmitter {
    */
   protected handleTransactionWriteCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionWriteCompleted.decode(payload)
-    if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
+    if (
+      this.checkOperationResult(
+        correlationId,
+        decoded.result,
+        'handleTransactionWrite: ' + decoded.message
+      )
+    ) {
       this.resolveCommandPromise(correlationId, decoded.transactionId)
     }
   }
@@ -916,7 +927,13 @@ export class TCPConnection extends EventEmitter {
    */
   protected handleWriteEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.WriteEventsCompleted.decode(payload)
-    if (this.checkOperationResult(correlationId, decoded.result, decoded.message)) {
+    if (
+      this.checkOperationResult(
+        correlationId,
+        decoded.result,
+        'handleWriteEvents: ' + decoded.message
+      )
+    ) {
       this.resolveCommandPromise(correlationId, decoded)
     }
   }
@@ -1168,6 +1185,7 @@ export class TCPConnection extends EventEmitter {
     if (error.name === 'Error') {
       error = eventstoreError.newConnectionError(error.message, err)
     }
+    errorMessage = err.message
     this.log.error({err: error}, errorMessage)
     this.emit('error', error)
   }
@@ -1207,9 +1225,6 @@ export class TCPConnection extends EventEmitter {
   protected onClose(): void {
     this.log.debug('Connection to eventstore closed')
     this.state = connectionState.closed
-    if (this.heartBeatCheckInterval) {
-      clearInterval(this.heartBeatCheckInterval)
-    }
     this.emit('close')
     if (this.isUnexpectedClosed) {
       this.emit('error', eventstoreError.newConnectionError('Connection closed unexpected'))
