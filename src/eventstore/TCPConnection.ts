@@ -89,8 +89,6 @@ export class TCPConnection extends EventEmitter {
       : this.connectionConfig.logger
 
     this.socket = new net.Socket()
-
-    this.lastHeartBeatTime = Date.now()
   }
 
   /**
@@ -1185,7 +1183,7 @@ export class TCPConnection extends EventEmitter {
     if (error.name === 'Error') {
       error = eventstoreError.newConnectionError(error.message, err)
     }
-    errorMessage = err.message
+    errorMessage = error.message
     this.log.error({err: error}, errorMessage)
     this.emit('error', error)
   }
