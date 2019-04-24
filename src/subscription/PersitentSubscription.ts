@@ -4,18 +4,16 @@ import {EventEmitter} from 'events'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import uuid = require('uuid/v4')
-import {PersitentSubscriptionConfig, setPersitentSubscriptionConfig} from '../subscription'
+import {
+  PersitentSubscriptionConfig,
+  setPersitentSubscriptionConfig,
+  SubscriptionStatus
+} from '../subscription'
 import Long from 'long'
-import * as eventstoreError from '../errors'
+import {Event} from '../event'
+import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
 
 const protobuf = model.eventstore.proto
-
-export enum PersitentSubscriptionStatus {
-  disconnected,
-  catchup,
-  live,
-  paused
-}
 
 /**
  * Represents a persistent subscription
@@ -37,11 +35,15 @@ export class PersitentSubscription extends EventEmitter {
   public lastCommitPosition: Long = Long.fromNumber(0)
   public lastEventNumber: Long | null = null
 
-  public subsciptionId: string = uuid()
+  public id: string = uuid()
 
-  public allowInflightMessages: boolean = false
+  public subscriptionId: string
 
-  protected status: PersitentSubscriptionStatus = PersitentSubscriptionStatus.disconnected
+  public allowedInFlightMessages: number = 10
+
+  protected status: SubscriptionStatus = SubscriptionStatus.disconnected
+
+  public autoAcknownledge: boolean = true
 
   /**
    * Creates an instance of persitent subscription.
@@ -60,14 +62,35 @@ export class PersitentSubscription extends EventEmitter {
     this.esConnection = esConnection
     this.subscriptionGroupName = subscriptionGroupName
     this.credentials = credentials
+
+    this.subscriptionId = `${this.stream.id} :: ${this.subscriptionGroupName}`
+
+    this.on(
+      'event',
+      (event): void => {
+        console.log('received ' + event.name + ' - ' + event.eventNumber)
+        this.acknowledgeEvent(event)
+      }
+    )
+    this.on(
+      'drop',
+      (reason): void => {
+        this.state = SubscriptionStatus.disconnected
+        console.log('dropped because of ' + reason)
+      }
+    )
   }
 
-  public get state(): PersitentSubscriptionStatus {
+  public get name(): string {
+    return `PersitentSubsbscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
+  }
+
+  public get state(): SubscriptionStatus {
     return this.status
   }
 
-  public set state(newStatus: PersitentSubscriptionStatus) {
-    this.emit(PersitentSubscriptionStatus[newStatus])
+  public set state(newStatus: SubscriptionStatus) {
+    this.emit(SubscriptionStatus[newStatus])
     this.status = newStatus
   }
 
@@ -76,42 +99,20 @@ export class PersitentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns connect
    */
-  public async connect(
-    allowInflightMessages: boolean = false,
+  public async start(
+    allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
-  ): Promise<void> {
-    this.allowInflightMessages = allowInflightMessages
+  ): Promise<PersitentSubscription> {
+    this.allowedInFlightMessages = allowedInFlightMessages
     if (credentials) {
       this.credentials = credentials
     }
-    await this.esConnection
+    const result = await this.esConnection
       .getConnection()
-      .connectToPersitentSubscription(this, allowInflightMessages, credentials)
-    this.catchUp()
-  }
-
-  protected async catchUp(): Promise<void> {
-    this.state = PersitentSubscriptionStatus.catchup
-  }
-
-  public async pause(): Promise<void> {
-    if (this.state !== PersitentSubscriptionStatus.live || PersitentSubscriptionStatus.catchup) {
-      throw eventstoreError.newBadRequestError(
-        `Subscription ${this.subscriptionGroupName} on stream ${this.stream.id} is ${
-          PersitentSubscriptionStatus[this.state]
-        }`
-      )
-    }
-    this.state = PersitentSubscriptionStatus.paused
-  }
-
-  public async resume(): Promise<void> {
-    if (this.state !== PersitentSubscriptionStatus.paused) {
-      throw eventstoreError.newBadRequestError(
-        `Subscription ${this.subscriptionGroupName} on stream ${this.stream.id} not paused`
-      )
-    }
-    return await this.connect(this.allowInflightMessages, this.credentials)
+      .connectToPersitentSubscription(this, allowedInFlightMessages, this.credentials)
+    this.subscriptionId = result.subscriptionId
+    this.state = SubscriptionStatus.connected
+    return this
   }
 
   /**
@@ -120,7 +121,7 @@ export class PersitentSubscription extends EventEmitter {
    * @returns delete
    */
   public async delete(credentials?: UserCredentials | null): Promise<PersitentSubscription> {
-    return await new Promise(
+    const result: PersitentSubscription = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.UpdatePersistentSubscription.fromObject({
           subscriptionGroupName: this.subscriptionGroupName,
@@ -140,6 +141,8 @@ export class PersitentSubscription extends EventEmitter {
           )
       }
     )
+    this.state = SubscriptionStatus.disconnected
+    return result
   }
 
   /**
@@ -174,5 +177,100 @@ export class PersitentSubscription extends EventEmitter {
           )
       }
     )
+  }
+
+  /**
+   * Acknowledges single event
+   * @param event
+   * @param [credentials]
+   * @returns event
+   */
+  public async acknowledgeEvent(event: Event, credentials?: UserCredentials | null): Promise<void> {
+    return await this.acknowledgeEvents([event], credentials)
+  }
+
+  /**
+   * Acknowledges array of events
+   * @param events
+   * @param [credentials]
+   * @returns events
+   */
+  public async acknowledgeEvents(
+    events: Event[],
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    const processedEventIds = events.map(
+      (event): Buffer => {
+        return uuidToBuffer(event.id)
+      }
+    )
+
+    const raw = protobuf.PersistentSubscriptionAckEvents.fromObject({
+      subscriptionId: this.subscriptionId,
+      processedEventIds
+    })
+    await this.esConnection
+      .getConnection()
+      .sendCommand(
+        this.id,
+        EventstoreCommand.PersistentSubscriptionAckEvents,
+        Buffer.from(protobuf.PersistentSubscriptionAckEvents.encode(raw).finish()),
+        credentials || this.credentials
+      )
+  }
+
+  /**
+   * Not acknowledge single event
+   * @param event
+   * @param [reason]
+   * @param [message]
+   * @param [credentials]
+   * @returns acknowledge event
+   */
+  public async notAcknowledgeEvent(
+    event: Event,
+    reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
+      .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
+    message?: string,
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    return await this.notAcknowledgeEvents([event], reason, message, credentials)
+  }
+
+  /**
+   * Not acknowledge array of events
+   * @param events
+   * @param [reason]
+   * @param [message]
+   * @param [credentials]
+   * @returns acknowledge events
+   */
+  public async notAcknowledgeEvents(
+    events: Event[],
+    reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
+      .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
+    message?: string,
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    const processedEventIds = events.map(
+      (event): Buffer => {
+        return uuidToBuffer(event.id)
+      }
+    )
+    protobuf.PersistentSubscriptionNakEvents.NakAction
+    const raw = protobuf.PersistentSubscriptionNakEvents.fromObject({
+      subscriptionId: this.subscriptionId,
+      processedEventIds,
+      message,
+      action: reason
+    })
+    await this.esConnection
+      .getConnection()
+      .sendCommand(
+        this.id,
+        EventstoreCommand.PersistentSubscriptionNakEvents,
+        Buffer.from(protobuf.PersistentSubscriptionNakEvents.encode(raw).finish()),
+        credentials || this.credentials
+      )
   }
 }
