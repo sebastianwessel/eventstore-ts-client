@@ -9,4 +9,8 @@ export {
 export {Event} from './event'
 export {ExpectedVersion} from './protobuf/ExpectedVersion'
 export {StreamPosition} from './stream'
-export {PersitentSubscriptionConfig, SystemConsumerStrategies} from './subscription'
+export {
+  PersitentSubscriptionConfig,
+  SystemConsumerStrategies,
+  SubscriptionStatus
+} from './subscription'
