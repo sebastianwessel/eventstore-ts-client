@@ -67,9 +67,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
@@ -878,7 +878,7 @@ It takes the default settings and overwrites fields which are given in parameter
           
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultPersitentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultPersistentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
         </p>
       </div>
       <div>
@@ -3068,14 +3068,14 @@ It takes the default settings and overwrites fields which are given in parameter
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="static-function-setPersitentSubscriptionConfig">
+  <h3 data-ice="anchor" id="static-function-setPersistentSubscriptionConfig">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">setPersitentSubscriptionConfig</span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultPersitentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
+    <span class="code" data-ice="name">setPersistentSubscriptionConfig</span><span class="code" data-ice="signature">(customSettings: <span>*</span>): {...defaultPersistentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</span>
     <span class="right-info">
       
       
@@ -3083,7 +3083,7 @@ It takes the default settings and overwrites fields which are given in parameter
     </span>
   </h3>
 
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setPersitentSubscriptionConfig} from &apos;<span><a href="file/src/subscription/PersistentSubscriptionConfig.ts.html#lineNumber29">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {setPersistentSubscriptionConfig} from &apos;<span><a href="file/src/subscription/PersistentSubscriptionConfig.ts.html#lineNumber29">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</a></span>&apos;</code></pre></div>
   
   
   <div data-ice="description"><p>merges given settings with default settings</p>
@@ -3115,7 +3115,7 @@ It takes the default settings and overwrites fields which are given in parameter
     <table>
       <tbody>
         <tr>
-          <td class="return-type code" data-ice="returnType">{...defaultPersitentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</td>
+          <td class="return-type code" data-ice="returnType">{...defaultPersistentSubscriptionConfig: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, ...customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>}</td>
           
         </tr>
       </tbody>

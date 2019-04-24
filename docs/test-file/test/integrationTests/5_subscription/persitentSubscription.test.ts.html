@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">test/integrationTests/5_subscription/persitentSubscription.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <title data-ice="title">test/integrationTests/5_subscription/persistentSubscription.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -67,19 +67,19 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/5_subscription/persitentSubscription.test.ts</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/5_subscription/persistentSubscription.test.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Eventstore, Event} from &apos;../../../src&apos;
 import * as assert from &apos;assert&apos;
 
-describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
+describe(&apos;Persistent subscription test&apos;, (): void =&gt; {
   describe(&apos;with admin user rights&apos;, (): void =&gt; {
     const es = new Eventstore({
       uri: &apos;discover://admin:changeit@cluster1.escluster.net:2112&apos;,
@@ -102,7 +102,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       try {
         await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .createPersistentSubscription(&apos;persitentsubscription&apos;)
+          .createPersistentSubscription(&apos;persistentsubscription&apos;)
       } catch (err) {
         assert.fail(err)
       }
@@ -113,7 +113,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       try {
         const subscription = await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .getPersitentSubscription(&apos;persitentsubscription&apos;)
+          .getPersistentSubscription(&apos;persistentsubscription&apos;)
         await subscription.update({resolveLinkTos: false})
       } catch (err) {
         assert.fail(err)
@@ -125,7 +125,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
     &gt; =&gt; {
       const stream = es.stream(&apos;subscribestream&apos;)
       try {
-        await stream.createPersistentSubscription(&apos;persitentsubscription&apos;)
+        await stream.createPersistentSubscription(&apos;persistentsubscription&apos;)
         assert.fail(&apos;has not thrown&apos;)
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAlreadyExistError&apos;)
@@ -137,7 +137,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       try {
         const subscription = await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .getPersitentSubscription(&apos;persitentsubscription&apos;)
+          .getPersistentSubscription(&apos;persistentsubscription&apos;)
         await subscription.delete()
       } catch (err) {
         assert.fail(err)
@@ -156,7 +156,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
         const stream = es
           .stream(&apos;subscribestream&apos;)
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-        await stream.createPersistentSubscription(&apos;persitentsubscription2&apos;)
+        await stream.createPersistentSubscription(&apos;persistentsubscription2&apos;)
       }
     )
 
@@ -169,7 +169,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
     it(&apos;throws on create&apos;, async (): Promise&lt;void&gt; =&gt; {
       const stream = es.stream(&apos;subscribestream&apos;)
       try {
-        await stream.createPersistentSubscription(&apos;persitentsubscription2&apos;)
+        await stream.createPersistentSubscription(&apos;persistentsubscription2&apos;)
         assert.fail(&apos;has not thrown&apos;)
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
@@ -181,7 +181,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       try {
         const subscription = await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .getPersitentSubscription(&apos;persitentsubscription2&apos;)
+          .getPersistentSubscription(&apos;persistentsubscription2&apos;)
         await subscription.update({resolveLinkTos: false})
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
@@ -193,7 +193,7 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       try {
         const subscription = await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .getPersitentSubscription(&apos;persitentsubscription2&apos;)
+          .getPersistentSubscription(&apos;persistentsubscription2&apos;)
         await subscription.delete()
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
@@ -210,9 +210,9 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       async (): Promise&lt;void&gt; =&gt; {
         await es.connect()
         await es
-          .stream(&apos;persitentsubscribestream&apos;)
+          .stream(&apos;persistentsubscribestream&apos;)
           .createPersistentSubscription(
-            &apos;persitentsubscription&apos;,
+            &apos;persistentsubscription&apos;,
             {},
             {username: &apos;admin&apos;, password: &apos;changeit&apos;}
           )
@@ -227,20 +227,20 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
 
     it(&apos;can start a subscription on empty stream&apos;, async (): Promise&lt;void&gt; =&gt; {
       const subscription = es
-        .stream(&apos;persitentsubscribestream&apos;)
-        .getPersitentSubscription(&apos;persitentsubscription&apos;)
+        .stream(&apos;persistentsubscribestream&apos;)
+        .getPersistentSubscription(&apos;persistentsubscription&apos;)
       await subscription.start()
       assert.strictEqual(
         subscription.name,
-        `PersitentSubsbscription: persitentsubscribestream :: persitentsubscription`
+        `PersistentSubsbscription: persistentsubscribestream :: persistentsubscription`
       )
     })
 
     it(&apos;can start a subscription on none empty stream&apos;, async (): Promise&lt;void&gt; =&gt; {
       const newEvent = new Event(&apos;SomeEvent&apos;)
-      const stream = es.stream(&apos;persitentsubscribestream&apos;)
+      const stream = es.stream(&apos;persistentsubscribestream&apos;)
       await stream.append(newEvent)
-      const subscription = stream.getPersitentSubscription(&apos;persitentsubscription&apos;)
+      const subscription = stream.getPersistentSubscription(&apos;persistentsubscription&apos;)
       await subscription.start()
       await new Promise(
         async (resolve): Promise&lt;void&gt; =&gt; {

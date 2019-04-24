@@ -106,7 +106,7 @@
       "actualCount": 3,
       "undocumentLines": []
     },
-    "src/subscription/PersitentSubscription.ts": {
+    "src/subscription/PersistentSubscription.ts": {
       "expectCount": 24,
       "actualCount": 19,
       "undocumentLines": [

@@ -7,7 +7,7 @@ import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
-import {Subscription, PersitentSubscription} from '../subscription'
+import {Subscription, PersistentSubscription} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
@@ -72,7 +72,7 @@ export class TCPConnection extends EventEmitter {
   protected messageCurrentLength: number = 0
   protected messageData: Buffer | null = null
   protected subscriptionList: Map<string, Subscription> = new Map()
-  protected persitentSubscriptionList: Map<string, PersitentSubscription> = new Map()
+  protected persistentSubscriptionList: Map<string, PersistentSubscription> = new Map()
   protected isUnexpectedClosed: boolean = true
 
   /**
@@ -822,9 +822,9 @@ export class TCPConnection extends EventEmitter {
     if (subscription) {
       subscription.emit('dropped', decoded.reason)
     }
-    const persitentSubscription = this.persitentSubscriptionList.get(correlationId) || null
-    if (persitentSubscription) {
-      persitentSubscription.emit('dropped', decoded.reason)
+    const persistentSubscription = this.persistentSubscriptionList.get(correlationId) || null
+    if (persistentSubscription) {
+      persistentSubscription.emit('dropped', decoded.reason)
     }
     if (this.pendingRequests.has(correlationId)) {
       this.resolveCommandPromise(correlationId, decoded)
@@ -960,7 +960,7 @@ export class TCPConnection extends EventEmitter {
     payload: Buffer
   ): void {
     const decoded = protobuf.PersistentSubscriptionStreamEventAppeared.decode(payload)
-    const subscription = this.persitentSubscriptionList.get(correlationId)
+    const subscription = this.persistentSubscriptionList.get(correlationId)
     if (subscription) {
       let event
       if (decoded.event.event) {
@@ -980,7 +980,10 @@ export class TCPConnection extends EventEmitter {
       subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
     } else {
       this.log.error(
-        {subscriptionId: correlationId, persitentSubscriptionList: this.persitentSubscriptionList},
+        {
+          subscriptionId: correlationId,
+          persistentSubscriptionList: this.persistentSubscriptionList
+        },
         'Received PersistentSubscriptionStreamEventAppeared for unknown id'
       )
       this.emit(
@@ -1164,18 +1167,18 @@ export class TCPConnection extends EventEmitter {
   }
 
   /**
-   * Connects to persitent subscription
+   * Connects to persistent subscription
    * @param subscription
    * @param [allowInflightMessages]
    * @param [credentials]
-   * @returns to persitent subscription
+   * @returns to persistent subscription
    */
-  public async connectToPersitentSubscription(
-    subscription: PersitentSubscription,
+  public async connectToPersistentSubscription(
+    subscription: PersistentSubscription,
     allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.PersistentSubscriptionConfirmation> {
-    this.persitentSubscriptionList.set(subscription.id, subscription)
+    this.persistentSubscriptionList.set(subscription.id, subscription)
     const result: model.eventstore.proto.PersistentSubscriptionConfirmation = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.ConnectToPersistentSubscription.fromObject({

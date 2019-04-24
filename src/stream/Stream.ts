@@ -9,9 +9,9 @@ import {StreamPosition} from './StreamPosition'
 import {Transaction} from './Transaction'
 import {
   Subscription,
-  PersitentSubscriptionConfig,
-  setPersitentSubscriptionConfig,
-  PersitentSubscription
+  PersistentSubscriptionConfig,
+  setPersistentSubscriptionConfig,
+  PersistentSubscription
 } from '../subscription'
 import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
@@ -711,21 +711,21 @@ export class Stream {
   }
 
   /**
-   * Creates a persitent subscription for current stream
+   * Creates a persistent subscription for current stream
    * This operation needs admin rights and a master connection
    *
    * @param {string} subscriptionGroupName
-   * @param {(PersitentSubscriptionConfig | {})} [customConfig={}]
+   * @param {(PersistentSubscriptionConfig | {})} [customConfig={}]
    * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<PersitentSubscription>}
+   * @returns {Promise<PersistentSubscription>}
    * @memberof Stream
    */
   public async createPersistentSubscription(
     subscriptionGroupName: string,
-    customConfig: PersitentSubscriptionConfig | {} = {},
+    customConfig: PersistentSubscriptionConfig | {} = {},
     credentials?: UserCredentials | null
-  ): Promise<PersitentSubscription> {
-    const settings = setPersitentSubscriptionConfig(customConfig)
+  ): Promise<PersistentSubscription> {
+    const settings = setPersistentSubscriptionConfig(customConfig)
 
     await new Promise(
       (resolve, reject): void => {
@@ -748,7 +748,7 @@ export class Stream {
           )
       }
     )
-    return new PersitentSubscription(
+    return new PersistentSubscription(
       this,
       this.esConnection,
       this.options.credentials,
@@ -756,11 +756,11 @@ export class Stream {
     )
   }
 
-  public getPersitentSubscription(
+  public getPersistentSubscription(
     subscriptionGroupName: string,
     credentials?: UserCredentials | null
-  ): PersitentSubscription {
-    return new PersitentSubscription(
+  ): PersistentSubscription {
+    return new PersistentSubscription(
       this,
       this.esConnection,
       credentials || this.options.credentials,

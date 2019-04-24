@@ -9,9 +9,9 @@ export const SystemConsumerStrategies = {
 }
 
 /**
- * typescript interface for Persitent subscription config
+ * typescript interface for Persistent subscription config
  */
-export interface PersitentSubscriptionConfig {
+export interface PersistentSubscriptionConfig {
   resolveLinkTos: boolean
   startFrom: Long | number
   messageTimeoutMilliseconds: number
@@ -28,8 +28,8 @@ export interface PersitentSubscriptionConfig {
   preferRoundRobin: boolean
 }
 
-/** default persitent subscription config */
-const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
+/** default persistent subscription config */
+const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
   messageTimeoutMilliseconds: 30000,
@@ -50,10 +50,10 @@ const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
  * merges given settings with default settings
  * @param customSettings
  */
-let setPersitentSubscriptionConfig = (
-  customSettings: object | PersitentSubscriptionConfig
-): PersitentSubscriptionConfig => {
-  return {...defaultPersitentSubscriptionConfig, ...customSettings}
+let setPersistentSubscriptionConfig = (
+  customSettings: object | PersistentSubscriptionConfig
+): PersistentSubscriptionConfig => {
+  return {...defaultPersistentSubscriptionConfig, ...customSettings}
 }
 
-export {setPersitentSubscriptionConfig}
+export {setPersistentSubscriptionConfig}

@@ -1,7 +1,7 @@
 import {Eventstore, Event} from '../../../src'
 import * as assert from 'assert'
 
-describe('Persitent subscription test', (): void => {
+describe('Persistent subscription test', (): void => {
   describe('with admin user rights', (): void => {
     const es = new Eventstore({
       uri: 'discover://admin:changeit@cluster1.escluster.net:2112',
@@ -24,7 +24,7 @@ describe('Persitent subscription test', (): void => {
       try {
         await stream
           .withCredentials({username: 'admin', password: 'changeit'})
-          .createPersistentSubscription('persitentsubscription')
+          .createPersistentSubscription('persistentsubscription')
       } catch (err) {
         assert.fail(err)
       }
@@ -33,9 +33,9 @@ describe('Persitent subscription test', (): void => {
     it('updates a persistent subscription', async (): Promise<void> => {
       const stream = es.stream('subscribestream')
       try {
-        const subscription = await stream
+        const subscription = stream
           .withCredentials({username: 'admin', password: 'changeit'})
-          .getPersitentSubscription('persitentsubscription')
+          .getPersistentSubscription('persistentsubscription')
         await subscription.update({resolveLinkTos: false})
       } catch (err) {
         assert.fail(err)
@@ -47,7 +47,7 @@ describe('Persitent subscription test', (): void => {
     > => {
       const stream = es.stream('subscribestream')
       try {
-        await stream.createPersistentSubscription('persitentsubscription')
+        await stream.createPersistentSubscription('persistentsubscription')
         assert.fail('has not thrown')
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreAlreadyExistError')
@@ -57,9 +57,9 @@ describe('Persitent subscription test', (): void => {
     it('deletes a persistent subscription', async (): Promise<void> => {
       const stream = es.stream('subscribestream')
       try {
-        const subscription = await stream
+        const subscription = stream
           .withCredentials({username: 'admin', password: 'changeit'})
-          .getPersitentSubscription('persitentsubscription')
+          .getPersistentSubscription('persistentsubscription')
         await subscription.delete()
       } catch (err) {
         assert.fail(err)
@@ -78,7 +78,7 @@ describe('Persitent subscription test', (): void => {
         const stream = es
           .stream('subscribestream')
           .withCredentials({username: 'admin', password: 'changeit'})
-        await stream.createPersistentSubscription('persitentsubscription2')
+        await stream.createPersistentSubscription('persistentsubscription2')
       }
     )
 
@@ -91,7 +91,7 @@ describe('Persitent subscription test', (): void => {
     it('throws on create', async (): Promise<void> => {
       const stream = es.stream('subscribestream')
       try {
-        await stream.createPersistentSubscription('persitentsubscription2')
+        await stream.createPersistentSubscription('persistentsubscription2')
         assert.fail('has not thrown')
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreAccessDeniedError')
@@ -101,9 +101,9 @@ describe('Persitent subscription test', (): void => {
     it('throws on update', async (): Promise<void> => {
       const stream = es.stream('subscribestream')
       try {
-        const subscription = await stream
+        const subscription = stream
           .withCredentials({username: 'admin', password: 'changeit'})
-          .getPersitentSubscription('persitentsubscription2')
+          .getPersistentSubscription('persistentsubscription2')
         await subscription.update({resolveLinkTos: false})
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreAccessDeniedError')
@@ -113,9 +113,9 @@ describe('Persitent subscription test', (): void => {
     it('throws on delete', async (): Promise<void> => {
       const stream = es.stream('subscribestream')
       try {
-        const subscription = await stream
+        const subscription = stream
           .withCredentials({username: 'admin', password: 'changeit'})
-          .getPersitentSubscription('persitentsubscription2')
+          .getPersistentSubscription('persistentsubscription2')
         await subscription.delete()
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreAccessDeniedError')
@@ -132,9 +132,9 @@ describe('Persitent subscription test', (): void => {
       async (): Promise<void> => {
         await es.connect()
         await es
-          .stream('persitentsubscribestream')
+          .stream('persistentsubscribestream')
           .createPersistentSubscription(
-            'persitentsubscription',
+            'persistentsubscription',
             {},
             {username: 'admin', password: 'changeit'}
           )
@@ -149,20 +149,20 @@ describe('Persitent subscription test', (): void => {
 
     it('can start a subscription on empty stream', async (): Promise<void> => {
       const subscription = es
-        .stream('persitentsubscribestream')
-        .getPersitentSubscription('persitentsubscription')
+        .stream('persistentsubscribestream')
+        .getPersistentSubscription('persistentsubscription')
       await subscription.start()
       assert.strictEqual(
         subscription.name,
-        `PersitentSubsbscription: persitentsubscribestream :: persitentsubscription`
+        `PersistentSubsbscription: persistentsubscribestream :: persistentsubscription`
       )
     })
 
     it('can start a subscription on none empty stream', async (): Promise<void> => {
       const newEvent = new Event('SomeEvent')
-      const stream = es.stream('persitentsubscribestream')
+      const stream = es.stream('persistentsubscribestream')
       await stream.append(newEvent)
-      const subscription = stream.getPersitentSubscription('persitentsubscription')
+      const subscription = stream.getPersistentSubscription('persistentsubscription')
       await subscription.start()
       await new Promise(
         async (resolve): Promise<void> => {

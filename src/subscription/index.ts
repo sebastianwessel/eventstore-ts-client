@@ -1,8 +1,8 @@
 export {Subscription} from './Subscription'
-export {PersitentSubscription} from './PersitentSubscription'
+export {PersistentSubscription} from './PersistentSubscription'
 export {
-  setPersitentSubscriptionConfig,
-  PersitentSubscriptionConfig,
+  setPersistentSubscriptionConfig,
+  PersistentSubscriptionConfig,
   SystemConsumerStrategies
 } from './PersistentSubscriptionConfig'
 

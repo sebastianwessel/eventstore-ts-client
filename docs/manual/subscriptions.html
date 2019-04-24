@@ -55,7 +55,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html" data-ice="link">Subscriptions</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persitent-subscription" data-ice="link">persitent subscription</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
 </ul>
   </div>
@@ -77,7 +77,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="subscriptions">Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persitent subscriptions and catchUp subscriptions.</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="subscriptions">Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.</p>
 <h2 id="subscribe-to-stream">subscribe to stream</h2><p>You can use <code>subscribe()</code> at stream instances and simply adding listener(s) to returned subscription.<br>There are two options.</p>
 <p>Listen to all events:</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
@@ -107,20 +107,20 @@ subscription.on(&apos;event-specificeventa&apos;, (event) =&gt; {
 </code>
 </code></pre>
 <p>With this approach you&apos;re able to add different listeners for different needs to one single stream subscription.</p>
-<h2 id="persitent-subscription">persitent subscription</h2><p>You can create persitent subscriptions (<strong>needs admin rights</strong>)</p>
+<h2 id="persistent-subscription">persistent subscription</h2><p>You can create persistent subscriptions (<strong>needs admin rights</strong>)</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
-const persitentSubscription = await eventstore
+const persistentSubscription = await eventstore
   .atStream(&apos;myStream&apos;)
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-  .createPersistentSubscription(&apos;persitentsubscription&apos;)</code>
+  .createPersistentSubscription(&apos;persistentsubscription&apos;)</code>
 </code></pre>
-<p>You can update an existing persitent subscription (<strong>needs admin rights</strong>)</p>
+<p>You can update an existing persistent subscription (<strong>needs admin rights</strong>)</p>
 <p>/<strong> TODO documentation </strong>/</p>
-<p>You can delete an existing persitent subscription (<strong>needs admin rights</strong>)</p>
+<p>You can delete an existing persistent subscription (<strong>needs admin rights</strong>)</p>
 <p>/<strong> TODO </strong>/</p>
-<p>You can connect to an existing persitent subscription</p>
+<p>You can connect to an existing persistent subscription</p>
 <p>/<strong> TODO documentation</strong>/</p>
 <h2 id="catchup-subscriptions">catchUp subscriptions</h2><p>/<strong> TODO </strong>/<br>not implemented yet</p>
 </div>

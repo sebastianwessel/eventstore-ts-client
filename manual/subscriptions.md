@@ -1,7 +1,7 @@
 # Subscriptions
 
 There are 3 different subscription types.  
-Simple stream subscriptions, persitent subscriptions and catchUp subscriptions.
+Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.
 
 ## subscribe to stream
 
@@ -43,31 +43,71 @@ subscription.on('event-specificeventa', (event) => {
 
 With this approach you're able to add different listeners for different needs to one single stream subscription.
 
-## persitent subscription
+## persistent subscription
 
-You can create persitent subscriptions (**needs admin rights**)
+You can create persistent subscriptions (**needs admin rights**)
 
 ```javascript
 const eventstore = new Eventstore()
 await eventstore.connect()
 
-const persitentSubscription = await eventstore
+const persistentSubscription = await eventstore
   .atStream('myStream')
   .withCredentials({username: 'admin', password: 'changeit'})
-  .createPersistentSubscription('persitentsubscription')
+  .createPersistentSubscription('persistentsubscription')
 ```
 
-You can update an existing persitent subscription (**needs admin rights**)
+You can update an existing persistent subscription (**needs admin rights**)
 
-/** TODO documentation **/
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
 
-You can delete an existing persitent subscription (**needs admin rights**)
+const newConfifg = {
+    messageTimeoutMilliseconds : 30000
+  }
 
-/** TODO **/
+const persistentSubscription = await eventstore
+  .atStream('myStream')
+  .withCredentials({username: 'admin', password: 'changeit'})
+  .getPersistentSubscription('persistentsubscription')
+  .update(newConfig)
+```
 
-You can connect to an existing persitent subscription
+You can delete an existing persistent subscription (**needs admin rights**)
 
-/** TODO documentation**/
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
+
+const newConfifg = {
+    messageTimeoutMilliseconds : 30000
+  }
+
+const persistentSubscription = eventstore
+  .atStream('myStream')
+  .withCredentials({username: 'admin', password: 'changeit'})
+  .getPersistentSubscription('persistentsubscription')
+  
+await persistentSubscription.delete()
+```
+
+You can connect to an existing persistent subscription
+
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
+
+const newConfifg = {
+    messageTimeoutMilliseconds : 30000
+  }
+
+const persistentSubscription = eventstore
+  .atStream('myStream')
+  .getPersistentSubscription('persistentsubscription')
+  
+await persistentSubscription.start()
+```
 
 ## catchUp subscriptions
 

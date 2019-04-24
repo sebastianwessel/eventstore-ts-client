@@ -67,9 +67,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
@@ -87,9 +87,9 @@ export const SystemConsumerStrategies = {
 }
 
 /**
- * typescript interface for Persitent subscription config
+ * typescript interface for Persistent subscription config
  */
-export interface PersitentSubscriptionConfig {
+export interface PersistentSubscriptionConfig {
   resolveLinkTos: boolean
   startFrom: Long | number
   messageTimeoutMilliseconds: number
@@ -106,8 +106,8 @@ export interface PersitentSubscriptionConfig {
   preferRoundRobin: boolean
 }
 
-/** default persitent subscription config */
-const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
+/** default persistent subscription config */
+const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
   messageTimeoutMilliseconds: 30000,
@@ -128,13 +128,13 @@ const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
  * merges given settings with default settings
  * @param customSettings
  */
-let setPersitentSubscriptionConfig = (
-  customSettings: object | PersitentSubscriptionConfig
-): PersitentSubscriptionConfig =&gt; {
-  return {...defaultPersitentSubscriptionConfig, ...customSettings}
+let setPersistentSubscriptionConfig = (
+  customSettings: object | PersistentSubscriptionConfig
+): PersistentSubscriptionConfig =&gt; {
+  return {...defaultPersistentSubscriptionConfig, ...customSettings}
 }
 
-export {setPersitentSubscriptionConfig}
+export {setPersistentSubscriptionConfig}
 </code></pre>
 
 </div>

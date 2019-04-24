@@ -664,9 +664,9 @@
                   "line": 5,
                   "column": 36
                 },
-                "identifierName": "PersitentSubscriptionConfig"
+                "identifierName": "PersistentSubscriptionConfig"
               },
-              "name": "PersitentSubscriptionConfig"
+              "name": "PersistentSubscriptionConfig"
             },
             "exported": {
               "type": "Identifier",
@@ -681,9 +681,9 @@
                   "line": 5,
                   "column": 36
                 },
-                "identifierName": "PersitentSubscriptionConfig"
+                "identifierName": "PersistentSubscriptionConfig"
               },
-              "name": "PersitentSubscriptionConfig"
+              "name": "PersistentSubscriptionConfig"
             }
           },
           {
@@ -1868,7 +1868,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscriptionConfig",
+      "value": "PersistentSubscriptionConfig",
       "start": 262,
       "end": 289,
       "loc": {

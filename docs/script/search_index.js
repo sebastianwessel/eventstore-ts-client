@@ -24,9 +24,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "eventstore-ts-client/src/subscription/persitentsubscription.ts~persitentsubscription",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html",
-    "<span>PersitentSubscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersitentSubscription.ts</span>",
+    "eventstore-ts-client/src/subscription/persistentsubscription.ts~persistentsubscription",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html",
+    "<span>PersistentSubscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscription.ts</span>",
     "class"
   ],
   [
@@ -234,9 +234,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~setpersitentsubscriptionconfig",
-    "function/index.html#static-function-setPersitentSubscriptionConfig",
-    "<span>setPersitentSubscriptionConfig</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
+    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~setpersistentsubscriptionconfig",
+    "function/index.html#static-function-setPersistentSubscriptionConfig",
+    "<span>setPersistentSubscriptionConfig</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
     "function"
   ],
   [
@@ -673,80 +673,80 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber3",
-    "Persitent subscription test",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber3",
+    "Persistent subscription test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber111",
-    "Persitent subscription test Persistent subscription get events",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber111",
+    "Persistent subscription test Persistent subscription get events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber125",
-    "Persitent subscription test Persistent subscription get events can start a subscription on empty stream",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber125",
+    "Persistent subscription test Persistent subscription get events can start a subscription on empty stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber132",
-    "Persitent subscription test Persistent subscription get events can start a subscription on none empty stream",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber132",
+    "Persistent subscription test Persistent subscription get events can start a subscription on none empty stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber4",
-    "Persitent subscription test with admin user rights",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber4",
+    "Persistent subscription test with admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber15",
-    "Persitent subscription test with admin user rights creates a persistent subscription",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber15",
+    "Persistent subscription test with admin user rights creates a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber48",
-    "Persitent subscription test with admin user rights deletes a persistent subscription",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber48",
+    "Persistent subscription test with admin user rights deletes a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber38",
-    "Persitent subscription test with admin user rights throws on creating persistent subscription with same names again",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber38",
+    "Persistent subscription test with admin user rights throws on creating persistent subscription with same names again",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber26",
-    "Persitent subscription test with admin user rights updates a persistent subscription",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber26",
+    "Persistent subscription test with admin user rights updates a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber61",
-    "Persitent subscription test without admin user rights",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber61",
+    "Persistent subscription test without admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber76",
-    "Persitent subscription test without admin user rights throws on create",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber76",
+    "Persistent subscription test without admin user rights throws on create",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber98",
-    "Persitent subscription test without admin user rights throws on delete",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber98",
+    "Persistent subscription test without admin user rights throws on delete",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber86",
-    "Persitent subscription test without admin user rights throws on update",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber86",
+    "Persistent subscription test without admin user rights throws on update",
     "test"
   ],
   [
@@ -2004,9 +2004,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/eventstore/tcpconnection.ts~tcpconnection#connecttopersitentsubscription",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-connectToPersitentSubscription",
-    "src/eventstore/TCPConnection.ts~TCPConnection#connectToPersitentSubscription",
+    "src/eventstore/tcpconnection.ts~tcpconnection#connecttopersistentsubscription",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-connectToPersistentSubscription",
+    "src/eventstore/TCPConnection.ts~TCPConnection#connectToPersistentSubscription",
     "method"
   ],
   [
@@ -2232,9 +2232,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/eventstore/tcpconnection.ts~tcpconnection#persitentsubscriptionlist",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-persitentSubscriptionList",
-    "src/eventstore/TCPConnection.ts~TCPConnection#persitentSubscriptionList",
+    "src/eventstore/tcpconnection.ts~tcpconnection#persistentsubscriptionlist",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-persistentSubscriptionList",
+    "src/eventstore/TCPConnection.ts~TCPConnection#persistentSubscriptionList",
     "member"
   ],
   [
@@ -2400,9 +2400,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stream/stream.ts~stream#getpersitentsubscription",
-    "class/src/stream/Stream.ts~Stream.html#instance-method-getPersitentSubscription",
-    "src/stream/Stream.ts~Stream#getPersitentSubscription",
+    "src/stream/stream.ts~stream#getpersistentsubscription",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-getPersistentSubscription",
+    "src/stream/Stream.ts~Stream#getPersistentSubscription",
     "method"
   ],
   [
@@ -2646,141 +2646,141 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/subscription/persitentsubscription.ts",
-    "file/src/subscription/PersitentSubscription.ts.html",
-    "src/subscription/PersitentSubscription.ts",
+    "src/subscription/persistentsubscription.ts",
+    "file/src/subscription/PersistentSubscription.ts.html",
+    "src/subscription/PersistentSubscription.ts",
     "file"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#acknowledgeevent",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-acknowledgeEvent",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#acknowledgeEvent",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#acknowledgeevent",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvent",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#acknowledgeEvent",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#acknowledgeevents",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-acknowledgeEvents",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#acknowledgeEvents",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#acknowledgeevents",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvents",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#acknowledgeEvents",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#allowedinflightmessages",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-allowedInFlightMessages",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#allowedInFlightMessages",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#allowedinflightmessages",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-allowedInFlightMessages",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#allowedInFlightMessages",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#autoacknownledge",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-autoAcknownledge",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#autoAcknownledge",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#autoacknownledge",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-autoAcknownledge",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#autoAcknownledge",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#constructor",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-constructor-constructor",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#constructor",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#constructor",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-constructor-constructor",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#constructor",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#credentials",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-credentials",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#credentials",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#credentials",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-credentials",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#credentials",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#delete",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-delete",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#delete",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#delete",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-delete",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#delete",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#esconnection",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-esConnection",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#esConnection",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#esconnection",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-esConnection",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#esConnection",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#id",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-id",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#id",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#id",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-id",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#id",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#lastcommitposition",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-lastCommitPosition",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#lastCommitPosition",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#lastcommitposition",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastCommitPosition",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#lastCommitPosition",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#lasteventnumber",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-lastEventNumber",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#lastEventNumber",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#lasteventnumber",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastEventNumber",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#lastEventNumber",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#name",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-get-name",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#name",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#name",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-get-name",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#name",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#notacknowledgeevent",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-notAcknowledgeEvent",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#notAcknowledgeEvent",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#notacknowledgeevent",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvent",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#notAcknowledgeEvent",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#notacknowledgeevents",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-notAcknowledgeEvents",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#notAcknowledgeEvents",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#notacknowledgeevents",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvents",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#notAcknowledgeEvents",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#start",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-start",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#start",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#start",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-start",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#start",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#state",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-get-state",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#state",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#state",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-get-state",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#state",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#state",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-set-state",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#state",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#state",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-set-state",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#state",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#status",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-status",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#status",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#status",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-status",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#status",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#stream",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-stream",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#stream",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#stream",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-stream",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#stream",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#subscriptiongroupname",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-subscriptionGroupName",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#subscriptionGroupName",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#subscriptiongroupname",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-subscriptionGroupName",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscriptionGroupName",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#subscriptionid",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-subscriptionId",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#subscriptionId",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#subscriptionid",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-subscriptionId",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscriptionId",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#update",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-update",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#update",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#update",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-update",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#update",
     "method"
   ],
   [
@@ -2964,9 +2964,9 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "test/integrationtests/5_subscription/persitentsubscription.test.ts",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html",
-    "test/integrationTests/5_subscription/persitentSubscription.test.ts",
+    "test/integrationtests/5_subscription/persistentsubscription.test.ts",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html",
+    "test/integrationTests/5_subscription/persistentSubscription.test.ts",
     "testFile"
   ],
   [

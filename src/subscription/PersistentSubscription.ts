@@ -4,11 +4,7 @@ import {EventEmitter} from 'events'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import uuid = require('uuid/v4')
-import {
-  PersitentSubscriptionConfig,
-  setPersitentSubscriptionConfig,
-  SubscriptionStatus
-} from '../subscription'
+import {PersistentSubscriptionConfig, setPersistentSubscriptionConfig, SubscriptionStatus} from '.'
 import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
@@ -19,10 +15,10 @@ const protobuf = model.eventstore.proto
  * Represents a persistent subscription
  *
  * @export
- * @class PersitentSubscription
+ * @class PersistentSubscription
  * @extends {EventEmitter}
  */
-export class PersitentSubscription extends EventEmitter {
+export class PersistentSubscription extends EventEmitter {
   /** corresponding stream  */
   public stream: Stream
   /** connection to use */
@@ -46,7 +42,7 @@ export class PersitentSubscription extends EventEmitter {
   public autoAcknownledge: boolean = true
 
   /**
-   * Creates an instance of persitent subscription.
+   * Creates an instance of persistent subscription.
    * @param stream
    * @param esConnection
    * @param subscriptionGroupName
@@ -85,7 +81,7 @@ export class PersitentSubscription extends EventEmitter {
    * Gets name
    */
   public get name(): string {
-    return `PersitentSubsbscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
+    return `PersistentSubsbscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
   }
 
   /**
@@ -104,33 +100,33 @@ export class PersitentSubscription extends EventEmitter {
   }
 
   /**
-   * Connects persitent subscription
+   * Connects persistent subscription
    * @param [credentials]
    * @returns connect
    */
   public async start(
     allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
-  ): Promise<PersitentSubscription> {
+  ): Promise<PersistentSubscription> {
     this.allowedInFlightMessages = allowedInFlightMessages
     if (credentials) {
       this.credentials = credentials
     }
     const result = await this.esConnection
       .getConnection()
-      .connectToPersitentSubscription(this, allowedInFlightMessages, this.credentials)
+      .connectToPersistentSubscription(this, allowedInFlightMessages, this.credentials)
     this.subscriptionId = result.subscriptionId
     this.state = SubscriptionStatus.connected
     return this
   }
 
   /**
-   * Deletes persitent subscription
+   * Deletes persistent subscription
    * @param [credentials]
    * @returns delete
    */
-  public async delete(credentials?: UserCredentials | null): Promise<PersitentSubscription> {
-    const result: PersitentSubscription = await new Promise(
+  public async delete(credentials?: UserCredentials | null): Promise<PersistentSubscription> {
+    const result: PersistentSubscription = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.UpdatePersistentSubscription.fromObject({
           subscriptionGroupName: this.subscriptionGroupName,
@@ -155,15 +151,15 @@ export class PersitentSubscription extends EventEmitter {
   }
 
   /**
-   * Updates persitent subscription
+   * Updates persistent subscription
    * @param [credentials]
    * @returns update
    */
   public async update(
-    customConfig: PersitentSubscriptionConfig | {} = {},
+    customConfig: PersistentSubscriptionConfig | {} = {},
     credentials?: UserCredentials | null
-  ): Promise<PersitentSubscription> {
-    const settings = setPersitentSubscriptionConfig(customConfig)
+  ): Promise<PersistentSubscription> {
+    const settings = setPersistentSubscriptionConfig(customConfig)
 
     return await new Promise(
       (resolve, reject): void => {

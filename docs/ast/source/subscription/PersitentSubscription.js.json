@@ -2255,9 +2255,9 @@
               "line": 12,
               "column": 27
             },
-            "identifierName": "PersitentSubscription"
+            "identifierName": "PersistentSubscription"
           },
-          "name": "PersitentSubscription"
+          "name": "PersistentSubscription"
         },
         "superClass": {
           "type": "MemberExpression",
@@ -2771,7 +2771,7 @@
               "leadingComments": [
                 {
                   "type": "CommentBlock",
-                  "value": "*\n     *Creates an instance of PersitentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersitentSubscription\n     ",
+                  "value": "*\n     *Creates an instance of PersistentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersistentSubscription\n     ",
                   "start": 773,
                   "end": 990,
                   "loc": {
@@ -3607,9 +3607,9 @@
                   "line": 36,
                   "column": 30
                 },
-                "identifierName": "PersitentSubscription"
+                "identifierName": "PersistentSubscription"
               },
-              "name": "PersitentSubscription"
+              "name": "PersistentSubscription"
             },
             "exported": {
               "type": "Identifier",
@@ -3624,9 +3624,9 @@
                   "line": 36,
                   "column": 30
                 },
-                "identifierName": "PersitentSubscription"
+                "identifierName": "PersistentSubscription"
               },
-              "name": "PersitentSubscription"
+              "name": "PersistentSubscription"
             }
           }
         ],
@@ -3634,7 +3634,7 @@
         "trailingComments": [
           {
             "type": "CommentLine",
-            "value": "# sourceMappingURL=PersitentSubscription.js.map",
+            "value": "# sourceMappingURL=PersistentSubscription.js.map",
             "start": 1540,
             "end": 1589,
             "loc": {
@@ -3691,9 +3691,9 @@
                 "line": 12,
                 "column": 27
               },
-              "identifierName": "PersitentSubscription"
+              "identifierName": "PersistentSubscription"
             },
-            "name": "PersitentSubscription"
+            "name": "PersistentSubscription"
           },
           "superClass": {
             "type": "MemberExpression",
@@ -4207,7 +4207,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     *Creates an instance of PersitentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersitentSubscription\n     ",
+                    "value": "*\n     *Creates an instance of PersistentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersistentSubscription\n     ",
                     "start": 773,
                     "end": 990,
                     "loc": {
@@ -5001,7 +5001,7 @@
           "trailingComments": [
             {
               "type": "CommentLine",
-              "value": "# sourceMappingURL=PersitentSubscription.js.map",
+              "value": "# sourceMappingURL=PersistentSubscription.js.map",
               "start": 1540,
               "end": 1589,
               "loc": {
@@ -5022,7 +5022,7 @@
         "trailingComments": [
           {
             "type": "CommentLine",
-            "value": "# sourceMappingURL=PersitentSubscription.js.map",
+            "value": "# sourceMappingURL=PersistentSubscription.js.map",
             "start": 1540,
             "end": 1589,
             "loc": {
@@ -5081,7 +5081,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n     *Creates an instance of PersitentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersitentSubscription\n     ",
+      "value": "*\n     *Creates an instance of PersistentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersistentSubscription\n     ",
       "start": 773,
       "end": 990,
       "loc": {
@@ -5097,7 +5097,7 @@
     },
     {
       "type": "CommentLine",
-      "value": "# sourceMappingURL=PersitentSubscription.js.map",
+      "value": "# sourceMappingURL=PersistentSubscription.js.map",
       "start": 1540,
       "end": 1589,
       "loc": {
@@ -10240,7 +10240,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription",
+      "value": "PersistentSubscription",
       "start": 715,
       "end": 736,
       "loc": {
@@ -10387,7 +10387,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     *Creates an instance of PersitentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersitentSubscription\n     ",
+      "value": "*\n     *Creates an instance of PersistentSubscription.\n     * @param {Stream} stream\n     * @param {Eventstore} esConnection\n     * @param {string} subscriptionGroupName\n     * @memberof PersistentSubscription\n     ",
       "start": 773,
       "end": 990,
       "loc": {
@@ -13286,7 +13286,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription",
+      "value": "PersistentSubscription",
       "start": 1515,
       "end": 1536,
       "loc": {
@@ -13353,7 +13353,7 @@
     },
     {
       "type": "CommentLine",
-      "value": "# sourceMappingURL=PersitentSubscription.js.map",
+      "value": "# sourceMappingURL=PersistentSubscription.js.map",
       "start": 1540,
       "end": 1589,
       "loc": {

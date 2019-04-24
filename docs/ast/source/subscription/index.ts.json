@@ -158,9 +158,9 @@
                   "line": 2,
                   "column": 30
                 },
-                "identifierName": "PersitentSubscription"
+                "identifierName": "PersistentSubscription"
               },
-              "name": "PersitentSubscription"
+              "name": "PersistentSubscription"
             },
             "exported": {
               "type": "Identifier",
@@ -175,9 +175,9 @@
                   "line": 2,
                   "column": 30
                 },
-                "identifierName": "PersitentSubscription"
+                "identifierName": "PersistentSubscription"
               },
-              "name": "PersitentSubscription"
+              "name": "PersistentSubscription"
             }
           }
         ],
@@ -196,10 +196,10 @@
             }
           },
           "extra": {
-            "rawValue": "./PersitentSubscription",
-            "raw": "'./PersitentSubscription'"
+            "rawValue": "./PersistentSubscription",
+            "raw": "'./PersistentSubscription'"
           },
-          "value": "./PersitentSubscription"
+          "value": "./PersistentSubscription"
         }
       },
       {
@@ -245,9 +245,9 @@
                   "line": 3,
                   "column": 39
                 },
-                "identifierName": "setPersitentSubscriptionConfig"
+                "identifierName": "setPersistentSubscriptionConfig"
               },
-              "name": "setPersitentSubscriptionConfig"
+              "name": "setPersistentSubscriptionConfig"
             },
             "exported": {
               "type": "Identifier",
@@ -262,9 +262,9 @@
                   "line": 3,
                   "column": 39
                 },
-                "identifierName": "setPersitentSubscriptionConfig"
+                "identifierName": "setPersistentSubscriptionConfig"
               },
-              "name": "setPersitentSubscriptionConfig"
+              "name": "setPersistentSubscriptionConfig"
             }
           },
           {
@@ -294,9 +294,9 @@
                   "line": 3,
                   "column": 68
                 },
-                "identifierName": "PersitentSubscriptionConfig"
+                "identifierName": "PersistentSubscriptionConfig"
               },
-              "name": "PersitentSubscriptionConfig"
+              "name": "PersistentSubscriptionConfig"
             },
             "exported": {
               "type": "Identifier",
@@ -311,9 +311,9 @@
                   "line": 3,
                   "column": 68
                 },
-                "identifierName": "PersitentSubscriptionConfig"
+                "identifierName": "PersistentSubscriptionConfig"
               },
-              "name": "PersitentSubscriptionConfig"
+              "name": "PersistentSubscriptionConfig"
             }
           },
           {
@@ -1753,7 +1753,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription",
+      "value": "PersistentSubscription",
       "start": 56,
       "end": 77,
       "loc": {
@@ -1831,7 +1831,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./PersitentSubscription",
+      "value": "./PersistentSubscription",
       "start": 85,
       "end": 110,
       "loc": {
@@ -1936,7 +1936,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "setPersitentSubscriptionConfig",
+      "value": "setPersistentSubscriptionConfig",
       "start": 121,
       "end": 151,
       "loc": {
@@ -1988,7 +1988,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscriptionConfig",
+      "value": "PersistentSubscriptionConfig",
       "start": 153,
       "end": 180,
       "loc": {

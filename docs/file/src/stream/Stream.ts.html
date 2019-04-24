@@ -67,9 +67,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
@@ -87,9 +87,9 @@ import {StreamPosition} from &apos;./StreamPosition&apos;
 import {Transaction} from &apos;./Transaction&apos;
 import {
   Subscription,
-  PersitentSubscriptionConfig,
-  setPersitentSubscriptionConfig,
-  PersitentSubscription
+  PersistentSubscriptionConfig,
+  setPersistentSubscriptionConfig,
+  PersistentSubscription
 } from &apos;../subscription&apos;
 import * as eventstoreError from &apos;../errors&apos;
 import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
@@ -789,21 +789,21 @@ export class Stream {
   }
 
   /**
-   * Creates a persitent subscription for current stream
+   * Creates a persistent subscription for current stream
    * This operation needs admin rights and a master connection
    *
    * @param {string} subscriptionGroupName
-   * @param {(PersitentSubscriptionConfig | {})} [customConfig={}]
+   * @param {(PersistentSubscriptionConfig | {})} [customConfig={}]
    * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise&lt;PersitentSubscription&gt;}
+   * @returns {Promise&lt;PersistentSubscription&gt;}
    * @memberof Stream
    */
   public async createPersistentSubscription(
     subscriptionGroupName: string,
-    customConfig: PersitentSubscriptionConfig | {} = {},
+    customConfig: PersistentSubscriptionConfig | {} = {},
     credentials?: UserCredentials | null
-  ): Promise&lt;PersitentSubscription&gt; {
-    const settings = setPersitentSubscriptionConfig(customConfig)
+  ): Promise&lt;PersistentSubscription&gt; {
+    const settings = setPersistentSubscriptionConfig(customConfig)
 
     await new Promise(
       (resolve, reject): void =&gt; {
@@ -826,7 +826,7 @@ export class Stream {
           )
       }
     )
-    return new PersitentSubscription(
+    return new PersistentSubscription(
       this,
       this.esConnection,
       this.options.credentials,
@@ -834,11 +834,11 @@ export class Stream {
     )
   }
 
-  public getPersitentSubscription(
+  public getPersistentSubscription(
     subscriptionGroupName: string,
     credentials?: UserCredentials | null
-  ): PersitentSubscription {
-    return new PersitentSubscription(
+  ): PersistentSubscription {
+    return new PersistentSubscription(
       this,
       this.esConnection,
       credentials || this.options.credentials,
