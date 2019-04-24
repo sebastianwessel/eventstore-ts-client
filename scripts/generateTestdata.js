@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 const uuid = require('uuid4')
 const fs = require('fs')
 const path = require('path')
