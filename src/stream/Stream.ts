@@ -635,8 +635,7 @@ export class Stream {
         begin = result.nextEventNumber
         readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
       }
-      let reachedEnd = false
-      while (!reachedEnd) {
+      while (true) {
         if (index < result.events.length) {
           const entry = result.events[index++]
           if (entry.event) {
@@ -645,7 +644,6 @@ export class Stream {
             yield Event.fromRaw(entry.link)
           }
         } else if (result.isEndOfStream) {
-          reachedEnd = true
           return null
         } else {
           index = 0
@@ -665,7 +663,6 @@ export class Stream {
               yield Event.fromRaw(entry.link)
             }
           } else if (result.isEndOfStream) {
-            reachedEnd = true
             return null
           }
         }
