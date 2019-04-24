@@ -11,6 +11,7 @@
     "test": "./scripts/allTest.sh",
     "nyc:all": "nyc --reporter=json --reporter=lcov --reporter=text mocha test/**/*.test.ts",
     "test:unit": "mocha test/unitTests/**/*.test.ts",
+    "test:local": "mocha test/**/*.test.ts",
     "doc":"esdoc"
   },
   "files": [
