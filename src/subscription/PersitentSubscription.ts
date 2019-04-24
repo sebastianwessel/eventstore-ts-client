@@ -81,14 +81,23 @@ export class PersitentSubscription extends EventEmitter {
     )
   }
 
+  /**
+   * Gets name
+   */
   public get name(): string {
     return `PersitentSubsbscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
   }
 
+  /**
+   * Gets state
+   */
   public get state(): SubscriptionStatus {
     return this.status
   }
 
+  /**
+   * Sets state
+   */
   public set state(newStatus: SubscriptionStatus) {
     this.emit(SubscriptionStatus[newStatus])
     this.status = newStatus
