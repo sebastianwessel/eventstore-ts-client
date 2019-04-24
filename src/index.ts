@@ -12,5 +12,6 @@ export {StreamPosition} from './stream'
 export {
   PersistentSubscriptionConfig,
   SystemConsumerStrategies,
-  SubscriptionStatus
+  SubscriptionStatus,
+  SubscriptionDropReason
 } from './subscription'
