@@ -20,15 +20,11 @@ export interface EventstoreSettings {
   logger: bunyan
 
   maxQueueSize: number
-  maxConcurrentItems: number
-  maxRetries: number
   connectTimeout: number
   maxReconnections: number
   reconnectionDelay: number
   operationTimeout: number
   operationTimeoutCheckPeriod: number
-  heartbeatInterval: number
-  heartbeatTimeout: number
   clusterDns: string
   maxDiscoverAttempts: number
   externalGossipPort: number
@@ -56,23 +52,18 @@ const defaultConnectionSettings: EventstoreSettings = {
 
   connectTimeout: 1000,
   maxReconnections: 10,
-  reconnectionDelay: 100,
+  reconnectionDelay: 2 * 1000,
 
   clientId: `ts-client-${uuid()}`,
 
   maxQueueSize: 5000,
-  maxConcurrentItems: 5000,
-  maxRetries: 10,
 
   operationTimeout: 7 * 1000,
   operationTimeoutCheckPeriod: 1000,
 
-  heartbeatInterval: 750,
-  heartbeatTimeout: 1500,
-
   logger: bunyan.createLogger({
-    name: 'eventstore-ts-client'
-    //level: 'debug'
+    name: 'eventstore-ts-client',
+    level: 'debug'
   }),
 
   host: '', //dummy entry will be overwritten by internal functions
