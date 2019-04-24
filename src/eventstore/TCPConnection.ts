@@ -822,6 +822,10 @@ export class TCPConnection extends EventEmitter {
     if (subscription) {
       subscription.emit('dropped', decoded.reason)
     }
+    const persitentSubscription = this.persitentSubscriptionList.get(correlationId) || null
+    if (persitentSubscription) {
+      persitentSubscription.emit('dropped', decoded.reason)
+    }
     if (this.pendingRequests.has(correlationId)) {
       this.resolveCommandPromise(correlationId, decoded)
     }
@@ -955,7 +959,37 @@ export class TCPConnection extends EventEmitter {
     correlationId: string,
     payload: Buffer
   ): void {
-    /*TODO*/
+    const decoded = protobuf.PersistentSubscriptionStreamEventAppeared.decode(payload)
+    const subscription = this.persitentSubscriptionList.get(correlationId)
+    if (subscription) {
+      let event
+      if (decoded.event.event) {
+        event = Event.fromRaw(decoded.event.event)
+      } else if (decoded.event.link) {
+        event = Event.fromRaw(decoded.event.link)
+      } else {
+        subscription.emit(
+          'error',
+          eventstoreError.newProtocolError(
+            'Received stream event with empty event and empty link field'
+          )
+        )
+        return
+      }
+      subscription.emit('event', event)
+      subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
+    } else {
+      this.log.error(
+        {subscriptionId: correlationId, persitentSubscriptionList: this.persitentSubscriptionList},
+        'Received PersistentSubscriptionStreamEventAppeared for unknown id'
+      )
+      this.emit(
+        'error',
+        eventstoreError.newImplementationError(
+          `Received PersistentSubscriptionStreamEventAppeared for unknown id ${correlationId}`
+        )
+      )
+    }
   }
 
   /**
@@ -1138,18 +1172,19 @@ export class TCPConnection extends EventEmitter {
    */
   public async connectToPersitentSubscription(
     subscription: PersitentSubscription,
-    allowInflightMessages: boolean = false,
+    allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.PersistentSubscriptionConfirmation> {
+    this.persitentSubscriptionList.set(subscription.id, subscription)
     const result: model.eventstore.proto.PersistentSubscriptionConfirmation = await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.ConnectToPersistentSubscription.fromObject({
           subscriptionId: subscription.subscriptionGroupName,
           eventStreamId: subscription.stream.id,
-          allowInflightMessages
+          allowedInFlightMessages
         })
         this.sendCommand(
-          subscription.subsciptionId,
+          subscription.id,
           EventstoreCommand.ConnectToPersistentSubscription,
           Buffer.from(protobuf.ConnectToPersistentSubscription.encode(raw).finish()),
           credentials,
@@ -1160,11 +1195,13 @@ export class TCPConnection extends EventEmitter {
         )
       }
     )
-    subscription.lastCommitPosition = Long.fromValue(result.lastCommitPosition)
+    subscription.lastCommitPosition = result.lastCommitPosition
+      ? Long.fromValue(result.lastCommitPosition)
+      : Long.fromValue(0)
     subscription.lastEventNumber = result.lastEventNumber
       ? Long.fromValue(result.lastEventNumber)
-      : null
-    this.persitentSubscriptionList.set(subscription.subsciptionId, subscription)
+      : Long.fromValue(-1)
+
     return result
   }
 
