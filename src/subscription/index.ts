@@ -5,3 +5,11 @@ export {
   PersitentSubscriptionConfig,
   SystemConsumerStrategies
 } from './PersistentSubscriptionConfig'
+
+export enum SubscriptionStatus {
+  disconnected,
+  connected,
+  catchup,
+  live,
+  paused
+}
