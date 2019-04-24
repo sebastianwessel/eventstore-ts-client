@@ -85,6 +85,9 @@ for await (const event of events) {
 await es.close()
 ```
 
+For full documentation please visit:
+**[https://sebastianwessel.github.io/eventstore-ts-client/](https://sebastianwessel.github.io/eventstore-ts-client/)**
+
 ## Building
 
 To build this lib just clone this repo and run:
