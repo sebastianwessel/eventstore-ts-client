@@ -69,7 +69,7 @@ export class PersistentSubscription extends EventEmitter {
       }
     )
     this.on(
-      'drop',
+      'dropped',
       (reason): void => {
         this.state = SubscriptionStatus.disconnected
         console.log('dropped because of ' + reason)
