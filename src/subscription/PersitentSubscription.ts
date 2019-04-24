@@ -194,8 +194,8 @@ export class PersitentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns event
    */
-  public async acknowledgeEvent(event: Event, credentials?: UserCredentials | null): Promise<void> {
-    return await this.acknowledgeEvents([event], credentials)
+  public acknowledgeEvent(event: Event, credentials?: UserCredentials | null): void {
+    return this.acknowledgeEvents([event], credentials)
   }
 
   /**
@@ -204,10 +204,7 @@ export class PersitentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns events
    */
-  public async acknowledgeEvents(
-    events: Event[],
-    credentials?: UserCredentials | null
-  ): Promise<void> {
+  public acknowledgeEvents(events: Event[], credentials?: UserCredentials | null): void {
     const processedEventIds = events.map(
       (event): Buffer => {
         return uuidToBuffer(event.id)
@@ -218,7 +215,7 @@ export class PersitentSubscription extends EventEmitter {
       subscriptionId: this.subscriptionId,
       processedEventIds
     })
-    await this.esConnection
+    this.esConnection
       .getConnection()
       .sendCommand(
         this.id,
@@ -236,14 +233,14 @@ export class PersitentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns acknowledge event
    */
-  public async notAcknowledgeEvent(
+  public notAcknowledgeEvent(
     event: Event,
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
     credentials?: UserCredentials | null
-  ): Promise<void> {
-    return await this.notAcknowledgeEvents([event], reason, message, credentials)
+  ): void {
+    return this.notAcknowledgeEvents([event], reason, message, credentials)
   }
 
   /**
@@ -254,26 +251,25 @@ export class PersitentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns acknowledge events
    */
-  public async notAcknowledgeEvents(
+  public notAcknowledgeEvents(
     events: Event[],
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
     credentials?: UserCredentials | null
-  ): Promise<void> {
+  ): void {
     const processedEventIds = events.map(
       (event): Buffer => {
         return uuidToBuffer(event.id)
       }
     )
-    protobuf.PersistentSubscriptionNakEvents.NakAction
     const raw = protobuf.PersistentSubscriptionNakEvents.fromObject({
       subscriptionId: this.subscriptionId,
       processedEventIds,
       message,
       action: reason
     })
-    await this.esConnection
+    this.esConnection
       .getConnection()
       .sendCommand(
         this.id,
