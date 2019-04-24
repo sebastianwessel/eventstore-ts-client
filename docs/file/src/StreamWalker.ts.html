@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">src/StreamWalker.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Eventstore typescript / ES6 javascript client lib written in typescript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="eventstore-ts-client | Eventstore typescript / ES6 javascript client lib"><meta property="twitter:description" content="Eventstore typescript / ES6 javascript client lib written in typescript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sebastianwessel/eventstore-ts-client"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNoStreamError">newNoStreamError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotAuthenticatedError">newNotAuthenticatedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/StreamWalker.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import {Event} from &apos;./event&apos;
+import * as eventstoreError from &apos;./errors&apos;
+
+export class StreamWalker {
+  protected iterable: AsyncIterableIterator&lt;Event | null&gt;
+  public constructor(iterable: AsyncIterableIterator&lt;Event | null&gt;) {
+    this.iterable = iterable
+  }
+
+  public async *[Symbol.asyncIterator]() {
+    for await (const value of this.iterable) {
+      yield value
+    }
+  }
+
+  /**
+   * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator
+   * @param {function} fn - Function that produces an element of the new iterator
+   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
+   * @return {AsyncIterator}
+   */
+  public map(fn: Function, thisArg?: Function) {
+    if (typeof fn !== &apos;function&apos;) {
+      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+    }
+
+    const a = async function*(iterable: AsyncIterable&lt;Event | null&gt;) {
+      for await (const value of iterable) {
+        yield fn.call(thisArg, value)
+      }
+    }
+    return new StreamWalker(a(this.iterable))
+  }
+
+  /**
+   * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function
+   * @param {function} fn - Function is a predicate, to test each element of the iterator. Return true to keep the element, false otherwise
+   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
+   * @return {AsyncIterator}
+   */
+  public filter(fn: Function, thisArg?: Function) {
+    if (typeof fn !== &apos;function&apos;) {
+      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+    }
+
+    const iterable = this.iterable
+    const b = async function*(fn: Function, thisArg?: Function) {
+      for await (const value of iterable) {
+        if (fn.call(thisArg, value)) {
+          yield value
+        }
+      }
+    }
+
+    return new StreamWalker(b(fn, thisArg))
+  }
+
+  /**
+   * The forEach() method executes a provided function once for each iterator element
+   * @param {function} fn - Function to execute for each element
+   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
+   * @param {any} [args] - optional parameters to pass to function
+   */
+  public async forEach(fn: Function, thisArg?: Function, ...args: any[]): Promise&lt;void&gt; {
+    if (typeof fn !== &apos;function&apos;) {
+      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+    }
+    const iterable = this.iterable
+    for await (const value of iterable) {
+      fn.call(thisArg, value, ...args)
+    }
+  }
+
+  /**
+   * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value
+   * @param {Function} accumulatorFunction - Function to execute on each element in the iterator
+   * @param {any} initialValue - The initialValue accumulates the callback&apos;s return values; it is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied
+   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
+   */
+  public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {
+    if (typeof accumulatorFunction !== &apos;function&apos;) {
+      throw eventstoreError.newImplementationError(accumulatorFunction + &apos;is not a function&apos;)
+    }
+    const iterable = this.iterable
+    let returnValue = initialValue
+    for await (const value of iterable) {
+      returnValue = accumulatorFunction.call(thisArg, returnValue, value)
+    }
+    return returnValue
+  }
+
+  /**
+   * Converts an iterator to an array.
+   * The returned array will contain all single elements of iterator
+   * @returns {Array}
+   */
+  public async toArray() {
+    const iterable = this.iterable
+    const arrayValue = []
+    for await (const value of iterable) {
+      arrayValue.push(value)
+    }
+    return arrayValue
+  }
+
+  /**
+   * The every() method tests whether all elements in the iterator pass the test implemented by the provided function
+   * @param {Function} fn - function which tests current value
+   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
+   * @returns {Boolean}
+   */
+  public async every(fn: Function, thisArg?: Function) {
+    if (typeof fn !== &apos;function&apos;) {
+      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+    }
+    const iterable = this.iterable
+    for await (const value of iterable) {
+      if (fn.call(thisArg, value) === false) {
+        return false
+      }
+    }
+    return true
+  }
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

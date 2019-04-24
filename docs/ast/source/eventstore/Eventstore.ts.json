@@ -662,7 +662,7 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 21\n ",
+            "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 27\n ",
             "start": 338,
             "end": 420,
             "loc": {
@@ -1416,7 +1416,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 48\n     * @param\n     * {undefined} connectionConfiguration\n     ",
+                    "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 54\n     * @param\n     * {undefined} connectionConfiguration\n     ",
                     "start": 908,
                     "end": 1097,
                     "loc": {
@@ -2236,7 +2236,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 48\n     * @param\n     * {undefined} connectionConfiguration\n     ",
+                    "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 54\n     * @param\n     * {undefined} connectionConfiguration\n     ",
                     "start": 908,
                     "end": 1097,
                     "loc": {
@@ -2254,7 +2254,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 63\n     * @type\n     * {string}\n     ",
+                    "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 69\n     * @type\n     * {string}\n     ",
                     "start": 1407,
                     "end": 1546,
                     "loc": {
@@ -2427,7 +2427,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 63\n     * @type\n     * {string}\n     ",
+                    "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 69\n     * @type\n     * {string}\n     ",
                     "start": 1407,
                     "end": 1546,
                     "loc": {
@@ -2445,7 +2445,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 74\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 80\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
                     "start": 1621,
                     "end": 1792,
                     "loc": {
@@ -3194,7 +3194,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 74\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 80\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
                     "start": 1621,
                     "end": 1792,
                     "loc": {
@@ -3212,7 +3212,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 93\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 99\n     * @return\n     * {Promise}\n     ",
                     "start": 2130,
                     "end": 2283,
                     "loc": {
@@ -3402,7 +3402,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 93\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 99\n     * @return\n     * {Promise}\n     ",
                     "start": 2130,
                     "end": 2283,
                     "loc": {
@@ -3420,7 +3420,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 104\n     * @type\n     * {boolean}\n     ",
+                    "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 110\n     * @type\n     * {boolean}\n     ",
                     "start": 2358,
                     "end": 2500,
                     "loc": {
@@ -3593,7 +3593,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 104\n     * @type\n     * {boolean}\n     ",
+                    "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 110\n     * @type\n     * {boolean}\n     ",
                     "start": 2358,
                     "end": 2500,
                     "loc": {
@@ -3611,7 +3611,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 108\n     * @return\n     * {TCPConnection}\n     ",
+                    "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 114\n     * @return\n     * {TCPConnection}\n     ",
                     "start": 2579,
                     "end": 2678,
                     "loc": {
@@ -3752,7 +3752,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 108\n     * @return\n     * {TCPConnection}\n     ",
+                    "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 114\n     * @return\n     * {TCPConnection}\n     ",
                     "start": 2579,
                     "end": 2678,
                     "loc": {
@@ -3770,7 +3770,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 118\n     * @type\n     * {bunyan}\n     ",
+                    "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 124\n     * @type\n     * {bunyan}\n     ",
                     "start": 2743,
                     "end": 2861,
                     "loc": {
@@ -3910,7 +3910,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 118\n     * @type\n     * {bunyan}\n     ",
+                    "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 124\n     * @type\n     * {bunyan}\n     ",
                     "start": 2743,
                     "end": 2861,
                     "loc": {
@@ -3928,7 +3928,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 127\n     * @type\n     * {bunyan}\n     ",
+                    "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 133\n     * @type\n     * {bunyan}\n     ",
                     "start": 2916,
                     "end": 3026,
                     "loc": {
@@ -4152,7 +4152,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 127\n     * @type\n     * {bunyan}\n     ",
+                    "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 133\n     * @type\n     * {bunyan}\n     ",
                     "start": 2916,
                     "end": 3026,
                     "loc": {
@@ -4170,7 +4170,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 140\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 146\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 3115,
                     "end": 3435,
                     "loc": {
@@ -4664,7 +4664,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 140\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 146\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 3115,
                     "end": 3435,
                     "loc": {
@@ -4682,7 +4682,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 158\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 164\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 3712,
                     "end": 3975,
                     "loc": {
@@ -4909,7 +4909,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 158\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 164\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 3712,
                     "end": 3975,
                     "loc": {
@@ -4927,7 +4927,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 171\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 177\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 4085,
                     "end": 4348,
                     "loc": {
@@ -5154,7 +5154,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 171\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+                    "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 177\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
                     "start": 4085,
                     "end": 4348,
                     "loc": {
@@ -5172,7 +5172,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 181\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 187\n     * @return\n     * {Promise}\n     ",
                     "start": 4456,
                     "end": 4565,
                     "loc": {
@@ -5805,7 +5805,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 181\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 187\n     * @return\n     * {Promise}\n     ",
                     "start": 4456,
                     "end": 4565,
                     "loc": {
@@ -5823,7 +5823,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 207\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
                     "start": 4835,
                     "end": 5094,
                     "loc": {
@@ -7265,7 +7265,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 207\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
                     "start": 4835,
                     "end": 5094,
                     "loc": {
@@ -7283,7 +7283,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 236\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 242\n     * @return\n     * {Promise}\n     ",
                     "start": 5682,
                     "end": 5819,
                     "loc": {
@@ -8169,7 +8169,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 236\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 242\n     * @return\n     * {Promise}\n     ",
                     "start": 5682,
                     "end": 5819,
                     "loc": {
@@ -8187,7 +8187,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 261\n     * @param\n     * {Error} err\n     ",
+                    "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 267\n     * @param\n     * {Error} err\n     ",
                     "start": 6182,
                     "end": 6324,
                     "loc": {
@@ -8518,7 +8518,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 261\n     * @param\n     * {Error} err\n     ",
+                    "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 267\n     * @param\n     * {Error} err\n     ",
                     "start": 6182,
                     "end": 6324,
                     "loc": {
@@ -8536,7 +8536,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 278\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 284\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 6397,
                     "end": 6801,
                     "loc": {
@@ -9961,7 +9961,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 278\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 284\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 6397,
                     "end": 6801,
                     "loc": {
@@ -9979,7 +9979,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 320\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 326\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 7466,
                     "end": 7830,
                     "loc": {
@@ -10632,7 +10632,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 320\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 326\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 7466,
                     "end": 7830,
                     "loc": {
@@ -10650,7 +10650,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 348\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 354\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 8164,
                     "end": 8529,
                     "loc": {
@@ -11302,7 +11302,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 348\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 354\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
                     "start": 8164,
                     "end": 8529,
                     "loc": {
@@ -11323,7 +11323,7 @@
           "leadingComments": [
             {
               "type": "CommentBlock",
-              "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 21\n ",
+              "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 27\n ",
               "start": 338,
               "end": 420,
               "loc": {
@@ -11343,7 +11343,7 @@
         "leadingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 21\n ",
+            "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 27\n ",
             "start": 338,
             "end": 420,
             "loc": {
@@ -11365,7 +11365,7 @@
   "comments": [
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 21\n ",
+      "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 27\n ",
       "start": 338,
       "end": 420,
       "loc": {
@@ -11397,7 +11397,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 48\n     * @param\n     * {undefined} connectionConfiguration\n     ",
+      "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 54\n     * @param\n     * {undefined} connectionConfiguration\n     ",
       "start": 908,
       "end": 1097,
       "loc": {
@@ -11413,7 +11413,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 63\n     * @type\n     * {string}\n     ",
+      "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 69\n     * @type\n     * {string}\n     ",
       "start": 1407,
       "end": 1546,
       "loc": {
@@ -11429,7 +11429,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 74\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 80\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
       "start": 1621,
       "end": 1792,
       "loc": {
@@ -11445,7 +11445,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 93\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 99\n     * @return\n     * {Promise}\n     ",
       "start": 2130,
       "end": 2283,
       "loc": {
@@ -11461,7 +11461,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 104\n     * @type\n     * {boolean}\n     ",
+      "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 110\n     * @type\n     * {boolean}\n     ",
       "start": 2358,
       "end": 2500,
       "loc": {
@@ -11477,7 +11477,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 108\n     * @return\n     * {TCPConnection}\n     ",
+      "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 114\n     * @return\n     * {TCPConnection}\n     ",
       "start": 2579,
       "end": 2678,
       "loc": {
@@ -11493,7 +11493,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 118\n     * @type\n     * {bunyan}\n     ",
+      "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 124\n     * @type\n     * {bunyan}\n     ",
       "start": 2743,
       "end": 2861,
       "loc": {
@@ -11509,7 +11509,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 127\n     * @type\n     * {bunyan}\n     ",
+      "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 133\n     * @type\n     * {bunyan}\n     ",
       "start": 2916,
       "end": 3026,
       "loc": {
@@ -11525,7 +11525,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 140\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 146\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 3115,
       "end": 3435,
       "loc": {
@@ -11541,7 +11541,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 158\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 164\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 3712,
       "end": 3975,
       "loc": {
@@ -11557,7 +11557,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 171\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 177\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 4085,
       "end": 4348,
       "loc": {
@@ -11573,7 +11573,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 181\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 187\n     * @return\n     * {Promise}\n     ",
       "start": 4456,
       "end": 4565,
       "loc": {
@@ -11589,7 +11589,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 207\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
       "start": 4835,
       "end": 5094,
       "loc": {
@@ -11605,7 +11605,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 236\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 242\n     * @return\n     * {Promise}\n     ",
       "start": 5682,
       "end": 5819,
       "loc": {
@@ -11621,7 +11621,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 261\n     * @param\n     * {Error} err\n     ",
+      "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 267\n     * @param\n     * {Error} err\n     ",
       "start": 6182,
       "end": 6324,
       "loc": {
@@ -11637,7 +11637,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 278\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 284\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 6397,
       "end": 6801,
       "loc": {
@@ -11653,7 +11653,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 320\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 326\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 7466,
       "end": 7830,
       "loc": {
@@ -11669,7 +11669,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 348\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 354\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 8164,
       "end": 8529,
       "loc": {
@@ -13025,7 +13025,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 21\n ",
+      "value": "*\n * @desc\n * Base class to communicate with eventstore\n * @lineNumber\n * 27\n ",
       "start": 338,
       "end": 420,
       "loc": {
@@ -14444,7 +14444,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 48\n     * @param\n     * {undefined} connectionConfiguration\n     ",
+      "value": "*\n     * @desc\n     * Ensure to use up-to-date settings, logger and a fresh connection socket\n     * @lineNumber\n     * 54\n     * @param\n     * {undefined} connectionConfiguration\n     ",
       "start": 908,
       "end": 1097,
       "loc": {
@@ -15979,7 +15979,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 63\n     * @type\n     * {string}\n     ",
+      "value": "*\n     * @desc\n     * Returns client id - name of eventstore connection\n     * @lineNumber\n     * 69\n     * @type\n     * {string}\n     ",
       "start": 1407,
       "end": 1546,
       "loc": {
@@ -16333,7 +16333,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 74\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Connect to eventstore\n     * @lineNumber\n     * 80\n     * @param\n     * {undefined} connectionConfiguration\n     * @return\n     * {Promise}\n     ",
       "start": 1621,
       "end": 1792,
       "loc": {
@@ -17878,7 +17878,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 93\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Disconnect from eventstore and try to drain pending requests\n     * @lineNumber\n     * 99\n     * @return\n     * {Promise}\n     ",
       "start": 2130,
       "end": 2283,
       "loc": {
@@ -18256,7 +18256,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 104\n     * @type\n     * {boolean}\n     ",
+      "value": "*\n     * @desc\n     * Inidcates if connection to eventstore is available\n     * @lineNumber\n     * 110\n     * @type\n     * {boolean}\n     ",
       "start": 2358,
       "end": 2500,
       "loc": {
@@ -18610,7 +18610,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 108\n     * @return\n     * {TCPConnection}\n     ",
+      "value": "*\n     * @desc\n     *\n     * @lineNumber\n     * 114\n     * @return\n     * {TCPConnection}\n     ",
       "start": 2579,
       "end": 2678,
       "loc": {
@@ -18886,7 +18886,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 118\n     * @type\n     * {bunyan}\n     ",
+      "value": "*\n     * @desc\n     * Get current logger instance\n     * @lineNumber\n     * 124\n     * @type\n     * {bunyan}\n     ",
       "start": 2743,
       "end": 2861,
       "loc": {
@@ -19188,7 +19188,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 127\n     * @type\n     * {bunyan}\n     ",
+      "value": "*\n     * @desc\n     * Set logger instance\n     * @lineNumber\n     * 133\n     * @type\n     * {bunyan}\n     ",
       "start": 2916,
       "end": 3026,
       "loc": {
@@ -19593,7 +19593,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 140\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}\n     * @lineNumber\n     * 146\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 3115,
       "end": 3435,
       "loc": {
@@ -20706,7 +20706,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 158\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 164\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 3712,
       "end": 3975,
       "loc": {
@@ -21188,7 +21188,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 171\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
+      "value": "*\n     * @desc\n     * Get a stream instance specified by streamName\n     * Alias for {@see <stream>}\n     * @lineNumber\n     * 177\n     * @param\n     * {string} streamName\n     * @param\n     * {StreamOptions} streamOptions\n     * @return\n     * {Stream}\n     ",
       "start": 4085,
       "end": 4348,
       "loc": {
@@ -21670,7 +21670,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 181\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Ping eventstore\n     * @lineNumber\n     * 187\n     * @return\n     * {Promise}\n     ",
       "start": 4456,
       "end": 4565,
       "loc": {
@@ -22952,7 +22952,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 207\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
       "start": 4835,
       "end": 5094,
       "loc": {
@@ -25762,7 +25762,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 236\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Authenticate with credentials from settings\n     * @lineNumber\n     * 242\n     * @return\n     * {Promise}\n     ",
       "start": 5682,
       "end": 5819,
       "loc": {
@@ -27538,7 +27538,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 261\n     * @param\n     * {Error} err\n     ",
+      "value": "*\n     * @desc\n     * Called from event listener connected to 'error'\n     * @lineNumber\n     * 267\n     * @param\n     * {Error} err\n     ",
       "start": 6182,
       "end": 6324,
       "loc": {
@@ -28094,7 +28094,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 278\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice of events from current stream\n     * @lineNumber\n     * 284\n     * @param\n     * {EventstoreCommand} direction\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 6397,
       "end": 6801,
       "loc": {
@@ -30828,7 +30828,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 320\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice from current stream in forward direction\n     * @lineNumber\n     * 326\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 7466,
       "end": 7830,
       "loc": {
@@ -32205,7 +32205,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 348\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Reads a slice from current stream in backward direction\n     * @lineNumber\n     * 354\n     * @param\n     * {Position} position\n     * @param\n     * {number} maxCount\n     * @param\n     * {boolean} resolveLinkTos\n     * @param\n     * {boolean} requireMaster\n     * @param\n     * {undefined} credentials\n     * @return\n     * {Promise}\n     ",
       "start": 8164,
       "end": 8529,
       "loc": {

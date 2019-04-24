@@ -35,6 +35,7 @@
             "./manual/readme.md",
             "./manual/eventstore.md",
             "./manual/streams.md",
+            "./manual/subscriptions.md",
             "./manual/events.md",
             "./manual/testing.md"
           ]

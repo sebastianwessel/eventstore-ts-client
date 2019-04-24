@@ -38,7 +38,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connect-to-single-instance" data-ice="link">Connect to single instance</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -46,6 +46,17 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/streams.html"><a href="manual/streams.html" data-ice="link">Streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html" data-ice="link">Subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persitent-subscription" data-ice="link">persitent subscription</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -58,6 +69,9 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/testing.html"><a href="manual/testing.html" data-ice="link">Testing</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#requirements" data-ice="link">requirements</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#running-tests" data-ice="link">running tests</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#test-suite" data-ice="link">test suite</a></li>
 </ul>
   </div>
 </div>
@@ -91,6 +105,42 @@
 <h2 id="installation">Installation</h2><p>Installation is as simple as most packages.<br>Just install package in your projects root with:</p>
 <pre><code class="lang-bash"><code class="source-code prettyprint">npm i --save eventstore-ts-client</code>
 </code></pre>
+<h2 id="quick-start">Quick-Start</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">const {Eventstore, Event} = require(&apos;eventstore-ts-client)
+const es = new Eventstore({
+  uri: &apos;tcp://admin:changeit@127.0.0.1:1113&apos;
+})
+await es.connect()
+
+
+const eventA = new Event(&apos;EventA&apos;,{
+  some: &apos;string data&apos;,
+  num : 1
+})
+await es.atStream(&apos;mystream&apos;).append(eventA)
+
+const eventB = new Event(&apos;EventB&apos;,{
+  text: &apos;other string&apos;,
+  countm : 2
+})
+
+eventB.correlationId = eventA.id
+await es.atStream(&apos;mystream&apos;).append(eventB)
+
+const eventC = new Event(&apos;EventC&apos;)
+const eventD = new Event(&apos;EventD&apos;)
+
+await es.atStream(&apos;mystream&apos;).append([eventC, eventD])
+
+const events = await es
+      .stream(&apos;mystream&apos;)
+      .walkStreamForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}
+
+await es.close()</code>
+</code></pre>
 <h2 id="building">Building</h2><p>To build this lib just clone this repo and run:</p>
 <pre><code class="lang-bash"><code class="source-code prettyprint">npm install
 npm run build</code>
@@ -110,13 +160,40 @@ npm run build</code>
     
   <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>General</h1><p>This library tries to help you to communicate with eventstore in a smooth way.</p><p>There are a couple of things like error handling or function naming which should help you to write nice code.</p></div>
+        <div data-ice="card"><h1>General</h1><p>This library tries to help you to communicate with eventstore in a smooth way.</p><p>There are a couple of things like error handling or function naming which should help you to write nice and speaking code.</p><p>It follows async/await style to avoid &quot;callback hell&quot; as well.</p></div>
         <a data-ice="link" href="manual/readme.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Eventstore</h1><h2>Connect to single instance</h2></div>
+        <div data-ice="card"><h1>Eventstore</h1><h2>connecting</h2><p>Main connection parameters are set inside of connection uri<br>This lib supports connecting to single instance via tcp and auto discovering to clusters also.<br>Connections can be unsecure or encrypted</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// connection to single instance at local at port 1113 with username and password
+const es = new Eventstore({
+  uri: &apos;tcp://username:userpassword@127.0.0.1:1113&apos;
+})
+
+await es.connect()</code>
+</code></pre><pre><code class="lang-javascript"><code class="source-code prettyprint">// connection to cluster at domain escluster.net at port 2112 with username and password
+const es = new Eventstore({
+  uri: &apos;discover://username:password@escluster.net:2112&apos;
+})
+
+await es.connect()
+
+//...same with some additional properties like encryption and connect to master only
+const es = new Eventstore({
+  uri: &apos;discover://username:password@escluster.net:2112&apos;,
+  requireMaster:true,
+  useSSL: true,
+  validateServer: true,
+  secureContext: {
+    ca: fs.readFileSync(&apos;./rootCA.crt&apos;),
+    key: fs.readFileSync(&apos;./domain.key&apos;),
+    cert: fs.readFileSync(&apos;./domain.crt&apos;)
+  }
+})
+
+await es.connect()</code>
+</code></pre></div>
         <a data-ice="link" href="manual/eventstore.html"></a>
       </div>
     </div>
@@ -146,9 +223,95 @@ await eventstore.connect()
 
 await eventstore
       .atStream(&apos;userstream&apos;)
-      .write(eventUsernameChanged)</code>
+      .append(eventUsernameChanged)</code>
+</code></pre><h2>writing to streams</h2><p>Writing to streams is simple by using <code>.append()</code> function at a stream instance.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const eventA = new Event(&apos;EventA&apos;,{
+  some: &apos;string data&apos;,
+  num : 1
+})
+await eventstore.atStream(&apos;mystream&apos;).append(eventA)
+
+const eventB = new Event(&apos;EventB&apos;,{
+  text: &apos;other string&apos;,
+  countm : 2
+})
+
+eventB.correlationId = eventA.id
+await eventstore.atStream(&apos;mystream&apos;).append(eventB)
+
+const eventC = new Event(&apos;EventC&apos;)
+const eventD = new Event(&apos;EventD&apos;)
+
+await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code>
+</code></pre><h2>reading from stream</h2><p>It&apos;s recommended to use an async iteratot to fetch events from streams.  </p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore
+      .stream(&apos;streamId&apos;)
+      .walkStreamForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code>
+</code></pre><p>You can use handy functions of async iterator returnded by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p><ul>
+<li><code>map()</code></li>
+<li><code>filter()</code></li>
+<li><code>forEach()</code></li>
+<li><code>reduce()</code></li>
+<li><code>toArray()</code></li>
+<li><code>every()</code></li>
+</ul><pre><code class="lang-javascript"><code class="source-code prettyprint">const walker = await eventstore
+  .stream(&apos;streamId&apos;)
+  .walkStreamForward()
+
+const result = await walker
+  .filter((event) =&gt; event.name != &apos;EventB&apos;)
+  .map((event) =&gt; {
+    return event.name
+  })
+  .toArray()
+
+console.log(result)</code>
 </code></pre></div>
         <a data-ice="link" href="manual/streams.html"></a>
+      </div>
+    </div>
+<div class="manual-card-wrap" data-ice="cards">
+      <div class="manual-card">
+        <div data-ice="card"><h1>Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persitent subscriptions and catchUp subscriptions.</p><h2>subscribe to stream</h2><p>You can use <code>subscribe()</code> at stream instances and simply adding listener(s) to returned subscription.<br>There are two options.</p><p>Listen to all events:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+subscription = await eventstore
+      .stream(&apos;streamId&apos;)
+      .subscribe()
+
+subscription.on(&apos;event&apos;, (event) =&gt; {
+  console.log(event.name)
+})
+</code>
+</code></pre><p>Listen for specific event:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+subscription = await eventstore
+      .stream(&apos;streamId&apos;)
+      .subscribe()
+
+// listen for &quot;event-&quot;+ lowercase eventname
+subscription.on(&apos;event-specificeventa&apos;, (event) =&gt; {
+  console.log(&apos;log only SpecificEventA&apos;)
+})
+</code>
+</code></pre><p>With this approach you&apos;re able to add different listeners for different needs to one single stream subscription.</p><h2>persitent subscription</h2><p>You can create persitent subscriptions (<strong>needs admin rights</strong>)</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const persitentSubscription = await eventstore
+  .atStream(&apos;myStream&apos;)
+  .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+  .createPersistentSubscription(&apos;persitentsubscription&apos;)</code>
+</code></pre><p>You can update an existing persitent subscription (<strong>needs admin rights</strong>)</p><p>/<strong> TODO documentation </strong>/</p><p>You can delete an existing persitent subscription (<strong>needs admin rights</strong>)</p><p>/<strong> TODO </strong>/</p><p>You can connect to an existing persitent subscription</p><p>/<strong> TODO documentation</strong>/</p><h2>catchUp subscriptions</h2><p>/<strong> TODO </strong>/<br>not implemented yet</p></div>
+        <a data-ice="link" href="manual/subscriptions.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">
@@ -169,7 +332,22 @@ await eventstore
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=security_rating" alt="Security Rating"></a>
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=reliability_rating" alt="Reliability Rating"></a>
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=sqale_rating" alt="Maintainability Rating"></a>
-<a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=vulnerabilities" alt="Vulnerabilities"></a></p><p>Tests are implemented as integration tests against a real eventstore cluster.<br>You can find code coverage analysis at <strong><a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client">sonarcloud.com</a></strong> and at <strong><a href="https://codecov.io/gh/sebastianwessel/eventstore-ts-client">codecov.io</a></strong></p></div>
+<a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=vulnerabilities" alt="Vulnerabilities"></a></p><p>Tests are implemented as integration tests against a real eventstore cluster.<br>You can find code coverage analysis at <strong><a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client">sonarcloud.com</a></strong> and at <strong><a href="https://codecov.io/gh/sebastianwessel/eventstore-ts-client">codecov.io</a></strong></p><h2>requirements</h2><ul>
+<li>node &gt; 10</li>
+<li>linux or mac for running bash scripts</li>
+<li>installed Docker</li>
+</ul><h2>running tests</h2><ul>
+<li>install all dependecies <code>npm install</code></li>
+<li>run tests <code>npm run test</code></li>
+</ul><h2>test suite</h2><p>The whole tests are configured and started by <code>scripts/allTest.sh</code></p><ul>
+<li>starting eventstore with 3 cluster instances</li>
+<li>building testcontainer - a docker container containing this repo</li>
+<li>adding test users to eventstore</li>
+<li>setting up acl for eventstore</li>
+<li>adding test streams to eventstore</li>
+<li>starting testcontainer and running tests within that container</li>
+<li>shutting down eventstore clusters</li>
+</ul></div>
         <a data-ice="link" href="manual/testing.html"></a>
       </div>
     </div>

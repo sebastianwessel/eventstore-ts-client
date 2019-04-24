@@ -29,7 +29,8 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
@@ -75,7 +76,7 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/stream/Stream.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Eventstore} from &apos;../eventstore&apos;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Eventstore, WriteResult, Position} from &apos;../eventstore&apos;
 import {Event} from &apos;../event&apos;
 import uuid = require(&apos;uuid/v4&apos;)
 import * as bunyan from &apos;bunyan&apos;
@@ -94,6 +95,7 @@ import * as eventstoreError from &apos;../errors&apos;
 import {UserCredentials} from &apos;../eventstore/EventstoreSettings&apos;
 import Long = require(&apos;long&apos;)
 import {JSONValue} from &apos;../JSON&apos;
+import {StreamWalker} from &apos;../StreamWalker&apos;
 
 const protobuf = model.eventstore.proto
 
@@ -153,17 +155,6 @@ export class Stream {
   }
 
   /**
-   * Return current logger instance
-   *
-   * @readonly
-   * @type {bunyan}
-   * @memberof Stream
-   */
-  public get logger(): bunyan {
-    return this.log
-  }
-
-  /**
    * Enforces to use master node for any read/write operation
    *
    * @returns {Stream}
@@ -212,7 +203,7 @@ export class Stream {
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise&lt;void&gt; {
+  ): Promise&lt;WriteResult&gt; {
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
     }
@@ -280,7 +271,7 @@ export class Stream {
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
-  ): Promise&lt;void&gt; {
+  ): Promise&lt;WriteResult&gt; {
     if (Array.isArray(event)) {
       return await this.appendEvents(event, expectedVersion, requireMaster, credentials)
     } else {
@@ -299,9 +290,9 @@ export class Stream {
   public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
-  ): Promise&lt;void&gt; {
+  ): Promise&lt;Position&gt; {
     this.log.debug(`Hard delete Stream ${this.streamId}`)
-    await this.delete(true, expectedVersion, requireMaster)
+    return await this.delete(true, expectedVersion, requireMaster)
   }
 
   /**
@@ -315,9 +306,9 @@ export class Stream {
   public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
-  ): Promise&lt;void&gt; {
+  ): Promise&lt;Position&gt; {
     this.log.debug(`Soft delete Stream ${this.streamId}`)
-    await this.delete(false, expectedVersion, requireMaster)
+    return await this.delete(false, expectedVersion, requireMaster)
   }
 
   /**
@@ -336,7 +327,7 @@ export class Stream {
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean,
     credentials?: UserCredentials
-  ): Promise&lt;void&gt; {
+  ): Promise&lt;Position&gt; {
     if (this.isMetaStream()) {
       throw eventstoreError.newBadRequestError(
         `You can not delete metadata stream ${this.streamId}`
@@ -694,6 +685,91 @@ export class Stream {
       credentials
     )
   }
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  protected async walkStream(
+    forward: boolean = true,
+    start: Long | number = StreamPosition.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ) {
+    const that = this
+    const getSlice = forward ? &apos;readSliceForward&apos; : &apos;readSliceBackward&apos;
+    if (requireMaster === undefined) {
+      requireMaster = this.options.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.options.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Long | number) {
+      let index = 0
+      //fetch first slice
+      let readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
+      let result = await readResult
+      if (!result.isEndOfStream) {
+        //we have more so start fetching in background
+        begin = result.nextEventNumber
+        readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
+      }
+      while (true) {
+        if (index &lt; result.events.length) {
+          const entry = result.events[index++]
+          if (entry.event) {
+            yield Event.fromRaw(entry.event)
+          } else if (entry.link) {
+            yield Event.fromRaw(entry.link)
+          }
+        } else if (result.isEndOfStream) {
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          if (!result.isEndOfStream) {
+            //if there are more events start fetching in background
+            begin = result.nextEventNumber
+            readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
+          }
+
+          if (index &lt; result.events.length) {
+            const entry = result.events[index++]
+            if (entry.event) {
+              yield Event.fromRaw(entry.event)
+            } else if (entry.link) {
+              yield Event.fromRaw(entry.link)
+            }
+          } else if (result.isEndOfStream) {
+            return null
+          }
+        }
+      }
+      return null
+    }
+
+    return new StreamWalker(asyncGenerator(start))
+  }
+
+  public async walkStreamForward(
+    start: Long | number = StreamPosition.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;StreamWalker&gt; {
+    return await this.walkStream(true, start, maxCount, resolveLinkTos, requireMaster, credentials)
+  }
+
+  public async walkStreamBackward(
+    start: Long | number = StreamPosition.End,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise&lt;StreamWalker&gt; {
+    return await this.walkStream(false, start, maxCount, resolveLinkTos, requireMaster, credentials)
+  }
 
   /**
    * Subscribe to current stream and return a subscription
@@ -750,7 +826,24 @@ export class Stream {
           )
       }
     )
-    return new PersitentSubscription(this, this.esConnection, subscriptionGroupName)
+    return new PersitentSubscription(
+      this,
+      this.esConnection,
+      this.options.credentials,
+      subscriptionGroupName
+    )
+  }
+
+  public getPersitentSubscription(
+    subscriptionGroupName: string,
+    credentials?: UserCredentials | null
+  ): PersitentSubscription {
+    return new PersitentSubscription(
+      this,
+      this.esConnection,
+      credentials || this.options.credentials,
+      subscriptionGroupName
+    )
   }
 }
 </code></pre>

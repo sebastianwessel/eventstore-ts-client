@@ -10,7 +10,8 @@
     "lint:fix": "eslint . --fix",
     "test": "./scripts/allTest.sh",
     "nyc:all": "nyc --reporter=json --reporter=lcov --reporter=text mocha test/**/*.test.ts",
-    "test:unit": "mocha test/unitTests/**/*.test.ts"
+    "test:unit": "mocha test/unitTests/**/*.test.ts",
+    "doc":"esdoc"
   },
   "files": [
     "dist/**/*"

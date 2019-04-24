@@ -38,7 +38,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connect-to-single-instance" data-ice="link">Connect to single instance</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -46,6 +46,17 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/streams.html"><a href="manual/streams.html" data-ice="link">Streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html" data-ice="link">Subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persitent-subscription" data-ice="link">persitent subscription</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -58,6 +69,9 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/testing.html"><a href="manual/testing.html" data-ice="link">Testing</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#requirements" data-ice="link">requirements</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#running-tests" data-ice="link">running tests</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#test-suite" data-ice="link">test suite</a></li>
 </ul>
   </div>
 </div>
@@ -75,6 +89,25 @@
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=sqale_rating" alt="Maintainability Rating"></a>
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=vulnerabilities" alt="Vulnerabilities"></a></p>
 <p>Tests are implemented as integration tests against a real eventstore cluster.<br>You can find code coverage analysis at <strong><a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client">sonarcloud.com</a></strong> and at <strong><a href="https://codecov.io/gh/sebastianwessel/eventstore-ts-client">codecov.io</a></strong></p>
+<h2 id="requirements">requirements</h2><ul>
+<li>node &gt; 10</li>
+<li>linux or mac for running bash scripts</li>
+<li>installed Docker</li>
+</ul>
+<h2 id="running-tests">running tests</h2><ul>
+<li>install all dependecies <code>npm install</code></li>
+<li>run tests <code>npm run test</code></li>
+</ul>
+<h2 id="test-suite">test suite</h2><p>The whole tests are configured and started by <code>scripts/allTest.sh</code></p>
+<ul>
+<li>starting eventstore with 3 cluster instances</li>
+<li>building testcontainer - a docker container containing this repo</li>
+<li>adding test users to eventstore</li>
+<li>setting up acl for eventstore</li>
+<li>adding test streams to eventstore</li>
+<li>starting testcontainer and running tests within that container</li>
+<li>shutting down eventstore clusters</li>
+</ul>
 </div>
 </div>
 

@@ -29,7 +29,8 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
@@ -97,11 +98,23 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
     )
 
     it(&apos;creates a persistent subscription&apos;, async (): Promise&lt;void&gt; =&gt; {
-      const stream = await es.stream(&apos;subscribestream&apos;)
+      const stream = es.stream(&apos;subscribestream&apos;)
       try {
         await stream
           .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-          .createPersistentSubscription(&apos;testgroup&apos;)
+          .createPersistentSubscription(&apos;persitentsubscription&apos;)
+      } catch (err) {
+        assert.fail(err)
+      }
+    })
+
+    it(&apos;updates a persistent subscription&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const stream = es.stream(&apos;subscribestream&apos;)
+      try {
+        const subscription = await stream
+          .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+          .getPersitentSubscription(&apos;persitentsubscription&apos;)
+        await subscription.update({resolveLinkTos: false})
       } catch (err) {
         assert.fail(err)
       }
@@ -110,17 +123,29 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
     it(&apos;throws on creating persistent subscription with same names again&apos;, async (): Promise&lt;
       void
     &gt; =&gt; {
-      const stream = await es.stream(&apos;subscribestream&apos;)
+      const stream = es.stream(&apos;subscribestream&apos;)
       try {
-        await stream.createPersistentSubscription(&apos;testgroup&apos;)
+        await stream.createPersistentSubscription(&apos;persitentsubscription&apos;)
         assert.fail(&apos;has not thrown&apos;)
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAlreadyExistError&apos;)
       }
     })
+
+    it(&apos;deletes a persistent subscription&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const stream = es.stream(&apos;subscribestream&apos;)
+      try {
+        const subscription = await stream
+          .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+          .getPersitentSubscription(&apos;persitentsubscription&apos;)
+        await subscription.delete()
+      } catch (err) {
+        assert.fail(err)
+      }
+    })
   })
 
-  describe(&apos;with admin user rights&apos;, (): void =&gt; {
+  describe(&apos;without admin user rights&apos;, (): void =&gt; {
     const es = new Eventstore({
       uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
       clientId: &apos;ts-client-test&apos;
@@ -128,6 +153,10 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
     before(
       async (): Promise&lt;void&gt; =&gt; {
         await es.connect()
+        const stream = es
+          .stream(&apos;subscribestream&apos;)
+          .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+        await stream.createPersistentSubscription(&apos;persitentsubscription2&apos;)
       }
     )
 
@@ -137,14 +166,87 @@ describe(&apos;Persitent subscription test&apos;, (): void =&gt; {
       }
     )
 
-    it(&apos;throws on none admin right&apos;, async (): Promise&lt;void&gt; =&gt; {
-      const stream = await es.stream(&apos;subscribestream&apos;)
+    it(&apos;throws on create&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const stream = es.stream(&apos;subscribestream&apos;)
       try {
-        await stream.createPersistentSubscription(&apos;testgroup&apos;)
+        await stream.createPersistentSubscription(&apos;persitentsubscription2&apos;)
         assert.fail(&apos;has not thrown&apos;)
       } catch (err) {
         assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
       }
+    })
+
+    it(&apos;throws on update&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const stream = es.stream(&apos;subscribestream&apos;)
+      try {
+        const subscription = await stream
+          .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+          .getPersitentSubscription(&apos;persitentsubscription2&apos;)
+        await subscription.update({resolveLinkTos: false})
+      } catch (err) {
+        assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
+      }
+    })
+
+    it(&apos;throws on delete&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const stream = es.stream(&apos;subscribestream&apos;)
+      try {
+        const subscription = await stream
+          .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
+          .getPersitentSubscription(&apos;persitentsubscription2&apos;)
+        await subscription.delete()
+      } catch (err) {
+        assert.strictEqual(err.name, &apos;EventstoreAccessDeniedError&apos;)
+      }
+    })
+  })
+
+  describe(&apos;Persistent subscription get events&apos;, (): void =&gt; {
+    const es = new Eventstore({
+      uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+      clientId: &apos;ts-client-test&apos;
+    })
+    before(
+      async (): Promise&lt;void&gt; =&gt; {
+        await es.connect()
+        await es
+          .stream(&apos;persitentsubscribestream&apos;)
+          .createPersistentSubscription(
+            &apos;persitentsubscription&apos;,
+            {},
+            {username: &apos;admin&apos;, password: &apos;changeit&apos;}
+          )
+      }
+    )
+
+    after(
+      async (): Promise&lt;void&gt; =&gt; {
+        await es.disconnect()
+      }
+    )
+
+    it(&apos;can start a subscription on empty stream&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const subscription = es
+        .stream(&apos;persitentsubscribestream&apos;)
+        .getPersitentSubscription(&apos;persitentsubscription&apos;)
+      await subscription.start()
+      assert.strictEqual(
+        subscription.name,
+        `PersitentSubsbscription: persitentsubscribestream :: persitentsubscription`
+      )
+    })
+
+    it(&apos;can start a subscription on none empty stream&apos;, async (): Promise&lt;void&gt; =&gt; {
+      const newEvent = new Event(&apos;SomeEvent&apos;)
+      const stream = es.stream(&apos;persitentsubscribestream&apos;)
+      await stream.append(newEvent)
+      const subscription = stream.getPersitentSubscription(&apos;persitentsubscription&apos;)
+      await subscription.start()
+      await new Promise(
+        async (resolve): Promise&lt;void&gt; =&gt; {
+          setTimeout(resolve, 3000)
+        }
+      )
     })
   })
 })
