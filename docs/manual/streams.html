@@ -38,7 +38,7 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
-<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connect-to-single-instance" data-ice="link">Connect to single instance</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -46,6 +46,17 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/streams.html"><a href="manual/streams.html" data-ice="link">Streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+</ul>
+  </div>
+<div data-ice="manual">
+    <ul class="manual-toc">
+      
+    <li data-ice="manualNav" class="indent-h1" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html" data-ice="link">Subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -58,6 +69,9 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/testing.html"><a href="manual/testing.html" data-ice="link">Testing</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#requirements" data-ice="link">requirements</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#running-tests" data-ice="link">running tests</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/testing.html"><a href="manual/testing.html#test-suite" data-ice="link">test suite</a></li>
 </ul>
   </div>
 </div>
@@ -94,7 +108,64 @@ await eventstore.connect()
 
 await eventstore
       .atStream(&apos;userstream&apos;)
-      .write(eventUsernameChanged)</code>
+      .append(eventUsernameChanged)</code>
+</code></pre>
+<h2 id="writing-to-streams">writing to streams</h2><p>Writing to streams is simple by using <code>.append()</code> function at a stream instance.</p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const eventA = new Event(&apos;EventA&apos;,{
+  some: &apos;string data&apos;,
+  num : 1
+})
+await eventstore.atStream(&apos;mystream&apos;).append(eventA)
+
+const eventB = new Event(&apos;EventB&apos;,{
+  text: &apos;other string&apos;,
+  countm : 2
+})
+
+eventB.correlationId = eventA.id
+await eventstore.atStream(&apos;mystream&apos;).append(eventB)
+
+const eventC = new Event(&apos;EventC&apos;)
+const eventD = new Event(&apos;EventD&apos;)
+
+await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code>
+</code></pre>
+<h2 id="reading-from-stream">reading from stream</h2><p>It&apos;s recommended to use an async iteratot to fetch events from streams.  </p>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore
+      .stream(&apos;streamId&apos;)
+      .walkStreamForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code>
+</code></pre>
+<p>You can use handy functions of async iterator returnded by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p>
+<ul>
+<li><code>map()</code></li>
+<li><code>filter()</code></li>
+<li><code>forEach()</code></li>
+<li><code>reduce()</code></li>
+<li><code>toArray()</code></li>
+<li><code>every()</code></li>
+</ul>
+<pre><code class="lang-javascript"><code class="source-code prettyprint">const walker = await eventstore
+  .stream(&apos;streamId&apos;)
+  .walkStreamForward()
+
+const result = await walker
+  .filter((event) =&gt; event.name != &apos;EventB&apos;)
+  .map((event) =&gt; {
+    return event.name
+  })
+  .toArray()
+
+console.log(result)</code>
 </code></pre>
 </div>
 </div>

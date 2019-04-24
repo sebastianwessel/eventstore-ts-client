@@ -9,49 +9,51 @@ export const SystemConsumerStrategies = {
 }
 
 /**
- * typescript interface for Persitent subscription config
+ * typescript interface for Persistent subscription config
  */
-export interface PersitentSubscriptionConfig {
+export interface PersistentSubscriptionConfig {
   resolveLinkTos: boolean
   startFrom: Long | number
-  messageTimeout: number
-  extraStatistic: boolean
+  messageTimeoutMilliseconds: number
+  recordStatistics: boolean
   maxRetryCount: number
   liveBufferSize: number
   bufferSize: number
   readBatchSize: number
-  checkPointAfter: number
-  minCheckpointCount: number
-  maxCheckPointCount: number
-  maxSubscriberCount: number
-  consumerStrategy: string
+  checkpointAfterTime: number
+  checkpointMinCount: number
+  checkpointMaxCount: number
+  subscriberMaxCount: number
+  namedConsumerStrategy: string
+  preferRoundRobin: boolean
 }
 
-/** default persitent subscription config */
-const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
+/** default persistent subscription config */
+const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
-  messageTimeout: 10000,
-  extraStatistic: false,
+  messageTimeoutMilliseconds: 10000,
+  recordStatistics: false,
   maxRetryCount: 10,
   liveBufferSize: 500,
   bufferSize: 500,
   readBatchSize: 20,
-  checkPointAfter: 1000,
-  minCheckpointCount: 10,
-  maxCheckPointCount: 500,
-  maxSubscriberCount: 10,
-  consumerStrategy: SystemConsumerStrategies.RoundRobin
+  checkpointAfterTime: 1000,
+  checkpointMinCount: 10,
+  checkpointMaxCount: 500,
+  subscriberMaxCount: 10,
+  namedConsumerStrategy: SystemConsumerStrategies.RoundRobin,
+  preferRoundRobin: true
 }
 
 /**
  * merges given settings with default settings
  * @param customSettings
  */
-let setPersitentSubscriptionConfig = (
-  customSettings: object | PersitentSubscriptionConfig
-): PersitentSubscriptionConfig => {
-  return {...defaultPersitentSubscriptionConfig, ...customSettings}
+let setPersistentSubscriptionConfig = (
+  customSettings: object | PersistentSubscriptionConfig
+): PersistentSubscriptionConfig => {
+  return {...defaultPersistentSubscriptionConfig, ...customSettings}
 }
 
-export {setPersitentSubscriptionConfig}
+export {setPersistentSubscriptionConfig}

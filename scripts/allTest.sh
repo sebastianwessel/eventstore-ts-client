@@ -114,30 +114,31 @@ fi
 print_style 'creating test streams:\n';
 for dir in ./test/integrationTests/testSetup/testStreams/*/
 do
+  for filename in ${dir}*.json; do
     dir=${dir%*/}      # remove the trailing "/"
     streamname=${dir##*/}    # print everything after the final "/"
     print_style "stream ${streamname}: "
-    curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/testStreams/${streamname}/events.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/${streamname}
+    curl --output /dev/null --silent --fail -i -d @${filename} -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/${streamname}
     res=$?
     if test "$res" != "0"; then
       print_style "fail\n" "danger";
       else
           print_style "ok\n" "success";
     fi
+  done
 done
 
 
 ### Start integration tests and save code coverage
 ###############################################
 print_style "\nstart integration tests with code coverage generation\n";
-#nyc --reporter=json --reporter=lcov --reporter=text npm run mocha:all
-#testexit=0
-#rc=$?; if [[ $rc != 0 ]]; then $testexit=$rc; fi
  
 print_style 'starting docker test container:\n';
 docker run --name=testcontainer --network=estest_clusternetwork --network-alias=mocha.escluster.net -v $PWD:/home/travis/build/sebastianwessel/eventstore-ts-client/ sebastianwessel/eventstore-ts-client:latest
 print_style 'delete docker test container: ';
 docker container rm testcontainer
+
+sed -i -e "s/\/home\/travis\/build\/sebastianwessel\/eventstore-ts-client/${PWD//\//\\/}/g" ./coverage/lcov.info
 
 ### shut down eventstore cluster and remove docker containers
 ###############################################

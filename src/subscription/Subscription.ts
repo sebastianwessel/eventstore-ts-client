@@ -37,9 +37,12 @@ export class Subscription extends EventEmitter {
   protected position: Position | null = null
 
   /**
-   * Creates an instance of Subscription.
-   * @param {string} subscriptionId
-   * @memberof Subscription
+   * Creates an instance of subscription.
+   * @param subscriptionId
+   * @param tcpConnection
+   * @param stream
+   * @param resolveLinkTos
+   * @param credentials
    */
   public constructor(
     subscriptionId: string,
@@ -58,7 +61,7 @@ export class Subscription extends EventEmitter {
     this.on('dropped', this.onDropped)
     this.on('event', this.onEvent)
     this.on('error', this.onError)
-    this.log = stream.logger.child({module: 'Subscription', subscriptionId: this.id})
+    this.log = stream.log.child({module: 'Subscription', subscriptionId: this.id})
   }
 
   /**

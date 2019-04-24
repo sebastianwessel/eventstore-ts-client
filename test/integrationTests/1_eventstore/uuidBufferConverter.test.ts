@@ -17,8 +17,8 @@ describe('uuid to buffer', (): void => {
 
   it('throws on uuid size', (): void => {
     try {
-      uuidToBuffer('00000000-0000-0000-0000-00000000000')
-      assert.fail('has not thrown')
+      const result = uuidToBuffer('00000000-0000-0000-0000-00000000000')
+      assert.fail(result.toString())
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
     }
@@ -26,8 +26,8 @@ describe('uuid to buffer', (): void => {
 
   it('throws on invalid uuid format', (): void => {
     try {
-      uuidToBuffer('000000000000000000000000000000000000')
-      assert.fail('has not thrown')
+      const result = uuidToBuffer('000000000000000000000000000000000000')
+      assert.fail(result.toString())
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
     }
@@ -51,8 +51,8 @@ describe('buffer to uuid', (): void => {
   it('throws on invalid buffer size', (): void => {
     const invalidBuffer = Buffer.alloc(17, 'hex')
     try {
-      uuidFromBuffer(invalidBuffer)
-      assert.fail('has not thrown')
+      const result = uuidFromBuffer(invalidBuffer)
+      assert.fail(result)
     } catch (err) {
       assert.strictEqual(err.name, 'EventstoreProtocolError')
     }

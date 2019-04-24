@@ -29,7 +29,8 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
@@ -66,22 +67,22 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber36">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber37">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber36">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber37">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -233,35 +234,6 @@
         
         
         
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      <span class="kind" data-ice="kind">get</span>
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-get-logger">logger</a></span></span><span class="code" data-ice="signature">: <span>bunyan</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Return current logger instance</p>
-</div>
       </div>
     </td>
     <td>
@@ -439,7 +411,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Creates a persitent subscription for current stream
+        <div data-ice="description"><p>Creates a persistent subscription for current stream
 This operation needs admin rights and a master connection</p>
 </div>
       </div>
@@ -588,6 +560,34 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
         
         <div data-ice="description"><p>Returns stream metadata if set or</p>
 </div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getPersistentSubscription">getPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
       </div>
     </td>
     <td>
@@ -926,6 +926,90 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
       <div>
         <p>
           
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStream">walkStream</a></span></span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span>*</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamBackward">walkStreamBackward</a></span></span><span class="code" data-ice="signature">(start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamForward">walkStreamForward</a></span></span><span class="code" data-ice="signature">(start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
           
           
           <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-withCredentials">withCredentials</a></span></span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
@@ -965,7 +1049,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber24">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber25">source</a></span></span>
     </span>
   </h3>
 
@@ -1040,7 +1124,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -1083,7 +1167,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber74">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber75">source</a></span></span>
     </span>
   </h3>
 
@@ -1126,7 +1210,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
@@ -1134,50 +1218,6 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
   
   
   
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-logger">
-    <span class="access" data-ice="access">public</span>
-    
-    <span class="kind" data-ice="kind">get</span>
-    
-    
-    
-    <span class="code" data-ice="name">logger</span><span class="code" data-ice="signature">: <span>bunyan</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber85">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Return current logger instance</p>
-</div>
 
   
 
@@ -1213,7 +1253,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber71">source</a></span></span>
     </span>
   </h3>
 
@@ -1257,7 +1297,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber31">source</a></span></span>
     </span>
   </h3>
 
@@ -1300,7 +1340,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber26">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber27">source</a></span></span>
     </span>
   </h3>
 
@@ -1346,7 +1386,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber201">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber191">source</a></span></span>
     </span>
   </h3>
 
@@ -1436,7 +1476,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber123">source</a></span></span>
     </span>
   </h3>
 
@@ -1526,14 +1566,14 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber648">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber723">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Creates a persitent subscription for current stream
+  <div data-ice="description"><p>Creates a persistent subscription for current stream
 This operation needs admin rights and a master connection</p>
 </div>
 
@@ -1611,7 +1651,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber257">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber247">source</a></span></span>
     </span>
   </h3>
 
@@ -1702,7 +1742,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber305">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber295">source</a></span></span>
     </span>
   </h3>
 
@@ -1792,7 +1832,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber354">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber344">source</a></span></span>
     </span>
   </h3>
 
@@ -1876,7 +1916,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber376">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber366">source</a></span></span>
     </span>
   </h3>
 
@@ -1960,7 +2000,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber392">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber382">source</a></span></span>
     </span>
   </h3>
 
@@ -2027,6 +2067,83 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-getPersistentSubscription">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">getPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber759">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">subscriptionGroupName</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-hardDelete">
     <span class="access" data-ice="access">public</span>
     
@@ -2038,7 +2155,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber222">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber212">source</a></span></span>
     </span>
   </h3>
 
@@ -2116,7 +2233,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber188">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber178">source</a></span></span>
     </span>
   </h3>
 
@@ -2172,7 +2289,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber529">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber519">source</a></span></span>
     </span>
   </h3>
 
@@ -2274,7 +2391,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber604">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber594">source</a></span></span>
     </span>
   </h3>
 
@@ -2370,7 +2487,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber576">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber566">source</a></span></span>
     </span>
   </h3>
 
@@ -2466,7 +2583,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber95">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 
@@ -2522,7 +2639,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber118">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber108">source</a></span></span>
     </span>
   </h3>
 
@@ -2578,7 +2695,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber441">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber431">source</a></span></span>
     </span>
   </h3>
 
@@ -2662,7 +2779,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber238">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber228">source</a></span></span>
     </span>
   </h3>
 
@@ -2740,7 +2857,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber478">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber468">source</a></span></span>
     </span>
   </h3>
 
@@ -2824,7 +2941,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber629">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber704">source</a></span></span>
     </span>
   </h3>
 
@@ -2891,6 +3008,297 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-walkStream">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">walkStream</span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span>*</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber611">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">forward</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">start</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span>*</span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-walkStreamBackward">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">walkStreamBackward</span><span class="code" data-ice="signature">(start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber686">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">start</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-walkStreamForward">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">walkStreamForward</span><span class="code" data-ice="signature">(start: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber676">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">start</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  <div class="return-params" data-ice="returnParams">
+    <h4>Return:</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
+          
+        </tr>
+      </tbody>
+    </table>
+    <div data-ice="returnProperties">
+</div>
+  </div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-withCredentials">
     <span class="access" data-ice="access">public</span>
     
@@ -2902,7 +3310,7 @@ Use {@link &lt;softDelete&gt;} or {@link &lt;hardDelete&gt;} instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber107">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber97">source</a></span></span>
     </span>
   </h3>
 

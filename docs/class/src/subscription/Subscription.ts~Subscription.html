@@ -29,7 +29,8 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
@@ -66,9 +67,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
@@ -134,13 +135,13 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(subscriptionId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(subscriptionId: <span>*</span>, tcpConnection: <span>*</span>, stream: <span>*</span>, resolveLinkTos: <span>*</span>, credentials: <span>*</span>)</span>
         </p>
       </div>
       <div>
         
         
-        <div data-ice="description"><p>Creates an instance of Subscription.</p>
+        <div data-ice="description"><p>Creates an instance of subscription.</p>
 </div>
       </div>
     </td>
@@ -669,18 +670,18 @@
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(subscriptionId: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(subscriptionId: <span>*</span>, tcpConnection: <span>*</span>, stream: <span>*</span>, resolveLinkTos: <span>*</span>, credentials: <span>*</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber14">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Creates an instance of Subscription.</p>
+  <div data-ice="description"><p>Creates an instance of subscription.</p>
 </div>
 
   
@@ -695,7 +696,31 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">subscriptionId</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">tcpConnection</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">stream</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>*</span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -780,7 +805,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber89">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
@@ -824,7 +849,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber71">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
@@ -912,7 +937,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber48">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber51">source</a></span></span>
     </span>
   </h3>
 
@@ -955,7 +980,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber82">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber85">source</a></span></span>
     </span>
   </h3>
 
@@ -1043,7 +1068,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
@@ -1086,7 +1111,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber42">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber45">source</a></span></span>
     </span>
   </h3>
 
@@ -1129,7 +1154,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber39">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
@@ -1172,7 +1197,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber40">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber43">source</a></span></span>
     </span>
   </h3>
 
@@ -1218,7 +1243,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber97">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber100">source</a></span></span>
     </span>
   </h3>
 
@@ -1274,7 +1299,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber119">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber122">source</a></span></span>
     </span>
   </h3>
 
@@ -1334,7 +1359,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber155">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber158">source</a></span></span>
     </span>
   </h3>
 
@@ -1394,7 +1419,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber130">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber133">source</a></span></span>
     </span>
   </h3>
 
@@ -1460,7 +1485,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber141">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber144">source</a></span></span>
     </span>
   </h3>
 
@@ -1504,7 +1529,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber107">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/Subscription.ts.html#lineNumber110">source</a></span></span>
     </span>
   </h3>
 

@@ -445,9 +445,9 @@
                   "line": 5,
                   "column": 30
                 },
-                "identifierName": "PersitentSubscription_1"
+                "identifierName": "PersistentSubscription_1"
               },
-              "name": "PersitentSubscription_1"
+              "name": "PersistentSubscription_1"
             }
           }
         ],
@@ -466,10 +466,10 @@
             }
           },
           "extra": {
-            "rawValue": "./PersitentSubscription",
-            "raw": "\"./PersitentSubscription\""
+            "rawValue": "./PersistentSubscription",
+            "raw": "\"./PersistentSubscription\""
           },
-          "value": "./PersitentSubscription"
+          "value": "./PersistentSubscription"
         }
       },
       {
@@ -530,9 +530,9 @@
                     "line": 6,
                     "column": 32
                   },
-                  "identifierName": "PersitentSubscription"
+                  "identifierName": "PersistentSubscription"
                 },
-                "name": "PersitentSubscription"
+                "name": "PersistentSubscription"
               },
               "init": {
                 "type": "MemberExpression",
@@ -561,9 +561,9 @@
                       "line": 6,
                       "column": 58
                     },
-                    "identifierName": "PersitentSubscription_1"
+                    "identifierName": "PersistentSubscription_1"
                   },
-                  "name": "PersitentSubscription_1"
+                  "name": "PersistentSubscription_1"
                 },
                 "property": {
                   "type": "Identifier",
@@ -578,9 +578,9 @@
                       "line": 6,
                       "column": 80
                     },
-                    "identifierName": "PersitentSubscription"
+                    "identifierName": "PersistentSubscription"
                   },
-                  "name": "PersitentSubscription"
+                  "name": "PersistentSubscription"
                 },
                 "computed": false
               }
@@ -718,9 +718,9 @@
                     "line": 8,
                     "column": 41
                   },
-                  "identifierName": "setPersitentSubscriptionConfig"
+                  "identifierName": "setPersistentSubscriptionConfig"
                 },
-                "name": "setPersitentSubscriptionConfig"
+                "name": "setPersistentSubscriptionConfig"
               },
               "init": {
                 "type": "MemberExpression",
@@ -766,9 +766,9 @@
                       "line": 8,
                       "column": 105
                     },
-                    "identifierName": "setPersitentSubscriptionConfig"
+                    "identifierName": "setPersistentSubscriptionConfig"
                   },
-                  "name": "setPersitentSubscriptionConfig"
+                  "name": "setPersistentSubscriptionConfig"
                 },
                 "computed": false
               }
@@ -1819,7 +1819,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription_1",
+      "value": "PersistentSubscription_1",
       "start": 184,
       "end": 207,
       "loc": {
@@ -1872,7 +1872,7 @@
         "binop": null,
         "updateContext": null
       },
-      "value": "./PersitentSubscription",
+      "value": "./PersistentSubscription",
       "start": 213,
       "end": 238,
       "loc": {
@@ -1980,7 +1980,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription",
+      "value": "PersistentSubscription",
       "start": 251,
       "end": 272,
       "loc": {
@@ -2033,7 +2033,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription_1",
+      "value": "PersistentSubscription_1",
       "start": 275,
       "end": 298,
       "loc": {
@@ -2085,7 +2085,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "PersitentSubscription",
+      "value": "PersistentSubscription",
       "start": 299,
       "end": 320,
       "loc": {
@@ -2326,7 +2326,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "setPersitentSubscriptionConfig",
+      "value": "setPersistentSubscriptionConfig",
       "start": 410,
       "end": 440,
       "loc": {
@@ -2431,7 +2431,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "setPersitentSubscriptionConfig",
+      "value": "setPersistentSubscriptionConfig",
       "start": 474,
       "end": 504,
       "loc": {

@@ -29,7 +29,8 @@
 <nav class="navigation" data-ice="nav"><div>
   <ul>
     
-  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
@@ -66,9 +67,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
-<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html">PersitentSubscription</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersitentSubscriptionConfig">setPersitentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
 </ul>
 </div>
@@ -86,52 +87,54 @@ export const SystemConsumerStrategies = {
 }
 
 /**
- * typescript interface for Persitent subscription config
+ * typescript interface for Persistent subscription config
  */
-export interface PersitentSubscriptionConfig {
+export interface PersistentSubscriptionConfig {
   resolveLinkTos: boolean
   startFrom: Long | number
-  messageTimeout: number
-  extraStatistic: boolean
+  messageTimeoutMilliseconds: number
+  recordStatistics: boolean
   maxRetryCount: number
   liveBufferSize: number
   bufferSize: number
   readBatchSize: number
-  checkPointAfter: number
-  minCheckpointCount: number
-  maxCheckPointCount: number
-  maxSubscriberCount: number
-  consumerStrategy: string
+  checkPointAfterTime: number
+  checkpointMinCount: number
+  checkpointMaxCount: number
+  subscriberMaxCount: number
+  namedConsumerStrategy: string
+  preferRoundRobin: boolean
 }
 
-/** default persitent subscription config */
-const defaultPersitentSubscriptionConfig: PersitentSubscriptionConfig = {
+/** default persistent subscription config */
+const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
-  messageTimeout: 10000,
-  extraStatistic: false,
+  messageTimeoutMilliseconds: 30000,
+  recordStatistics: false,
   maxRetryCount: 10,
-  liveBufferSize: 500,
-  bufferSize: 500,
-  readBatchSize: 20,
-  checkPointAfter: 1000,
-  minCheckpointCount: 10,
-  maxCheckPointCount: 500,
-  maxSubscriberCount: 10,
-  consumerStrategy: SystemConsumerStrategies.RoundRobin
+  liveBufferSize: 10,
+  bufferSize: 10,
+  readBatchSize: 10,
+  checkPointAfterTime: 1000,
+  checkpointMinCount: 10,
+  checkpointMaxCount: 500,
+  subscriberMaxCount: 10,
+  namedConsumerStrategy: SystemConsumerStrategies.RoundRobin,
+  preferRoundRobin: true
 }
 
 /**
  * merges given settings with default settings
  * @param customSettings
  */
-let setPersitentSubscriptionConfig = (
-  customSettings: object | PersitentSubscriptionConfig
-): PersitentSubscriptionConfig =&gt; {
-  return {...defaultPersitentSubscriptionConfig, ...customSettings}
+let setPersistentSubscriptionConfig = (
+  customSettings: object | PersistentSubscriptionConfig
+): PersistentSubscriptionConfig =&gt; {
+  return {...defaultPersistentSubscriptionConfig, ...customSettings}
 }
 
-export {setPersitentSubscriptionConfig}
+export {setPersistentSubscriptionConfig}
 </code></pre>
 
 </div>

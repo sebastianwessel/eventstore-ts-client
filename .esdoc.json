@@ -18,7 +18,7 @@
           "source": "./test/",
           "interfaces": ["describe", "it", "context", "suite", "test"],
           "includes": ["(spec|Spec|test|Test)\\.js$","(spec|Spec|test|Test)\\.ts$"],
-          "excludes": ["\\.config\\.js$","\\.config\\.ts$","\\model.js$","\\.d.js$"]
+          "excludes": ["\\.config\\.js$","\\.config\\.ts$","\\.js$","\\.d.js$"]
         },
         "brand": {
           "title":"eventstore-ts-client | Eventstore typescript / ES6 javascript client lib",
@@ -35,6 +35,7 @@
             "./manual/readme.md",
             "./manual/eventstore.md",
             "./manual/streams.md",
+            "./manual/subscriptions.md",
             "./manual/events.md",
             "./manual/testing.md"
           ]

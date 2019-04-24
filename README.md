@@ -45,6 +45,49 @@ Just install package in your projects root with:
 npm i --save eventstore-ts-client
 ```
 
+## Quick-Start
+
+```javascript
+const {Eventstore, Event} = require('eventstore-ts-client)
+const es = new Eventstore({
+  uri: 'tcp://admin:changeit@127.0.0.1:1113'
+})
+await es.connect()
+
+
+const eventA = new Event('EventA',{
+  some: 'string data',
+  num : 1
+})
+await es.atStream('mystream').append(eventA)
+
+const eventB = new Event('EventB',{
+  text: 'other string',
+  countm : 2
+})
+
+eventB.correlationId = eventA.id
+await es.atStream('mystream').append(eventB)
+
+const eventC = new Event('EventC')
+const eventD = new Event('EventD')
+
+await es.atStream('mystream').append([eventC, eventD])
+
+const events = await es
+      .stream('mystream')
+      .walkStreamForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}
+
+await es.close()
+```
+
+For full documentation please visit:
+**[https://sebastianwessel.github.io/eventstore-ts-client/](https://sebastianwessel.github.io/eventstore-ts-client/)**
+
 ## Building
 
 To build this lib just clone this repo and run:

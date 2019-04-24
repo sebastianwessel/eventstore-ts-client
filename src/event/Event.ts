@@ -139,9 +139,7 @@ export class Event {
   }
 
   /**
-   * Setter for event data
-   *
-   * @memberof Event
+   * Sets data
    */
   public set data(newData: {[k: string]: JSONValue}) {
     this.throwIfNotNewEvent('eventData')

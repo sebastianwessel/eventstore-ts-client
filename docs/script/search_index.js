@@ -24,9 +24,9 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "eventstore-ts-client/src/subscription/persitentsubscription.ts~persitentsubscription",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html",
-    "<span>PersitentSubscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersitentSubscription.ts</span>",
+    "eventstore-ts-client/src/subscription/persistentsubscription.ts~persistentsubscription",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html",
+    "<span>PersistentSubscription</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscription.ts</span>",
     "class"
   ],
   [
@@ -39,6 +39,12 @@ window.esdocSearchIndex = [
     "eventstore-ts-client/src/stream/stream.ts~stream",
     "class/src/stream/Stream.ts~Stream.html",
     "<span>Stream</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/stream/Stream.ts</span>",
+    "class"
+  ],
+  [
+    "eventstore-ts-client/src/streamwalker.ts~streamwalker",
+    "class/src/StreamWalker.ts~StreamWalker.html",
+    "<span>StreamWalker</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/StreamWalker.ts</span>",
     "class"
   ],
   [
@@ -228,9 +234,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~setpersitentsubscriptionconfig",
-    "function/index.html#static-function-setPersitentSubscriptionConfig",
-    "<span>setPersitentSubscriptionConfig</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
+    "eventstore-ts-client/src/subscription/persistentsubscriptionconfig.ts~setpersistentsubscriptionconfig",
+    "function/index.html#static-function-setPersistentSubscriptionConfig",
+    "<span>setPersistentSubscriptionConfig</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/subscription/PersistentSubscriptionConfig.ts</span>",
     "function"
   ],
   [
@@ -244,6 +250,90 @@ window.esdocSearchIndex = [
     "function/index.html#static-function-uuidToBuffer",
     "<span>uuidToBuffer</span> <span class=\"search-result-import-path\">eventstore-ts-client/src/protobuf/uuidBufferConvert.ts</span>",
     "function"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber5",
+    "Async iterator test",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber81",
+    "Async iterator test can combine filter and forEach",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber92",
+    "Async iterator test can combine filter, map and to array",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber49",
+    "Async iterator test can filter events",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber40",
+    "Async iterator test can iterate through",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber58",
+    "Async iterator test can reduce events to single value",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber71",
+    "Async iterator test can test all entries and return global result true",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber76",
+    "Async iterator test can test all entries and return global result true",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber66",
+    "Async iterator test can transform to array",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber146",
+    "Async iterator test throws on none function at every",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber106",
+    "Async iterator test throws on none function at filter",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber126",
+    "Async iterator test throws on none function at forEach",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber116",
+    "Async iterator test throws on none function at map",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber136",
+    "Async iterator test throws on none function at reduce",
+    "test"
   ],
   [
     "",
@@ -583,38 +673,80 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber3",
-    "Persitent subscription test",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber3",
+    "Persistent subscription test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber4",
-    "Persitent subscription test with admin user rights",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber111",
+    "Persistent subscription test Persistent subscription get events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber37",
-    "Persitent subscription test with admin user rights",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber125",
+    "Persistent subscription test Persistent subscription get events can start a subscription on empty stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber15",
-    "Persitent subscription test with admin user rights creates a persistent subscription",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber132",
+    "Persistent subscription test Persistent subscription get events can start a subscription on none empty stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber26",
-    "Persitent subscription test with admin user rights throws on creating persistent subscription with same names again",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber4",
+    "Persistent subscription test with admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html#lineNumber48",
-    "Persitent subscription test with admin user rights throws on none admin right",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber15",
+    "Persistent subscription test with admin user rights creates a persistent subscription",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber48",
+    "Persistent subscription test with admin user rights deletes a persistent subscription",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber38",
+    "Persistent subscription test with admin user rights throws on creating persistent subscription with same names again",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber26",
+    "Persistent subscription test with admin user rights updates a persistent subscription",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber61",
+    "Persistent subscription test without admin user rights",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber76",
+    "Persistent subscription test without admin user rights throws on create",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber98",
+    "Persistent subscription test without admin user rights throws on delete",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber86",
+    "Persistent subscription test without admin user rights throws on update",
     "test"
   ],
   [
@@ -973,25 +1105,43 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber32",
+    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber3",
+    "Walk stream tests",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber26",
+    "Walk stream tests can walk to stream backward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber15",
+    "Walk stream tests can walk to stream forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber32",
     "buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber35",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber35",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber39",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber39",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber43",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber43",
     "buffer to uuid throws on invalid buffer size",
     "test"
   ],
@@ -1354,6 +1504,66 @@ window.esdocSearchIndex = [
     "file/src/JSON.d.ts.html",
     "src/JSON.d.ts",
     "file"
+  ],
+  [
+    "src/streamwalker.ts",
+    "file/src/StreamWalker.ts.html",
+    "src/StreamWalker.ts",
+    "file"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#[symbol.asynciterator]",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-[Symbol.asyncIterator]",
+    "src/StreamWalker.ts~StreamWalker#[Symbol.asyncIterator]",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#constructor",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-constructor-constructor",
+    "src/StreamWalker.ts~StreamWalker#constructor",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#every",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-every",
+    "src/StreamWalker.ts~StreamWalker#every",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#filter",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-filter",
+    "src/StreamWalker.ts~StreamWalker#filter",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#foreach",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-forEach",
+    "src/StreamWalker.ts~StreamWalker#forEach",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#iterable",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-member-iterable",
+    "src/StreamWalker.ts~StreamWalker#iterable",
+    "member"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#map",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-map",
+    "src/StreamWalker.ts~StreamWalker#map",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#reduce",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-reduce",
+    "src/StreamWalker.ts~StreamWalker#reduce",
+    "method"
+  ],
+  [
+    "src/streamwalker.ts~streamwalker#toarray",
+    "class/src/StreamWalker.ts~StreamWalker.html#instance-method-toArray",
+    "src/StreamWalker.ts~StreamWalker#toArray",
+    "method"
   ],
   [
     "src/errors/eventstoreerror.ts",
@@ -1794,6 +2004,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/tcpconnection.ts~tcpconnection#connecttopersistentsubscription",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-connectToPersistentSubscription",
+    "src/eventstore/TCPConnection.ts~TCPConnection#connectToPersistentSubscription",
+    "method"
+  ],
+  [
     "src/eventstore/tcpconnection.ts~tcpconnection#connectionconfig",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-connectionConfig",
     "src/eventstore/TCPConnection.ts~TCPConnection#connectionConfig",
@@ -1932,12 +2148,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/eventstore/tcpconnection.ts~tcpconnection#heartbeatcheckinterval",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-heartBeatCheckInterval",
-    "src/eventstore/TCPConnection.ts~TCPConnection#heartBeatCheckInterval",
-    "member"
-  ],
-  [
     "src/eventstore/tcpconnection.ts~tcpconnection#initialconfig",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-initialConfig",
     "src/eventstore/TCPConnection.ts~TCPConnection#initialConfig",
@@ -1953,12 +2163,6 @@ window.esdocSearchIndex = [
     "src/eventstore/tcpconnection.ts~tcpconnection#isunexpectedclosed",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-isUnexpectedClosed",
     "src/eventstore/TCPConnection.ts~TCPConnection#isUnexpectedClosed",
-    "member"
-  ],
-  [
-    "src/eventstore/tcpconnection.ts~tcpconnection#lastheartbeattime",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-lastHeartBeatTime",
-    "src/eventstore/TCPConnection.ts~TCPConnection#lastHeartBeatTime",
     "member"
   ],
   [
@@ -2025,6 +2229,12 @@ window.esdocSearchIndex = [
     "src/eventstore/tcpconnection.ts~tcpconnection#pendingrequests",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-pendingRequests",
     "src/eventstore/TCPConnection.ts~TCPConnection#pendingRequests",
+    "member"
+  ],
+  [
+    "src/eventstore/tcpconnection.ts~tcpconnection#persistentsubscriptionlist",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-persistentSubscriptionList",
+    "src/eventstore/TCPConnection.ts~TCPConnection#persistentSubscriptionList",
     "member"
   ],
   [
@@ -2190,6 +2400,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/stream.ts~stream#getpersistentsubscription",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-getPersistentSubscription",
+    "src/stream/Stream.ts~Stream#getPersistentSubscription",
+    "method"
+  ],
+  [
     "src/stream/stream.ts~stream#harddelete",
     "class/src/stream/Stream.ts~Stream.html#instance-method-hardDelete",
     "src/stream/Stream.ts~Stream#hardDelete",
@@ -2211,12 +2427,6 @@ window.esdocSearchIndex = [
     "src/stream/stream.ts~stream#log",
     "class/src/stream/Stream.ts~Stream.html#instance-member-log",
     "src/stream/Stream.ts~Stream#log",
-    "member"
-  ],
-  [
-    "src/stream/stream.ts~stream#logger",
-    "class/src/stream/Stream.ts~Stream.html#instance-get-logger",
-    "src/stream/Stream.ts~Stream#logger",
     "member"
   ],
   [
@@ -2289,6 +2499,24 @@ window.esdocSearchIndex = [
     "src/stream/stream.ts~stream#subscribe",
     "class/src/stream/Stream.ts~Stream.html#instance-method-subscribe",
     "src/stream/Stream.ts~Stream#subscribe",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#walkstream",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-walkStream",
+    "src/stream/Stream.ts~Stream#walkStream",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#walkstreambackward",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamBackward",
+    "src/stream/Stream.ts~Stream#walkStreamBackward",
+    "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#walkstreamforward",
+    "class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamForward",
+    "src/stream/Stream.ts~Stream#walkStreamForward",
     "method"
   ],
   [
@@ -2418,51 +2646,141 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/subscription/persitentsubscription.ts",
-    "file/src/subscription/PersitentSubscription.ts.html",
-    "src/subscription/PersitentSubscription.ts",
+    "src/subscription/persistentsubscription.ts",
+    "file/src/subscription/PersistentSubscription.ts.html",
+    "src/subscription/PersistentSubscription.ts",
     "file"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#connect",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-connect",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#connect",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#acknowledgeevent",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvent",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#acknowledgeEvent",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#constructor",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-constructor-constructor",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#constructor",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#acknowledgeevents",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvents",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#acknowledgeEvents",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#delete",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-delete",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#delete",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#allowedinflightmessages",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-allowedInFlightMessages",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#allowedInFlightMessages",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#autoacknownledge",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-autoAcknownledge",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#autoAcknownledge",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#constructor",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-constructor-constructor",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#constructor",
     "method"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#esconnection",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-esConnection",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#esConnection",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#credentials",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-credentials",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#credentials",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#stream",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-stream",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#stream",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#delete",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-delete",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#delete",
+    "method"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#esconnection",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-esConnection",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#esConnection",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#subscriptiongroupname",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-member-subscriptionGroupName",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#subscriptionGroupName",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#id",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-id",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#id",
     "member"
   ],
   [
-    "src/subscription/persitentsubscription.ts~persitentsubscription#update",
-    "class/src/subscription/PersitentSubscription.ts~PersitentSubscription.html#instance-method-update",
-    "src/subscription/PersitentSubscription.ts~PersitentSubscription#update",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#lastcommitposition",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastCommitPosition",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#lastCommitPosition",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#lasteventnumber",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastEventNumber",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#lastEventNumber",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#name",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-get-name",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#name",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#notacknowledgeevent",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvent",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#notAcknowledgeEvent",
+    "method"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#notacknowledgeevents",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvents",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#notAcknowledgeEvents",
+    "method"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#start",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-start",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#start",
+    "method"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#state",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-get-state",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#state",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#state",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-set-state",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#state",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#status",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-status",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#status",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#stream",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-stream",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#stream",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#subscriptiongroupname",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-subscriptionGroupName",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscriptionGroupName",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#subscriptionid",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-subscriptionId",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscriptionId",
+    "member"
+  ],
+  [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#update",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-update",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#update",
     "method"
   ],
   [
@@ -2598,6 +2916,12 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/integrationtests/1_eventstore/uuidbufferconverter.test.ts",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html",
+    "test/integrationTests/1_eventstore/uuidBufferConverter.test.ts",
+    "testFile"
+  ],
+  [
     "test/integrationtests/2_stream/1_stream.test.ts",
     "test-file/test/integrationTests/2_stream/1_stream.test.ts.html",
     "test/integrationTests/2_stream/1_stream.test.ts",
@@ -2613,6 +2937,12 @@ window.esdocSearchIndex = [
     "test/integrationtests/2_stream/3_readstreambasic.test.ts",
     "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html",
     "test/integrationTests/2_stream/3_readStreamBasic.test.ts",
+    "testFile"
+  ],
+  [
+    "test/integrationtests/2_stream/4_readstreamwalk.test.ts",
+    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html",
+    "test/integrationTests/2_stream/4_readStreamWalk.test.ts",
     "testFile"
   ],
   [
@@ -2634,9 +2964,9 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "test/integrationtests/5_subscription/persitentsubscription.test.ts",
-    "test-file/test/integrationTests/5_subscription/persitentSubscription.test.ts.html",
-    "test/integrationTests/5_subscription/persitentSubscription.test.ts",
+    "test/integrationtests/5_subscription/persistentsubscription.test.ts",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html",
+    "test/integrationTests/5_subscription/persistentSubscription.test.ts",
     "testFile"
   ],
   [
@@ -2676,44 +3006,44 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "test/unittests/4_protobuf/uuidbufferconverter.test.ts",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html",
-    "test/unitTests/4_protobuf/uuidBufferConverter.test.ts",
-    "testFile"
-  ],
-  [
     "test/unittests/5_errors/eventstoreerror.test.ts",
     "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html",
     "test/unitTests/5_errors/eventstoreError.test.ts",
     "testFile"
   ],
   [
+    "test/unittests/6_misc/streamwalker.test.ts",
+    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html",
+    "test/unitTests/6_misc/streamWalker.test.ts",
+    "testFile"
+  ],
+  [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber3",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber3",
     "uuid to buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber5",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber5",
     "uuid to buffer converts a uuid to fomated buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber9",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber9",
     "uuid to buffer returns a buffer for id=null",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber22",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber22",
     "uuid to buffer throws on invalid uuid format",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/4_protobuf/uuidBufferConverter.test.ts.html#lineNumber13",
+    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber13",
     "uuid to buffer throws on uuid size",
     "test"
   ]

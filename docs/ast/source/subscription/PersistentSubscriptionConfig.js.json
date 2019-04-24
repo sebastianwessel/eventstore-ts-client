@@ -577,9 +577,9 @@
                   "line": 9,
                   "column": 40
                 },
-                "identifierName": "defaultPersitentSubscriptionConfig"
+                "identifierName": "defaultPersistentSubscriptionConfig"
               },
-              "name": "defaultPersitentSubscriptionConfig"
+              "name": "defaultPersistentSubscriptionConfig"
             },
             "init": {
               "type": "ObjectExpression",
@@ -1477,9 +1477,9 @@
                   "line": 24,
                   "column": 34
                 },
-                "identifierName": "setPersitentSubscriptionConfig"
+                "identifierName": "setPersistentSubscriptionConfig"
               },
-              "name": "setPersitentSubscriptionConfig"
+              "name": "setPersistentSubscriptionConfig"
             },
             "init": {
               "type": "ArrowFunctionExpression",
@@ -1641,9 +1641,9 @@
                               "line": 25,
                               "column": 63
                             },
-                            "identifierName": "defaultPersitentSubscriptionConfig"
+                            "identifierName": "defaultPersistentSubscriptionConfig"
                           },
-                          "name": "defaultPersitentSubscriptionConfig"
+                          "name": "defaultPersistentSubscriptionConfig"
                         },
                         {
                           "type": "Identifier",
@@ -1719,9 +1719,9 @@
                   "line": 27,
                   "column": 39
                 },
-                "identifierName": "setPersitentSubscriptionConfig"
+                "identifierName": "setPersistentSubscriptionConfig"
               },
-              "name": "setPersitentSubscriptionConfig"
+              "name": "setPersistentSubscriptionConfig"
             },
             "exported": {
               "type": "Identifier",
@@ -1736,9 +1736,9 @@
                   "line": 27,
                   "column": 39
                 },
-                "identifierName": "setPersitentSubscriptionConfig"
+                "identifierName": "setPersistentSubscriptionConfig"
               },
-              "name": "setPersitentSubscriptionConfig"
+              "name": "setPersistentSubscriptionConfig"
             }
           }
         ],
@@ -1818,9 +1818,9 @@
                     "line": 24,
                     "column": 34
                   },
-                  "identifierName": "setPersitentSubscriptionConfig"
+                  "identifierName": "setPersistentSubscriptionConfig"
                 },
-                "name": "setPersitentSubscriptionConfig"
+                "name": "setPersistentSubscriptionConfig"
               },
               "init": {
                 "type": "ArrowFunctionExpression",
@@ -1849,9 +1849,9 @@
                       "line": 24,
                       "column": 34
                     },
-                    "identifierName": "setPersitentSubscriptionConfig"
+                    "identifierName": "setPersistentSubscriptionConfig"
                   },
-                  "name": "setPersitentSubscriptionConfig"
+                  "name": "setPersistentSubscriptionConfig"
                 },
                 "generator": false,
                 "expression": false,
@@ -1998,9 +1998,9 @@
                                 "line": 25,
                                 "column": 63
                               },
-                              "identifierName": "defaultPersitentSubscriptionConfig"
+                              "identifierName": "defaultPersistentSubscriptionConfig"
                             },
-                            "name": "defaultPersitentSubscriptionConfig"
+                            "name": "defaultPersistentSubscriptionConfig"
                           },
                           {
                             "type": "Identifier",
@@ -3218,7 +3218,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "defaultPersitentSubscriptionConfig",
+      "value": "defaultPersistentSubscriptionConfig",
       "start": 276,
       "end": 310,
       "loc": {
@@ -4922,7 +4922,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "setPersitentSubscriptionConfig",
+      "value": "setPersistentSubscriptionConfig",
       "start": 726,
       "end": 756,
       "loc": {
@@ -5309,7 +5309,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "defaultPersitentSubscriptionConfig",
+      "value": "defaultPersistentSubscriptionConfig",
       "start": 810,
       "end": 844,
       "loc": {
@@ -5542,7 +5542,7 @@
         "postfix": false,
         "binop": null
       },
-      "value": "setPersitentSubscriptionConfig",
+      "value": "setPersistentSubscriptionConfig",
       "start": 875,
       "end": 905,
       "loc": {

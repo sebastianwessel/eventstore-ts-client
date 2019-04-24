@@ -11,6 +11,12 @@ import {Position} from './Position'
 
 const protobuf = model.eventstore.proto
 
+export interface WriteResult {
+  firstEventNumber: Long | number
+  lastEventNumber: Long | number
+  position: Position
+}
+
 /**
  * Base class to communicate with eventstore
  *
@@ -361,19 +367,4 @@ export class Eventstore extends EventEmitter {
       credentials || this.connectionConfig.credentials
     )
   }
-
-  /*
-  Commented out because it seems that eventstore currently doesn't support this over tcp atm
-  public async scavengeDatabase(credentials?: UserCredentials): Promise<void> {
-    await new Promise(
-      (resolve, reject): void => {
-        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
-        this.connection.sendCommand(uuid(), EventstoreCommand.ScavengeDatabase, null, credentials, {
-          resolve,
-          reject
-        })
-      }
-    )
-  }
-  */
 }
