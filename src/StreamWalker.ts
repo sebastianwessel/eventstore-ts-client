@@ -4,8 +4,8 @@ import {Event} from './event'
 import * as eventstoreError from './errors'
 
 export class StreamWalker {
-  protected iterable: AsyncIterable<Event>
-  public constructor(iterable: AsyncIterable<Event>) {
+  protected iterable: AsyncIterableIterator<Event | null>
+  public constructor(iterable: AsyncIterableIterator<Event | null>) {
     this.iterable = iterable
   }
 
@@ -26,7 +26,7 @@ export class StreamWalker {
       throw eventstoreError.newImplementationError(fn + 'is not a function')
     }
 
-    const a = async function*(iterable: AsyncIterable<Event>) {
+    const a = async function*(iterable: AsyncIterable<Event | null>) {
       for await (const value of iterable) {
         yield fn.call(thisArg, value)
       }
@@ -75,18 +75,18 @@ export class StreamWalker {
 
   /**
    * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value
-   * @param {Function} fn - Function to execute on each element in the iterator
-   * @param {any} accumulator - The accumulator accumulates the callback's return values; it is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied
+   * @param {Function} accumulatorFunction - Function to execute on each element in the iterator
+   * @param {any} initialValue - The initialValue accumulates the callback's return values; it is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied
    * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
    */
-  public async reduce(fn: Function, accumulator: any = null, thisArg?: Function) {
-    if (typeof fn !== 'function') {
-      throw eventstoreError.newImplementationError(fn + 'is not a function')
+  public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {
+    if (typeof accumulatorFunction !== 'function') {
+      throw eventstoreError.newImplementationError(accumulatorFunction + 'is not a function')
     }
     const iterable = this.iterable
-    let returnValue = accumulator
+    let returnValue = initialValue
     for await (const value of iterable) {
-      returnValue = fn.call(thisArg, returnValue, value)
+      returnValue = accumulatorFunction.call(thisArg, returnValue, value)
     }
     return returnValue
   }
