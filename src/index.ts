@@ -14,5 +14,6 @@ export {
   PersistentSubscriptionConfig,
   SystemConsumerStrategies,
   SubscriptionStatus,
-  SubscriptionDropReason
+  SubscriptionDropReason,
+  NakAction
 } from './subscription'
