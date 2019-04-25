@@ -139,6 +139,10 @@ print_style 'delete docker test container: ';
 docker container rm testcontainer
 
 sed -i -e "s/\/home\/travis\/build\/sebastianwessel\/eventstore-ts-client/${PWD//\//\\/}/g" ./coverage/lcov.info
+sed -i -e "s/\/home\/travis\/build\/sebastianwessel\/eventstore-ts-client/${PWD//\//\\/}/g" ./coverage/coverage-final.json
+
+cp ./coverage/coverage-final.json ./coverage/coverage.json
+
 
 ### shut down eventstore cluster and remove docker containers
 ###############################################

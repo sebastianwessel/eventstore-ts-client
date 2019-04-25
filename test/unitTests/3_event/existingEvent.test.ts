@@ -247,4 +247,13 @@ describe('event from raw', (): void => {
     newEvent.causationId = null
     assert.strictEqual(newEvent.causationId, null)
   })
+
+  it('throw on missing raw event or link', (): void => {
+    try {
+      Event.fromRaw(null)
+      assert.fail('has not thrown')
+    } catch (err) {
+      assert.strictEqual(err.name, 'EventstoreProtocolError')
+    }
+  })
 })

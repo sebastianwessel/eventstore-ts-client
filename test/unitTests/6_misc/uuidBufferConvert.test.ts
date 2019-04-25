@@ -1,4 +1,4 @@
-import {uuidToBuffer, uuidFromBuffer} from '../../../src/protobuf/uuidBufferConvert'
+import {uuidToBuffer, uuidFromBuffer} from '../../../src'
 import * as assert from 'assert'
 import uuid = require('uuid/v4')
 

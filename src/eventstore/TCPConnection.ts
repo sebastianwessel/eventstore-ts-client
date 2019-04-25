@@ -7,7 +7,12 @@ import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
-import {Subscription, PersistentSubscription, SubscriptionDropReason} from '../subscription'
+import {
+  Subscription,
+  PersistentSubscription,
+  SubscriptionDropReason,
+  SubscriptionStatus
+} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
@@ -769,20 +774,7 @@ export class TCPConnection extends EventEmitter {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
     const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
-      let event
-      if (decoded.event.event) {
-        event = Event.fromRaw(decoded.event.event)
-      } else if (decoded.event.link) {
-        event = Event.fromRaw(decoded.event.link)
-      } else {
-        subscription.emit(
-          'error',
-          eventstoreError.newProtocolError(
-            'Received stream event with empty event and empty link field'
-          )
-        )
-        return
-      }
+      const event = Event.fromRaw(decoded.event.event || decoded.event.link)
       subscription.emit(
         'event',
         event,
@@ -985,20 +977,7 @@ export class TCPConnection extends EventEmitter {
     const decoded = protobuf.PersistentSubscriptionStreamEventAppeared.decode(payload)
     const subscription = this.persistentSubscriptionList.get(correlationId)
     if (subscription) {
-      let event
-      if (decoded.event.event) {
-        event = Event.fromRaw(decoded.event.event)
-      } else if (decoded.event.link) {
-        event = Event.fromRaw(decoded.event.link)
-      } else {
-        subscription.emit(
-          'error',
-          eventstoreError.newProtocolError(
-            'Received stream event with empty event and empty link field'
-          )
-        )
-        return
-      }
+      const event = Event.fromRaw(decoded.event.event || decoded.event.link)
       subscription.emit('event', event)
       subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
     } else {
@@ -1229,6 +1208,45 @@ export class TCPConnection extends EventEmitter {
       : Long.fromValue(-1)
 
     return result
+  }
+
+  /**
+   * Stop listening on persistent subscription
+   *
+   * @param {PersistentSubscription} subscription
+   * @param {(UserCredentials | null)} [credentials]
+   * @memberof TCPConnection
+   */
+  public async unsubscribeFromPersistentSubscription(
+    subscriptionId: string,
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    const subscription = this.persistentSubscriptionList.get(subscriptionId)
+    if (!subscription) {
+      throw eventstoreError.newImplementationError(
+        `Can not unsubscribe - persistent subscription ${subscriptionId} not found`
+      )
+    }
+    const subscriptionList = this.persistentSubscriptionList
+    await new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          subscription.state = SubscriptionStatus.disconnected
+          subscriptionList.delete(subscriptionId)
+          resolve()
+        }
+        this.sendCommand(
+          subscription.id,
+          EventstoreCommand.UnsubscribeFromStream,
+          null,
+          credentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**

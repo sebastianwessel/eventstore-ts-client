@@ -4,7 +4,12 @@ import {EventEmitter} from 'events'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import uuid = require('uuid/v4')
-import {PersistentSubscriptionConfig, setPersistentSubscriptionConfig, SubscriptionStatus} from '.'
+import {
+  PersistentSubscriptionConfig,
+  setPersistentSubscriptionConfig,
+  SubscriptionStatus,
+  SubscriptionDropReason
+} from '.'
 import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
@@ -62,17 +67,9 @@ export class PersistentSubscription extends EventEmitter {
     this.subscriptionId = `${this.stream.id} :: ${this.subscriptionGroupName}`
 
     this.on(
-      'event',
-      (event): void => {
-        console.log('received ' + event.name + ' - ' + event.eventNumber)
-        this.acknowledgeEvent(event)
-      }
-    )
-    this.on(
       'dropped',
-      (reason): void => {
+      (): void => {
         this.state = SubscriptionStatus.disconnected
-        console.log('dropped because of ' + reason)
       }
     )
   }
@@ -104,7 +101,7 @@ export class PersistentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns connect
    */
-  public async start(
+  public async subscribe(
     allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
   ): Promise<PersistentSubscription> {
@@ -118,6 +115,18 @@ export class PersistentSubscription extends EventEmitter {
     this.subscriptionId = result.subscriptionId
     this.state = SubscriptionStatus.connected
     return this
+  }
+
+  /**
+   * Unsubscribe from stream
+   *
+   * @returns {Promise<void>}
+   * @memberof Subscription
+   */
+  public async unsubscribe(credentials?: UserCredentials | null): Promise<void> {
+    await this.esConnection
+      .getConnection()
+      .unsubscribeFromPersistentSubscription(this.id, credentials || this.credentials)
   }
 
   /**

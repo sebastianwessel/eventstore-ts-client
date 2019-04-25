@@ -21,3 +21,11 @@ export enum SubscriptionDropReason {
   PersistentSubscriptionDeleted = 3,
   SubscriberMaxCountReached = 4
 }
+
+export enum NakAction {
+  Unknown = 0,
+  Park = 1,
+  Retry = 2,
+  Skip = 3,
+  Stop = 4
+}

@@ -1,4 +1,4 @@
-import {Eventstore, Event, SubscriptionStatus} from '../../../src'
+import {Eventstore, Event, SubscriptionStatus, NakAction} from '../../../src'
 import * as assert from 'assert'
 
 describe('Persistent subscription test', (): void => {
@@ -160,33 +160,79 @@ describe('Persistent subscription test', (): void => {
       }
     )
 
-    it('can start a subscription on empty stream', async (): Promise<void> => {
-      const subscription = es
-        .stream('persistentsubscribestream3')
-        .getPersistentSubscription('persistentsubscription3')
-      await subscription.start()
+    it('can start a subscription on none empty stream', async (): Promise<void> => {
+      const stream = es.stream('persistentsubscribestream3')
+      const newEvent = new Event('SomeEvent')
+      await stream.append(newEvent)
+      let counter = 0
+      const subscription = stream.getPersistentSubscription('persistentsubscription3')
+
+      subscription.on(
+        'event',
+        (event): void => {
+          counter++
+          subscription.acknowledgeEvent(event)
+        }
+      )
+
+      await subscription.subscribe(10, {
+        username: 'restrictedUser',
+        password: 'restrictedOnlyUserPassword'
+      })
+
       assert.strictEqual(
         subscription.name,
         `PersistentSubsbscription: persistentsubscribestream3 :: persistentsubscription3`
       )
       assert.strictEqual(subscription.state, SubscriptionStatus.connected)
-    })
 
-    it('can start a subscription on none empty stream', async (): Promise<void> => {
-      const stream = es.stream('persistentsubscribestream3')
-      const newEvent = new Event('SomeEvent')
-      await stream.append(newEvent)
-      const subscription = stream.getPersistentSubscription('persistentsubscription3')
-      await subscription.start(10, {
-        username: 'restrictedUser',
-        password: 'restrictedOnlyUserPassword'
-      })
       await new Promise(
         async (resolve): Promise<void> => {
           await stream.append(new Event('SomeEvent'))
-          setTimeout(resolve, 10000)
+          setTimeout(resolve, 1000)
         }
       )
+
+      assert.strictEqual(counter, 3)
+
+      await subscription.unsubscribe()
+
+      assert.strictEqual(subscription.state, SubscriptionStatus.disconnected)
+    })
+
+    it('can notAck events', async (): Promise<void> => {
+      const stream = es.stream('persistentsubscribestream3')
+      const newEvent = new Event('SomeEvent444')
+      await stream.append(newEvent)
+      const subscription = stream.getPersistentSubscription('persistentsubscription3')
+      let counter = 0
+
+      subscription.on(
+        'event',
+        (event): void => {
+          counter++
+          assert.strictEqual(event.id, newEvent.id)
+          subscription.notAcknowledgeEvent(event, NakAction.Unknown)
+        }
+      )
+
+      await subscription.subscribe()
+
+      await new Promise(
+        async (resolve): Promise<void> => {
+          setTimeout(resolve, 1000)
+        }
+      )
+
+      await subscription.unsubscribe()
+
+      await new Promise(
+        async (resolve): Promise<void> => {
+          setTimeout(resolve, 1000)
+        }
+      )
+
+      assert.strictEqual(counter > 0, true)
     })
   })
 })
