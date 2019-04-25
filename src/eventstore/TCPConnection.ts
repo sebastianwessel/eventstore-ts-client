@@ -7,7 +7,12 @@ import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
-import {Subscription, PersistentSubscription, SubscriptionDropReason} from '../subscription'
+import {
+  Subscription,
+  PersistentSubscription,
+  SubscriptionDropReason,
+  SubscriptionStatus
+} from '../subscription'
 import {Stream} from '../stream'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import uuid = require('uuid/v4')
@@ -1203,6 +1208,45 @@ export class TCPConnection extends EventEmitter {
       : Long.fromValue(-1)
 
     return result
+  }
+
+  /**
+   * Stop listening on persistent subscription
+   *
+   * @param {PersistentSubscription} subscription
+   * @param {(UserCredentials | null)} [credentials]
+   * @memberof TCPConnection
+   */
+  public async unsubscribeFromPersistentSubscription(
+    subscriptionId: string,
+    credentials?: UserCredentials | null
+  ): Promise<void> {
+    const subscription = this.persistentSubscriptionList.get(subscriptionId)
+    if (!subscription) {
+      throw eventstoreError.newImplementationError(
+        `Can not unsubscribe - persistent subscription ${subscriptionId} not found`
+      )
+    }
+    const subscriptionList = this.persistentSubscriptionList
+    await new Promise(
+      (resolve, reject): void => {
+        const resolveFunction = (): void => {
+          subscription.state = SubscriptionStatus.disconnected
+          subscriptionList.delete(subscriptionId)
+          resolve()
+        }
+        this.sendCommand(
+          subscription.id,
+          EventstoreCommand.UnsubscribeFromStream,
+          null,
+          credentials,
+          {
+            resolve: resolveFunction,
+            reject
+          }
+        )
+      }
+    )
   }
 
   /**

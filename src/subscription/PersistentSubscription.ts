@@ -123,20 +123,10 @@ export class PersistentSubscription extends EventEmitter {
    * @returns {Promise<void>}
    * @memberof Subscription
    */
-  public async unsubscribe(credentials?: UserCredentials | null): Promise<void> {
-    const raw = protobuf.SubscriptionDropped.fromObject({
-      reason: SubscriptionDropReason.Unsubscribed
-    })
-    this.state = SubscriptionStatus.disconnected
-    this.emit('dropped', SubscriptionDropReason.Unsubscribed)
+  public unsubscribe(credentials?: UserCredentials | null): void {
     this.esConnection
       .getConnection()
-      .sendCommand(
-        this.id,
-        EventstoreCommand.SubscriptionDropped,
-        Buffer.from(protobuf.SubscriptionDropped.encode(raw).finish()),
-        credentials || this.credentials
-      )
+      .unsubscribeFromPersistentSubscription(this.id, credentials || this.credentials)
   }
 
   /**
