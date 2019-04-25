@@ -20,7 +20,7 @@ export class Event {
   public eventNumber: Long | number | null = null
   /** unique event uuid4 */
   protected eventId: string = uuid()
-  /** eventtype = name of event */
+  /** event type = name of event */
   protected eventType: string
   /** flag if data is type of json */
   protected dataContentType: number = 1
@@ -86,7 +86,7 @@ export class Event {
   }
 
   /**
-   * Helper function to throw while changeing an event which is already stored in eventstore
+   * Helper function to throw while changing an event which is already stored in eventstore
    *
    * @protected
    * @memberof Event

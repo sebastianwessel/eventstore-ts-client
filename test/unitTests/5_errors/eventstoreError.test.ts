@@ -9,11 +9,11 @@ describe('Eventstore error class', (): void => {
   })
 
   it('can have a causing error instance', (): void => {
-    const causedby = new Error('initial error')
-    const err = new esError.EventstoreError('some error', 'NamedError', causedby)
+    const causedBy = new Error('initial error')
+    const err = new esError.EventstoreError('some error', 'NamedError', causedBy)
     assert.strictEqual(err.name, 'NamedError')
     assert.strictEqual(err.message, 'some error')
-    assert.strictEqual(JSON.stringify(err.rootCause), JSON.stringify(causedby))
+    assert.strictEqual(JSON.stringify(err.rootCause), JSON.stringify(causedBy))
   })
 })
 
@@ -34,8 +34,8 @@ describe('Eventstore error types', (): void => {
       })
 
       it(`creates a ${errorName} with causing error reference`, (): void => {
-        const causedby = new Error('initial error')
-        const err = esError['new' + errorName]('some error', causedby)
+        const causedBy = new Error('initial error')
+        const err = esError['new' + errorName]('some error', causedBy)
         assert.strictEqual(err.name, `Eventstore${errorName}`)
       })
     }
@@ -54,7 +54,7 @@ describe('Eventstore error types', (): void => {
 
   errorsWithDefaultMsg.forEach(
     (errorName): void => {
-      it(`creates a ${errorName} without specifyed message`, (): void => {
+      it(`creates a ${errorName} without specified message`, (): void => {
         const err = esError['new' + errorName]()
         assert.strictEqual(err.name, `Eventstore${errorName}`)
       })

@@ -4,7 +4,7 @@
 
 Main connection parameters are set inside of connection uri  
 This lib supports connecting to single instance via tcp and auto discovering to clusters also.  
-Connections can be unsecure or encrypted
+Connections can be unsecured or encrypted
 
 ```javascript
 // connection to single instance at local at port 1113 with username and password
@@ -38,3 +38,9 @@ const es = new Eventstore({
 
 await es.connect()
 ```
+
+## disconnecting
+
+It's highly recommended to close a connection in save way.  
+You should use `es.disconnect()` for proper shut down, because this function sets current connection to state `drain`.  
+This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  

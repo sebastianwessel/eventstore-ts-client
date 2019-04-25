@@ -37,7 +37,7 @@ describe('Existing event instance tests', (): void => {
     assert.strictEqual(existingEvent.isNew(), false)
   })
 
-  it('throws on changeing name', (): void => {
+  it('throws on changing name', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newName = 'EventRenamed'
@@ -49,7 +49,7 @@ describe('Existing event instance tests', (): void => {
     }
   })
 
-  it('throws on changeing eventId', (): void => {
+  it('throws on changing eventId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newId = uuid()
@@ -61,7 +61,7 @@ describe('Existing event instance tests', (): void => {
     }
   })
 
-  it('throws on changeing eventData', (): void => {
+  it('throws on changing eventData', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newData = {...testData, ...{someString: 'I was changed'}}
@@ -73,7 +73,7 @@ describe('Existing event instance tests', (): void => {
     }
   })
 
-  it('throws on changeing eventMetadata', (): void => {
+  it('throws on changing eventMetadata', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newMetadata = {somethingNew: uuid()}
@@ -85,7 +85,7 @@ describe('Existing event instance tests', (): void => {
     }
   })
 
-  it('throws on changeing eventCorrelationId', (): void => {
+  it('throws on changing eventCorrelationId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     const newCorrelationId = uuid()
@@ -97,7 +97,7 @@ describe('Existing event instance tests', (): void => {
     }
   })
 
-  it('throws on changeing eventCausationId', (): void => {
+  it('throws on changing eventCausationId', (): void => {
     const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     existingEvent.freeze()
     try {
@@ -169,7 +169,7 @@ describe('event from raw', (): void => {
     assert.strictEqual(newEvent.causationId, null)
   })
 
-  it('returns event instance without created informations', (): void => {
+  it('returns event instance without created information', (): void => {
     const raw = {...rawEventWithMeta}
     delete raw.created
     delete raw.createdEpoch

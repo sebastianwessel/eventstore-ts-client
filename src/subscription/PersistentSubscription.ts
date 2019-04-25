@@ -4,12 +4,7 @@ import {EventEmitter} from 'events'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import uuid = require('uuid/v4')
-import {
-  PersistentSubscriptionConfig,
-  setPersistentSubscriptionConfig,
-  SubscriptionStatus,
-  SubscriptionDropReason
-} from '.'
+import {PersistentSubscriptionConfig, setPersistentSubscriptionConfig, SubscriptionStatus} from '.'
 import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
@@ -44,7 +39,7 @@ export class PersistentSubscription extends EventEmitter {
 
   protected status: SubscriptionStatus = SubscriptionStatus.disconnected
 
-  public autoAcknownledge: boolean = true
+  public autoAcknowledge: boolean = true
 
   /**
    * Creates an instance of persistent subscription.
@@ -78,7 +73,7 @@ export class PersistentSubscription extends EventEmitter {
    * Gets name
    */
   public get name(): string {
-    return `PersistentSubsbscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
+    return `PersistentSubscription: ${this.stream.id} :: ${this.subscriptionGroupName}`
   }
 
   /**

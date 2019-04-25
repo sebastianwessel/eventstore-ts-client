@@ -98,7 +98,7 @@ export interface PersistentSubscriptionConfig {
   liveBufferSize: number
   bufferSize: number
   readBatchSize: number
-  checkPointAfterTime: number
+  checkpointAfterTime: number
   checkpointMinCount: number
   checkpointMaxCount: number
   subscriberMaxCount: number
@@ -110,13 +110,13 @@ export interface PersistentSubscriptionConfig {
 const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
   resolveLinkTos: true,
   startFrom: StreamPosition.Start,
-  messageTimeoutMilliseconds: 30000,
+  messageTimeoutMilliseconds: 10000,
   recordStatistics: false,
   maxRetryCount: 10,
-  liveBufferSize: 10,
-  bufferSize: 10,
-  readBatchSize: 10,
-  checkPointAfterTime: 1000,
+  liveBufferSize: 500,
+  bufferSize: 500,
+  readBatchSize: 20,
+  checkpointAfterTime: 1000,
   checkpointMinCount: 10,
   checkpointMaxCount: 500,
   subscriberMaxCount: 10,

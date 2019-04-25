@@ -100,7 +100,7 @@ export class Stream {
   }
 
   /**
-   * Enforce to resolve linkson read operations
+   * Enforce to resolve links on read operations
    *
    * @returns {Stream}
    * @memberof Stream
@@ -170,7 +170,7 @@ export class Stream {
   }
 
   /**
-   * Inidcates if given stream is a metadata stream or a regular steam
+   * Indicates if given stream is a metadata stream or a regular steam
    *
    * @returns {boolean} - true if metadata stream
    * @memberof Stream

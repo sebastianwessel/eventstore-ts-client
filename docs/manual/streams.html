@@ -32,6 +32,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -39,6 +41,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -83,7 +86,7 @@
 <li><code>fromStream(&apos;streamId&apos;)</code></li>
 <li><code>atStream(&apos;streamId&apos;)</code></li>
 </ul>
-<p>Technicaly they do same, but with these different named function calls you can improve readablility of your code.
+<p>Technically they do same, but with these different named function calls you can improve readability of your code.
 You can use it like:</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
@@ -133,7 +136,7 @@ const eventD = new Event(&apos;EventD&apos;)
 
 await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code>
 </code></pre>
-<h2 id="reading-from-stream">reading from stream</h2><p>It&apos;s recommended to use an async iteratot to fetch events from streams.  </p>
+<h2 id="reading-from-stream">reading from stream</h2><p>It&apos;s recommended to use an async iterator to fetch events from streams.  </p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
@@ -145,7 +148,7 @@ for await (const event of events) {
   console.log(event.name)
 }</code>
 </code></pre>
-<p>You can use handy functions of async iterator returnded by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p>
+<p>You can use handy functions of async iterator returned by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p>
 <ul>
 <li><code>map()</code></li>
 <li><code>filter()</code></li>

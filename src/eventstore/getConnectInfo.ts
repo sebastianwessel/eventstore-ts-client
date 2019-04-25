@@ -69,7 +69,7 @@ export const fetchgossipJson = async (
   try {
     log.debug({host, protocol, port}, 'Try to fetch gossip info')
     gossipInfo = await request.get({
-      uri: `${protocol}://${host}:${port}/gossip?fomat=json`,
+      uri: `${protocol}://${host}:${port}/gossip?format=json`,
       json: true,
       timeout
     })
@@ -146,7 +146,7 @@ export const getRandomNodeInfo = (
 }
 
 /**
- * Updates connection informations depending on given settings
+ * Updates connection information depending on given settings
  * @param currentSettings
  * @param log
  */

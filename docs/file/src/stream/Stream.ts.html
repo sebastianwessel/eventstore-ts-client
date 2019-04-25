@@ -178,7 +178,7 @@ export class Stream {
   }
 
   /**
-   * Enforce to resolve linkson read operations
+   * Enforce to resolve links on read operations
    *
    * @returns {Stream}
    * @memberof Stream
@@ -248,7 +248,7 @@ export class Stream {
   }
 
   /**
-   * Inidcates if given stream is a metadata stream or a regular steam
+   * Indicates if given stream is a metadata stream or a regular steam
    *
    * @returns {boolean} - true if metadata stream
    * @memberof Stream
@@ -402,12 +402,10 @@ export class Stream {
       }
     )
 
-    if (result.event) {
-      return Event.fromRaw(result.event)
-    } else if (result.link) {
-      return Event.fromRaw(result.link)
+    if (!result.event &amp;&amp; !result.link) {
+      return null
     }
-    return null
+    return Event.fromRaw(result.event || result.link)
   }
 
   /**
@@ -716,11 +714,7 @@ export class Stream {
       while (true) {
         if (index &lt; result.events.length) {
           const entry = result.events[index++]
-          if (entry.event) {
-            yield Event.fromRaw(entry.event)
-          } else if (entry.link) {
-            yield Event.fromRaw(entry.link)
-          }
+          yield Event.fromRaw(entry.event || entry.link)
         } else if (result.isEndOfStream) {
           return null
         } else {
@@ -732,20 +726,8 @@ export class Stream {
             begin = result.nextEventNumber
             readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
           }
-
-          if (index &lt; result.events.length) {
-            const entry = result.events[index++]
-            if (entry.event) {
-              yield Event.fromRaw(entry.event)
-            } else if (entry.link) {
-              yield Event.fromRaw(entry.link)
-            }
-          } else if (result.isEndOfStream) {
-            return null
-          }
         }
       }
-      return null
     }
 
     return new StreamWalker(asyncGenerator(start))

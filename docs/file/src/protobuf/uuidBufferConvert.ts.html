@@ -81,13 +81,10 @@
 /**
  * Converts a uuid as string from buffer
  * It returns an empty string for uuid set to null or throws {EventstoreProtocolError} for invalid buffer length
- *
- * @export
- * @param {Buffer} buffer
- * @returns {string}
- * @throws {EventstoreProtocolError}
+ * @param buffer
+ * @returns from buffer
  */
-function uuidFromBuffer(buffer: Buffer): string {
+export function uuidFromBuffer(buffer: Buffer): string {
   if (buffer.length !== 16) {
     throw eventstoreError.newProtocolError(`Invalid buffer length for uuid: ${buffer.length}`)
   }
@@ -104,15 +101,12 @@ function uuidFromBuffer(buffer: Buffer): string {
 }
 
 /**
- * Converts a uuid string to buffer representattion
+ * Converts a uuid string to buffer representation
  * throws {EventstoreProtocolError} for invalid input string length
- *
- * @export
- * @param {(string | null)} uuid
- * @returns {Buffer}
- * @throws {EventstoreProtocolError}
+ * @param uuid
+ * @returns to buffer
  */
-function uuidToBuffer(uuid: string | null): Buffer {
+export function uuidToBuffer(uuid: string | null): Buffer {
   if (!uuid) {
     return Buffer.alloc(16)
   }
@@ -122,8 +116,6 @@ function uuidToBuffer(uuid: string | null): Buffer {
   }
   return Buffer.from(hexStr, &apos;hex&apos;)
 }
-
-export {uuidToBuffer, uuidFromBuffer}
 </code></pre>
 
 </div>

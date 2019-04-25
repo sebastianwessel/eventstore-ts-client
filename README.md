@@ -14,7 +14,7 @@
 
 Eventstore javascript client library written in typescript.
 
-This repo is **under heavy development and not ready for use**
+This repository is **under heavy development and not ready for use**
 
 Main focus on this lib are:
 
@@ -63,7 +63,7 @@ await es.atStream('mystream').append(eventA)
 
 const eventB = new Event('EventB',{
   text: 'other string',
-  countm : 2
+  count : 2
 })
 
 eventB.correlationId = eventA.id

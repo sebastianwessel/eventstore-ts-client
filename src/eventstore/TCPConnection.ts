@@ -1000,7 +1000,7 @@ export class TCPConnection extends EventEmitter {
   /**
    * CHecks if given result is an error code
    * It returns true for successful result otherwise it returns false.
-   * If result is an error this function rejectes corresponding command promise and remove it from command queue
+   * If result is an error this function rejects corresponding command promise and remove it from command queue
    *
    * @protected
    * @param {string} correlationId
@@ -1270,7 +1270,7 @@ export class TCPConnection extends EventEmitter {
   }
 
   /**
-   * Emit as soon as connection to eventstore was established successfull
+   * Emit as soon as connection to eventstore was established successfully
    *
    * @protected
    * @memberof TCPConnection

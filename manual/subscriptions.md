@@ -63,7 +63,7 @@ You can update an existing persistent subscription (**needs admin rights**)
 const eventstore = new Eventstore()
 await eventstore.connect()
 
-const newConfifg = {
+const newConfig = {
     messageTimeoutMilliseconds : 30000
   }
 
@@ -80,7 +80,7 @@ You can delete an existing persistent subscription (**needs admin rights**)
 const eventstore = new Eventstore()
 await eventstore.connect()
 
-const newConfifg = {
+const newConfig = {
     messageTimeoutMilliseconds : 30000
   }
 
@@ -98,7 +98,7 @@ You can connect to an existing persistent subscription
 const eventstore = new Eventstore()
 await eventstore.connect()
 
-const newConfifg = {
+const newConfig = {
     messageTimeoutMilliseconds : 30000
   }
 
@@ -106,7 +106,13 @@ const persistentSubscription = eventstore
   .atStream('myStream')
   .getPersistentSubscription('persistentsubscription')
   
-await persistentSubscription.start()
+await persistentSubscription.subscribe()
+```
+
+Unsubscribing an existing persistent subscription is also pretty easy
+
+```javascript
+await persistentSubscription.unsubscribe()
 ```
 
 ## catchUp subscriptions

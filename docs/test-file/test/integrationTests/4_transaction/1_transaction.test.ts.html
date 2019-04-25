@@ -159,7 +159,7 @@ describe(&apos;Transaction tests&apos;, (): void =&gt; {
     }
   })
 
-  it(&apos;it throws on writing to already commited transactions&apos;, async (): Promise&lt;void&gt; =&gt; {
+  it(&apos;it throws on writing to already committed transactions&apos;, async (): Promise&lt;void&gt; =&gt; {
     const singleEvent = new Event(&apos;SingleEventWritten&apos;)
     const transaction = await es.atStream(&apos;transactionwritetest&apos;).startTransaction()
     await transaction.append(singleEvent)

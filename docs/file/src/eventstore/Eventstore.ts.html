@@ -280,7 +280,7 @@ export class Eventstore extends EventEmitter {
   }
 
   /**
-   * Called direytly after connecting to eventstore
+   * Called directly after connecting to eventstore
    * Identifies connection against eventstore
    * Identification can be set in connection settings field clientId
    *
@@ -445,21 +445,6 @@ export class Eventstore extends EventEmitter {
       credentials || this.connectionConfig.credentials
     )
   }
-
-  /*
-  Commented out because it seems that eventstore currently doesn&apos;t support this over tcp atm
-  public async scavengeDatabase(credentials?: UserCredentials): Promise&lt;void&gt; {
-    await new Promise(
-      (resolve, reject): void =&gt; {
-        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
-        this.connection.sendCommand(uuid(), EventstoreCommand.ScavengeDatabase, null, credentials, {
-          resolve,
-          reject
-        })
-      }
-    )
-  }
-  */
 }
 </code></pre>
 

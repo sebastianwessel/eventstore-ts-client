@@ -23,7 +23,7 @@ You can find code coverage analysis at **[sonarcloud.com](https://sonarcloud.io/
 
 ## running tests
 
-- install all dependecies `npm install`
+- install all dependencies `npm install`
 - run tests `npm run test`
 
 ## test suite
@@ -31,9 +31,9 @@ You can find code coverage analysis at **[sonarcloud.com](https://sonarcloud.io/
 The whole tests are configured and started by `scripts/allTest.sh`
 
 - starting eventstore with 3 cluster instances
-- building testcontainer - a docker container containing this repo
+- building test container - a docker container containing this repository
 - adding test users to eventstore
 - setting up acl for eventstore
 - adding test streams to eventstore
-- starting testcontainer and running tests within that container
+- starting test container and running tests within that container
 - shutting down eventstore clusters

@@ -8,7 +8,7 @@ You can use different methods to get an stream instance:
 - `fromStream('streamId')`
 - `atStream('streamId')`
 
-Technicaly they do same, but with these different named function calls you can improve readablility of your code.
+Technically they do same, but with these different named function calls you can improve readability of your code.
 You can use it like:
 
 ```javascript
@@ -74,7 +74,7 @@ await eventstore.atStream('mystream').append([eventC, eventD])
 
 ## reading from stream
 
-It's recommended to use an async iteratot to fetch events from streams.  
+It's recommended to use an async iterator to fetch events from streams.  
 
 ```javascript
 const eventstore = new Eventstore()
@@ -89,7 +89,7 @@ for await (const event of events) {
 }
 ```
 
-You can use handy functions of async iterator returnded by `.walkStreamForward()` and `.walkStreamBackward()`.  
+You can use handy functions of async iterator returned by `.walkStreamForward()` and `.walkStreamBackward()`.  
 They are similar to array functions:
 
 - `map()`
