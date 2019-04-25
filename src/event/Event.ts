@@ -256,7 +256,10 @@ export class Event {
    * @returns {Event}
    * @memberof Event
    */
-  public static fromRaw(rawEvent: model.eventstore.proto.IEventRecord): Event {
+  public static fromRaw(rawEvent: model.eventstore.proto.IEventRecord | null | undefined): Event {
+    if (!rawEvent) {
+      throw eventstoreError.newProtocolError('No event or link was given at Event.fromRaw')
+    }
     const event = new Event(rawEvent.eventType)
     event.streamId = rawEvent.eventStreamId
     event.eventNumber = rawEvent.eventNumber

@@ -324,12 +324,10 @@ export class Stream {
       }
     )
 
-    if (result.event) {
-      return Event.fromRaw(result.event)
-    } else if (result.link) {
-      return Event.fromRaw(result.link)
+    if (!result.event && !result.link) {
+      return null
     }
-    return null
+    return Event.fromRaw(result.event || result.link)
   }
 
   /**
@@ -638,11 +636,7 @@ export class Stream {
       while (true) {
         if (index < result.events.length) {
           const entry = result.events[index++]
-          if (entry.event) {
-            yield Event.fromRaw(entry.event)
-          } else if (entry.link) {
-            yield Event.fromRaw(entry.link)
-          }
+          yield Event.fromRaw(entry.event || entry.link)
         } else if (result.isEndOfStream) {
           return null
         } else {

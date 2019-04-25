@@ -769,20 +769,7 @@ export class TCPConnection extends EventEmitter {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
     const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
-      let event
-      if (decoded.event.event) {
-        event = Event.fromRaw(decoded.event.event)
-      } else if (decoded.event.link) {
-        event = Event.fromRaw(decoded.event.link)
-      } else {
-        subscription.emit(
-          'error',
-          eventstoreError.newProtocolError(
-            'Received stream event with empty event and empty link field'
-          )
-        )
-        return
-      }
+      const event = Event.fromRaw(decoded.event.event || decoded.event.link)
       subscription.emit(
         'event',
         event,
@@ -985,20 +972,7 @@ export class TCPConnection extends EventEmitter {
     const decoded = protobuf.PersistentSubscriptionStreamEventAppeared.decode(payload)
     const subscription = this.persistentSubscriptionList.get(correlationId)
     if (subscription) {
-      let event
-      if (decoded.event.event) {
-        event = Event.fromRaw(decoded.event.event)
-      } else if (decoded.event.link) {
-        event = Event.fromRaw(decoded.event.link)
-      } else {
-        subscription.emit(
-          'error',
-          eventstoreError.newProtocolError(
-            'Received stream event with empty event and empty link field'
-          )
-        )
-        return
-      }
+      const event = Event.fromRaw(decoded.event.event || decoded.event.link)
       subscription.emit('event', event)
       subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
     } else {
