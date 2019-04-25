@@ -63,7 +63,7 @@ await es.atStream('mystream').append(eventA)
 
 const eventB = new Event('EventB',{
   text: 'other string',
-  countm : 2
+  count : 2
 })
 
 eventB.correlationId = eventA.id
