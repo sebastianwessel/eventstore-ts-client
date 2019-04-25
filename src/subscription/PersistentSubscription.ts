@@ -123,8 +123,8 @@ export class PersistentSubscription extends EventEmitter {
    * @returns {Promise<void>}
    * @memberof Subscription
    */
-  public unsubscribe(credentials?: UserCredentials | null): void {
-    this.esConnection
+  public async unsubscribe(credentials?: UserCredentials | null): Promise<void> {
+    await this.esConnection
       .getConnection()
       .unsubscribeFromPersistentSubscription(this.id, credentials || this.credentials)
   }
