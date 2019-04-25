@@ -202,7 +202,7 @@ export class Eventstore extends EventEmitter {
   }
 
   /**
-   * Called direytly after connecting to eventstore
+   * Called directly after connecting to eventstore
    * Identifies connection against eventstore
    * Identification can be set in connection settings field clientId
    *

@@ -11,9 +11,9 @@ import {Event} from '../event'
  *
  * @emits {subscribed} when subscription is established
  * @emits {event} when a new event receives
- * @emits {event-eventname} when event of name eventname is received
+ * @emits {event-event name} when event of name event name is received
  * @emits {dropped} when subscription gets dropped
- * @emits {error} when some error occured
+ * @emits {error} when some error occurred
  * @export
  * @class Subscription
  * @extends {EventEmitter}

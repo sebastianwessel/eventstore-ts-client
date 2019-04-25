@@ -182,7 +182,7 @@ describe('Persistent subscription test', (): void => {
 
       assert.strictEqual(
         subscription.name,
-        `PersistentSubsbscription: persistentsubscribestream3 :: persistentsubscription3`
+        `PersistentSubscription: persistentsubscribestream3 :: persistentsubscription3`
       )
       assert.strictEqual(subscription.state, SubscriptionStatus.connected)
 

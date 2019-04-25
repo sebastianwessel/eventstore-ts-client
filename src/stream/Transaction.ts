@@ -22,10 +22,10 @@ export class Transaction {
   protected stream: Stream
   /** current connection */
   protected esConnection: Eventstore
-  /** indicates if transaction is commited */
-  protected commited: boolean = false
-  /** indicates if transaction is roled back */
-  protected roledBack: boolean = false
+  /** indicates if transaction is committed */
+  protected committed: boolean = false
+  /** indicates if transaction is rolled back */
+  protected rolledBack: boolean = false
   /** indicates if transaction needs master node */
   protected requireMaster: boolean
   /** credentials for transaction */
@@ -52,17 +52,17 @@ export class Transaction {
   }
 
   /**
-   * Gets whether is commited
+   * Gets whether is committed
    */
-  public get isCommited(): boolean {
-    return this.commited
+  public get isCommitted(): boolean {
+    return this.committed
   }
 
   /**
-   * Gets whether is roled back
+   * Gets whether is rolled back
    */
-  public get isRoledBack(): boolean {
-    return this.roledBack
+  public get isRolledBack(): boolean {
+    return this.rolledBack
   }
 
   /**
@@ -85,7 +85,7 @@ export class Transaction {
   }
 
   /**
-   * Appends array of evens to transactio
+   * Appends array of evens to transaction
    * @param events
    * @param [requireMaster]
    * @param [credentials]
@@ -96,14 +96,14 @@ export class Transaction {
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<void> {
-    if (this.isCommited) {
+    if (this.isCommitted) {
       throw eventstoreError.newInvalidTransactionError(
         `Transaction ${this.transactionId} is already committed`
       )
     }
-    if (this.isRoledBack) {
+    if (this.isRolledBack) {
       throw eventstoreError.newInvalidTransactionError(
-        `Transaction ${this.transactionId} is already roled back`
+        `Transaction ${this.transactionId} is already rolled back`
       )
     }
     if (requireMaster === undefined) {
@@ -157,12 +157,12 @@ export class Transaction {
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<void> {
-    if (this.isCommited) {
+    if (this.isCommitted) {
       throw eventstoreError.newInvalidTransactionError(
         `Transaction ${this.transactionId} is already committed`
       )
     }
-    if (this.isRoledBack) {
+    if (this.isRolledBack) {
       throw eventstoreError.newInvalidTransactionError(
         `Transaction ${this.transactionId} is already roled back`
       )
@@ -173,8 +173,8 @@ export class Transaction {
     await new Promise(
       (resolve, reject): void => {
         const rejectFunction = (err: Error): void => {
-          this.commited = true
-          this.roledBack = true
+          this.committed = true
+          this.rolledBack = true
           reject(err)
         }
         const raw = protobuf.TransactionCommit.fromObject({
@@ -195,14 +195,14 @@ export class Transaction {
           )
       }
     )
-    this.commited = true
+    this.committed = true
   }
 
   /**
    * Roles back transaction
    */
   public roleBack(): void {
-    this.roledBack = true
+    this.rolledBack = true
   }
 
   /**

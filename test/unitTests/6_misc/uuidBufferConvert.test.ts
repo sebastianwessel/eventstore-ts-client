@@ -5,7 +5,7 @@ import uuid = require('uuid/v4')
 describe('uuid to buffer', (): void => {
   const testId = uuid()
 
-  it('converts a uuid to fomated buffer', (): void => {
+  it('converts a uuid to formated buffer', (): void => {
     const result = uuidToBuffer(testId)
     assert.strictEqual(result.toString(), Buffer.from(testId.replace(/-/g, ''), 'hex').toString())
   })
