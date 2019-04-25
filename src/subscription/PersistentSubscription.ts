@@ -4,7 +4,12 @@ import {EventEmitter} from 'events'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import uuid = require('uuid/v4')
-import {PersistentSubscriptionConfig, setPersistentSubscriptionConfig, SubscriptionStatus} from '.'
+import {
+  PersistentSubscriptionConfig,
+  setPersistentSubscriptionConfig,
+  SubscriptionStatus,
+  SubscriptionDropReason
+} from '.'
 import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
@@ -110,6 +115,28 @@ export class PersistentSubscription extends EventEmitter {
     this.subscriptionId = result.subscriptionId
     this.state = SubscriptionStatus.connected
     return this
+  }
+
+  /**
+   * Unsubscribe from stream
+   *
+   * @returns {Promise<void>}
+   * @memberof Subscription
+   */
+  public async unsubscribe(credentials?: UserCredentials | null): Promise<void> {
+    const raw = protobuf.SubscriptionDropped.fromObject({
+      reason: SubscriptionDropReason.Unsubscribed
+    })
+    this.state = SubscriptionStatus.disconnected
+    this.emit('dropped', SubscriptionDropReason.Unsubscribed)
+    this.esConnection
+      .getConnection()
+      .sendCommand(
+        this.id,
+        EventstoreCommand.SubscriptionDropped,
+        Buffer.from(protobuf.SubscriptionDropped.encode(raw).finish()),
+        credentials || this.credentials
+      )
   }
 
   /**

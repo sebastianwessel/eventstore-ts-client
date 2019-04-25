@@ -189,11 +189,15 @@ describe('Persistent subscription test', (): void => {
       await new Promise(
         async (resolve): Promise<void> => {
           await stream.append(new Event('SomeEvent'))
-          setTimeout(resolve, 10000)
+          setTimeout(resolve, 5000)
         }
       )
 
       assert.strictEqual(counter, 3)
+
+      await subscription.unsubscribe()
+
+      assert.strictEqual(subscription.state, SubscriptionStatus.disconnected)
     })
   })
 })
