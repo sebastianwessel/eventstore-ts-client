@@ -160,33 +160,40 @@ describe('Persistent subscription test', (): void => {
       }
     )
 
-    it('can start a subscription on empty stream', async (): Promise<void> => {
-      const subscription = es
-        .stream('persistentsubscribestream3')
-        .getPersistentSubscription('persistentsubscription3')
-      await subscription.start()
+    it('can start a subscription on none empty stream', async (): Promise<void> => {
+      const stream = es.stream('persistentsubscribestream3')
+      const newEvent = new Event('SomeEvent')
+      await stream.append(newEvent)
+      let counter = 0
+      const subscription = stream.getPersistentSubscription('persistentsubscription3')
+
+      subscription.on(
+        'event',
+        (event): void => {
+          counter++
+          subscription.acknowledgeEvent(event)
+        }
+      )
+
+      await subscription.start(10, {
+        username: 'restrictedUser',
+        password: 'restrictedOnlyUserPassword'
+      })
+
       assert.strictEqual(
         subscription.name,
         `PersistentSubsbscription: persistentsubscribestream3 :: persistentsubscription3`
       )
       assert.strictEqual(subscription.state, SubscriptionStatus.connected)
-    })
 
-    it('can start a subscription on none empty stream', async (): Promise<void> => {
-      const stream = es.stream('persistentsubscribestream3')
-      const newEvent = new Event('SomeEvent')
-      await stream.append(newEvent)
-      const subscription = stream.getPersistentSubscription('persistentsubscription3')
-      await subscription.start(10, {
-        username: 'restrictedUser',
-        password: 'restrictedOnlyUserPassword'
-      })
       await new Promise(
         async (resolve): Promise<void> => {
           await stream.append(new Event('SomeEvent'))
           setTimeout(resolve, 10000)
         }
       )
+
+      assert.strictEqual(counter, 3)
     })
   })
 })
