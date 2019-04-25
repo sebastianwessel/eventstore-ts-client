@@ -62,17 +62,9 @@ export class PersistentSubscription extends EventEmitter {
     this.subscriptionId = `${this.stream.id} :: ${this.subscriptionGroupName}`
 
     this.on(
-      'event',
-      (event): void => {
-        console.log('received ' + event.name + ' - ' + event.eventNumber)
-        this.acknowledgeEvent(event)
-      }
-    )
-    this.on(
       'dropped',
-      (reason): void => {
+      (): void => {
         this.state = SubscriptionStatus.disconnected
-        console.log('dropped because of ' + reason)
       }
     )
   }
