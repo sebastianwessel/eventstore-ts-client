@@ -654,20 +654,8 @@ export class Stream {
             begin = result.nextEventNumber
             readResult = that[getSlice](begin, maxCount, resolveLinkTos, requireMaster, credentials)
           }
-
-          if (index < result.events.length) {
-            const entry = result.events[index++]
-            if (entry.event) {
-              yield Event.fromRaw(entry.event)
-            } else if (entry.link) {
-              yield Event.fromRaw(entry.link)
-            }
-          } else if (result.isEndOfStream) {
-            return null
-          }
         }
       }
-      return null
     }
 
     return new StreamWalker(asyncGenerator(start))
