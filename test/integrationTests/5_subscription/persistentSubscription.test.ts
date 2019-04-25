@@ -175,7 +175,7 @@ describe('Persistent subscription test', (): void => {
         }
       )
 
-      await subscription.start(10, {
+      await subscription.subscribe(10, {
         username: 'restrictedUser',
         password: 'restrictedOnlyUserPassword'
       })

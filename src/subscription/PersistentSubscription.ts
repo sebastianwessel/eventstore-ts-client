@@ -101,7 +101,7 @@ export class PersistentSubscription extends EventEmitter {
    * @param [credentials]
    * @returns connect
    */
-  public async start(
+  public async subscribe(
     allowedInFlightMessages: number = 10,
     credentials?: UserCredentials | null
   ): Promise<PersistentSubscription> {
