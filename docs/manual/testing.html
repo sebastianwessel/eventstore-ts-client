@@ -32,6 +32,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -39,6 +41,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -95,17 +98,17 @@
 <li>installed Docker</li>
 </ul>
 <h2 id="running-tests">running tests</h2><ul>
-<li>install all dependecies <code>npm install</code></li>
+<li>install all dependencies <code>npm install</code></li>
 <li>run tests <code>npm run test</code></li>
 </ul>
 <h2 id="test-suite">test suite</h2><p>The whole tests are configured and started by <code>scripts/allTest.sh</code></p>
 <ul>
 <li>starting eventstore with 3 cluster instances</li>
-<li>building testcontainer - a docker container containing this repo</li>
+<li>building test container - a docker container containing this repository</li>
 <li>adding test users to eventstore</li>
 <li>setting up acl for eventstore</li>
 <li>adding test streams to eventstore</li>
-<li>starting testcontainer and running tests within that container</li>
+<li>starting test container and running tests within that container</li>
 <li>shutting down eventstore clusters</li>
 </ul>
 </div>

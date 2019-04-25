@@ -1,7 +1,7 @@
 {
-  "coverage": "86.61%",
-  "expectCount": 269,
-  "actualCount": 233,
+  "coverage": "86.9%",
+  "expectCount": 275,
+  "actualCount": 239,
   "files": {
     "src/StreamWalker.ts": {
       "expectCount": 10,
@@ -50,14 +50,14 @@
       "undocumentLines": []
     },
     "src/eventstore/TCPConnection.ts": {
-      "expectCount": 60,
-      "actualCount": 55,
+      "expectCount": 65,
+      "actualCount": 60,
       "undocumentLines": [
         13,
-        133,
-        134,
-        135,
-        138
+        149,
+        150,
+        151,
+        154
       ]
     },
     "src/eventstore/getConnectInfo.ts": {
@@ -101,14 +101,9 @@
         47
       ]
     },
-    "src/subscription/PersistentSubscriptionConfig.ts": {
-      "expectCount": 3,
-      "actualCount": 3,
-      "undocumentLines": []
-    },
     "src/subscription/PersistentSubscription.ts": {
-      "expectCount": 24,
-      "actualCount": 19,
+      "expectCount": 25,
+      "actualCount": 20,
       "undocumentLines": [
         7,
         82,
@@ -116,6 +111,11 @@
         84,
         86
       ]
+    },
+    "src/subscription/PersistentSubscriptionConfig.ts": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/subscription/Subscription.ts": {
       "expectCount": 19,

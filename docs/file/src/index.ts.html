@@ -86,11 +86,14 @@
 } from &apos;./eventstore&apos;
 export {Event} from &apos;./event&apos;
 export {ExpectedVersion} from &apos;./protobuf/ExpectedVersion&apos;
+export {uuidToBuffer, uuidFromBuffer} from &apos;./protobuf/uuidBufferConvert&apos;
 export {StreamPosition} from &apos;./stream&apos;
 export {
   PersistentSubscriptionConfig,
   SystemConsumerStrategies,
-  SubscriptionStatus
+  SubscriptionStatus,
+  SubscriptionDropReason,
+  NakAction
 } from &apos;./subscription&apos;
 </code></pre>
 

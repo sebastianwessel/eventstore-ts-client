@@ -32,6 +32,8 @@
     <ul class="manual-toc">
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -39,6 +41,7 @@
       
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -77,7 +80,7 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="eventstore">Eventstore</h1><h2 id="connecting">connecting</h2><p>Main connection parameters are set inside of connection uri<br>This lib supports connecting to single instance via tcp and auto discovering to clusters also.<br>Connections can be unsecure or encrypted</p>
+<div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="eventstore">Eventstore</h1><h2 id="connecting">connecting</h2><p>Main connection parameters are set inside of connection uri<br>This lib supports connecting to single instance via tcp and auto discovering to clusters also.<br>Connections can be unsecured or encrypted</p>
 <pre><code class="lang-javascript"><code class="source-code prettyprint">// connection to single instance at local at port 1113 with username and password
 const es = new Eventstore({
   uri: &apos;tcp://username:userpassword@127.0.0.1:1113&apos;
@@ -107,6 +110,7 @@ const es = new Eventstore({
 
 await es.connect()</code>
 </code></pre>
+<h2 id="disconnecting">disconnecting</h2><p>It&apos;s highly recommended to close a connection in save way.<br>You should use <code>es.disconnect()</code> for proper shut down, because this function sets current connection to state <code>drain</code>.<br>This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p>
 </div>
 </div>
 

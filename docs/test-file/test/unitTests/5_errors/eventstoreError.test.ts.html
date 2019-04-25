@@ -87,11 +87,11 @@ describe(&apos;Eventstore error class&apos;, (): void =&gt; {
   })
 
   it(&apos;can have a causing error instance&apos;, (): void =&gt; {
-    const causedby = new Error(&apos;initial error&apos;)
-    const err = new esError.EventstoreError(&apos;some error&apos;, &apos;NamedError&apos;, causedby)
+    const causedBy = new Error(&apos;initial error&apos;)
+    const err = new esError.EventstoreError(&apos;some error&apos;, &apos;NamedError&apos;, causedBy)
     assert.strictEqual(err.name, &apos;NamedError&apos;)
     assert.strictEqual(err.message, &apos;some error&apos;)
-    assert.strictEqual(JSON.stringify(err.rootCause), JSON.stringify(causedby))
+    assert.strictEqual(JSON.stringify(err.rootCause), JSON.stringify(causedBy))
   })
 })
 
@@ -112,8 +112,8 @@ describe(&apos;Eventstore error types&apos;, (): void =&gt; {
       })
 
       it(`creates a ${errorName} with causing error reference`, (): void =&gt; {
-        const causedby = new Error(&apos;initial error&apos;)
-        const err = esError[&apos;new&apos; + errorName](&apos;some error&apos;, causedby)
+        const causedBy = new Error(&apos;initial error&apos;)
+        const err = esError[&apos;new&apos; + errorName](&apos;some error&apos;, causedBy)
         assert.strictEqual(err.name, `Eventstore${errorName}`)
       })
     }
@@ -132,7 +132,7 @@ describe(&apos;Eventstore error types&apos;, (): void =&gt; {
 
   errorsWithDefaultMsg.forEach(
     (errorName): void =&gt; {
-      it(`creates a ${errorName} without specifyed message`, (): void =&gt; {
+      it(`creates a ${errorName} without specified message`, (): void =&gt; {
         const err = esError[&apos;new&apos; + errorName]()
         assert.strictEqual(err.name, `Eventstore${errorName}`)
       })

@@ -560,37 +560,37 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber84",
-    "Existing event instance tests throws on changeing eventCausationId",
+    "Existing event instance tests throws on changing eventCausationId",
     "test"
   ],
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber72",
-    "Existing event instance tests throws on changeing eventCorrelationId",
+    "Existing event instance tests throws on changing eventCorrelationId",
     "test"
   ],
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber48",
-    "Existing event instance tests throws on changeing eventData",
+    "Existing event instance tests throws on changing eventData",
     "test"
   ],
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber36",
-    "Existing event instance tests throws on changeing eventId",
+    "Existing event instance tests throws on changing eventId",
     "test"
   ],
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber60",
-    "Existing event instance tests throws on changeing eventMetadata",
+    "Existing event instance tests throws on changing eventMetadata",
     "test"
   ],
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber24",
-    "Existing event instance tests throws on changeing name",
+    "Existing event instance tests throws on changing name",
     "test"
   ],
   [
@@ -679,19 +679,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber111",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber119",
     "Persistent subscription test Persistent subscription get events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber125",
-    "Persistent subscription test Persistent subscription get events can start a subscription on empty stream",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber163",
+    "Persistent subscription test Persistent subscription get events can notAck events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber132",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber139",
     "Persistent subscription test Persistent subscription get events can start a subscription on none empty stream",
     "test"
   ],
@@ -721,31 +721,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber60",
+    "Persistent subscription test with admin user rights throws on delete",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber26",
     "Persistent subscription test with admin user rights updates a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber61",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber73",
     "Persistent subscription test without admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber76",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber88",
     "Persistent subscription test without admin user rights throws on create",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber98",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber108",
     "Persistent subscription test without admin user rights throws on delete",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber86",
+    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber98",
     "Persistent subscription test without admin user rights throws on update",
     "test"
   ],
@@ -1094,7 +1100,7 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber74",
-    "Transaction tests it throws on writing to already commited transactions",
+    "Transaction tests it throws on writing to already committed transactions",
     "test"
   ],
   [
@@ -1123,26 +1129,80 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber32",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber32",
     "buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber35",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber35",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber39",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber39",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber43",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber43",
     "buffer to uuid throws on invalid buffer size",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber7",
+    "checkOperationResult",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber48",
+    "checkOperationResult handles OperationResult.AccessDenied",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber58",
+    "checkOperationResult handles OperationResult.CommitTimeout",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber68",
+    "checkOperationResult handles OperationResult.ForwardTimeout",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber78",
+    "checkOperationResult handles OperationResult.InvalidTransaction",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber88",
+    "checkOperationResult handles OperationResult.PrepareTimeout",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber98",
+    "checkOperationResult handles OperationResult.StreamDeleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber118",
+    "checkOperationResult handles OperationResult.Unspecific",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber108",
+    "checkOperationResult handles OperationResult.WrongExpectedVersion",
     "test"
   ],
   [
@@ -1184,7 +1244,7 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber151",
-    "event from raw returns event instance without created informations",
+    "event from raw returns event instance without created information",
     "test"
   ],
   [
@@ -1215,6 +1275,90 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber163",
     "event from raw sets metadata on setting correlationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber213",
+    "event from raw throw on missing raw event or link",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber7",
+    "handleReadAllEventsCompleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber46",
+    "handleReadAllEventsCompleted handles ReadEventResult.AccessDenied",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber64",
+    "handleReadAllEventsCompleted handles ReadEventResult.NotModified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber82",
+    "handleReadAllEventsCompleted handles ReadEventResult.UnspecificError",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber7",
+    "handleReadEventCompleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber65",
+    "handleReadEventCompleted handles ReadEventResult.NoStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber46",
+    "handleReadEventCompleted handles ReadEventResult.NotFound",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber84",
+    "handleReadEventCompleted handles ReadEventResult.StreamDeleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber7",
+    "handleReadStreamEventsCompleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber100",
+    "handleReadStreamEventsCompleted handles ReadStreamResult.AccessDenied",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber46",
+    "handleReadStreamEventsCompleted handles ReadStreamResult.NoStream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber64",
+    "handleReadStreamEventsCompleted handles ReadStreamResult.NotModified",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber82",
+    "handleReadStreamEventsCompleted handles ReadStreamResult.StreamDeleted",
     "test"
   ],
   [
@@ -1998,6 +2142,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/tcpconnection.ts~tcpconnection#checktimeout",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-checkTimeout",
+    "src/eventstore/TCPConnection.ts~TCPConnection#checkTimeout",
+    "method"
+  ],
+  [
     "src/eventstore/tcpconnection.ts~tcpconnection#connect",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-connect",
     "src/eventstore/TCPConnection.ts~TCPConnection#connect",
@@ -2238,6 +2388,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/eventstore/tcpconnection.ts~tcpconnection#reconnectcount",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-reconnectCount",
+    "src/eventstore/TCPConnection.ts~TCPConnection#reconnectCount",
+    "member"
+  ],
+  [
     "src/eventstore/tcpconnection.ts~tcpconnection#rejectcommandpromise",
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-rejectCommandPromise",
     "src/eventstore/TCPConnection.ts~TCPConnection#rejectCommandPromise",
@@ -2278,6 +2434,24 @@ window.esdocSearchIndex = [
     "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-subscriptionList",
     "src/eventstore/TCPConnection.ts~TCPConnection#subscriptionList",
     "member"
+  ],
+  [
+    "src/eventstore/tcpconnection.ts~tcpconnection#timoutinterval",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-timoutInterval",
+    "src/eventstore/TCPConnection.ts~TCPConnection#timoutInterval",
+    "member"
+  ],
+  [
+    "src/eventstore/tcpconnection.ts~tcpconnection#trytoconnect",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-tryToConnect",
+    "src/eventstore/TCPConnection.ts~TCPConnection#tryToConnect",
+    "method"
+  ],
+  [
+    "src/eventstore/tcpconnection.ts~tcpconnection#unsubscribefrompersistentsubscription",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-method-unsubscribeFromPersistentSubscription",
+    "src/eventstore/TCPConnection.ts~TCPConnection#unsubscribeFromPersistentSubscription",
+    "method"
   ],
   [
     "src/eventstore/tcpconnection.ts~tcpconnection#unsubscribefromstream",
@@ -2556,9 +2730,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stream/transaction.ts~transaction#commited",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-member-commited",
-    "src/stream/Transaction.ts~Transaction#commited",
+    "src/stream/transaction.ts~transaction#committed",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-member-committed",
+    "src/stream/Transaction.ts~Transaction#committed",
     "member"
   ],
   [
@@ -2586,15 +2760,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/stream/transaction.ts~transaction#iscommited",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-get-isCommited",
-    "src/stream/Transaction.ts~Transaction#isCommited",
+    "src/stream/transaction.ts~transaction#iscommitted",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-get-isCommitted",
+    "src/stream/Transaction.ts~Transaction#isCommitted",
     "member"
   ],
   [
-    "src/stream/transaction.ts~transaction#isroledback",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-get-isRoledBack",
-    "src/stream/Transaction.ts~Transaction#isRoledBack",
+    "src/stream/transaction.ts~transaction#isrolledback",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-get-isRolledBack",
+    "src/stream/Transaction.ts~Transaction#isRolledBack",
     "member"
   ],
   [
@@ -2616,9 +2790,9 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/stream/transaction.ts~transaction#roledback",
-    "class/src/stream/Transaction.ts~Transaction.html#instance-member-roledBack",
-    "src/stream/Transaction.ts~Transaction#roledBack",
+    "src/stream/transaction.ts~transaction#rolledback",
+    "class/src/stream/Transaction.ts~Transaction.html#instance-member-rolledBack",
+    "src/stream/Transaction.ts~Transaction#rolledBack",
     "member"
   ],
   [
@@ -2637,12 +2811,6 @@ window.esdocSearchIndex = [
     "src/stream/index.ts",
     "file/src/stream/index.ts.html",
     "src/stream/index.ts",
-    "file"
-  ],
-  [
-    "src/subscription/persistentsubscriptionconfig.ts",
-    "file/src/subscription/PersistentSubscriptionConfig.ts.html",
-    "src/subscription/PersistentSubscriptionConfig.ts",
     "file"
   ],
   [
@@ -2670,9 +2838,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/subscription/persistentsubscription.ts~persistentsubscription#autoacknownledge",
-    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-autoAcknownledge",
-    "src/subscription/PersistentSubscription.ts~PersistentSubscription#autoAcknownledge",
+    "src/subscription/persistentsubscription.ts~persistentsubscription#autoacknowledge",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-autoAcknowledge",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#autoAcknowledge",
     "member"
   ],
   [
@@ -2736,12 +2904,6 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
-    "src/subscription/persistentsubscription.ts~persistentsubscription#start",
-    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-start",
-    "src/subscription/PersistentSubscription.ts~PersistentSubscription#start",
-    "method"
-  ],
-  [
     "src/subscription/persistentsubscription.ts~persistentsubscription#state",
     "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-get-state",
     "src/subscription/PersistentSubscription.ts~PersistentSubscription#state",
@@ -2766,6 +2928,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#subscribe",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-subscribe",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscribe",
+    "method"
+  ],
+  [
     "src/subscription/persistentsubscription.ts~persistentsubscription#subscriptiongroupname",
     "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-subscriptionGroupName",
     "src/subscription/PersistentSubscription.ts~PersistentSubscription#subscriptionGroupName",
@@ -2778,10 +2946,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#unsubscribe",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-unsubscribe",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#unsubscribe",
+    "method"
+  ],
+  [
     "src/subscription/persistentsubscription.ts~persistentsubscription#update",
     "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-update",
     "src/subscription/PersistentSubscription.ts~PersistentSubscription#update",
     "method"
+  ],
+  [
+    "src/subscription/persistentsubscriptionconfig.ts",
+    "file/src/subscription/PersistentSubscriptionConfig.ts.html",
+    "src/subscription/PersistentSubscriptionConfig.ts",
+    "file"
   ],
   [
     "src/subscription/subscription.ts",
@@ -2916,12 +3096,6 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "test/integrationtests/1_eventstore/uuidbufferconverter.test.ts",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html",
-    "test/integrationTests/1_eventstore/uuidBufferConverter.test.ts",
-    "testFile"
-  ],
-  [
     "test/integrationtests/2_stream/1_stream.test.ts",
     "test-file/test/integrationTests/2_stream/1_stream.test.ts.html",
     "test/integrationTests/2_stream/1_stream.test.ts",
@@ -2976,9 +3150,33 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/unittests/1_eventstore/checkoperationresult.test.ts",
+    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html",
+    "test/unitTests/1_eventstore/checkOperationResult.test.ts",
+    "testFile"
+  ],
+  [
     "test/unittests/1_eventstore/getconnectioninfo.test.ts",
     "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html",
     "test/unitTests/1_eventstore/getConnectionInfo.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/handlereadalleventscompleted.test.ts",
+    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html",
+    "test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/handlereadeventcompleted.test.ts",
+    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html",
+    "test/unitTests/1_eventstore/handleReadEventCompleted.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/handlereadstreameventscompleted.test.ts",
+    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html",
+    "test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts",
     "testFile"
   ],
   [
@@ -3018,32 +3216,38 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/unittests/6_misc/uuidbufferconvert.test.ts",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html",
+    "test/unitTests/6_misc/uuidBufferConvert.test.ts",
+    "testFile"
+  ],
+  [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber3",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber3",
     "uuid to buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber5",
-    "uuid to buffer converts a uuid to fomated buffer",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber5",
+    "uuid to buffer converts a uuid to formated buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber9",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber9",
     "uuid to buffer returns a buffer for id=null",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber22",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber22",
     "uuid to buffer throws on invalid uuid format",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/uuidBufferConverter.test.ts.html#lineNumber13",
+    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber13",
     "uuid to buffer throws on uuid size",
     "test"
   ]

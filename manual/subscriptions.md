@@ -106,7 +106,13 @@ const persistentSubscription = eventstore
   .atStream('myStream')
   .getPersistentSubscription('persistentsubscription')
   
-await persistentSubscription.start()
+await persistentSubscription.subscribe()
+```
+
+Unsubscribing an existing persistent subscription is also pretty easy
+
+```javascript
+await persistentSubscription.unsubscribe()
 ```
 
 ## catchUp subscriptions

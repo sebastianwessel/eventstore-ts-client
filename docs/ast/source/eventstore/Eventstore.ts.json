@@ -5823,7 +5823,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Called directly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
                     "start": 4835,
                     "end": 5094,
                     "loc": {
@@ -7265,7 +7265,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
+                    "value": "*\n     * @desc\n     * Called directly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
                     "start": 4835,
                     "end": 5094,
                     "loc": {
@@ -11589,7 +11589,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Called directly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
       "start": 4835,
       "end": 5094,
       "loc": {
@@ -22952,7 +22952,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n     * @desc\n     * Called direytly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
+      "value": "*\n     * @desc\n     * Called directly after connecting to eventstore\n     * Identifies connection against eventstore\n     * Identification can be set in connection settings field clientId\n     * @lineNumber\n     * 213\n     * @return\n     * {Promise}\n     ",
       "start": 4835,
       "end": 5094,
       "loc": {

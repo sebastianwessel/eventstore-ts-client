@@ -40,3 +40,7 @@ await es.connect()
 ```
 
 ## disconnecting
+
+It's highly recommended to close a connection in save way.  
+You should use `es.disconnect()` for proper shut down, because this function sets current connection to state `drain`.  
+This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  
