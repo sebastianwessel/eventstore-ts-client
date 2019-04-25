@@ -1,4 +1,4 @@
-import {Eventstore, Event, SubscriptionStatus} from '../../../src'
+import {Eventstore, Event, SubscriptionStatus, NakAction} from '../../../src'
 import * as assert from 'assert'
 
 describe('Persistent subscription test', (): void => {
@@ -189,7 +189,7 @@ describe('Persistent subscription test', (): void => {
       await new Promise(
         async (resolve): Promise<void> => {
           await stream.append(new Event('SomeEvent'))
-          setTimeout(resolve, 5000)
+          setTimeout(resolve, 1000)
         }
       )
 
@@ -198,6 +198,41 @@ describe('Persistent subscription test', (): void => {
       await subscription.unsubscribe()
 
       assert.strictEqual(subscription.state, SubscriptionStatus.disconnected)
+    })
+
+    it('can notAck events', async (): Promise<void> => {
+      const stream = es.stream('persistentsubscribestream3')
+      const newEvent = new Event('SomeEvent444')
+      await stream.append(newEvent)
+      const subscription = stream.getPersistentSubscription('persistentsubscription3')
+      let counter = 0
+
+      subscription.on(
+        'event',
+        (event): void => {
+          counter++
+          assert.strictEqual(event.id, newEvent.id)
+          subscription.notAcknowledgeEvent(event, NakAction.Unknown)
+        }
+      )
+
+      await subscription.subscribe()
+
+      await new Promise(
+        async (resolve): Promise<void> => {
+          setTimeout(resolve, 1000)
+        }
+      )
+
+      await subscription.unsubscribe()
+
+      await new Promise(
+        async (resolve): Promise<void> => {
+          setTimeout(resolve, 1000)
+        }
+      )
+
+      assert.strictEqual(counter > 0, true)
     })
   })
 })
