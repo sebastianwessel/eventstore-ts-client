@@ -8,6 +8,8 @@ import Long = require('long')
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import {Position} from './Position'
+import {StreamWalker} from '../StreamWalker'
+import {Event} from '../event'
 
 const protobuf = model.eventstore.proto
 
@@ -101,7 +103,7 @@ export class Eventstore extends EventEmitter {
   }
 
   /**
-   * Inidcates if connection to eventstore is available
+   * Indicates if connection to eventstore is available
    *
    * @readonly
    * @type {boolean}
@@ -366,5 +368,162 @@ export class Eventstore extends EventEmitter {
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
     )
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  /**
+   * Walks all events forward
+   * @param [start]
+   * @param [maxCount]
+   * @param [resolveLinkTos]
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns
+   */
+  public async walkAllForward(
+    start: Position = Position.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    const that = this
+    if (requireMaster === undefined) {
+      requireMaster = this.connectionConfig.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.connectionConfig.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Position) {
+      let index = 0
+      //fetch first slice
+      let readResult = that.readSliceForward(
+        begin,
+        maxCount,
+        resolveLinkTos,
+        requireMaster,
+        credentials
+      )
+      let result = await readResult
+
+      let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+      begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+      if (begin.compareTo(maxSlicePosition) >= 0) {
+        //we have more so start fetching in background
+        readResult = that.readSliceForward(
+          begin,
+          maxCount,
+          resolveLinkTos,
+          requireMaster,
+          credentials
+        )
+      }
+      while (true) {
+        if (index < result.events.length) {
+          const entry = result.events[index++]
+          yield Event.fromRaw(entry.event || entry.link)
+        } else if (begin.compareTo(maxSlicePosition) <= 0) {
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+          begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+          if (begin.compareTo(maxSlicePosition) > 0) {
+            //if there are more events start fetching in background
+
+            readResult = that.readSliceForward(
+              begin,
+              maxCount,
+              resolveLinkTos,
+              requireMaster,
+              credentials
+            )
+          }
+        }
+      }
+    }
+
+    return new StreamWalker(asyncGenerator(start))
+  }
+
+  /**
+   * Walks all events backward
+   * @param [start]
+   * @param [maxCount]
+   * @param [resolveLinkTos]
+   * @param [requireMaster]
+   * @param [credentials]
+   * @returns all backward
+   */
+  public async walkAllBackward(
+    start: Position = Position.End,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    const that = this
+    if (requireMaster === undefined) {
+      requireMaster = this.connectionConfig.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.connectionConfig.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Position) {
+      let index = 0
+      //fetch first slice
+      let readResult = that.readSliceBackward(
+        begin,
+        maxCount,
+        resolveLinkTos,
+        requireMaster,
+        credentials
+      )
+      let result = await readResult
+
+      let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+      begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+      if (begin.compareTo(maxSlicePosition) >= 0) {
+        //we have more so start fetching in background
+        readResult = that.readSliceBackward(
+          begin,
+          maxCount,
+          resolveLinkTos,
+          requireMaster,
+          credentials
+        )
+      }
+      while (true) {
+        if (index < result.events.length) {
+          const entry = result.events[index++]
+          yield Event.fromRaw(entry.event || entry.link)
+        } else if (begin.compareTo(maxSlicePosition) >= 0) {
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+          begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+          if (begin.compareTo(maxSlicePosition) < 0) {
+            //if there are more events start fetching in background
+
+            readResult = that.readSliceBackward(
+              begin,
+              maxCount,
+              resolveLinkTos,
+              requireMaster,
+              credentials
+            )
+          }
+        }
+      }
+    }
+
+    return new StreamWalker(asyncGenerator(start))
   }
 }
