@@ -487,7 +487,7 @@ export class Eventstore extends EventEmitter {
 
       let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
       begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
-      if (begin.compareTo(maxSlicePosition) >= 0) {
+      if (begin.compareTo(maxSlicePosition) < 0) {
         //we have more so start fetching in background
         readResult = that.readSliceBackward(
           begin,
