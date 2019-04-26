@@ -34,7 +34,7 @@ subscription = await eventstore
       .stream('streamId')
       .subscribe()
 
-// listen for "event-"+ lowercase eventname
+// listen for "event-"+ lowercase event name
 subscription.on('event-specificeventa', (event) => {
   console.log('log only SpecificEventA')
 })

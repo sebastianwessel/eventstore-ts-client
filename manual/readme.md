@@ -50,7 +50,7 @@ await eventstore
 
 As you can see your code becomes a lot more self speaking and also someone who isn't familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.
 
-Of course you're able to use function parameters as well if you prefere it, but it's not recommended
+Of course you're able to use function parameters as well if you prefer it, but it's not recommended
 
 ## Error handling
 
