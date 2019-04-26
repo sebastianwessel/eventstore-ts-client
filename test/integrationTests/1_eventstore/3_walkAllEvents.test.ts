@@ -35,7 +35,7 @@ describe('Read all events', (): void => {
       assert.fail(err)
     }
 
-    assert.strictEqual(forwardResult.length > 0, true)
+    assert.strictEqual(forwardResult.length > 10000, true)
   })
 
   it('reads  all events backward', async (): Promise<void> => {
@@ -49,7 +49,7 @@ describe('Read all events', (): void => {
       assert.fail(err)
     }
 
-    assert.strictEqual(backwardResult.length > 0, true)
+    assert.strictEqual(backwardResult.length > 10000, true)
   })
 
   it('matches end/start entries', (): void => {
