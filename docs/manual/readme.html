@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../">
   <title data-ice="title">Manual | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
@@ -34,6 +32,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#request-response-queue" data-ice="link">request response queue</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -51,6 +50,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-all-events" data-ice="link">reading all events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -84,7 +84,7 @@
 <p>There are a couple of things like error handling or function naming which should help you to write nice and speaking code.</p>
 <p>It follows async/await style to avoid &quot;callback hell&quot; as well.</p>
 <h2 id="speaking-code">speaking code</h2><p>Instead of having some base function with lots of parameters this lib provides some nice syntax and alias functions.<br>Instead of writing:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">var esConnection = esClient.createConnection(connSettings, &quot;tcp://localhost:1113&quot;);
+<pre><code class="language-javascript"><code class="source-code prettyprint">var esConnection = esClient.createConnection(connSettings, &quot;tcp://localhost:1113&quot;);
 esConnection.connect();
 
 var eventId = uuid.v4();
@@ -97,10 +97,9 @@ var event = esClient.createJsonEventData(eventId, eventData, null, &apos;TestWas
 esConnection.appendToStream(&apos;streamName&apos;, esClient.expectedVersion.any, event,someDifferentCredentials)
   .then(function(result) {
       console.log(&quot;Stored event:&quot;, eventId);
-  })</code>
-</code></pre>
+  })</code></code></pre>
 <p>you should write something like:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore(&apos;tcp://localhost:1113&apos;)
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore(&apos;tcp://localhost:1113&apos;)
 await eventstore.connect()
 
 const eventTestWasDone = new Event(&apos;TestWasDone&apos;,{
@@ -114,16 +113,19 @@ await eventstore
   .requiresMaster()
   .append(eventTestWasDone)
 
- console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code>
-</code></pre>
+ console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code></code></pre>
 <p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p>
-<p>Of course you&apos;re able to use function parameters as well if you prefere it, but it&apos;s not recommended</p>
+<p>Of course you&apos;re able to use function parameters as well if you prefer it, but it&apos;s not recommended</p>
 <h2 id="error-handling">Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p>
+<h2 id="request-response-queue">request response queue</h2><p>This lib does not use a queue for outgoing requests and commands.<br>Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.<br>If an connection to eventstore get lost while sending a request you will get an connection error immediately and this library will not try to resend requests for you.</p>
+<p>I strongly believe it&apos;s up to program logic to handle unexpected lost connection failures while sending some requests.<br>It depends very hard on each usecase how to handle such failures and also if it&apos;s possible to reconnect or not.<br>To avoid unsolvable questions like &quot;What to do with requests when...&quot; and because tcp connections are duplex connections there is no request queue.
+This library tries to do as much as possible in real time and/or in asynchronous fashion.</p>
+<p>If a correlating response for a request contains some error code the request promise will be rejected with correlating error.<br>If no response arrives within given timeout setting the request will promise will be rejected with an <code>EventstoreTimeoutError</code>.</p>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
@@ -133,5 +135,6 @@ await eventstore
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

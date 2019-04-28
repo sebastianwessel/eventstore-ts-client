@@ -8,6 +8,8 @@ import Long = require('long')
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as model from '../protobuf/model'
 import {Position} from './Position'
+import {StreamWalker} from '../StreamWalker'
+import {Event} from '../event'
 
 const protobuf = model.eventstore.proto
 
@@ -19,10 +21,6 @@ export interface WriteResult {
 
 /**
  * Base class to communicate with eventstore
- *
- * @export
- * @class Eventstore
- * @extends {EventEmitter}
  */
 export class Eventstore extends EventEmitter {
   /** connection config */
@@ -34,8 +32,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Creates an instance of Eventstore.
-   * @param {(EventstoreSettings | object)} [connectionConfiguration={}]
-   * @memberof Eventstore
    */
   public constructor(connectionConfiguration: EventstoreSettings | object = {}) {
     super()
@@ -46,10 +42,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Ensure to use up-to-date settings, logger and a fresh connection socket
-   *
-   * @protected
-   * @param {(EventstoreSettings | object)} [connectionConfiguration={}]
-   * @memberof Eventstore
    */
   protected init(connectionConfiguration: EventstoreSettings | object = {}): void {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
@@ -61,10 +53,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Returns client id - name of eventstore connection
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Eventstore
    */
   public get name(): string {
     return this.connectionConfig.clientId
@@ -72,10 +60,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Connect to eventstore
-   *
-   * @param {(EventstoreSettings | object)} [connectionConfiguration={}]
-   * @returns {Promise<void>}
-   * @memberof Eventstore
    */
   public async connect(connectionConfiguration: EventstoreSettings | object = {}): Promise<void> {
     this.init(connectionConfiguration)
@@ -92,20 +76,13 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Disconnect from eventstore and try to drain pending requests
-   *
-   * @returns {Promise<void>}
-   * @memberof Eventstore
    */
   public disconnect(): Promise<void> {
     return this.connection.disconnect()
   }
 
   /**
-   * Inidcates if connection to eventstore is available
-   *
-   * @readonly
-   * @type {boolean}
-   * @memberof Eventstore
+   * Indicates if connection to eventstore is available
    */
   public get isConnected(): boolean {
     return this.connection.isConnected
@@ -117,9 +94,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get current logger instance
-   *
-   * @type {bunyan}
-   * @memberof Eventstore
    */
   public get logger(): bunyan {
     return this.log
@@ -127,8 +101,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Set logger instance
-   *
-   * @memberof Eventstore
    */
   public set logger(newLogger: bunyan) {
     this.connectionConfig.logger = newLogger
@@ -136,12 +108,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
-   * You can also use one of the alias functions {@see <fromStream>}, {@see <atStream>}
-   *
-   * @param {string} streamName
-   * @param {StreamOptions} [streamOptions]
-   * @returns {Stream}
-   * @memberof Eventstore
+   * You can also use one of the alias functions fromStream or atStream
    */
   public stream(streamName: string, streamOptions?: StreamOptions): Stream {
     const defaultOptions: StreamOptions = {
@@ -154,12 +121,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
-   * Alias for {@see <stream>}
-   *
-   * @param {string} streamName
-   * @param {StreamOptions} [streamOptions]
-   * @returns {Stream}
-   * @memberof Eventstore
+   * Alias for method stream
    */
   public fromStream(streamName: string, streamOptions?: StreamOptions): Stream {
     return this.stream(streamName, streamOptions)
@@ -167,12 +129,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get a stream instance specified by streamName
-   * Alias for {@see <stream>}
-   *
-   * @param {string} streamName
-   * @param {StreamOptions} [streamOptions]
-   * @returns {Stream}
-   * @memberof Eventstore
+   * Alias for method stream
    */
   public atStream(streamName: string, streamOptions?: StreamOptions): Stream {
     return this.stream(streamName, streamOptions)
@@ -180,9 +137,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Ping eventstore
-   *
-   * @returns {Promise<void>}
-   * @memberof Eventstore
    */
   public async ping(): Promise<void> {
     await new Promise(
@@ -205,10 +159,6 @@ export class Eventstore extends EventEmitter {
    * Called directly after connecting to eventstore
    * Identifies connection against eventstore
    * Identification can be set in connection settings field clientId
-   *
-   * @protected
-   * @returns {Promise<void>}
-   * @memberof Eventstore
    */
   protected async identifyClient(): Promise<void> {
     await new Promise(
@@ -234,10 +184,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Authenticate with credentials from settings
-   *
-   * @protected
-   * @returns {Promise<void>}
-   * @memberof Eventstore
    */
   protected async authenticate(): Promise<void> {
     await new Promise(
@@ -259,10 +205,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Called from event listener connected to 'error'
-   *
-   * @protected
-   * @param {Error} err
-   * @memberof Eventstore
    */
   protected onError(err: Error): void {
     this.log.error({err}, err.name)
@@ -270,16 +212,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Reads a slice of events from current stream
-   *
-   * @protected
-   * @param {EventstoreCommand} direction
-   * @param {Position} position
-   * @param {number} [maxCount=100]
-   * @param {boolean} [resolveLinkTos=true]
-   * @param {boolean} requireMaster
-   * @param {(UserCredentials | null)} credentials
-   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
-   * @memberof Eventstore
    */
   protected async readSlice(
     direction: EventstoreCommand,
@@ -314,14 +246,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Reads a slice from current stream in forward direction
-   *
-   * @param {Position} position
-   * @param {number} [maxCount=100]
-   * @param {boolean} [resolveLinkTos=true]
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
-   * @memberof Eventstore
    */
   public async readSliceForward(
     position: Position,
@@ -342,14 +266,6 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Reads a slice from current stream in backward direction
-   *
-   * @param {Position} position
-   * @param {number} [maxCount=100]
-   * @param {boolean} [resolveLinkTos=true]
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<model.eventstore.proto.ReadAllEventsCompleted>}
-   * @memberof Eventstore
    */
   public async readSliceBackward(
     position: Position,
@@ -366,5 +282,150 @@ export class Eventstore extends EventEmitter {
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
     )
+  }
+
+  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+  /**
+   * Walks all events forward
+   */
+  public async walkAllForward(
+    start: Position = Position.Start,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    const that = this
+    if (requireMaster === undefined) {
+      requireMaster = this.connectionConfig.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.connectionConfig.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Position) {
+      let index = 0
+      //fetch first slice
+      let readResult = that.readSliceForward(
+        begin,
+        maxCount,
+        resolveLinkTos,
+        requireMaster,
+        credentials
+      )
+      let result = await readResult
+
+      let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+      begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+      if (begin.compareTo(maxSlicePosition) >= 0) {
+        //we have more so start fetching in background
+        readResult = that.readSliceForward(
+          begin,
+          maxCount,
+          resolveLinkTos,
+          requireMaster,
+          credentials
+        )
+      }
+      while (true) {
+        if (index < result.events.length) {
+          const entry = result.events[index++]
+          yield Event.fromRaw(entry.event || entry.link)
+        } else if (begin.compareTo(maxSlicePosition) <= 0) {
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+          begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+          if (begin.compareTo(maxSlicePosition) > 0) {
+            //if there are more events start fetching in background
+
+            readResult = that.readSliceForward(
+              begin,
+              maxCount,
+              resolveLinkTos,
+              requireMaster,
+              credentials
+            )
+          }
+        }
+      }
+    }
+
+    return new StreamWalker(asyncGenerator(start))
+  }
+
+  /**
+   * Walks all events backward
+   */
+  public async walkAllBackward(
+    start: Position = Position.End,
+    maxCount: number = 100,
+    resolveLinkTos: boolean = true,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<StreamWalker> {
+    const that = this
+    if (requireMaster === undefined) {
+      requireMaster = this.connectionConfig.requireMaster
+    }
+    if (credentials === undefined) {
+      credentials = this.connectionConfig.credentials
+    }
+    // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+    const asyncGenerator = async function*(begin: Position) {
+      let index = 0
+      //fetch first slice
+      let readResult = that.readSliceBackward(
+        begin,
+        maxCount,
+        resolveLinkTos,
+        requireMaster,
+        credentials
+      )
+      let result = await readResult
+
+      let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+      begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+      if (begin.compareTo(maxSlicePosition) < 0) {
+        //we have more so start fetching in background
+        readResult = that.readSliceBackward(
+          begin,
+          maxCount,
+          resolveLinkTos,
+          requireMaster,
+          credentials
+        )
+      }
+      while (true) {
+        if (index < result.events.length) {
+          const entry = result.events[index++]
+          yield Event.fromRaw(entry.event || entry.link)
+        } else if (begin.compareTo(maxSlicePosition) >= 0) {
+          return null
+        } else {
+          index = 0
+          //wait for background fetch and grab result
+          result = await readResult
+          maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
+          begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
+          if (begin.compareTo(maxSlicePosition) < 0) {
+            //if there are more events start fetching in background
+
+            readResult = that.readSliceBackward(
+              begin,
+              maxCount,
+              resolveLinkTos,
+              requireMaster,
+              credentials
+            )
+          }
+        }
+      }
+    }
+
+    return new StreamWalker(asyncGenerator(start))
   }
 }

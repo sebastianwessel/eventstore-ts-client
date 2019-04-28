@@ -60,7 +60,7 @@ await eventstore.atStream('mystream').append(eventA)
 
 const eventB = new Event('EventB',{
   text: 'other string',
-  countm : 2
+  count : 2
 })
 
 eventB.correlationId = eventA.id
@@ -112,4 +112,33 @@ const result = await walker
   .toArray()
 
 console.log(result)
+```
+
+## reading all events
+
+It's possible to read all events from eventstore.  
+It uses same behavior as regular async iterator for streams but it **needs admin rights**.
+
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}
+```
+
+or it reverse from end to beginning
+
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllBackward()
+
+for await (const event of events) {
+  console.log(event.name)
+}
 ```

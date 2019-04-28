@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../">
   <title data-ice="title">Eventstore | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
@@ -76,13 +74,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Eventstore} from &apos;<span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber27">eventstore-ts-client/src/eventstore/Eventstore.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Eventstore} from &apos;<span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber25">eventstore-ts-client/src/eventstore/Eventstore.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber27">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber25">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -135,7 +133,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: <span>EventstoreSettings </span> | <span> object</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -161,62 +159,6 @@
     <td>
       <span class="access" data-ice="access">public</span>
       
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-connection">connection</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-connectionConfig">connectionConfig</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
       <span class="kind" data-ice="kind">get</span>
       
       <span class="override" data-ice="override"></span>
@@ -233,7 +175,7 @@
       <div>
         
         
-        <div data-ice="description"><p>Inidcates if connection to eventstore is available</p>
+        <div data-ice="description"><p>Indicates if connection to eventstore is available</p>
 </div>
       </div>
     </td>
@@ -256,13 +198,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-log">log</a></span></span><span class="code" data-ice="signature">: <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-log">log</a></span></span><span class="code" data-ice="signature">: <span>bunyan</span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>logger</p>
+</div>
       </div>
     </td>
     <td>
@@ -359,6 +302,70 @@
   </tr>
 </tbody>
 </table>
+<table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Protected Members</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-connection">connection</a></span></span><span class="code" data-ice="signature">: <span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>connection base</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-connectionConfig">connectionConfig</a></span></span><span class="code" data-ice="signature">: <span>EventstoreSettings</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>connection config</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
 </div>
 <div data-ice="methodSummary"><h2>Method Summary</h2><table class="summary" data-ice="summary">
   <thead><tr><td data-ice="title" colspan="3">Public Methods</td></tr></thead>
@@ -378,14 +385,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-atStream">atStream</a></span></span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-atStream">atStream</a></span></span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Get a stream instance specified by streamName
-Alias for {@see &lt;stream&gt;}</p>
+Alias for method stream</p>
 </div>
       </div>
     </td>
@@ -408,36 +415,7 @@ Alias for {@see &lt;stream&gt;}</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-authenticate">authenticate</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Authenticate with credentials from settings</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          <span data-ice="async">async</span>
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-connect">connect</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-connect">connect</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: {}): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -495,14 +473,14 @@ Alias for {@see &lt;stream&gt;}</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-fromStream">fromStream</a></span></span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-fromStream">fromStream</a></span></span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Get a stream instance specified by streamName
-Alias for {@see &lt;stream&gt;}</p>
+Alias for method stream</p>
 </div>
       </div>
     </td>
@@ -553,95 +531,6 @@ Alias for {@see &lt;stream&gt;}</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-identifyClient">identifyClient</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Called directly after connecting to eventstore
-Identifies connection against eventstore
-Identification can be set in connection settings field clientId</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Ensure to use up-to-date settings, logger and a fresh connection socket</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-onError">onError</a></span></span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>)</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Called from event listener connected to &apos;error&apos;</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          <span data-ice="async">async</span>
-          
           <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-ping">ping</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
@@ -671,36 +560,7 @@ Identification can be set in connection settings field clientId</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>Reads a slice of events from current stream</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          <span data-ice="async">async</span>
-          
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -729,7 +589,7 @@ Identification can be set in connection settings field clientId</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -758,14 +618,225 @@ Identification can be set in connection settings field clientId</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-stream">stream</a></span></span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-stream">stream</a></span></span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Get a stream instance specified by streamName
-You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt;atStream&gt;}</p>
+You can also use one of the alias functions fromStream or atStream</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllBackward">walkAllBackward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Walks all events backward</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllForward">walkAllForward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Walks all events forward</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+</tbody>
+</table>
+<table class="summary" data-ice="summary">
+  <thead><tr><td data-ice="title" colspan="3">Protected Methods</td></tr></thead>
+  <tbody>
+  
+  <tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-authenticate">authenticate</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Authenticate with credentials from settings</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-identifyClient">identifyClient</a></span></span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Called directly after connecting to eventstore
+Identifies connection against eventstore
+Identification can be set in connection settings field clientId</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-init">init</a></span></span><span class="code" data-ice="signature">(connectionConfiguration: {}): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Ensure to use up-to-date settings, logger and a fresh connection socket</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-onError">onError</a></span></span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Called from event listener connected to &apos;error&apos;</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">protected</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Reads a slice of events from current stream</p>
 </div>
       </div>
     </td>
@@ -792,11 +863,11 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     
     
     
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">(connectionConfiguration: <span>EventstoreSettings </span> | <span> object</span>)</span>
+    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber20">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
@@ -808,24 +879,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">connectionConfiguration</td>
-      <td data-ice="type" class="code"><span>EventstoreSettings </span> | <span> object</span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: {}</li></ul></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
   
@@ -849,92 +903,6 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-connection">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">connection</span><span class="code" data-ice="signature">: <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber24">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-connectionConfig">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">connectionConfig</span><span class="code" data-ice="signature">: <span>*</span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber22">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-get-isConnected">
     <span class="access" data-ice="access">public</span>
     
@@ -946,14 +914,14 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber110">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber87">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Inidcates if connection to eventstore is available</p>
+  <div data-ice="description"><p>Indicates if connection to eventstore is available</p>
 </div>
 
   
@@ -986,18 +954,19 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     
     
     
-    <span class="code" data-ice="name">log</span><span class="code" data-ice="signature">: <span>*</span></span>
+    <span class="code" data-ice="name">log</span><span class="code" data-ice="signature">: <span>bunyan</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber23">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber29">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>logger</p>
+</div>
 
   
 
@@ -1033,7 +1002,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber124">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber98">source</a></span></span>
     </span>
   </h3>
 
@@ -1077,7 +1046,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber133">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber105">source</a></span></span>
     </span>
   </h3>
 
@@ -1121,7 +1090,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber69">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber57">source</a></span></span>
     </span>
   </h3>
 
@@ -1129,6 +1098,96 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
   
   
   <div data-ice="description"><p>Returns client id - name of eventstore connection</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<h2 data-ice="title">Protected Members</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-connection">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">connection</span><span class="code" data-ice="signature">: <span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber31">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>connection base</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-member-connectionConfig">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">connectionConfig</span><span class="code" data-ice="signature">: <span>EventstoreSettings</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber27">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>connection config</p>
 </div>
 
   
@@ -1164,11 +1223,11 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
     
     
     
-    <span class="code" data-ice="name">atStream</span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+    <span class="code" data-ice="name">atStream</span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber177">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber134">source</a></span></span>
     </span>
   </h3>
 
@@ -1176,7 +1235,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
   
   
   <div data-ice="description"><p>Get a stream instance specified by streamName
-Alias for {@see &lt;stream&gt;}</p>
+Alias for method stream</p>
 </div>
 
   
@@ -1191,7 +1250,7 @@ Alias for {@see &lt;stream&gt;}</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">streamName</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="type" class="code"></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1206,75 +1265,7 @@ Alias for {@see &lt;stream&gt;}</p>
 </div>
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-authenticate">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    <span data-ice="async">async</span>
-    
-    <span class="code" data-ice="name">authenticate</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber242">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Authenticate with credentials from settings</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
 
   
 
@@ -1299,11 +1290,11 @@ Alias for {@see &lt;stream&gt;}</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">connect</span><span class="code" data-ice="signature">(connectionConfiguration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">connect</span><span class="code" data-ice="signature">(connectionConfiguration: {}): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber64">source</a></span></span>
     </span>
   </h3>
 
@@ -1325,8 +1316,9 @@ Alias for {@see &lt;stream&gt;}</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">connectionConfiguration</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="type" class="code">{}</td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li></ul></td>
       <td data-ice="description"></td>
     </tr>
 </tbody>
@@ -1334,19 +1326,7 @@ Alias for {@see &lt;stream&gt;}</p>
 </div>
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1375,7 +1355,7 @@ Alias for {@see &lt;stream&gt;}</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber99">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber80">source</a></span></span>
     </span>
   </h3>
 
@@ -1390,19 +1370,7 @@ Alias for {@see &lt;stream&gt;}</p>
   <div data-ice="properties">
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1427,11 +1395,11 @@ Alias for {@see &lt;stream&gt;}</p>
     
     
     
-    <span class="code" data-ice="name">fromStream</span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+    <span class="code" data-ice="name">fromStream</span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber164">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber126">source</a></span></span>
     </span>
   </h3>
 
@@ -1439,7 +1407,7 @@ Alias for {@see &lt;stream&gt;}</p>
   
   
   <div data-ice="description"><p>Get a stream instance specified by streamName
-Alias for {@see &lt;stream&gt;}</p>
+Alias for method stream</p>
 </div>
 
   
@@ -1454,7 +1422,7 @@ Alias for {@see &lt;stream&gt;}</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">streamName</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
+      <td data-ice="type" class="code"></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1469,19 +1437,7 @@ Alias for {@see &lt;stream&gt;}</p>
 </div>
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1510,7 +1466,7 @@ Alias for {@see &lt;stream&gt;}</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber114">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber91">source</a></span></span>
     </span>
   </h3>
 
@@ -1524,19 +1480,7 @@ Alias for {@see &lt;stream&gt;}</p>
   <div data-ice="properties">
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1554,27 +1498,25 @@ Alias for {@see &lt;stream&gt;}</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-identifyClient">
+  <h3 data-ice="anchor" id="instance-method-ping">
     <span class="access" data-ice="access">public</span>
     
     
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">identifyClient</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">ping</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber213">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber141">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Called directly after connecting to eventstore
-Identifies connection against eventstore
-Identification can be set in connection settings field clientId</p>
+  <div data-ice="description"><p>Ping eventstore</p>
 </div>
 
   
@@ -1582,19 +1524,7 @@ Identification can be set in connection settings field clientId</p>
   <div data-ice="properties">
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
+  
 
   
 
@@ -1612,25 +1542,25 @@ Identification can be set in connection settings field clientId</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-init">
+  <h3 data-ice="anchor" id="instance-method-readSliceBackward">
     <span class="access" data-ice="access">public</span>
     
     
     
+    <span data-ice="async">async</span>
     
-    
-    <span class="code" data-ice="name">init</span><span class="code" data-ice="signature">(connectionConfiguration: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>)</span>
+    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber54">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber270">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  <div data-ice="description"><p>Ensure to use up-to-date settings, logger and a fresh connection socket</p>
+  <div data-ice="description"><p>Reads a slice from current stream in backward direction</p>
 </div>
 
   
@@ -1644,8 +1574,34 @@ Identification can be set in connection settings field clientId</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">connectionConfiguration</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="name" class="code" data-depth="0">position</td>
+      <td data-ice="type" class="code"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: 100</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1672,18 +1628,496 @@ Identification can be set in connection settings field clientId</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-onError">
+  <h3 data-ice="anchor" id="instance-method-readSliceForward">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber250">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Reads a slice from current stream in forward direction</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">position</td>
+      <td data-ice="type" class="code"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: 100</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-stream">
     <span class="access" data-ice="access">public</span>
     
     
     
     
     
-    <span class="code" data-ice="name">onError</span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>)</span>
+    <span class="code" data-ice="name">stream</span><span class="code" data-ice="signature">(streamName: , streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber267">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber113">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Get a stream instance specified by streamName
+You can also use one of the alias functions fromStream or atStream</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">streamName</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">streamOptions</td>
+      <td data-ice="type" class="code"><span>StreamOptions</span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-walkAllBackward">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">walkAllBackward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber363">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Walks all events backward</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">start</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: 100</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-walkAllForward">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">walkAllForward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber291">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Walks all events forward</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">start</td>
+      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="appendix"><ul><li>optional</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">maxCount</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: 100</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<h2 data-ice="title">Protected Methods</h2>
+
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-authenticate">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">authenticate</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber188">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Authenticate with credentials from settings</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-identifyClient">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">identifyClient</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber163">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Called directly after connecting to eventstore
+Identifies connection against eventstore
+Identification can be set in connection settings field clientId</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-init">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">init</span><span class="code" data-ice="signature">(connectionConfiguration: {}): <span>void</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber46">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Ensure to use up-to-date settings, logger and a fresh connection socket</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">connectionConfiguration</td>
+      <td data-ice="type" class="code">{}</td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: {}</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-onError">
+    <span class="access" data-ice="access">protected</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">onError</span><span class="code" data-ice="signature">(err: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Error">Error</a></span>): <span>void</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber209">source</a></span></span>
     </span>
   </h3>
 
@@ -1732,74 +2166,18 @@ Identification can be set in connection settings field clientId</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-ping">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    <span data-ice="async">async</span>
-    
-    <span class="code" data-ice="name">ping</span><span class="code" data-ice="signature">(): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber187">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Ping eventstore</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-readSlice">
-    <span class="access" data-ice="access">public</span>
+    <span class="access" data-ice="access">protected</span>
     
     
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber284">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber216">source</a></span></span>
     </span>
   </h3>
 
@@ -1834,24 +2212,26 @@ Identification can be set in connection settings field clientId</p>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">maxCount</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: 100</li></ul></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
+      <td data-ice="appendix"><ul><li>optional</li>
+<li>default: true</li></ul></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">requireMaster</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
+      <td data-ice="type" class="code"></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1860,290 +2240,7 @@ Identification can be set in connection settings field clientId</p>
 </div>
 </div>
 
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
   
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-readSliceBackward">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    <span data-ice="async">async</span>
-    
-    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber354">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Reads a slice from current stream in backward direction</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">position</td>
-      <td data-ice="type" class="code"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">maxCount</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-readSliceForward">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    <span data-ice="async">async</span>
-    
-    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, credentials: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber326">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Reads a slice from current stream in forward direction</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">position</td>
-      <td data-ice="type" class="code"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">maxCount</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/undefined">undefined</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-method-stream">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">stream</span><span class="code" data-ice="signature">(streamName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, streamOptions: <span>StreamOptions</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber146">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>Get a stream instance specified by streamName
-You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt;atStream&gt;}</p>
-</div>
-
-  
-
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">streamName</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">streamOptions</td>
-      <td data-ice="type" class="code"><span>StreamOptions</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
-</div>
-
-  <div class="return-params" data-ice="returnParams">
-    <h4>Return:</h4>
-    <table>
-      <tbody>
-        <tr>
-          <td class="return-type code" data-ice="returnType"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></td>
-          
-        </tr>
-      </tbody>
-    </table>
-    <div data-ice="returnProperties">
-</div>
-  </div>
 
   
 
@@ -2164,7 +2261,7 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
@@ -2174,5 +2271,6 @@ You can also use one of the alias functions {@see &lt;fromStream&gt;}, {@see &lt
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

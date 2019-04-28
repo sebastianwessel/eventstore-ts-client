@@ -2,9 +2,7 @@ import * as eventstoreError from '../errors'
 
 /**
  * Converts a uuid as string from buffer
- * It returns an empty string for uuid set to null or throws {EventstoreProtocolError} for invalid buffer length
- * @param buffer
- * @returns from buffer
+ * It returns an empty string for uuid set to null or throws EventstoreProtocolError for invalid buffer length
  */
 export function uuidFromBuffer(buffer: Buffer): string {
   if (buffer.length !== 16) {
@@ -24,9 +22,7 @@ export function uuidFromBuffer(buffer: Buffer): string {
 
 /**
  * Converts a uuid string to buffer representation
- * throws {EventstoreProtocolError} for invalid input string length
- * @param uuid
- * @returns to buffer
+ * throws EventstoreProtocolError for invalid input string length
  */
 export function uuidToBuffer(uuid: string | null): Buffer {
   if (!uuid) {

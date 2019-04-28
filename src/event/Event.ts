@@ -51,11 +51,7 @@ export class Event {
   protected frozen: boolean = false
 
   /**
-   *Creates an instance of Event.
-   * @param {string} eventType
-   * @param {{}} [data]
-   * @param {{}} [metadata]
-   * @memberof Event
+   * Creates an instance of Event.
    */
   public constructor(eventType: string, data?: {}, metadata?: {}) {
     this.eventType = eventType
@@ -66,8 +62,6 @@ export class Event {
   /**
    * Freezes event instance.
    * Done when this event is already stored at eventstore.
-   *
-   * @memberof Event
    */
   public freeze(): void {
     this.frozen = true
@@ -77,9 +71,6 @@ export class Event {
 
   /**
    * Returns true if event is not stored at eventstore and false if event was written to eventstore
-   *
-   * @returns {boolean}
-   * @memberof Event
    */
   public isNew(): boolean {
     return !this.frozen
@@ -87,24 +78,17 @@ export class Event {
 
   /**
    * Helper function to throw while changing an event which is already stored in eventstore
-   *
-   * @protected
-   * @memberof Event
-   * @throws {EventstoreOperationError}
    */
   protected throwIfNotNewEvent(fieldName: string): void {
     if (this.frozen) {
       throw eventstoreError.newOperationError(
-        `Chaning of ${fieldName} is not allowed for stored events`
+        `Changing of ${fieldName} is not allowed for stored events`
       )
     }
   }
 
   /**
    * Setter for event id
-   *
-   * @param {string} newId - new id to be assigned to event
-   * @memberof Event
    */
   public set id(newId: string) {
     this.throwIfNotNewEvent('eventId')
@@ -113,10 +97,6 @@ export class Event {
 
   /**
    * Getter for event id
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Event
    */
   public get id(): string {
     return this.eventId
@@ -124,9 +104,6 @@ export class Event {
 
   /**
    * Getter for event data
-   *
-   * @type {object}
-   * @memberof Event
    */
   public get data(): {[k: string]: JSONValue} {
     if (this.objectData) {
@@ -149,9 +126,6 @@ export class Event {
 
   /**
    * Getter for event metadata
-   *
-   * @type {object|null)}
-   * @memberof Event
    */
   public get metadata():
     | {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue}
@@ -167,8 +141,6 @@ export class Event {
 
   /**
    * Setter for event metadata
-   *
-   * @memberof Event
    */
   public set metadata(
     newMetadata: {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue} | null
@@ -180,8 +152,6 @@ export class Event {
 
   /**
    * Setter for event correlationId
-   *
-   * @memberof Event
    */
   public set correlationId(newCorrelationId: string | null) {
     this.throwIfNotNewEvent('correlationId')
@@ -202,9 +172,6 @@ export class Event {
 
   /**
    * Getter for event correlationId
-   *
-   * @type {(string | null)}
-   * @memberof Event
    */
   public get correlationId(): string | null {
     if (this.metadata) {
@@ -215,8 +182,6 @@ export class Event {
 
   /**
    * Setter for event causationId
-   *
-   * @memberof Event
    */
   public set causationId(newCausationId: string | null) {
     this.throwIfNotNewEvent('causationId')
@@ -237,9 +202,6 @@ export class Event {
 
   /**
    * Getter for event causationId
-   *
-   * @type {(string | null)}
-   * @memberof Event
    */
   public get causationId(): string | null {
     if (this.metadata) {
@@ -249,12 +211,7 @@ export class Event {
   }
 
   /**
-   * Returns a new instance of {Event} from protobuf result
-   *
-   * @static
-   * @param {model.eventstore.proto.IEventRecord} rawEvent
-   * @returns {Event}
-   * @memberof Event
+   * Returns a new instance of @link {Event} from protobuf result
    */
   public static fromRaw(rawEvent: model.eventstore.proto.IEventRecord | null | undefined): Event {
     if (!rawEvent) {
@@ -275,9 +232,6 @@ export class Event {
 
   /**
    * Returns protobuf representation of this event
-   *
-   * @returns {model.eventstore.proto.NewEvent}
-   * @memberof Event
    */
   public toRaw(): model.eventstore.proto.NewEvent {
     const newEvent = {
@@ -291,8 +245,6 @@ export class Event {
 
   /**
    * Setter for name
-   *
-   * @memberof Event
    */
   public set name(newName: string) {
     this.throwIfNotNewEvent('name')
@@ -301,10 +253,6 @@ export class Event {
 
   /**
    * Getter for event name
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Event
    */
   public get name(): string {
     return this.eventType

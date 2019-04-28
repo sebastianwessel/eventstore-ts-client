@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../">
   <title data-ice="title">Manual | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
@@ -34,6 +32,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#request-response-queue" data-ice="link">request response queue</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -51,6 +50,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-all-events" data-ice="link">reading all events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -83,7 +83,7 @@
 <div class="content" data-ice="content"><div class="github-markdown" data-ice="content"><h1 id="subscriptions">Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.</p>
 <h2 id="subscribe-to-stream">subscribe to stream</h2><p>You can use <code>subscribe()</code> at stream instances and simply adding listener(s) to returned subscription.<br>There are two options.</p>
 <p>Listen to all events:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 subscription = await eventstore
@@ -93,34 +93,31 @@ subscription = await eventstore
 subscription.on(&apos;event&apos;, (event) =&gt; {
   console.log(event.name)
 })
-</code>
-</code></pre>
+</code></code></pre>
 <p>Listen for specific event:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 subscription = await eventstore
       .stream(&apos;streamId&apos;)
       .subscribe()
 
-// listen for &quot;event-&quot;+ lowercase eventname
+// listen for &quot;event-&quot;+ lowercase event name
 subscription.on(&apos;event-specificeventa&apos;, (event) =&gt; {
   console.log(&apos;log only SpecificEventA&apos;)
 })
-</code>
-</code></pre>
+</code></code></pre>
 <p>With this approach you&apos;re able to add different listeners for different needs to one single stream subscription.</p>
 <h2 id="persistent-subscription">persistent subscription</h2><p>You can create persistent subscriptions (<strong>needs admin rights</strong>)</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const persistentSubscription = await eventstore
   .atStream(&apos;myStream&apos;)
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-  .createPersistentSubscription(&apos;persistentsubscription&apos;)</code>
-</code></pre>
+  .createPersistentSubscription(&apos;persistentsubscription&apos;)</code></code></pre>
 <p>You can update an existing persistent subscription (<strong>needs admin rights</strong>)</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -131,10 +128,9 @@ const persistentSubscription = await eventstore
   .atStream(&apos;myStream&apos;)
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
-  .update(newConfig)</code>
-</code></pre>
+  .update(newConfig)</code></code></pre>
 <p>You can delete an existing persistent subscription (<strong>needs admin rights</strong>)</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -146,10 +142,9 @@ const persistentSubscription = eventstore
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
 
-await persistentSubscription.delete()</code>
-</code></pre>
+await persistentSubscription.delete()</code></code></pre>
 <p>You can connect to an existing persistent subscription</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -160,17 +155,15 @@ const persistentSubscription = eventstore
   .atStream(&apos;myStream&apos;)
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
 
-await persistentSubscription.subscribe()</code>
-</code></pre>
+await persistentSubscription.subscribe()</code></code></pre>
 <p>Unsubscribing an existing persistent subscription is also pretty easy</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code>
-</code></pre>
-<h2 id="catchup-subscriptions">catchUp subscriptions</h2><p>/<strong> TODO </strong>/<br>not implemented yet</p>
+<pre><code class="language-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code></code></pre>
+<h2 id="catchup-subscriptions">catchUp subscriptions</h2><p>/** TODO **/<br>not implemented yet</p>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
@@ -180,5 +173,6 @@ await persistentSubscription.subscribe()</code>
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

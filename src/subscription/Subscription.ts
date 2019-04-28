@@ -8,15 +8,6 @@ import {Event} from '../event'
 
 /**
  * Base class for handling subscriptions
- *
- * @emits {subscribed} when subscription is established
- * @emits {event} when a new event receives
- * @emits {event-event name} when event of name event name is received
- * @emits {dropped} when subscription gets dropped
- * @emits {error} when some error occurred
- * @export
- * @class Subscription
- * @extends {EventEmitter}
  */
 export class Subscription extends EventEmitter {
   /** uuid4 of subscription */
@@ -38,11 +29,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Creates an instance of subscription.
-   * @param subscriptionId
-   * @param tcpConnection
-   * @param stream
-   * @param resolveLinkTos
-   * @param credentials
    */
   public constructor(
     subscriptionId: string,
@@ -66,10 +52,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Returns subscriptionId
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Subscription
    */
   public get id(): string {
     return this.subscriptionId
@@ -77,10 +59,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Returns subscription nam
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Subscription
    */
   public get name(): string {
     return 'Subscription: ' + this.subscriptionId
@@ -95,7 +73,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Gets resolve link tos
-   * @returns true if resolve link tos
    */
   public getResolveLinkTos(): boolean {
     return this.resolveLinkTos
@@ -103,9 +80,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Unsubscribe from stream
-   *
-   * @returns {Promise<void>}
-   * @memberof Subscription
    */
   public async unsubscribe(): Promise<void> {
     this.log.debug('unsubscribe subscription')
@@ -114,10 +88,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Called when subscription was dropped
-   *
-   * @protected
-   * @param {model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason} reason
-   * @memberof Subscription
    */
   protected onDropped(
     reason: model.eventstore.proto.SubscriptionDropped.SubscriptionDropReason
@@ -127,8 +97,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Determines whether event on
-   * @param event
-   * @param position
    */
   protected onEvent(event: Event, position: Position): void {
     this.position = position
@@ -137,9 +105,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Called when subscription is established
-   *
-   * @protected
-   * @memberof Subscription
    */
   protected onSubscribed(): void {
     this.log.debug(
@@ -150,10 +115,6 @@ export class Subscription extends EventEmitter {
 
   /**
    * Called when error appears
-   *
-   * @protected
-   * @param {Error} err
-   * @memberof Subscription
    */
   protected onError(err: Error): void {
     this.log.error({err, subscriptionId: this.subscriptionId}, 'Error on subscription')

@@ -77,9 +77,6 @@ const defaultConnectionSettings: EventstoreSettings = {
 /**
  * Generates settings for connecting to eventstore
  * It takes the default settings and overwrites fields which are given in parameter
- *
- * @param {EventstoreSettings|object} customSettings - custom settings
- * @return {EventstoreSettings} new combined settings
  */
 let setConnectionSettings = (customSettings: object | EventstoreSettings): EventstoreSettings => {
   return {...defaultConnectionSettings, ...customSettings}

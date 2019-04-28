@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 183,
+  "end": 174,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 183,
+    "end": 174,
     "loc": {
       "start": {
         "line": 1,
@@ -27,11 +27,12 @@
       }
     },
     "sourceType": "module",
+    "interpreter": null,
     "body": [
       {
         "type": "ExportNamedDeclaration",
         "start": 0,
-        "end": 55,
+        "end": 52,
         "loc": {
           "start": {
             "line": 1,
@@ -39,37 +40,36 @@
           },
           "end": {
             "line": 1,
-            "column": 55
+            "column": 52
           }
         },
-        "declaration": null,
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 9,
-            "end": 19,
+            "start": 8,
+            "end": 18,
             "loc": {
               "start": {
                 "line": 1,
-                "column": 9
+                "column": 8
               },
               "end": {
                 "line": 1,
-                "column": 19
+                "column": 18
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 9,
-              "end": 19,
+              "start": 8,
+              "end": 18,
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 1,
-                  "column": 19
+                  "column": 18
                 },
                 "identifierName": "Eventstore"
               },
@@ -77,16 +77,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 9,
-              "end": 19,
+              "start": 8,
+              "end": 18,
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 1,
-                  "column": 19
+                  "column": 18
                 },
                 "identifierName": "Eventstore"
               },
@@ -95,30 +95,30 @@
           },
           {
             "type": "ExportSpecifier",
-            "start": 21,
-            "end": 32,
+            "start": 20,
+            "end": 31,
             "loc": {
               "start": {
                 "line": 1,
-                "column": 21
+                "column": 20
               },
               "end": {
                 "line": 1,
-                "column": 32
+                "column": 31
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 21,
-              "end": 32,
+              "start": 20,
+              "end": 31,
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 21
+                  "column": 20
                 },
                 "end": {
                   "line": 1,
-                  "column": 32
+                  "column": 31
                 },
                 "identifierName": "WriteResult"
               },
@@ -126,16 +126,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 21,
-              "end": 32,
+              "start": 20,
+              "end": 31,
               "loc": {
                 "start": {
                   "line": 1,
-                  "column": 21
+                  "column": 20
                 },
                 "end": {
                   "line": 1,
-                  "column": 32
+                  "column": 31
                 },
                 "identifierName": "WriteResult"
               },
@@ -145,16 +145,16 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 40,
-          "end": 54,
+          "start": 38,
+          "end": 52,
           "loc": {
             "start": {
               "line": 1,
-              "column": 40
+              "column": 38
             },
             "end": {
               "line": 1,
-              "column": 54
+              "column": 52
             }
           },
           "extra": {
@@ -162,12 +162,13 @@
             "raw": "'./Eventstore'"
           },
           "value": "./Eventstore"
-        }
+        },
+        "declaration": null
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 56,
-        "end": 131,
+        "start": 53,
+        "end": 125,
         "loc": {
           "start": {
             "line": 2,
@@ -175,37 +176,36 @@
           },
           "end": {
             "line": 2,
-            "column": 75
+            "column": 72
           }
         },
-        "declaration": null,
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 65,
-            "end": 83,
+            "start": 61,
+            "end": 79,
             "loc": {
               "start": {
                 "line": 2,
-                "column": 9
+                "column": 8
               },
               "end": {
                 "line": 2,
-                "column": 27
+                "column": 26
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 65,
-              "end": 83,
+              "start": 61,
+              "end": 79,
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 2,
-                  "column": 27
+                  "column": 26
                 },
                 "identifierName": "EventstoreSettings"
               },
@@ -213,16 +213,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 65,
-              "end": 83,
+              "start": 61,
+              "end": 79,
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 2,
-                  "column": 27
+                  "column": 26
                 },
                 "identifierName": "EventstoreSettings"
               },
@@ -231,30 +231,30 @@
           },
           {
             "type": "ExportSpecifier",
-            "start": 85,
-            "end": 100,
+            "start": 81,
+            "end": 96,
             "loc": {
               "start": {
                 "line": 2,
-                "column": 29
+                "column": 28
               },
               "end": {
                 "line": 2,
-                "column": 44
+                "column": 43
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 85,
-              "end": 100,
+              "start": 81,
+              "end": 96,
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 29
+                  "column": 28
                 },
                 "end": {
                   "line": 2,
-                  "column": 44
+                  "column": 43
                 },
                 "identifierName": "UserCredentials"
               },
@@ -262,16 +262,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 85,
-              "end": 100,
+              "start": 81,
+              "end": 96,
               "loc": {
                 "start": {
                   "line": 2,
-                  "column": 29
+                  "column": 28
                 },
                 "end": {
                   "line": 2,
-                  "column": 44
+                  "column": 43
                 },
                 "identifierName": "UserCredentials"
               },
@@ -281,16 +281,16 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 108,
-          "end": 130,
+          "start": 103,
+          "end": 125,
           "loc": {
             "start": {
               "line": 2,
-              "column": 52
+              "column": 50
             },
             "end": {
               "line": 2,
-              "column": 74
+              "column": 72
             }
           },
           "extra": {
@@ -298,12 +298,13 @@
             "raw": "'./EventstoreSettings'"
           },
           "value": "./EventstoreSettings"
-        }
+        },
+        "declaration": null
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 132,
-        "end": 182,
+        "start": 126,
+        "end": 173,
         "loc": {
           "start": {
             "line": 3,
@@ -311,37 +312,36 @@
           },
           "end": {
             "line": 3,
-            "column": 50
+            "column": 47
           }
         },
-        "declaration": null,
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 141,
-            "end": 149,
+            "start": 134,
+            "end": 142,
             "loc": {
               "start": {
                 "line": 3,
-                "column": 9
+                "column": 8
               },
               "end": {
                 "line": 3,
-                "column": 17
+                "column": 16
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 141,
-              "end": 149,
+              "start": 134,
+              "end": 142,
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 3,
-                  "column": 17
+                  "column": 16
                 },
                 "identifierName": "Position"
               },
@@ -349,16 +349,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 141,
-              "end": 149,
+              "start": 134,
+              "end": 142,
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 9
+                  "column": 8
                 },
                 "end": {
                   "line": 3,
-                  "column": 17
+                  "column": 16
                 },
                 "identifierName": "Position"
               },
@@ -367,30 +367,30 @@
           },
           {
             "type": "ExportSpecifier",
-            "start": 151,
-            "end": 161,
+            "start": 144,
+            "end": 154,
             "loc": {
               "start": {
                 "line": 3,
-                "column": 19
+                "column": 18
               },
               "end": {
                 "line": 3,
-                "column": 29
+                "column": 28
               }
             },
             "local": {
               "type": "Identifier",
-              "start": 151,
-              "end": 161,
+              "start": 144,
+              "end": 154,
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 19
+                  "column": 18
                 },
                 "end": {
                   "line": 3,
-                  "column": 29
+                  "column": 28
                 },
                 "identifierName": "ESPosition"
               },
@@ -398,16 +398,16 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 151,
-              "end": 161,
+              "start": 144,
+              "end": 154,
               "loc": {
                 "start": {
                   "line": 3,
-                  "column": 19
+                  "column": 18
                 },
                 "end": {
                   "line": 3,
-                  "column": 29
+                  "column": 28
                 },
                 "identifierName": "ESPosition"
               },
@@ -417,16 +417,16 @@
         ],
         "source": {
           "type": "StringLiteral",
-          "start": 169,
-          "end": 181,
+          "start": 161,
+          "end": 173,
           "loc": {
             "start": {
               "line": 3,
-              "column": 37
+              "column": 35
             },
             "end": {
               "line": 3,
-              "column": 49
+              "column": 47
             }
           },
           "extra": {
@@ -434,743 +434,11 @@
             "raw": "'./Position'"
           },
           "value": "./Position"
-        }
+        },
+        "declaration": null
       }
     ],
     "directives": []
   },
-  "comments": [],
-  "tokens": [
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
-      "start": 0,
-      "end": 6,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 0
-        },
-        "end": {
-          "line": 1,
-          "column": 6
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 7,
-      "end": 8,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 7
-        },
-        "end": {
-          "line": 1,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "Eventstore",
-      "start": 9,
-      "end": 19,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 9
-        },
-        "end": {
-          "line": 1,
-          "column": 19
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ",",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 19,
-      "end": 20,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 19
-        },
-        "end": {
-          "line": 1,
-          "column": 20
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "WriteResult",
-      "start": 21,
-      "end": 32,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 21
-        },
-        "end": {
-          "line": 1,
-          "column": 32
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 33,
-      "end": 34,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 33
-        },
-        "end": {
-          "line": 1,
-          "column": 34
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "from",
-      "start": 35,
-      "end": 39,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 35
-        },
-        "end": {
-          "line": 1,
-          "column": 39
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "./Eventstore",
-      "start": 40,
-      "end": 54,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 40
-        },
-        "end": {
-          "line": 1,
-          "column": 54
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 54,
-      "end": 55,
-      "loc": {
-        "start": {
-          "line": 1,
-          "column": 54
-        },
-        "end": {
-          "line": 1,
-          "column": 55
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
-      "start": 56,
-      "end": 62,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 0
-        },
-        "end": {
-          "line": 2,
-          "column": 6
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 63,
-      "end": 64,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 7
-        },
-        "end": {
-          "line": 2,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "EventstoreSettings",
-      "start": 65,
-      "end": 83,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 9
-        },
-        "end": {
-          "line": 2,
-          "column": 27
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ",",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 83,
-      "end": 84,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 27
-        },
-        "end": {
-          "line": 2,
-          "column": 28
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "UserCredentials",
-      "start": 85,
-      "end": 100,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 29
-        },
-        "end": {
-          "line": 2,
-          "column": 44
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 101,
-      "end": 102,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 45
-        },
-        "end": {
-          "line": 2,
-          "column": 46
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "from",
-      "start": 103,
-      "end": 107,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 47
-        },
-        "end": {
-          "line": 2,
-          "column": 51
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "./EventstoreSettings",
-      "start": 108,
-      "end": 130,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 52
-        },
-        "end": {
-          "line": 2,
-          "column": 74
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 130,
-      "end": 131,
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 74
-        },
-        "end": {
-          "line": 2,
-          "column": 75
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "export",
-        "keyword": "export",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "export",
-      "start": 132,
-      "end": 138,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 3,
-          "column": 6
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "{",
-        "beforeExpr": true,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 139,
-      "end": 140,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 7
-        },
-        "end": {
-          "line": 3,
-          "column": 8
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "Position",
-      "start": 141,
-      "end": 149,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 9
-        },
-        "end": {
-          "line": 3,
-          "column": 17
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ",",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 149,
-      "end": 150,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 17
-        },
-        "end": {
-          "line": 3,
-          "column": 18
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "ESPosition",
-      "start": 151,
-      "end": 161,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 19
-        },
-        "end": {
-          "line": 3,
-          "column": 29
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "}",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "start": 162,
-      "end": 163,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 30
-        },
-        "end": {
-          "line": 3,
-          "column": 31
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "name",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null
-      },
-      "value": "from",
-      "start": 164,
-      "end": 168,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 32
-        },
-        "end": {
-          "line": 3,
-          "column": 36
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "string",
-        "beforeExpr": false,
-        "startsExpr": true,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "value": "./Position",
-      "start": 169,
-      "end": 181,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 37
-        },
-        "end": {
-          "line": 3,
-          "column": 49
-        }
-      }
-    },
-    {
-      "type": {
-        "label": ";",
-        "beforeExpr": true,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 181,
-      "end": 182,
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 49
-        },
-        "end": {
-          "line": 3,
-          "column": 50
-        }
-      }
-    },
-    {
-      "type": {
-        "label": "eof",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 183,
-      "end": 183,
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 4,
-          "column": 0
-        }
-      }
-    }
-  ]
+  "comments": []
 }

@@ -8,9 +8,6 @@ export interface ESPosition {
 
 /**
  * Represents a position in eventstore global log file
- *
- * @export
- * @class Position
  */
 export class Position {
   /** commit position part of position */
@@ -21,9 +18,6 @@ export class Position {
 
   /**
    *Creates an instance of Position.
-   * @param {(Long | number)} commitPosition
-   * @param {(Long | number)} preparePosition
-   * @memberof Position
    */
   public constructor(commitPosition: Long | number, preparePosition: Long | number) {
     this.commitPosition =
@@ -33,22 +27,37 @@ export class Position {
   }
 
   /**
+   * Compares two Position values
+   */
+  public compareTo(position: Position): number {
+    if (
+      this.commitPosition.lt(position.commitPosition) ||
+      (this.commitPosition.eq(position.commitPosition) &&
+        this.preparePosition.lt(position.preparePosition))
+    ) {
+      return -1
+    }
+    if (
+      this.commitPosition.gt(position.commitPosition) ||
+      (this.commitPosition.eq(position.commitPosition) &&
+        this.preparePosition.gt(position.preparePosition))
+    ) {
+      return 1
+    }
+    return 0
+  }
+
+  /**
    * return start position in global log file
    */
-  public static get Start(): ESPosition {
-    return {
-      commitPosition: Long.fromValue(0),
-      preparePosition: Long.fromValue(0)
-    }
+  public static get Start(): Position {
+    return new Position(Long.fromValue(0), Long.fromValue(0))
   }
 
   /**
    * return end position in global log file
    */
-  public static get End(): ESPosition {
-    return {
-      commitPosition: Long.fromValue(-1),
-      preparePosition: Long.fromValue(-1)
-    }
+  public static get End(): Position {
+    return new Position(Long.fromValue(-1), Long.fromValue(-1))
   }
 }

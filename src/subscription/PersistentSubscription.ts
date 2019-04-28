@@ -13,10 +13,6 @@ const protobuf = model.eventstore.proto
 
 /**
  * Represents a persistent subscription
- *
- * @export
- * @class PersistentSubscription
- * @extends {EventEmitter}
  */
 export class PersistentSubscription extends EventEmitter {
   /** corresponding stream  */
@@ -43,9 +39,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Creates an instance of persistent subscription.
-   * @param stream
-   * @param esConnection
-   * @param subscriptionGroupName
    */
   public constructor(
     stream: Stream,
@@ -93,8 +86,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Connects persistent subscription
-   * @param [credentials]
-   * @returns connect
    */
   public async subscribe(
     allowedInFlightMessages: number = 10,
@@ -114,9 +105,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Unsubscribe from stream
-   *
-   * @returns {Promise<void>}
-   * @memberof Subscription
    */
   public async unsubscribe(credentials?: UserCredentials | null): Promise<void> {
     await this.esConnection
@@ -126,8 +114,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Deletes persistent subscription
-   * @param [credentials]
-   * @returns delete
    */
   public async delete(credentials?: UserCredentials | null): Promise<PersistentSubscription> {
     const result: PersistentSubscription = await new Promise(
@@ -156,8 +142,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Updates persistent subscription
-   * @param [credentials]
-   * @returns update
    */
   public async update(
     customConfig: PersistentSubscriptionConfig | {} = {},
@@ -190,9 +174,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Acknowledges single event
-   * @param event
-   * @param [credentials]
-   * @returns event
    */
   public acknowledgeEvent(event: Event, credentials?: UserCredentials | null): void {
     return this.acknowledgeEvents([event], credentials)
@@ -200,9 +181,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Acknowledges array of events
-   * @param events
-   * @param [credentials]
-   * @returns events
    */
   public acknowledgeEvents(events: Event[], credentials?: UserCredentials | null): void {
     const processedEventIds = events.map(
@@ -227,11 +205,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Not acknowledge single event
-   * @param event
-   * @param [reason]
-   * @param [message]
-   * @param [credentials]
-   * @returns acknowledge event
    */
   public notAcknowledgeEvent(
     event: Event,
@@ -245,11 +218,6 @@ export class PersistentSubscription extends EventEmitter {
 
   /**
    * Not acknowledge array of events
-   * @param events
-   * @param [reason]
-   * @param [message]
-   * @param [credentials]
-   * @returns acknowledge events
    */
   public notAcknowledgeEvents(
     events: Event[],

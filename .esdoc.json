@@ -3,10 +3,10 @@
   "destination": "./docs",
   "plugins": [
     {"name": "esdoc-node"},
-    {"name": "esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
-    {"name": "esdoc-typescript-plugin", "option": {"enable": true}},
+    {"name": "@sebastianwessel/esdoc-ecmascript-proposal-plugin", "option": {"all": true}},
+    {"name": "@sebastianwessel/esdoc-typescript-plugin", "option": {"enable": true}},
     {
-      "name": "esdoc-standard-plugin",
+      "name": "@sebastianwessel/esdoc-standard-plugin",
       "option": {
         "lint": {"enable": true},
         "coverage": {"enable": true},

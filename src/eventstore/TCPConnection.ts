@@ -54,16 +54,6 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
 /**
  * Raw tcp communication to eventstore
  * This class handles basic communication with eventstore
- *
- * @export
- * @class TCPConnection
- * @extends {EventEmitter}
- * @emits {error} emit error on connection errors
- * @emits {heartbeat} emit incoming heartbeat
- * @emits {connected} emit when connection is established
- * @emits {close} emit when connection is closed
- * @emits {drain} emit before connection closes
- *
  */
 export class TCPConnection extends EventEmitter {
   protected initialConfig: EventstoreSettings
@@ -88,8 +78,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    *Creates an instance of TCPConnection.
-   * @param {EventstoreSettings} connectionConfiguration
-   * @memberof TCPConnection
    */
   public constructor(connectionConfiguration: EventstoreSettings) {
     super()
@@ -104,10 +92,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Returns true if connected to eventstore otherwise false
-   *
-   * @readonly
-   * @type {boolean}
-   * @memberof TCPConnection
    */
   public get isConnected(): boolean {
     return this.state === connectionState.connected
@@ -136,9 +120,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Connect to eventstore
-   *
-   * @returns {Promise<void>}
-   * @memberof TCPConnection
    */
   protected async tryToConnect(): Promise<void> {
     const port = this.connectionConfig.port
@@ -217,9 +198,6 @@ export class TCPConnection extends EventEmitter {
    * Disconnect from eventstore.
    * It tries to drain pending queue to prevent data loose before connection gets closed
    * If disconnect() is call no new outgoing requests accepted
-   *
-   * @returns {Promise<void>}
-   * @memberof TCPConnection
    */
   public async disconnect(): Promise<void> {
     if (!this.isConnected) {
@@ -272,13 +250,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Creates and sends raw data message to eventstore and adds given promise to pending queue
-   *
-   * @param {string} correlationId
-   * @param {EventstoreCommand} command
-   * @param {?Buffer)} [data=null]
-   * @param {?(UserCredentials)} [credentials=null]
-   * @param {(?{resolve: Function; reject: Function})} [promise=null]
-   * @memberof TCPConnection
    */
   public sendCommand(
     correlationId: string,
@@ -350,11 +321,6 @@ export class TCPConnection extends EventEmitter {
    * - new received data is part of previously received data
    * - new data contains multiple responses
    * - new data is single response
-   *
-   * @protected
-   * @param {Buffer} data
-   * @returns {(Buffer | null)}
-   * @memberof TCPConnection
    */
   protected handleNewResponseData(data: Buffer): Buffer | null {
     const commandLength = data.readUInt32LE(0)
@@ -391,11 +357,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * This function handles raw buffer responses received within multiple tcp data package
-   *
-   * @protected
-   * @param {Buffer} data
-   * @returns {(Buffer | null)}
-   * @memberof TCPConnection
    */
   protected handleMultiPacketResponseData(data: Buffer): Buffer | null {
     this.log.debug({fn: 'handleMultiPacketResponseData'}, `MultipacketResponse`)
@@ -414,11 +375,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * This function handles a single raw buffer response
-   *
-   * @protected
-   * @param {Buffer} data
-   * @emits {heartbeat}
-   * @memberof TCPConnection
    */
   protected handleSingleResponseData(data: Buffer): void {
     const commandLength = data.readUInt32LE(0)
@@ -559,11 +515,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command CreatePersistentSubscription
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleCreatePersistentSubscriptionCompleted(
     correlationId: string,
@@ -601,11 +552,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command DeletePersistentSubscription
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleDeletePersistentSubscriptionCompleted(
     correlationId: string,
@@ -639,11 +585,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command DeleteStreamCompleted
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleDeleteStreamCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.DeleteStreamCompleted.decode(payload)
@@ -663,11 +604,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command ReadAllEvents
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleReadAllEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadAllEventsCompleted.decode(payload)
@@ -692,11 +628,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command ReadStreamEvents
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleReadStreamEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadStreamEventsCompleted.decode(payload)
@@ -728,11 +659,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command ReadEvent
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleReadEventCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.ReadEventCompleted.decode(payload)
@@ -764,11 +690,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle incoming event for subscription
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleStreamEventAppeared(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.StreamEventAppeared.decode(payload)
@@ -798,11 +719,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command Subscription
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionConfirmation.decode(payload)
@@ -816,11 +732,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle subscription drop
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleSubscriptionDropped(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.SubscriptionDropped.decode(payload)
@@ -848,11 +759,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command TransactionCommit
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleTransactionCommitCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionCommitCompleted.decode(payload)
@@ -874,11 +780,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handle response for command TransactionStart
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {Buffer} payload
-   * @memberof TCPConnection
    */
   protected handleTransactionStartCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionStartCompleted.decode(payload)
@@ -895,8 +796,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handles transaction write completed
-   * @param correlationId
-   * @param payload
    */
   protected handleTransactionWriteCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.TransactionWriteCompleted.decode(payload)
@@ -913,8 +812,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handles update persistent subscription completed
-   * @param correlationId
-   * @param payload
    */
   protected handleUpdatePersistentSubscriptionCompleted(
     correlationId: string,
@@ -939,8 +836,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handles write events completed
-   * @param correlationId
-   * @param payload
    */
   protected handleWriteEventsCompleted(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.WriteEventsCompleted.decode(payload)
@@ -957,8 +852,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handles persistent subscription confirmation
-   * @param correlationId
-   * @param payload
    */
   protected handlePersistentSubscriptionConfirmation(correlationId: string, payload: Buffer): void {
     const decoded = protobuf.PersistentSubscriptionConfirmation.decode(payload)
@@ -967,8 +860,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Handles persistent subscription stream event appeared
-   * @param correlationId
-   * @param payload
    */
   protected handlePersistentSubscriptionStreamEventAppeared(
     correlationId: string,
@@ -1001,13 +892,6 @@ export class TCPConnection extends EventEmitter {
    * CHecks if given result is an error code
    * It returns true for successful result otherwise it returns false.
    * If result is an error this function rejects corresponding command promise and remove it from command queue
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {number} result
-   * @param {string} [message='']
-   * @returns {boolean}
-   * @memberof TCPConnection
    */
   protected checkOperationResult(
     correlationId: string,
@@ -1051,11 +935,6 @@ export class TCPConnection extends EventEmitter {
   /**
    * Will be called if a command send to eventstore was replied with an error
    * In this case corresponding promise will be rejected and removed from queue
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {eventstoreError.EventstoreError} error
-   * @memberof TCPConnection
    */
   protected rejectCommandPromise(
     correlationId: string,
@@ -1076,11 +955,6 @@ export class TCPConnection extends EventEmitter {
   /**
    * Will be called if a command send to eventstore was replied with success response
    * In this case corresponding promise will be resolved with result received from eventstore
-   *
-   * @protected
-   * @param {string} correlationId
-   * @param {(null | T)} [result=null]
-   * @memberof TCPConnection
    */
   protected resolveCommandPromise<T>(correlationId: string, result: null | T = null): void {
     const resultPromise = this.pendingRequests.get(correlationId)
@@ -1097,10 +971,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Subscribes to stream
-   * @param stream
-   * @param [resolveLinkTos]
-   * @param credentials
-   * @returns to stream
    */
   public subscribeToStream(
     stream: Stream,
@@ -1136,8 +1006,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Unsubscribes from stream
-   * @param subscriptionId
-   * @returns from stream
    */
   public async unsubscribeFromStream(subscriptionId: string): Promise<void> {
     const subscription = this.subscriptionList.get(subscriptionId)
@@ -1170,10 +1038,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Connects to persistent subscription
-   * @param subscription
-   * @param [allowInflightMessages]
-   * @param [credentials]
-   * @returns to persistent subscription
    */
   public async connectToPersistentSubscription(
     subscription: PersistentSubscription,
@@ -1212,10 +1076,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Stop listening on persistent subscription
-   *
-   * @param {PersistentSubscription} subscription
-   * @param {(UserCredentials | null)} [credentials]
-   * @memberof TCPConnection
    */
   public async unsubscribeFromPersistentSubscription(
     subscriptionId: string,
@@ -1252,10 +1112,6 @@ export class TCPConnection extends EventEmitter {
   /**
    * Emit general low level connection errors (communication errors).
    * Will not emit errors on business level
-   *
-   * @protected
-   * @param {Error} [err]
-   * @memberof TCPConnection
    */
   protected onError(err?: Error): void {
     let errorMessage
@@ -1271,9 +1127,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Emit as soon as connection to eventstore was established successfully
-   *
-   * @protected
-   * @memberof TCPConnection
    */
   protected onConnect(): void {
     this.reconnectCount = 0
@@ -1290,7 +1143,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Emitted as soon as data arrives over tcp connection
-   * @param data
    */
   protected onData(data: Buffer | null): void {
     while (data != null) {
@@ -1304,9 +1156,6 @@ export class TCPConnection extends EventEmitter {
 
   /**
    * Emit as soon as connection to eventstore is closed
-   *
-   * @protected
-   * @memberof TCPConnection
    */
   protected onClose(): void {
     this.log.debug('Connection to eventstore closed')

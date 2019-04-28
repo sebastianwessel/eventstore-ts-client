@@ -48,7 +48,6 @@ const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
 
 /**
  * merges given settings with default settings
- * @param customSettings
  */
 let setPersistentSubscriptionConfig = (
   customSettings: object | PersistentSubscriptionConfig

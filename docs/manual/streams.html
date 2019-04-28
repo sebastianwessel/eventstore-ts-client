@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../">
   <title data-ice="title">Manual | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
@@ -34,6 +32,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#request-response-queue" data-ice="link">request response queue</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -51,6 +50,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-all-events" data-ice="link">reading all events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -88,33 +88,30 @@
 </ul>
 <p>Technically they do same, but with these different named function calls you can improve readability of your code.
 You can use it like:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 await eventstore
       .stream(&apos;streamId&apos;)
-      .softDelete()</code>
-</code></pre>
+      .softDelete()</code></code></pre>
 <p>or if you know you will do some read operation:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const metadata = await eventstore
       .fromStream(&apos;userstream&apos;)
-      .getMetadata()</code>
-</code></pre>
+      .getMetadata()</code></code></pre>
 <p>or if you do some write operation do it this way:</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 
 const eventUsernameChanged = new Event(&apos;UsernameChanged&apos;)
 await eventstore.connect()
 
 await eventstore
       .atStream(&apos;userstream&apos;)
-      .append(eventUsernameChanged)</code>
-</code></pre>
+      .append(eventUsernameChanged)</code></code></pre>
 <h2 id="writing-to-streams">writing to streams</h2><p>Writing to streams is simple by using <code>.append()</code> function at a stream instance.</p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const eventA = new Event(&apos;EventA&apos;,{
@@ -125,7 +122,7 @@ await eventstore.atStream(&apos;mystream&apos;).append(eventA)
 
 const eventB = new Event(&apos;EventB&apos;,{
   text: &apos;other string&apos;,
-  countm : 2
+  count : 2
 })
 
 eventB.correlationId = eventA.id
@@ -134,10 +131,9 @@ await eventstore.atStream(&apos;mystream&apos;).append(eventB)
 const eventC = new Event(&apos;EventC&apos;)
 const eventD = new Event(&apos;EventD&apos;)
 
-await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code>
-</code></pre>
+await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code></code></pre>
 <h2 id="reading-from-stream">reading from stream</h2><p>It&apos;s recommended to use an async iterator to fetch events from streams.  </p>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const events = await eventstore
@@ -146,9 +142,9 @@ const events = await eventstore
 
 for await (const event of events) {
   console.log(event.name)
-}</code>
-</code></pre>
-<p>You can use handy functions of async iterator returned by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p>
+}</code></code></pre>
+<p>You can use handy functions of async iterator returned by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.  
+They are similar to array functions:</p>
 <ul>
 <li><code>map()</code></li>
 <li><code>filter()</code></li>
@@ -157,7 +153,7 @@ for await (const event of events) {
 <li><code>toArray()</code></li>
 <li><code>every()</code></li>
 </ul>
-<pre><code class="lang-javascript"><code class="source-code prettyprint">const walker = await eventstore
+<pre><code class="language-javascript"><code class="source-code prettyprint">const walker = await eventstore
   .stream(&apos;streamId&apos;)
   .walkStreamForward()
 
@@ -168,13 +164,30 @@ const result = await walker
   })
   .toArray()
 
-console.log(result)</code>
-</code></pre>
+console.log(result)</code></code></pre>
+<h2 id="reading-all-events">reading all events</h2><p>It&apos;s possible to read all events from eventstore.<br>It uses same behavior as regular async iterator for streams but it <strong>needs admin rights</strong>.</p>
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code></code></pre>
+<p>or it reverse from end to beginning</p>
+<pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllBackward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code></code></pre>
 </div>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
@@ -184,5 +197,6 @@ console.log(result)</code>
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>
