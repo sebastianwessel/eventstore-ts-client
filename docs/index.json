@@ -578,7 +578,7 @@
     "__docId__": 49,
     "kind": "file",
     "name": "src/StreamWalker.ts",
-    "content": "/* eslint-disable @typescript-eslint/no-explicit-any */\n/* eslint-disable @typescript-eslint/explicit-function-return-type */\nimport {Event} from './event'\nimport * as eventstoreError from './errors'\n/**\n * Stream walker\n */\nexport class StreamWalker {\n  protected iterable: AsyncIterableIterator<Event | null>\n  public constructor(iterable: AsyncIterableIterator<Event | null>) {\n    this.iterable = iterable\n  }\n\n  public async *[Symbol.asyncIterator]() {\n    for await (const value of this.iterable) {\n      yield value\n    }\n  }\n\n  /**\n   * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator\n   */\n  public map(fn: Function, thisArg?: Function) {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n\n    const a = async function*(iterable: AsyncIterable<Event | null>) {\n      for await (const value of iterable) {\n        yield fn.call(thisArg, value)\n      }\n    }\n    return new StreamWalker(a(this.iterable))\n  }\n\n  /**\n   * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function\n   */\n  public filter(fn: Function, thisArg?: Function) {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n\n    const iterable = this.iterable\n    const b = async function*(fn: Function, thisArg?: Function) {\n      for await (const value of iterable) {\n        if (fn.call(thisArg, value)) {\n          yield value\n        }\n      }\n    }\n\n    return new StreamWalker(b(fn, thisArg))\n  }\n\n  /**\n   * The forEach() method executes a provided function once for each iterator element\n   */\n  public async forEach(fn: Function, thisArg?: Function, ...args: any[]): Promise<void> {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n    const iterable = this.iterable\n    for await (const value of iterable) {\n      fn.call(thisArg, value, ...args)\n    }\n  }\n\n  /**\n   * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value\n   */\n  public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {\n    if (typeof accumulatorFunction !== 'function') {\n      throw eventstoreError.newImplementationError(accumulatorFunction + 'is not a function')\n    }\n    const iterable = this.iterable\n    let returnValue = initialValue\n    for await (const value of iterable) {\n      returnValue = accumulatorFunction.call(thisArg, returnValue, value)\n    }\n    return returnValue\n  }\n\n  /**\n   * Converts an iterator to an array.\n   * The returned array will contain all single elements of iterator\n   */\n  public async toArray() {\n    const iterable = this.iterable\n    const arrayValue = []\n    for await (const value of iterable) {\n      arrayValue.push(value)\n    }\n    return arrayValue\n  }\n\n  /**\n   * The every() method tests whether all elements in the iterator pass the test implemented by the provided function\n   */\n  public async every(fn: Function, thisArg?: Function) {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n    const iterable = this.iterable\n    for await (const value of iterable) {\n      if (fn.call(thisArg, value) === false) {\n        return false\n      }\n    }\n    return true\n  }\n}\n",
+    "content": "/* eslint-disable @typescript-eslint/no-explicit-any */\n/* eslint-disable @typescript-eslint/explicit-function-return-type */\nimport {Event} from './event'\nimport * as eventstoreError from './errors'\n/**\n * Stream walker\n */\nexport class StreamWalker {\n  protected iterable: AsyncIterableIterator<Event | null>\n  public constructor(iterable: AsyncIterableIterator<Event | null>) {\n    this.iterable = iterable\n  }\n\n  public async *[Symbol.asyncIterator]() {\n    for await (const value of this.iterable) {\n      yield value\n    }\n  }\n\n  /**\n   * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator\n   */\n  public map(fn: Function, thisArg?: Function): StreamWalker {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n\n    const a = async function*(iterable: AsyncIterable<Event | null>) {\n      for await (const value of iterable) {\n        yield fn.call(thisArg, value)\n      }\n    }\n    return new StreamWalker(a(this.iterable))\n  }\n\n  /**\n   * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function\n   */\n  public filter(fn: Function, thisArg?: Function): StreamWalker {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n\n    const iterable = this.iterable\n    const b = async function*(fn: Function, thisArg?: Function) {\n      for await (const value of iterable) {\n        if (fn.call(thisArg, value)) {\n          yield value\n        }\n      }\n    }\n\n    return new StreamWalker(b(fn, thisArg))\n  }\n\n  /**\n   * The forEach() method executes a provided function once for each iterator element\n   */\n  public async forEach(fn: Function, thisArg?: Function, ...args: any[]): Promise<void> {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n    const iterable = this.iterable\n    for await (const value of iterable) {\n      fn.call(thisArg, value, ...args)\n    }\n  }\n\n  /**\n   * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value\n   */\n  public async reduce(\n    accumulatorFunction: Function,\n    initialValue: any = null,\n    thisArg?: Function\n  ): Promise<any> {\n    if (typeof accumulatorFunction !== 'function') {\n      throw eventstoreError.newImplementationError(accumulatorFunction + 'is not a function')\n    }\n    const iterable = this.iterable\n    let returnValue = initialValue\n    for await (const value of iterable) {\n      returnValue = accumulatorFunction.call(thisArg, returnValue, value)\n    }\n    return returnValue\n  }\n\n  /**\n   * Converts an iterator to an array.\n   * The returned array will contain all single elements of iterator\n   */\n  public async toArray(): Promise<(Event | null)[]> {\n    const iterable = this.iterable\n    const arrayValue = []\n    for await (const value of iterable) {\n      arrayValue.push(value)\n    }\n    return arrayValue\n  }\n\n  /**\n   * The every() method tests whether all elements in the iterator pass the test implemented by the provided function\n   */\n  public async every(fn: Function, thisArg?: Function): Promise<boolean> {\n    if (typeof fn !== 'function') {\n      throw eventstoreError.newImplementationError(fn + 'is not a function')\n    }\n    const iterable = this.iterable\n    for await (const value of iterable) {\n      if (fn.call(thisArg, value) === false) {\n        return false\n      }\n    }\n    return true\n  }\n}\n",
     "static": true,
     "longname": "/Users/sebastianwessel/Projekte/private_projects/eventstore-ts-client/src/StreamWalker.ts",
     "access": "public",
@@ -675,7 +675,7 @@
     ],
     "type": {
       "types": [
-        "*"
+        "StreamWalker"
       ]
     }
   },
@@ -707,7 +707,7 @@
     ],
     "type": {
       "types": [
-        "*"
+        "StreamWalker"
       ]
     }
   },
@@ -785,7 +785,7 @@
     ],
     "type": {
       "types": [
-        "*"
+        "Promise"
       ]
     }
   },
@@ -800,11 +800,11 @@
     "longname": "src/StreamWalker.ts~StreamWalker#toArray",
     "access": "public",
     "description": "Converts an iterator to an array.\nThe returned array will contain all single elements of iterator",
-    "lineNumber": 88,
+    "lineNumber": 92,
     "params": [],
     "type": {
       "types": [
-        "*"
+        "Promise"
       ]
     }
   },
@@ -819,7 +819,7 @@
     "longname": "src/StreamWalker.ts~StreamWalker#every",
     "access": "public",
     "description": "The every() method tests whether all elements in the iterator pass the test implemented by the provided function",
-    "lineNumber": 100,
+    "lineNumber": 104,
     "params": [
       {
         "types": [
@@ -836,7 +836,7 @@
     ],
     "type": {
       "types": [
-        "boolean"
+        "Promise"
       ]
     }
   },

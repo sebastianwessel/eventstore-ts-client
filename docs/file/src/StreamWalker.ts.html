@@ -96,7 +96,7 @@ export class StreamWalker {
   /**
    * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator
    */
-  public map(fn: Function, thisArg?: Function) {
+  public map(fn: Function, thisArg?: Function): StreamWalker {
     if (typeof fn !== &apos;function&apos;) {
       throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
     }
@@ -112,7 +112,7 @@ export class StreamWalker {
   /**
    * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function
    */
-  public filter(fn: Function, thisArg?: Function) {
+  public filter(fn: Function, thisArg?: Function): StreamWalker {
     if (typeof fn !== &apos;function&apos;) {
       throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
     }
@@ -145,7 +145,11 @@ export class StreamWalker {
   /**
    * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value
    */
-  public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {
+  public async reduce(
+    accumulatorFunction: Function,
+    initialValue: any = null,
+    thisArg?: Function
+  ): Promise&lt;any&gt; {
     if (typeof accumulatorFunction !== &apos;function&apos;) {
       throw eventstoreError.newImplementationError(accumulatorFunction + &apos;is not a function&apos;)
     }
@@ -161,7 +165,7 @@ export class StreamWalker {
    * Converts an iterator to an array.
    * The returned array will contain all single elements of iterator
    */
-  public async toArray() {
+  public async toArray(): Promise&lt;(Event | null)[]&gt; {
     const iterable = this.iterable
     const arrayValue = []
     for await (const value of iterable) {
@@ -173,7 +177,7 @@ export class StreamWalker {
   /**
    * The every() method tests whether all elements in the iterator pass the test implemented by the provided function
    */
-  public async every(fn: Function, thisArg?: Function) {
+  public async every(fn: Function, thisArg?: Function): Promise&lt;boolean&gt; {
     if (typeof fn !== &apos;function&apos;) {
       throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
     }
