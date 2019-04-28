@@ -8,9 +8,6 @@ export interface ESPosition {
 
 /**
  * Represents a position in eventstore global log file
- *
- * @export
- * @class Position
  */
 export class Position {
   /** commit position part of position */
@@ -21,9 +18,6 @@ export class Position {
 
   /**
    *Creates an instance of Position.
-   * @param {(Long | number)} commitPosition
-   * @param {(Long | number)} preparePosition
-   * @memberof Position
    */
   public constructor(commitPosition: Long | number, preparePosition: Long | number) {
     this.commitPosition =
@@ -34,8 +28,6 @@ export class Position {
 
   /**
    * Compares two Position values
-   * @param position
-   * @returns to
    */
   public compareTo(position: Position): number {
     if (

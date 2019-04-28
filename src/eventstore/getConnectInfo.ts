@@ -8,8 +8,6 @@ import {EventstoreSettings} from './EventstoreSettings'
 
 /**
  * dns lookup for given domain and returns list of corresponding ip's
- * @param dnsServer
- * @param log
  */
 export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<string[]> => {
   const lookup = util.promisify(dns.lookup)
@@ -39,12 +37,6 @@ export const getIpListFromDns = async (dnsServer: string, log: bunyan): Promise<
 
 /**
  * tries to fetch gossip json information from given ip and port
- *
- * @param host
- * @param port
- * @param useHttps
- * @param timeout
- * @param log
  */
 export const fetchgossipJson = async (
   host: string,
@@ -81,7 +73,6 @@ export const fetchgossipJson = async (
 
 /**
  * Searches for master node inside of gossip json
- * @param gossipInfo
  */
 export const getMasterNodeInfo = (
   gossipInfo: JSONValue & {
@@ -112,7 +103,6 @@ export const getMasterNodeInfo = (
 
 /**
  * Gets a random cluster node from gossip json
- * @param gossipInfo
  */
 export const getRandomNodeInfo = (
   gossipInfo: JSONValue & {
@@ -147,8 +137,6 @@ export const getRandomNodeInfo = (
 
 /**
  * Updates connection information depending on given settings
- * @param currentSettings
- * @param log
  */
 export const getIpAndPort = async (
   currentSettings: EventstoreSettings,

@@ -30,26 +30,15 @@ export interface StreamOptions {
 
 /**
  * Base class for handling a stream
- *
- * @export
- * @class Stream
  */
 export class Stream {
-  /** @type {Eventstore} */
   protected esConnection: Eventstore
-  /** @type {Bunyan} */
   public log: bunyan
-  /** @type {string} */
   protected streamId: string
-  /** @type {StreamOptions} */
   protected options: StreamOptions
 
   /**
    * Creates an instance of Stream.
-   * @param {Eventstore} eventstore
-   * @param {string} streamId
-   * @param {StreamOptions} options
-   * @memberof Stream
    */
   public constructor(eventstore: Eventstore, streamId: string, options: StreamOptions) {
     this.esConnection = eventstore
@@ -63,10 +52,6 @@ export class Stream {
 
   /**
    * Return name of stream instance
-   *
-   * @readonly
-   * @type {string}
-   * @memberof Stream
    */
   public get name(): string {
     return 'Stream: ' + this.streamId
@@ -78,9 +63,6 @@ export class Stream {
 
   /**
    * Enforces to use master node for any read/write operation
-   *
-   * @returns {Stream}
-   * @memberof Stream
    */
   public requiresMaster(): Stream {
     this.options.requireMaster = true
@@ -89,10 +71,6 @@ export class Stream {
 
   /**
    * Set credentials for any read/write operation
-   *
-   * @param {UserCredentials} credentials
-   * @returns {Stream}
-   * @memberof Stream
    */
   public withCredentials(credentials: UserCredentials): Stream {
     this.options.credentials = credentials
@@ -101,9 +79,6 @@ export class Stream {
 
   /**
    * Enforce to resolve links on read operations
-   *
-   * @returns {Stream}
-   * @memberof Stream
    */
   public resolveAllLinks(): Stream {
     this.options.resolveLinks = true
@@ -112,13 +87,6 @@ export class Stream {
 
   /**
    * Appends array of events to stream
-   *
-   * @protected
-   * @param {Event[]} events
-   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<void>}
-   * @memberof Stream
    */
   protected appendEvents(
     events: Event[],
@@ -171,9 +139,6 @@ export class Stream {
 
   /**
    * Indicates if given stream is a metadata stream or a regular steam
-   *
-   * @returns {boolean} - true if metadata stream
-   * @memberof Stream
    */
   public isMetaStream(): boolean {
     return this.streamId.startsWith('$$')
@@ -181,12 +146,6 @@ export class Stream {
 
   /**
    * Append single event or array of events to stream
-   *
-   * @param {(Event | Event[])} event
-   * @param {(ExpectedVersion | number | Long)} [expectedVersion]
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<void>}
-   * @memberof Stream
    */
   public async append(
     event: Event | Event[],
@@ -203,11 +162,6 @@ export class Stream {
 
   /**
    * Hard deletes a stream - stream with same name can not be used in future
-   *
-   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<void>}
-   * @memberof Stream
    */
   public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
@@ -219,11 +173,6 @@ export class Stream {
 
   /**
    * Soft deletes a stream - stream with same name can be used in future and indexes are preserved
-   *
-   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<void>}
-   * @memberof Stream
    */
   public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
@@ -235,14 +184,7 @@ export class Stream {
 
   /**
    * Delete a stream - can't be called directly
-   * Use {@link <softDelete>} or {@link <hardDelete>} instead
-   *
-   * @protected
-   * @param {boolean} hardDelete
-   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<void>}
-   * @memberof Stream
+   * Use softDelete or hardDelete instead
    */
   protected delete(
     hardDelete: boolean,
@@ -284,13 +226,6 @@ export class Stream {
 
   /**
    * Get event at specified position from stream
-   *
-   * @param {(Long | number)} eventNumber
-   * @param {boolean} [resolveLinks=true]
-   * @param {boolean} [requireMaster]
-   * @param {UserCredentials} [credentials]
-   * @returns {Promise<Event>}
-   * @memberof Stream
    */
   public async getEventByNumber(
     eventNumber: Long | number,
@@ -332,12 +267,6 @@ export class Stream {
 
   /**
    * Returns first event from stream
-   *
-   * @param {boolean} [resolveLinks=true]
-   * @param {boolean} [requireMaster]
-   * @param {UserCredentials} [credentials]
-   * @returns {(Promise<Event | null>)}
-   * @memberof Stream
    */
   public async getFirstEvent(
     resolveLinks: boolean = true,
@@ -354,12 +283,6 @@ export class Stream {
 
   /**
    * Returns last event from stream
-   *
-   * @param {boolean} [resolveLinks=true]
-   * @param {boolean} [requireMaster]
-   * @param {UserCredentials} [credentials]
-   * @returns {(Promise<Event | null>)}
-   * @memberof Stream
    */
   public async getLastEvent(
     resolveLinks: boolean = true,
@@ -371,11 +294,6 @@ export class Stream {
 
   /**
    * Returns stream metadata if set or
-   *
-   * @param {boolean} [requireMaster]
-   * @returns {Promise<object>}
-   * @memberof Stream
-   * @throws {EventstoreBadRequestError}
    */
   public async getMetadata(
     requireMaster?: boolean,
@@ -418,13 +336,6 @@ export class Stream {
 
   /**
    * Set metadata for stream
-   *
-   * @param {Object} newMetadata
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<void>}
-   * @memberof Stream
-   * @throws {EventstoreBadRequestError}
    */
   public async setMetadata(
     newMetadata: {},
@@ -456,12 +367,6 @@ export class Stream {
 
   /**
    * Creates a new instance of {Transaction} for current stream
-   *
-   * @param {ExpectedVersion} [expectedVersion=ExpectedVersion.Any]
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<Transaction>}
-   * @memberof Stream
    */
   public async startTransaction(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
@@ -503,16 +408,6 @@ export class Stream {
 
   /**
    * Reads a slice from current stream in given direction starting at given position
-   *
-   * @protected
-   * @param {EventstoreCommand} direction - read direction forward/backward
-   * @param {(number | Long)} [fromEventNumber=0] - read start position
-   * @param {number} [maxCount=100] - maximum count of events to read
-   * @param {boolean} [resolveLinkTos=true] - resolve event links
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
-   * @memberof Stream
    */
   protected async readSlice(
     direction: EventstoreCommand,
@@ -552,14 +447,6 @@ export class Stream {
 
   /**
    * Read a slice from stream in forward direction starting at given position
-   *
-   * @param {(number | Long)} [fromEventNumber=0] - read start position
-   * @param {number} [maxCount=100] - maximum count of events to read
-   * @param {boolean} [resolveLinkTos=true] - resolve event links
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
-   * @memberof Stream
    */
   public async readSliceForward(
     fromEventNumber: number | Long = StreamPosition.Start,
@@ -580,14 +467,6 @@ export class Stream {
 
   /**
    * Read a slice from stream in backward direction starting at given position
-   *
-   * @param {(number | Long)} [fromEventNumber=-1] - read start position
-   * @param {number} [maxCount=100] - maximum count of events to read
-   * @param {boolean} [resolveLinkTos=true] - resolve event links
-   * @param {boolean} [requireMaster]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<model.eventstore.proto.ReadStreamEventsCompleted>}
-   * @memberof Stream
    */
   public async readSliceBackward(
     fromEventNumber: number | Long = StreamPosition.End,
@@ -677,11 +556,6 @@ export class Stream {
 
   /**
    * Subscribe to current stream and return a subscription
-   *
-   * @param {boolean} [resolveLinkTos=true]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<Subscription>}
-   * @memberof Stream
    */
   public async subscribe(
     resolveLinkTos: boolean = true,
@@ -695,12 +569,6 @@ export class Stream {
   /**
    * Creates a persistent subscription for current stream
    * This operation needs admin rights and a master connection
-   *
-   * @param {string} subscriptionGroupName
-   * @param {(PersistentSubscriptionConfig | {})} [customConfig={}]
-   * @param {(UserCredentials | null)} [credentials]
-   * @returns {Promise<PersistentSubscription>}
-   * @memberof Stream
    */
   public async createPersistentSubscription(
     subscriptionGroupName: string,
@@ -738,6 +606,9 @@ export class Stream {
     )
   }
 
+  /**
+   * Returns a instance of persistance subscription given by group name
+   */
   public getPersistentSubscription(
     subscriptionGroupName: string,
     credentials?: UserCredentials | null

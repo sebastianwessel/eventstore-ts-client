@@ -2,7 +2,9 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import {Event} from './event'
 import * as eventstoreError from './errors'
-
+/**
+ * Stream walker
+ */
 export class StreamWalker {
   protected iterable: AsyncIterableIterator<Event | null>
   public constructor(iterable: AsyncIterableIterator<Event | null>) {
@@ -17,9 +19,6 @@ export class StreamWalker {
 
   /**
    * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator
-   * @param {function} fn - Function that produces an element of the new iterator
-   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
-   * @return {AsyncIterator}
    */
   public map(fn: Function, thisArg?: Function) {
     if (typeof fn !== 'function') {
@@ -36,9 +35,6 @@ export class StreamWalker {
 
   /**
    * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function
-   * @param {function} fn - Function is a predicate, to test each element of the iterator. Return true to keep the element, false otherwise
-   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
-   * @return {AsyncIterator}
    */
   public filter(fn: Function, thisArg?: Function) {
     if (typeof fn !== 'function') {
@@ -59,9 +55,6 @@ export class StreamWalker {
 
   /**
    * The forEach() method executes a provided function once for each iterator element
-   * @param {function} fn - Function to execute for each element
-   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
-   * @param {any} [args] - optional parameters to pass to function
    */
   public async forEach(fn: Function, thisArg?: Function, ...args: any[]): Promise<void> {
     if (typeof fn !== 'function') {
@@ -75,9 +68,6 @@ export class StreamWalker {
 
   /**
    * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value
-   * @param {Function} accumulatorFunction - Function to execute on each element in the iterator
-   * @param {any} initialValue - The initialValue accumulates the callback's return values; it is the accumulated value previously returned in the last invocation of the callback, or initialValue, if supplied
-   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
    */
   public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {
     if (typeof accumulatorFunction !== 'function') {
@@ -94,7 +84,6 @@ export class StreamWalker {
   /**
    * Converts an iterator to an array.
    * The returned array will contain all single elements of iterator
-   * @returns {Array}
    */
   public async toArray() {
     const iterable = this.iterable
@@ -107,9 +96,6 @@ export class StreamWalker {
 
   /**
    * The every() method tests whether all elements in the iterator pass the test implemented by the provided function
-   * @param {Function} fn - function which tests current value
-   * @param {any} [thisArg] - Optional. The value of this provided for the call to a function
-   * @returns {Boolean}
    */
   public async every(fn: Function, thisArg?: Function) {
     if (typeof fn !== 'function') {

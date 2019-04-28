@@ -11,9 +11,6 @@ const protobuf = model.eventstore.proto
 
 /**
  * Base class for handling transaction writes to stream
- *
- * @export
- * @class Transaction
  */
 export class Transaction {
   /** id of transaction */
@@ -33,9 +30,6 @@ export class Transaction {
 
   /**
    *  Creates an instance of Transaction.
-   * @param {Stream} stream
-   * @param {string} transactionId
-   * @memberof Transaction
    */
   public constructor(
     stream: Stream,
@@ -67,10 +61,6 @@ export class Transaction {
 
   /**
    * Appends single event or array of events to transaction
-   * @param event
-   * @param [requireMaster]
-   * @param [credentials]
-   * @returns append
    */
   public async append(
     event: Event | Event[],
@@ -86,10 +76,6 @@ export class Transaction {
 
   /**
    * Appends array of evens to transaction
-   * @param events
-   * @param [requireMaster]
-   * @param [credentials]
-   * @returns events
    */
   protected async appendEvents(
     events: Event[],
@@ -149,9 +135,6 @@ export class Transaction {
 
   /**
    * Commits transaction
-   * @param [requireMaster]
-   * @param [credentials]
-   * @returns commit
    */
   public async commit(
     requireMaster?: boolean,

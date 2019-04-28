@@ -2,10 +2,6 @@ import {EventstoreError} from './EventstoreError'
 
 /**
  * Returns new EventstoreError type of EventstoreConnectionError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newConnectionError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(message, 'EventstoreConnectionError', rootCause)
@@ -13,10 +9,6 @@ function newConnectionError(message: string, rootCause: Error | null = null): Ev
 
 /**
  * Returns new EventstoreError type of EventstoreProtocolError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newProtocolError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(message, 'EventstoreProtocolError', rootCause)
@@ -24,10 +16,6 @@ function newProtocolError(message: string, rootCause: Error | null = null): Even
 
 /**
  * Returns new EventstoreError type of EventstoreBadRequestError
- *
- * @param {string} [message='Bad Request']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newBadRequestError(
   message: string = 'Bad Request',
@@ -38,10 +26,6 @@ function newBadRequestError(
 
 /**
  * Returns new EventstoreError type of EventstoreNotAuthenticatedError
- *
- * @param {string} [message='Not Authenticated']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newNotAuthenticatedError(
   message: string = 'Not Authenticated',
@@ -52,10 +36,6 @@ function newNotAuthenticatedError(
 
 /**
  * Returns new EventstoreError type of EventstoreNotHandledError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newNotHandledError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Not handled ${message}`, 'EventstoreNotHandledError', rootCause)
@@ -63,10 +43,6 @@ function newNotHandledError(message: string, rootCause: Error | null = null): Ev
 
 /**
  * Returns new EventstoreError type of EventstorePrepareTimeoutError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newPrepareTimeoutError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(
@@ -78,10 +54,6 @@ function newPrepareTimeoutError(message: string, rootCause: Error | null = null)
 
 /**
  * Returns new EventstoreError type of EventstoreCommitTimeoutError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newCommitTimeoutError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Commit timeout ${message}`, 'EventstoreCommitTimeoutError', rootCause)
@@ -89,10 +61,6 @@ function newCommitTimeoutError(message: string, rootCause: Error | null = null):
 
 /**
  * Returns new EventstoreError type of EventstoreForwardTimeoutError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newForwardTimeoutError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(
@@ -104,10 +72,6 @@ function newForwardTimeoutError(message: string, rootCause: Error | null = null)
 
 /**
  * Returns new EventstoreError type of EventstoreWrongExpectedVersionError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newWrongExpectedVersionError(
   message: string,
@@ -122,10 +86,6 @@ function newWrongExpectedVersionError(
 
 /**
  * Returns new EventstoreError type of EventstoreStreamDeletedError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newStreamDeletedError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Stream deleted ${message}`, 'EventstoreStreamDeletedError', rootCause)
@@ -133,10 +93,6 @@ function newStreamDeletedError(message: string, rootCause: Error | null = null):
 
 /**
  * Returns new EventstoreError type of EventstoreInvalidTransactionError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newInvalidTransactionError(
   message: string,
@@ -151,10 +107,6 @@ function newInvalidTransactionError(
 
 /**
  * Returns new EventstoreError type of EventstoreAccessDeniedError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newAccessDeniedError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Access denied ${message}`, 'EventstoreAccessDeniedError', rootCause)
@@ -162,10 +114,6 @@ function newAccessDeniedError(message: string, rootCause: Error | null = null): 
 
 /**
  * Returns new EventstoreError type of EventstoreNotFoundError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newNotFoundError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Not found ${message}`, 'EventstoreNotFoundError', rootCause)
@@ -173,10 +121,6 @@ function newNotFoundError(message: string, rootCause: Error | null = null): Even
 
 /**
  * Returns new EventstoreError type of EventstoreNoStreamError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newNoStreamError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`No stream ${message}`, 'EventstoreNoStreamError', rootCause)
@@ -184,10 +128,6 @@ function newNoStreamError(message: string, rootCause: Error | null = null): Even
 
 /**
  * Returns new EventstoreError type of EventstoreNotModifiedError
- *
- * @param {string} message
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newNotModifiedError(message: string, rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Not modified ${message}`, 'EventstoreNotModifiedError', rootCause)
@@ -195,10 +135,6 @@ function newNotModifiedError(message: string, rootCause: Error | null = null): E
 
 /**
  * Returns new EventstoreError type of EventstoreUnspecificError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newUnspecificError(message: string = '', rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(
@@ -210,10 +146,6 @@ function newUnspecificError(message: string = '', rootCause: Error | null = null
 
 /**
  * Returns new EventstoreError type of EventstoreImplementationError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newImplementationError(
   message: string = '',
@@ -228,10 +160,6 @@ function newImplementationError(
 
 /**
  * Returns new EventstoreError type of EventstoreDoesNotExistError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newDoesNotExistError(
   message: string = 'Does not exist',
@@ -242,10 +170,6 @@ function newDoesNotExistError(
 
 /**
  * Returns new EventstoreError type of EventstoreAlreadyExistError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newAlreadyExistError(
   message: string = 'Already exists',
@@ -256,10 +180,6 @@ function newAlreadyExistError(
 
 /**
  * Returns new EventstoreError type of EventstoreTimeoutError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newTimeoutError(message: string = '', rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Timeout error: ${message}`, 'EventstoreTimeoutError', rootCause)
@@ -267,10 +187,6 @@ function newTimeoutError(message: string = '', rootCause: Error | null = null): 
 
 /**
  * Returns new EventstoreError type of EventstoreOperationError
- *
- * @param {string} [message='']
- * @param {(Error | null)} [rootCause=null]
- * @returns {EventstoreError}
  */
 function newOperationError(message: string = '', rootCause: Error | null = null): EventstoreError {
   return new EventstoreError(`Operation error: ${message}`, 'EventstoreOperationError', rootCause)
