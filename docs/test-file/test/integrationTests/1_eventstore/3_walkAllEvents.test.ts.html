@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../">
-  <title data-ice="title">src/StreamWalker.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">test/integrationTests/1_eventstore/3_walkAllEvents.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -73,119 +73,69 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">src/StreamWalker.ts</h1>
+<div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/1_eventstore/3_walkAllEvents.test.ts</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/* eslint-disable @typescript-eslint/no-explicit-any */
-/* eslint-disable @typescript-eslint/explicit-function-return-type */
-import {Event} from &apos;./event&apos;
-import * as eventstoreError from &apos;./errors&apos;
-/**
- * Stream walker
- */
-export class StreamWalker {
-  protected iterable: AsyncIterableIterator&lt;Event | null&gt;
-  public constructor(iterable: AsyncIterableIterator&lt;Event | null&gt;) {
-    this.iterable = iterable
-  }
+import * as assert from &apos;assert&apos;
+import {Eventstore} from &apos;../../../src&apos;
 
-  public async *[Symbol.asyncIterator]() {
-    for await (const value of this.iterable) {
-      yield value
+describe(&apos;Read all events&apos;, (): void =&gt; {
+  const es = new Eventstore({
+    uri: &apos;discover://admin:changeit@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;,
+    useSSL: true
+  })
+
+  let forwardResult: any[]
+  let backwardResult: any[]
+
+  before(
+    async (): Promise&lt;void&gt; =&gt; {
+      await es.connect()
     }
-  }
+  )
 
-  /**
-   * The map() method creates a new iterator with the results of calling a provided function on every element in the calling iterator
-   */
-  public map(fn: Function, thisArg?: Function) {
-    if (typeof fn !== &apos;function&apos;) {
-      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+  after(
+    async (): Promise&lt;void&gt; =&gt; {
+      await es.disconnect()
     }
+  )
 
-    const a = async function*(iterable: AsyncIterable&lt;Event | null&gt;) {
-      for await (const value of iterable) {
-        yield fn.call(thisArg, value)
-      }
-    }
-    return new StreamWalker(a(this.iterable))
-  }
+  it(&apos;reads  all events forward&apos;, async (): Promise&lt;void&gt; =&gt; {
+    let slice
+    try {
+      slice = await es.walkAllForward()
+      forwardResult = await slice.toArray()
 
-  /**
-   * The filter() method creates a new iterator with all elements that pass the test implemented by the provided function
-   */
-  public filter(fn: Function, thisArg?: Function) {
-    if (typeof fn !== &apos;function&apos;) {
-      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
+      assert.ok(&apos;ok&apos;)
+    } catch (err) {
+      assert.fail(err)
     }
 
-    const iterable = this.iterable
-    const b = async function*(fn: Function, thisArg?: Function) {
-      for await (const value of iterable) {
-        if (fn.call(thisArg, value)) {
-          yield value
-        }
-      }
+    assert.strictEqual(forwardResult.length &gt; 10000, true)
+  })
+
+  it(&apos;reads  all events backward&apos;, async (): Promise&lt;void&gt; =&gt; {
+    let slice
+    try {
+      slice = await es.walkAllBackward()
+      backwardResult = await slice.toArray()
+
+      assert.ok(&apos;ok&apos;)
+    } catch (err) {
+      assert.fail(err)
     }
 
-    return new StreamWalker(b(fn, thisArg))
-  }
+    assert.strictEqual(backwardResult.length &gt; 10000, true)
+  })
 
-  /**
-   * The forEach() method executes a provided function once for each iterator element
-   */
-  public async forEach(fn: Function, thisArg?: Function, ...args: any[]): Promise&lt;void&gt; {
-    if (typeof fn !== &apos;function&apos;) {
-      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
-    }
-    const iterable = this.iterable
-    for await (const value of iterable) {
-      fn.call(thisArg, value, ...args)
-    }
-  }
-
-  /**
-   * The reduce() method applies a function against an accumulator and each element in the iterator (from left to right) to reduce it to a single value
-   */
-  public async reduce(accumulatorFunction: Function, initialValue: any = null, thisArg?: Function) {
-    if (typeof accumulatorFunction !== &apos;function&apos;) {
-      throw eventstoreError.newImplementationError(accumulatorFunction + &apos;is not a function&apos;)
-    }
-    const iterable = this.iterable
-    let returnValue = initialValue
-    for await (const value of iterable) {
-      returnValue = accumulatorFunction.call(thisArg, returnValue, value)
-    }
-    return returnValue
-  }
-
-  /**
-   * Converts an iterator to an array.
-   * The returned array will contain all single elements of iterator
-   */
-  public async toArray() {
-    const iterable = this.iterable
-    const arrayValue = []
-    for await (const value of iterable) {
-      arrayValue.push(value)
-    }
-    return arrayValue
-  }
-
-  /**
-   * The every() method tests whether all elements in the iterator pass the test implemented by the provided function
-   */
-  public async every(fn: Function, thisArg?: Function) {
-    if (typeof fn !== &apos;function&apos;) {
-      throw eventstoreError.newImplementationError(fn + &apos;is not a function&apos;)
-    }
-    const iterable = this.iterable
-    for await (const value of iterable) {
-      if (fn.call(thisArg, value) === false) {
-        return false
-      }
-    }
-    return true
-  }
-}
+  it(&apos;matches end/start entries&apos;, (): void =&gt; {
+    assert.strictEqual(forwardResult[0].eventId, backwardResult[backwardResult.length - 1].eventId)
+    assert.strictEqual(
+      forwardResult[forwardResult.length - 1].eventId,
+      backwardResult[backwardResult.length - forwardResult.length].eventId
+    )
+  })
+})
 </code></pre>
 
 </div>

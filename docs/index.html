@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="./">
   <title data-ice="title">Manual | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
@@ -34,6 +32,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/readme.html"><a href="manual/readme.html" data-ice="link">General</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#speaking-code" data-ice="link">speaking code</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#error-handling" data-ice="link">Error handling</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/readme.html"><a href="manual/readme.html#request-response-queue" data-ice="link">request response queue</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -51,6 +50,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#accessing-steams" data-ice="link">accessing steams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#writing-to-streams" data-ice="link">writing to streams</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-from-stream" data-ice="link">reading from stream</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/streams.html"><a href="manual/streams.html#reading-all-events" data-ice="link">reading all events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -106,9 +106,8 @@
 <h2 id="documentation">Documentation</h2><p>Full documentation is available at <strong><a href="https://sebastianwessel.github.io/eventstore-ts-client/">https://sebastianwessel.github.io/eventstore-ts-client/</a></strong></p>
 <h2 id="requirements">Requirements</h2><p>You will need to have node.js version &gt;=10 installed to use this lib because it&apos;s based on async iterators.<br>It&apos;s tested against eventstore version 5, but should also work on lower versions in general.<br>Expect some shortcut function for accessing standard projections which are not part of lower eventstore versions.</p>
 <h2 id="installation">Installation</h2><p>Installation is as simple as most packages.<br>Just install package in your projects root with:</p>
-<pre><code class="lang-bash"><code class="source-code prettyprint">npm i --save eventstore-ts-client</code>
-</code></pre>
-<h2 id="quick-start">Quick-Start</h2><pre><code class="lang-javascript"><code class="source-code prettyprint">const {Eventstore, Event} = require(&apos;eventstore-ts-client)
+<pre><code class="language-bash"><code class="source-code prettyprint">npm i --save eventstore-ts-client</code></code></pre>
+<h2 id="quick-start">Quick-Start</h2><pre><code class="language-javascript"><code class="source-code prettyprint">const {Eventstore, Event} = require(&apos;eventstore-ts-client)
 const es = new Eventstore({
   uri: &apos;tcp://admin:changeit@127.0.0.1:1113&apos;
 })
@@ -142,19 +141,16 @@ for await (const event of events) {
   console.log(event.name)
 }
 
-await es.close()</code>
-</code></pre>
+await es.close()</code></code></pre>
 <p>For full documentation please visit:
 <strong><a href="https://sebastianwessel.github.io/eventstore-ts-client/">https://sebastianwessel.github.io/eventstore-ts-client/</a></strong></p>
 <h2 id="building">Building</h2><p>To build this lib just clone this repo and run:</p>
-<pre><code class="lang-bash"><code class="source-code prettyprint">npm install
-npm run build</code>
-</code></pre>
+<pre><code class="language-bash"><code class="source-code prettyprint">npm install
+npm run build</code></code></pre>
 <p><em>Maybe you need to change file attributes of scripts inside of <code>scripts/</code> folder to be executable</em></p>
 <h2 id="test-lib">Test lib</h2><p>eventstore-ts-client tests are heavily based on integration tests.</p>
 <p>Test are running against a 3 node eventstore cluster which will configured and filled with some test data and settings.<br>You will need to have docker installed on your machine to be able to run tests.<br>The setup contains a script which does all stuff for you - just type:</p>
-<pre><code class="lang-bash"><code class="source-code prettyprint">npm run test</code>
-</code></pre>
+<pre><code class="language-bash"><code class="source-code prettyprint">npm run test</code></code></pre>
 <p>Running tests will also generate some code coverage report to be used in tools like sonarqube</p>
 <h2 id="apache-2-0-license">Apache 2.0 License</h2><p>see <a href="LICENSE">LICENSE</a></p>
 </div>
@@ -165,7 +161,7 @@ npm run build</code>
     
   <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>General</h1><p>This library tries to help you to communicate with eventstore in a smooth way.</p><p>There are a couple of things like error handling or function naming which should help you to write nice and speaking code.</p><p>It follows async/await style to avoid &quot;callback hell&quot; as well.</p><h2>speaking code</h2><p>Instead of having some base function with lots of parameters this lib provides some nice syntax and alias functions.<br>Instead of writing:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">var esConnection = esClient.createConnection(connSettings, &quot;tcp://localhost:1113&quot;);
+        <div data-ice="card"><h1>General</h1><p>This library tries to help you to communicate with eventstore in a smooth way.</p><p>There are a couple of things like error handling or function naming which should help you to write nice and speaking code.</p><p>It follows async/await style to avoid &quot;callback hell&quot; as well.</p><h2>speaking code</h2><p>Instead of having some base function with lots of parameters this lib provides some nice syntax and alias functions.<br>Instead of writing:</p><pre><code class="language-javascript"><code class="source-code prettyprint">var esConnection = esClient.createConnection(connSettings, &quot;tcp://localhost:1113&quot;);
 esConnection.connect();
 
 var eventId = uuid.v4();
@@ -178,8 +174,7 @@ var event = esClient.createJsonEventData(eventId, eventData, null, &apos;TestWas
 esConnection.appendToStream(&apos;streamName&apos;, esClient.expectedVersion.any, event,someDifferentCredentials)
   .then(function(result) {
       console.log(&quot;Stored event:&quot;, eventId);
-  })</code>
-</code></pre><p>you should write something like:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore(&apos;tcp://localhost:1113&apos;)
+  })</code></code></pre><p>you should write something like:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore(&apos;tcp://localhost:1113&apos;)
 await eventstore.connect()
 
 const eventTestWasDone = new Event(&apos;TestWasDone&apos;,{
@@ -193,20 +188,19 @@ await eventstore
   .requiresMaster()
   .append(eventTestWasDone)
 
- console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code>
-</code></pre><p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p><p>Of course you&apos;re able to use function parameters as well if you prefere it, but it&apos;s not recommended</p><h2>Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p></div>
+ console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code></code></pre><p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p><p>Of course you&apos;re able to use function parameters as well if you prefer it, but it&apos;s not recommended</p><h2>Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p><h2>request response queue</h2><p>This lib does not use a queue for outgoing requests and commands.<br>Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.<br>If an connection to eventstore get lost while sending a request you will get an connection error immediately and this library will not try to resend requests for you.</p><p>I strongly believe it&apos;s up to program logic to handle unexpected lost connection failures while sending some requests.<br>It depends very hard on each usecase how to handle such failures and also if it&apos;s possible to reconnect or not.<br>To avoid unsolvable questions like &quot;What to do with requests when...&quot; and because tcp connections are duplex connections there is no request queue.
+This library tries to do as much as possible in real time and/or in asynchronous fashion.</p><p>If a correlating response for a request contains some error code the request promise will be rejected with correlating error.<br>If no response arrives within given timeout setting the request will promise will be rejected with an <code>EventstoreTimeoutError</code>.</p></div>
         <a data-ice="link" href="manual/readme.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Eventstore</h1><h2>connecting</h2><p>Main connection parameters are set inside of connection uri<br>This lib supports connecting to single instance via tcp and auto discovering to clusters also.<br>Connections can be unsecured or encrypted</p><pre><code class="lang-javascript"><code class="source-code prettyprint">// connection to single instance at local at port 1113 with username and password
+        <div data-ice="card"><h1>Eventstore</h1><h2>connecting</h2><p>Main connection parameters are set inside of connection uri<br>This lib supports connecting to single instance via tcp and auto discovering to clusters also.<br>Connections can be unsecured or encrypted</p><pre><code class="language-javascript"><code class="source-code prettyprint">// connection to single instance at local at port 1113 with username and password
 const es = new Eventstore({
   uri: &apos;tcp://username:userpassword@127.0.0.1:1113&apos;
 })
 
-await es.connect()</code>
-</code></pre><pre><code class="lang-javascript"><code class="source-code prettyprint">// connection to cluster at domain escluster.net at port 2112 with username and password
+await es.connect()</code></code></pre><pre><code class="language-javascript"><code class="source-code prettyprint">// connection to cluster at domain escluster.net at port 2112 with username and password
 const es = new Eventstore({
   uri: &apos;discover://username:password@escluster.net:2112&apos;
 })
@@ -226,8 +220,8 @@ const es = new Eventstore({
   }
 })
 
-await es.connect()</code>
-</code></pre><h2>disconnecting</h2><p>It&apos;s highly recommended to close a connection in save way.<br>You should use <code>es.disconnect()</code> for proper shut down, because this function sets current connection to state <code>drain</code>.<br>This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p></div>
+await es.connect()</code></code></pre><h2>disconnecting</h2><p>It&apos;s highly recommended to close a connection in save way.<br>You should use <code>es.disconnect()</code> for proper shut down, because this function sets current connection to state <code>drain</code>.  
+This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p></div>
         <a data-ice="link" href="manual/eventstore.html"></a>
       </div>
     </div>
@@ -238,27 +232,24 @@ await es.connect()</code>
 <li><code>fromStream(&apos;streamId&apos;)</code></li>
 <li><code>atStream(&apos;streamId&apos;)</code></li>
 </ul><p>Technically they do same, but with these different named function calls you can improve readability of your code.
-You can use it like:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+You can use it like:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 await eventstore
       .stream(&apos;streamId&apos;)
-      .softDelete()</code>
-</code></pre><p>or if you know you will do some read operation:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+      .softDelete()</code></code></pre><p>or if you know you will do some read operation:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const metadata = await eventstore
       .fromStream(&apos;userstream&apos;)
-      .getMetadata()</code>
-</code></pre><p>or if you do some write operation do it this way:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+      .getMetadata()</code></code></pre><p>or if you do some write operation do it this way:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 
 const eventUsernameChanged = new Event(&apos;UsernameChanged&apos;)
 await eventstore.connect()
 
 await eventstore
       .atStream(&apos;userstream&apos;)
-      .append(eventUsernameChanged)</code>
-</code></pre><h2>writing to streams</h2><p>Writing to streams is simple by using <code>.append()</code> function at a stream instance.</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+      .append(eventUsernameChanged)</code></code></pre><h2>writing to streams</h2><p>Writing to streams is simple by using <code>.append()</code> function at a stream instance.</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const eventA = new Event(&apos;EventA&apos;,{
@@ -269,7 +260,7 @@ await eventstore.atStream(&apos;mystream&apos;).append(eventA)
 
 const eventB = new Event(&apos;EventB&apos;,{
   text: &apos;other string&apos;,
-  countm : 2
+  count : 2
 })
 
 eventB.correlationId = eventA.id
@@ -278,8 +269,7 @@ await eventstore.atStream(&apos;mystream&apos;).append(eventB)
 const eventC = new Event(&apos;EventC&apos;)
 const eventD = new Event(&apos;EventD&apos;)
 
-await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code>
-</code></pre><h2>reading from stream</h2><p>It&apos;s recommended to use an async iterator to fetch events from streams.  </p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.atStream(&apos;mystream&apos;).append([eventC, eventD])</code></code></pre><h2>reading from stream</h2><p>It&apos;s recommended to use an async iterator to fetch events from streams.  </p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const events = await eventstore
@@ -288,15 +278,15 @@ const events = await eventstore
 
 for await (const event of events) {
   console.log(event.name)
-}</code>
-</code></pre><p>You can use handy functions of async iterator returned by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.<br>They are similar to array functions:</p><ul>
+}</code></code></pre><p>You can use handy functions of async iterator returned by <code>.walkStreamForward()</code> and <code>.walkStreamBackward()</code>.  
+They are similar to array functions:</p><ul>
 <li><code>map()</code></li>
 <li><code>filter()</code></li>
 <li><code>forEach()</code></li>
 <li><code>reduce()</code></li>
 <li><code>toArray()</code></li>
 <li><code>every()</code></li>
-</ul><pre><code class="lang-javascript"><code class="source-code prettyprint">const walker = await eventstore
+</ul><pre><code class="language-javascript"><code class="source-code prettyprint">const walker = await eventstore
   .stream(&apos;streamId&apos;)
   .walkStreamForward()
 
@@ -307,14 +297,27 @@ const result = await walker
   })
   .toArray()
 
-console.log(result)</code>
-</code></pre></div>
+console.log(result)</code></code></pre><h2>reading all events</h2><p>It&apos;s possible to read all events from eventstore.<br>It uses same behavior as regular async iterator for streams but it <strong>needs admin rights</strong>.</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllForward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code></code></pre><p>or it reverse from end to beginning</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkAllBackward()
+
+for await (const event of events) {
+  console.log(event.name)
+}</code></code></pre></div>
         <a data-ice="link" href="manual/streams.html"></a>
       </div>
     </div>
 <div class="manual-card-wrap" data-ice="cards">
       <div class="manual-card">
-        <div data-ice="card"><h1>Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.</p><h2>subscribe to stream</h2><p>You can use <code>subscribe()</code> at stream instances and simply adding listener(s) to returned subscription.<br>There are two options.</p><p>Listen to all events:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+        <div data-ice="card"><h1>Subscriptions</h1><p>There are 3 different subscription types.<br>Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.</p><h2>subscribe to stream</h2><p>You can use <code>subscribe()</code> at stream instances and simply adding listener(s) to returned subscription.<br>There are two options.</p><p>Listen to all events:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 subscription = await eventstore
@@ -324,27 +327,24 @@ subscription = await eventstore
 subscription.on(&apos;event&apos;, (event) =&gt; {
   console.log(event.name)
 })
-</code>
-</code></pre><p>Listen for specific event:</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+</code></code></pre><p>Listen for specific event:</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 subscription = await eventstore
       .stream(&apos;streamId&apos;)
       .subscribe()
 
-// listen for &quot;event-&quot;+ lowercase eventname
+// listen for &quot;event-&quot;+ lowercase event name
 subscription.on(&apos;event-specificeventa&apos;, (event) =&gt; {
   console.log(&apos;log only SpecificEventA&apos;)
 })
-</code>
-</code></pre><p>With this approach you&apos;re able to add different listeners for different needs to one single stream subscription.</p><h2>persistent subscription</h2><p>You can create persistent subscriptions (<strong>needs admin rights</strong>)</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+</code></code></pre><p>With this approach you&apos;re able to add different listeners for different needs to one single stream subscription.</p><h2>persistent subscription</h2><p>You can create persistent subscriptions (<strong>needs admin rights</strong>)</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const persistentSubscription = await eventstore
   .atStream(&apos;myStream&apos;)
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
-  .createPersistentSubscription(&apos;persistentsubscription&apos;)</code>
-</code></pre><p>You can update an existing persistent subscription (<strong>needs admin rights</strong>)</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+  .createPersistentSubscription(&apos;persistentsubscription&apos;)</code></code></pre><p>You can update an existing persistent subscription (<strong>needs admin rights</strong>)</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -355,8 +355,7 @@ const persistentSubscription = await eventstore
   .atStream(&apos;myStream&apos;)
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
-  .update(newConfig)</code>
-</code></pre><p>You can delete an existing persistent subscription (<strong>needs admin rights</strong>)</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+  .update(newConfig)</code></code></pre><p>You can delete an existing persistent subscription (<strong>needs admin rights</strong>)</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -368,8 +367,7 @@ const persistentSubscription = eventstore
   .withCredentials({username: &apos;admin&apos;, password: &apos;changeit&apos;})
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
 
-await persistentSubscription.delete()</code>
-</code></pre><p>You can connect to an existing persistent subscription</p><pre><code class="lang-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
+await persistentSubscription.delete()</code></code></pre><p>You can connect to an existing persistent subscription</p><pre><code class="language-javascript"><code class="source-code prettyprint">const eventstore = new Eventstore()
 await eventstore.connect()
 
 const newConfig = {
@@ -380,9 +378,7 @@ const persistentSubscription = eventstore
   .atStream(&apos;myStream&apos;)
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
 
-await persistentSubscription.subscribe()</code>
-</code></pre><p>Unsubscribing an existing persistent subscription is also pretty easy</p><pre><code class="lang-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code>
-</code></pre><h2>catchUp subscriptions</h2><p>/<strong> TODO </strong>/<br>not implemented yet</p></div>
+await persistentSubscription.subscribe()</code></code></pre><p>Unsubscribing an existing persistent subscription is also pretty easy</p><pre><code class="language-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code></code></pre><h2>catchUp subscriptions</h2><p>/** TODO **/<br>not implemented yet</p></div>
         <a data-ice="link" href="manual/subscriptions.html"></a>
       </div>
     </div>
@@ -428,7 +424,7 @@ await persistentSubscription.subscribe()</code>
 </div>
 
 <footer class="footer">
-  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
 </footer>
 
 <script src="script/search_index.js"></script>
@@ -438,5 +434,6 @@ await persistentSubscription.subscribe()</code>
 <script src="script/test-summary.js"></script>
 <script src="script/inner-link.js"></script>
 <script src="script/patch-for-local.js"></script>
-</body>
-</html>
+
+
+</body></html>

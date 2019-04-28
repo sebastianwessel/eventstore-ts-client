@@ -1,60 +1,742 @@
 {
   "type": "File",
   "start": 0,
-  "end": 0,
+  "end": 307,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 1,
+      "line": 8,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 0,
+    "end": 307,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 1,
+        "line": 8,
         "column": 0
       }
     },
     "sourceType": "module",
-    "body": [],
+    "interpreter": null,
+    "body": [
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 0,
+        "end": 60,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 60
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "TSTypeAliasDeclaration",
+          "start": 7,
+          "end": 60,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 60
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 12,
+            "end": 25,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 12
+              },
+              "end": {
+                "line": 1,
+                "column": 25
+              },
+              "identifierName": "JSONPrimitive"
+            },
+            "name": "JSONPrimitive"
+          },
+          "typeAnnotation": {
+            "type": "TSUnionType",
+            "start": 28,
+            "end": 60,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 28
+              },
+              "end": {
+                "line": 1,
+                "column": 60
+              }
+            },
+            "types": [
+              {
+                "type": "TSStringKeyword",
+                "start": 28,
+                "end": 34,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 28
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 34
+                  }
+                }
+              },
+              {
+                "type": "TSNumberKeyword",
+                "start": 37,
+                "end": 43,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 37
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 43
+                  }
+                }
+              },
+              {
+                "type": "TSBooleanKeyword",
+                "start": 46,
+                "end": 53,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 46
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 53
+                  }
+                }
+              },
+              {
+                "type": "TSNullKeyword",
+                "start": 56,
+                "end": 60,
+                "loc": {
+                  "start": {
+                    "line": 1,
+                    "column": 56
+                  },
+                  "end": {
+                    "line": 1,
+                    "column": 60
+                  }
+                }
+              }
+            ]
+          },
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 61,
+        "end": 123,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 0
+          },
+          "end": {
+            "line": 2,
+            "column": 62
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "TSTypeAliasDeclaration",
+          "start": 68,
+          "end": 123,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 7
+            },
+            "end": {
+              "line": 2,
+              "column": 62
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 73,
+            "end": 82,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 12
+              },
+              "end": {
+                "line": 2,
+                "column": 21
+              },
+              "identifierName": "JSONValue"
+            },
+            "name": "JSONValue"
+          },
+          "typeAnnotation": {
+            "type": "TSUnionType",
+            "start": 85,
+            "end": 123,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 24
+              },
+              "end": {
+                "line": 2,
+                "column": 62
+              }
+            },
+            "types": [
+              {
+                "type": "TSTypeReference",
+                "start": 85,
+                "end": 98,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 24
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 37
+                  }
+                },
+                "typeName": {
+                  "type": "Identifier",
+                  "start": 85,
+                  "end": 98,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 24
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 37
+                    },
+                    "identifierName": "JSONPrimitive"
+                  },
+                  "name": "JSONPrimitive"
+                }
+              },
+              {
+                "type": "TSTypeReference",
+                "start": 101,
+                "end": 111,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 50
+                  }
+                },
+                "typeName": {
+                  "type": "Identifier",
+                  "start": 101,
+                  "end": 111,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 40
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 50
+                    },
+                    "identifierName": "JSONObject"
+                  },
+                  "name": "JSONObject"
+                }
+              },
+              {
+                "type": "TSTypeReference",
+                "start": 114,
+                "end": 123,
+                "loc": {
+                  "start": {
+                    "line": 2,
+                    "column": 53
+                  },
+                  "end": {
+                    "line": 2,
+                    "column": 62
+                  }
+                },
+                "typeName": {
+                  "type": "Identifier",
+                  "start": 114,
+                  "end": 123,
+                  "loc": {
+                    "start": {
+                      "line": 2,
+                      "column": 53
+                    },
+                    "end": {
+                      "line": 2,
+                      "column": 62
+                    },
+                    "identifierName": "JSONArray"
+                  },
+                  "name": "JSONArray"
+                }
+              }
+            ]
+          },
+          "leadingComments": [],
+          "trailingComments": []
+        }
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 124,
+        "end": 185,
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 0
+          },
+          "end": {
+            "line": 5,
+            "column": 1
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "TSInterfaceDeclaration",
+          "start": 131,
+          "end": 185,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 7
+            },
+            "end": {
+              "line": 5,
+              "column": 1
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 141,
+            "end": 151,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 17
+              },
+              "end": {
+                "line": 3,
+                "column": 27
+              },
+              "identifierName": "JSONObject"
+            },
+            "name": "JSONObject"
+          },
+          "body": {
+            "type": "TSInterfaceBody",
+            "start": 152,
+            "end": 185,
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 28
+              },
+              "end": {
+                "line": 5,
+                "column": 1
+              }
+            },
+            "body": [
+              {
+                "type": "TSIndexSignature",
+                "start": 156,
+                "end": 183,
+                "loc": {
+                  "start": {
+                    "line": 4,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 29
+                  }
+                },
+                "parameters": [
+                  {
+                    "type": "Identifier",
+                    "start": 157,
+                    "end": 171,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 3
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 17
+                      },
+                      "identifierName": "member"
+                    },
+                    "name": "member",
+                    "typeAnnotation": {
+                      "type": "TSTypeAnnotation",
+                      "start": 163,
+                      "end": 171,
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 9
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 17
+                        }
+                      },
+                      "typeAnnotation": {
+                        "type": "TSStringKeyword",
+                        "start": 165,
+                        "end": 171,
+                        "loc": {
+                          "start": {
+                            "line": 4,
+                            "column": 11
+                          },
+                          "end": {
+                            "line": 4,
+                            "column": 17
+                          }
+                        }
+                      }
+                    }
+                  }
+                ],
+                "typeAnnotation": {
+                  "type": "TSTypeAnnotation",
+                  "start": 172,
+                  "end": 183,
+                  "loc": {
+                    "start": {
+                      "line": 4,
+                      "column": 18
+                    },
+                    "end": {
+                      "line": 4,
+                      "column": 29
+                    }
+                  },
+                  "typeAnnotation": {
+                    "type": "TSTypeReference",
+                    "start": 174,
+                    "end": 183,
+                    "loc": {
+                      "start": {
+                        "line": 4,
+                        "column": 20
+                      },
+                      "end": {
+                        "line": 4,
+                        "column": 29
+                      }
+                    },
+                    "typeName": {
+                      "type": "Identifier",
+                      "start": 174,
+                      "end": 183,
+                      "loc": {
+                        "start": {
+                          "line": 4,
+                          "column": 20
+                        },
+                        "end": {
+                          "line": 4,
+                          "column": 29
+                        },
+                        "identifierName": "JSONValue"
+                      },
+                      "name": "JSONValue"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "leadingComments": [],
+          "trailingComments": [
+            {
+              "type": "CommentLine",
+              "value": " eslint-disable-next-line @typescript-eslint/no-empty-interface",
+              "start": 186,
+              "end": 251,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 0
+                },
+                "end": {
+                  "line": 6,
+                  "column": 65
+                }
+              }
+            }
+          ]
+        },
+        "trailingComments": [
+          {
+            "type": "CommentLine",
+            "value": " eslint-disable-next-line @typescript-eslint/no-empty-interface",
+            "start": 186,
+            "end": 251,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 65
+              }
+            }
+          }
+        ]
+      },
+      {
+        "type": "ExportNamedDeclaration",
+        "start": 252,
+        "end": 306,
+        "loc": {
+          "start": {
+            "line": 7,
+            "column": 0
+          },
+          "end": {
+            "line": 7,
+            "column": 54
+          }
+        },
+        "specifiers": [],
+        "source": null,
+        "declaration": {
+          "type": "TSInterfaceDeclaration",
+          "start": 259,
+          "end": 306,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 7
+            },
+            "end": {
+              "line": 7,
+              "column": 54
+            }
+          },
+          "id": {
+            "type": "Identifier",
+            "start": 269,
+            "end": 278,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 17
+              },
+              "end": {
+                "line": 7,
+                "column": 26
+              },
+              "identifierName": "JSONArray"
+            },
+            "name": "JSONArray"
+          },
+          "extends": [
+            {
+              "type": "TSExpressionWithTypeArguments",
+              "start": 287,
+              "end": 303,
+              "loc": {
+                "start": {
+                  "line": 7,
+                  "column": 35
+                },
+                "end": {
+                  "line": 7,
+                  "column": 51
+                }
+              },
+              "expression": {
+                "type": "Identifier",
+                "start": 287,
+                "end": 292,
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 35
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 40
+                  },
+                  "identifierName": "Array"
+                },
+                "name": "Array"
+              },
+              "typeParameters": {
+                "type": "TSTypeParameterInstantiation",
+                "start": 292,
+                "end": 303,
+                "loc": {
+                  "start": {
+                    "line": 7,
+                    "column": 40
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 51
+                  }
+                },
+                "params": [
+                  {
+                    "type": "TSTypeReference",
+                    "start": 293,
+                    "end": 302,
+                    "loc": {
+                      "start": {
+                        "line": 7,
+                        "column": 41
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 50
+                      }
+                    },
+                    "typeName": {
+                      "type": "Identifier",
+                      "start": 293,
+                      "end": 302,
+                      "loc": {
+                        "start": {
+                          "line": 7,
+                          "column": 41
+                        },
+                        "end": {
+                          "line": 7,
+                          "column": 50
+                        },
+                        "identifierName": "JSONValue"
+                      },
+                      "name": "JSONValue"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "body": {
+            "type": "TSInterfaceBody",
+            "start": 304,
+            "end": 306,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 52
+              },
+              "end": {
+                "line": 7,
+                "column": 54
+              }
+            },
+            "body": []
+          },
+          "leadingComments": [
+            {
+              "type": "CommentLine",
+              "value": " eslint-disable-next-line @typescript-eslint/no-empty-interface",
+              "start": 186,
+              "end": 251,
+              "loc": {
+                "start": {
+                  "line": 6,
+                  "column": 0
+                },
+                "end": {
+                  "line": 6,
+                  "column": 65
+                }
+              }
+            }
+          ],
+          "trailingComments": []
+        },
+        "leadingComments": [
+          {
+            "type": "CommentLine",
+            "value": " eslint-disable-next-line @typescript-eslint/no-empty-interface",
+            "start": 186,
+            "end": 251,
+            "loc": {
+              "start": {
+                "line": 6,
+                "column": 0
+              },
+              "end": {
+                "line": 6,
+                "column": 65
+              }
+            }
+          }
+        ]
+      }
+    ],
     "directives": []
   },
-  "comments": [],
-  "tokens": [
+  "comments": [
     {
-      "type": {
-        "label": "eof",
-        "beforeExpr": false,
-        "startsExpr": false,
-        "rightAssociative": false,
-        "isLoop": false,
-        "isAssign": false,
-        "prefix": false,
-        "postfix": false,
-        "binop": null,
-        "updateContext": null
-      },
-      "start": 0,
-      "end": 0,
+      "type": "CommentLine",
+      "value": " eslint-disable-next-line @typescript-eslint/no-empty-interface",
+      "start": 186,
+      "end": 251,
       "loc": {
         "start": {
-          "line": 1,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 1,
-          "column": 0
+          "line": 6,
+          "column": 65
         }
       }
     }
