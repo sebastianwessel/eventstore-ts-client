@@ -10,6 +10,7 @@ import * as model from '../protobuf/model'
 import {Position} from './Position'
 import {StreamWalker} from '../StreamWalker'
 import {Event} from '../event'
+import * as eventstoreErrors from '../errors'
 
 const protobuf = model.eventstore.proto
 
@@ -427,5 +428,34 @@ export class Eventstore extends EventEmitter {
     }
 
     return new StreamWalker(asyncGenerator(start))
+  }
+
+  /** Resolves a link  */
+  public async resolveLink(
+    link: Event,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<Event> {
+    if (!link.isLink()) {
+      return link
+    }
+
+    if (typeof link.data !== 'string') {
+      throw eventstoreErrors.newProtocolError('Invalid link data')
+    }
+    const linkInfo = link.data.split('@')
+    //{"$v":"3:-1:1:3","$c":88466,"$p":88466,"$o":"tenthousandstream-f73cff95-564b-4da4-8072-4d761db6cd34","$causedBy":"45781825-1825-1825-1825-155645781825"}
+    const stream = this.stream(linkInfo[1])
+    if (requireMaster) {
+      stream.requiresMaster()
+    }
+    if (credentials) {
+      stream.withCredentials(credentials)
+    }
+    const event = await stream.getEventByNumber(parseInt(linkInfo[0]))
+    if (!event) {
+      throw eventstoreErrors.newNotFoundError('Event could not be found')
+    }
+    return event
   }
 }
