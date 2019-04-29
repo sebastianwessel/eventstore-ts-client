@@ -27,8 +27,7 @@ describe('Event class base tests', (): void => {
   }
 
   const testMetadata = {
-    $correlationId: uuid(),
-    $causationId: uuid()
+    $correlationId: uuid()
   }
 
   it('creates a event instance', (): void => {
@@ -55,6 +54,5 @@ describe('Event class base tests', (): void => {
     assert.strictEqual(newEvent.metadata, testMetadata)
     expect(newEvent.id).to.be.exist
     assert.strictEqual(newEvent.correlationId, testMetadata.$correlationId)
-    assert.strictEqual(newEvent.causationId, testMetadata.$causationId)
   })
 })

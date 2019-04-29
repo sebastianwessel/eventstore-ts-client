@@ -301,7 +301,6 @@ export class Stream {
   ): Promise<
     | {
         $correlationId?: string
-        $causationId?: string
       } & {[k: string]: JSONValue}
     | null
   > {
@@ -324,7 +323,8 @@ export class Stream {
 
       if (result) {
         result.freeze()
-        return {...result.data}
+        // eslint-disable-next-line @typescript-eslint/no-angle-bracket-type-assertion
+        return {...(<object>result.data)}
       } else return null
     } catch (err) {
       if (err.name === 'EventstoreNoStreamError') {
