@@ -216,6 +216,7 @@ export class TCPConnection extends EventEmitter {
             }
           )
         } else {
+          this.log.debug({pendingRequests: this.pendingRequests.size}, 'Wait for pending requests')
           // wait for pending requests/timeouts
           setTimeout((): void => {
             this.state = connectionState.closed
@@ -232,6 +233,7 @@ export class TCPConnection extends EventEmitter {
   }
 
   private checkTimeout(): void {
+    this.log.trace('Check timeout queue')
     const timeout: string[] = []
     const now = Date.now() - this.initialConfig.operationTimeout
     for (var [key, value] of this.pendingRequests) {
