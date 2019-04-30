@@ -209,30 +209,38 @@ export class TCPConnection extends EventEmitter {
         this.onDrain()
         if (this.pendingRequests.size <= 0) {
           this.state = connectionState.closed
-          this.socket.end(
-            (): void => {
-              this.socket.destroy()
-              resolve()
-            }
-          )
+          this.socket.destroy()
+          resolve()
         } else {
-          this.log.debug({pendingRequests: this.pendingRequests.size}, 'Wait for pending requests')
+          this.log.debug(
+            {
+              pendingRequests: this.pendingRequests.size,
+              timeout:
+                this.initialConfig.operationTimeout + this.initialConfig.operationTimeoutCheckPeriod
+            },
+            'Wait for pending requests'
+          )
           // wait for pending requests/timeouts
           setTimeout((): void => {
             this.state = connectionState.closed
-            this.socket.end(
-              (): void => {
-                this.socket.destroy()
-                resolve()
+            this.socket.destroy()
+            this.log.debug('Timeout finished')
+            this.pendingRequests.forEach(
+              (value, id): void => {
+                this.rejectCommandPromise(
+                  id,
+                  eventstoreError.newConnectionError('Connection closed')
+                )
               }
             )
+            resolve()
           }, this.initialConfig.operationTimeout + this.initialConfig.operationTimeoutCheckPeriod)
         }
       }
     )
   }
 
-  private checkTimeout(): void {
+  protected checkTimeout(): void {
     this.log.trace('Check timeout queue')
     const timeout: string[] = []
     const now = Date.now() - this.initialConfig.operationTimeout
@@ -276,6 +284,7 @@ export class TCPConnection extends EventEmitter {
 
     if (promise) {
       if (this.pendingRequests.size >= this.connectionConfig.maxQueueSize) {
+        promise.reject(eventstoreError.newConnectionError('Maximum concurrent items reached'))
         throw eventstoreError.newConnectionError('Maximum concurrent items reached')
       }
       this.pendingRequests.set(correlationId, {...promise, sendTime: Date.now()})
@@ -618,7 +627,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadAllEventsCompleted.ReadAllResult.Success:
         this.resolveCommandPromise(correlationId, decoded)
         return
-        break
       case protobuf.ReadAllEventsCompleted.ReadAllResult.AccessDenied:
         err = eventstoreError.newAccessDeniedError(message)
         break
@@ -642,7 +650,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadStreamEventsCompleted.ReadStreamResult.Success:
         this.resolveCommandPromise(correlationId, decoded)
         return
-        break
       case protobuf.ReadStreamEventsCompleted.ReadStreamResult.NoStream:
         err = eventstoreError.newNoStreamError(message)
         break
@@ -674,7 +681,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadEventCompleted.ReadEventResult.Success:
         this.resolveCommandPromise(correlationId, decoded.event)
         return
-        break
       case protobuf.ReadEventCompleted.ReadEventResult.NotFound:
         err = eventstoreError.newNotFoundError(message)
         break
@@ -911,7 +917,6 @@ export class TCPConnection extends EventEmitter {
     switch (result) {
       case protobuf.OperationResult.Success:
         return true
-        break
       case protobuf.OperationResult.AccessDenied:
         err = eventstoreError.newAccessDeniedError(message)
         break
