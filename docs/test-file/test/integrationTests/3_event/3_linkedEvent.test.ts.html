@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">test/unitTests/3_event/eventBase.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <title data-ice="title">test/integrationTests/3_event/3_linkedEvent.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -73,63 +73,97 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">test/unitTests/3_event/eventBase.test.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {expect} from &apos;chai&apos;
-import {Event} from &apos;../../../src&apos;
+<div class="content" data-ice="content"><h1 data-ice="title">test/integrationTests/3_event/3_linkedEvent.test.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Eventstore, Event, Stream} from &apos;../../../src&apos;
 import * as assert from &apos;assert&apos;
-import uuid = require(&apos;uuid/v4&apos;)
+import * as sinon from &apos;sinon&apos;
 
-interface TestEventDataSchema {
-  someString: string
-  someNumber: number
-  someBoolean: boolean
-  someObject: {
-    moreText: string
-    otherNumber: number
-    otherBoolean: boolean
-  }
-}
-
-describe(&apos;Event class base tests&apos;, (): void =&gt; {
-  const testData: TestEventDataSchema = {
-    someString: &apos;some text&apos;,
-    someNumber: 100,
-    someBoolean: true,
-    someObject: {
-      moreText: &apos;something more&apos;,
-      otherNumber: 200,
-      otherBoolean: false
+describe(&apos;Linked event&apos;, (): void =&gt; {
+  const es = new Eventstore({
+    uri: &apos;discover://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:2112&apos;,
+    clientId: &apos;ts-client-test&apos;,
+    useSSL: true
+  })
+  let sandbox = sinon.createSandbox()
+  before(
+    async (): Promise&lt;void&gt; =&gt; {
+      await es.connect()
     }
-  }
+  )
 
-  const testMetadata = {
-    $correlationId: uuid()
-  }
+  after(
+    async (): Promise&lt;void&gt; =&gt; {
+      await es.disconnect()
+    }
+  )
 
-  it(&apos;creates a event instance&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;)
-    assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify({}))
-    expect(newEvent.data).to.be.exist
-    expect(newEvent.metadata).to.be.null
-    expect(newEvent.id).to.be.exist
+  afterEach(
+    (): void =&gt; {
+      sandbox.restore()
+    }
+  )
+
+  it(&apos;resolves linked event&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const walker = await es.fromStream(&apos;$ce-teneventsstream&apos;).walkStreamForward(0, 100, false)
+    await walker.forEach(
+      async (eventEntry): Promise&lt;void&gt; =&gt; {
+        assert.strictEqual(eventEntry.isLink(), true)
+        assert.strictEqual(typeof eventEntry.metadata, &apos;string&apos;)
+        const event = await es.resolveLink(eventEntry, true, {
+          username: &apos;restrictedUser&apos;,
+          password: &apos;restrictedOnlyUserPassword&apos;
+        })
+        if (event) {
+          assert.strictEqual(event.isLink(), false)
+        }
+      }
+    )
+    assert.ok(&apos;ok&apos;)
   })
 
-  it(&apos;creates a event instance with eventData&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;, testData)
-    expect(newEvent.data).to.be.exist
-    assert.strictEqual(newEvent.data, testData)
-    expect(newEvent.metadata).to.be.null
-    expect(newEvent.id).to.be.exist
+  it(&apos;returns same event if not link&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const event = new Event(&apos;testEvent&apos;)
+    const resolvedEvent = await es.resolveLink(event)
+    assert.strictEqual(event, resolvedEvent)
   })
 
-  it(&apos;creates a event instance with eventData and metadata&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;, testData, testMetadata)
-    expect(newEvent.data).to.be.exist
-    assert.strictEqual(newEvent.data, testData)
-    expect(newEvent.metadata).to.be.exist
-    assert.strictEqual(newEvent.metadata, testMetadata)
-    expect(newEvent.id).to.be.exist
-    assert.strictEqual(newEvent.correlationId, testMetadata.$correlationId)
+  it(&apos;throws NotFoundError&apos;, async (): Promise&lt;void&gt; =&gt; {
+    class TestClass extends Event {
+      public constructor() {
+        super(&apos;testEvent&apos;)
+      }
+
+      public get data(): string {
+        return &apos;0@fakeStream&apos;
+      }
+
+      public isLink(): boolean {
+        return true
+      }
+    }
+
+    sandbox.stub(Stream.prototype, &apos;getEventByNumber&apos;).resolves(null)
+    const event = new TestClass()
+
+    try {
+      await es.resolveLink(event)
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      console.log(err)
+      assert.strictEqual(err.name, &apos;EventstoreNotFoundError&apos;)
+    }
+  })
+
+  it(&apos;throws ProtocolError&apos;, async (): Promise&lt;void&gt; =&gt; {
+    sandbox.stub(Stream.prototype, &apos;getEventByNumber&apos;).resolves({data: false})
+    sandbox.stub(Event.prototype, &apos;isLink&apos;).returns(true)
+    const event = new Event(&apos;testEvent&apos;)
+    try {
+      await es.resolveLink(event)
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreProtocolError&apos;)
+    }
   })
 })
 </code></pre>

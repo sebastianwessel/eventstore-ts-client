@@ -1,7 +1,7 @@
 <!DOCTYPE html><html><head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">test/unitTests/3_event/eventBase.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <title data-ice="title">test/unitTests/1_eventstore/sendCommand.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -73,63 +73,69 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">test/unitTests/3_event/eventBase.test.ts</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {expect} from &apos;chai&apos;
-import {Event} from &apos;../../../src&apos;
-import * as assert from &apos;assert&apos;
+<div class="content" data-ice="content"><h1 data-ice="title">test/unitTests/1_eventstore/sendCommand.test.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import * as assert from &apos;assert&apos;
+import {TCPConnection} from &apos;../../../src/eventstore/TCPConnection&apos;
+import {setConnectionSettings} from &apos;../../../src/eventstore/EventstoreSettings&apos;
 import uuid = require(&apos;uuid/v4&apos;)
 
-interface TestEventDataSchema {
-  someString: string
-  someNumber: number
-  someBoolean: boolean
-  someObject: {
-    moreText: string
-    otherNumber: number
-    otherBoolean: boolean
-  }
-}
+describe(&apos;sendCommand&apos;, (): void =&gt; {
+  class TestClass extends TCPConnection {
+    public constructor() {
+      super(
+        setConnectionSettings({
+          port: 0,
+          host: &apos;&apos;,
+          operationTimeout: 100,
+          operationTimeoutCheckPeriod: 100,
+          connectTimeout: 1,
+          maxQueueSize: 2
+        })
+      )
+      this.state = 2
+    }
 
-describe(&apos;Event class base tests&apos;, (): void =&gt; {
-  const testData: TestEventDataSchema = {
-    someString: &apos;some text&apos;,
-    someNumber: 100,
-    someBoolean: true,
-    someObject: {
-      moreText: &apos;something more&apos;,
-      otherNumber: 200,
-      otherBoolean: false
+    public addRequest(uuid: string, resolve: Function, reject: Function, sendTime: number): void {
+      this.pendingRequests.set(uuid, {resolve, reject, sendTime})
     }
   }
 
-  const testMetadata = {
-    $correlationId: uuid()
-  }
-
-  it(&apos;creates a event instance&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;)
-    assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify({}))
-    expect(newEvent.data).to.be.exist
-    expect(newEvent.metadata).to.be.null
-    expect(newEvent.id).to.be.exist
+  it(&apos;throws on maximum &apos;, async (): Promise&lt;void&gt; =&gt; {
+    const testClass = new TestClass()
+    new Promise(
+      (resolve, reject): void =&gt; {
+        testClass.addRequest(uuid(), resolve, reject, Date.now())
+      }
+    )
+    new Promise(
+      (resolve, reject): void =&gt; {
+        testClass.addRequest(uuid(), resolve, reject, Date.now())
+      }
+    )
+    try {
+      await new Promise(
+        (resolve, reject): void =&gt; {
+          testClass.sendCommand(uuid(), 0x03, Buffer.from(&apos;&apos;), null, {resolve, reject})
+        }
+      )
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreConnectionError&apos;)
+    }
   })
 
-  it(&apos;creates a event instance with eventData&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;, testData)
-    expect(newEvent.data).to.be.exist
-    assert.strictEqual(newEvent.data, testData)
-    expect(newEvent.metadata).to.be.null
-    expect(newEvent.id).to.be.exist
-  })
-
-  it(&apos;creates a event instance with eventData and metadata&apos;, (): void =&gt; {
-    const newEvent = new Event(&apos;EventWasHappened&apos;, testData, testMetadata)
-    expect(newEvent.data).to.be.exist
-    assert.strictEqual(newEvent.data, testData)
-    expect(newEvent.metadata).to.be.exist
-    assert.strictEqual(newEvent.metadata, testMetadata)
-    expect(newEvent.id).to.be.exist
-    assert.strictEqual(newEvent.correlationId, testMetadata.$correlationId)
+  it(&apos;throws on socket error&apos;, async (): Promise&lt;void&gt; =&gt; {
+    const testClass = new TestClass()
+    try {
+      await new Promise(
+        (resolve, reject): void =&gt; {
+          testClass.sendCommand(uuid(), 0x03, Buffer.from(&apos;&apos;), null, {resolve, reject})
+        }
+      )
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreConnectionError&apos;)
+    }
   })
 })
 </code></pre>
