@@ -27,7 +27,7 @@ export class StreamWalker {
 
     const a = async function*(iterable: AsyncIterable<Event | null>) {
       for await (const value of iterable) {
-        yield fn.call(thisArg, value)
+        yield await fn.call(thisArg, value)
       }
     }
     return new StreamWalker(a(this.iterable))
@@ -44,7 +44,7 @@ export class StreamWalker {
     const iterable = this.iterable
     const b = async function*(fn: Function, thisArg?: Function) {
       for await (const value of iterable) {
-        if (fn.call(thisArg, value)) {
+        if (await fn.call(thisArg, value)) {
           yield value
         }
       }
@@ -62,7 +62,7 @@ export class StreamWalker {
     }
     const iterable = this.iterable
     for await (const value of iterable) {
-      fn.call(thisArg, value, ...args)
+      await fn.call(thisArg, value, ...args)
     }
   }
 
@@ -80,7 +80,7 @@ export class StreamWalker {
     const iterable = this.iterable
     let returnValue = initialValue
     for await (const value of iterable) {
-      returnValue = accumulatorFunction.call(thisArg, returnValue, value)
+      returnValue = await accumulatorFunction.call(thisArg, returnValue, value)
     }
     return returnValue
   }
@@ -107,7 +107,7 @@ export class StreamWalker {
     }
     const iterable = this.iterable
     for await (const value of iterable) {
-      if (fn.call(thisArg, value) === false) {
+      if ((await fn.call(thisArg, value)) === false) {
         return false
       }
     }
