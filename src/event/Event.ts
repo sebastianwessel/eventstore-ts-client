@@ -116,9 +116,9 @@ export class Event {
     if (this.objectData) {
       return this.objectData
     }
-    if (this.rawData && this.isResolved && this.dataContentType === 1) {
+    if (this.rawData && !this.isLink()) {
       this.objectData = JSON.parse(Buffer.from(this.rawData).toString())
-    } else if (this.rawData) {
+    } else if (this.rawData && this.isLink()) {
       return Buffer.from(this.rawData).toString()
     }
     return this.objectData || {}
@@ -140,9 +140,9 @@ export class Event {
     if (this.objectMetadata) {
       return this.objectMetadata
     }
-    if (this.rawMetadata && this.isResolved && this.dataContentType === 1) {
+    if (this.rawMetadata && !this.isLink()) {
       this.objectMetadata = JSON.parse(Buffer.from(this.rawMetadata).toString())
-    } else if (this.rawMetadata) {
+    } else if (this.rawMetadata && this.isLink()) {
       return Buffer.from(this.rawMetadata).toString()
     }
     return this.objectMetadata
@@ -202,7 +202,6 @@ export class Event {
       //is linked event
       event.isResolved = false
     }
-    event.isResolved = true
     event.streamId = rawEvent.eventStreamId
     event.eventNumber = rawEvent.eventNumber
     event.eventId = uuidFromBuffer(Buffer.from(rawEvent.eventId))
