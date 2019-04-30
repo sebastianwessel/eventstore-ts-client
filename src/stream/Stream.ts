@@ -167,7 +167,10 @@ export class Stream {
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<Position> {
-    this.log.debug(`Hard delete Stream ${this.streamId}`)
+    this.log.debug(
+      {fn: 'hardDelete', streamId: this.streamId},
+      `Hard delete Stream ${this.streamId}`
+    )
     return await this.delete(true, expectedVersion, requireMaster)
   }
 
@@ -178,7 +181,10 @@ export class Stream {
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean
   ): Promise<Position> {
-    this.log.debug(`Soft delete Stream ${this.streamId}`)
+    this.log.debug(
+      {fn: 'softDelete', streamId: this.streamId},
+      `Soft delete Stream ${this.streamId}`
+    )
     return await this.delete(false, expectedVersion, requireMaster)
   }
 

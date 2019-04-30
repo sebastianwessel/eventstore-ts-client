@@ -107,7 +107,7 @@ export class TCPConnection extends EventEmitter {
         await this.tryToConnect()
         connected = true
       } catch (err) {
-        this.log.error({err, count: this.reconnectCount}, 'Try to connect failed ')
+        this.log.error({err, count: this.reconnectCount, fn: 'connect'}, 'Try to connect failed ')
         this.reconnectCount++
         await new Promise(
           (resolve): void => {
@@ -242,10 +242,13 @@ export class TCPConnection extends EventEmitter {
       }
     }
     for (let x = 0, xMax = timeout.length; x < xMax; x++) {
-      const entry = this.pendingRequests.get(timeout[x])
-      if (entry) {
-        entry.reject(eventstoreError.newTimeoutError())
-        this.pendingRequests.delete(timeout[x])
+      try {
+        this.rejectCommandPromise(
+          timeout[x],
+          eventstoreError.newTimeoutError('Timeout by eventstore-ts-client')
+        )
+      } catch (err) {
+        this.log.error({err, fn: 'checkTimeout'}, 'Error on rejectCommandPromise')
       }
     }
   }
@@ -709,7 +712,10 @@ export class TCPConnection extends EventEmitter {
         new Position(decoded.event.commitPosition, decoded.event.preparePosition)
       )
     } else {
-      this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
+      this.log.error(
+        {subscriptionId: correlationId, fn: 'handleStreamEventAppeared'},
+        'Received StreamEventAppeared for unknown id'
+      )
       this.emit(
         'error',
         eventstoreError.newImplementationError(
@@ -877,7 +883,8 @@ export class TCPConnection extends EventEmitter {
       this.log.error(
         {
           subscriptionId: correlationId,
-          persistentSubscriptionList: this.persistentSubscriptionList
+          persistentSubscriptionList: this.persistentSubscriptionList,
+          fn: 'handlePersistentSubscriptionStreamEventAppeared'
         },
         'Received PersistentSubscriptionStreamEventAppeared for unknown id'
       )

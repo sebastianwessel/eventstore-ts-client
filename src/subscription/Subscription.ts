@@ -82,7 +82,7 @@ export class Subscription extends EventEmitter {
    * Unsubscribe from stream
    */
   public async unsubscribe(): Promise<void> {
-    this.log.debug('unsubscribe subscription')
+    this.log.debug({fn: 'unsubscribe'}, 'unsubscribe subscription')
     await this.tcpConnection.unsubscribeFromStream(this.id)
   }
 
