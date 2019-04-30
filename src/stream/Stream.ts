@@ -488,8 +488,7 @@ export class Stream {
     credentials?: UserCredentials | null
   ) {
     const that = this
-    const resolveLinksTos =
-      resolveLinks === undefined ? (resolveLinks = this.options.resolveLinks) : resolveLinks
+    const resolveLinksTos = resolveLinks === undefined ? this.options.resolveLinks : resolveLinks
     const getSlice = forward ? 'readSliceForward' : 'readSliceBackward'
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
