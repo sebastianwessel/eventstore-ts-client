@@ -61,6 +61,14 @@ describe('New event instance tests', (): void => {
     assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify(newData))
   })
 
+  it('converts json string to eventData', (): void => {
+    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
+    const newData = `{"someString":"I was changed"}`
+    newEvent.data = newData
+
+    assert.strictEqual(JSON.stringify(newEvent.data), newData)
+  })
+
   it('can change eventMetadata', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newMetadata = {somethingNew: uuid()}
@@ -68,6 +76,14 @@ describe('New event instance tests', (): void => {
 
     expect(JSON.stringify(newEvent.metadata)).not.to.be.equal(JSON.stringify(testMetadata))
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(newMetadata))
+  })
+
+  it('converts json string to eventMetadata', (): void => {
+    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
+    const newMetadata = `{"somethingNew":"${uuid()}"}`
+    newEvent.metadata = newMetadata
+
+    assert.strictEqual(JSON.stringify(newEvent.metadata), newMetadata)
   })
 
   it('can change eventCorrelationId', (): void => {
