@@ -445,19 +445,19 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber34",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber33",
     "Event class base tests creates a event instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber42",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber41",
     "Event class base tests creates a event instance with eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber50",
+    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber49",
     "Event class base tests creates a event instance with eventData and metadata",
     "test"
   ],
@@ -553,43 +553,37 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber34",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber33",
     "Existing event instance tests returns false on existing event",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber100",
-    "Existing event instance tests throws on changing eventCausationId",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber88",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber87",
     "Existing event instance tests throws on changing eventCorrelationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber64",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber63",
     "Existing event instance tests throws on changing eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber52",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber51",
     "Existing event instance tests throws on changing eventId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber76",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber75",
     "Existing event instance tests throws on changing eventMetadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber40",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber39",
     "Existing event instance tests throws on changing name",
     "test"
   ],
@@ -619,55 +613,91 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber5",
+    "Linked event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber30",
+    "Linked event resolves linked event",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber48",
+    "Linked event returns same event if not link",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber54",
+    "Linked event throws NotFoundError",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber81",
+    "Linked event throws ProtocolError",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber17",
     "New event instance tests",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber86",
-    "New event instance tests can change eventCausationId",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber74",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber89",
     "New event instance tests can change eventCorrelationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber56",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber55",
     "New event instance tests can change eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber47",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber46",
     "New event instance tests can change eventId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber65",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber72",
     "New event instance tests can change eventMetadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber39",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber38",
     "New event instance tests can change name",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber98",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber64",
+    "New event instance tests converts json string to eventData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber81",
+    "New event instance tests converts json string to eventMetadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber106",
     "New event instance tests returns model.eventstore.proto.NewEvent instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber34",
+    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber33",
     "New event instance tests returns true on new event",
     "test"
   ],
@@ -1051,6 +1081,48 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber5",
+    "TCPConnection",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber34",
+    "TCPConnection handleMultiPacketResponseData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber35",
+    "TCPConnection handleMultiPacketResponseData returns null when param is null",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber42",
+    "TCPConnection handleNewResponseData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber43",
+    "TCPConnection handleNewResponseData throws on invalid command length",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber55",
+    "TCPConnection handleSingleResponseData",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber56",
+    "TCPConnection handleSingleResponseData throws on invalid command length",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber5",
     "Test position class",
     "test"
@@ -1231,79 +1303,85 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber112",
+    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber7",
+    "checkTimeout",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber61",
+    "checkTimeout logs errors on timeout",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber45",
+    "checkTimeout throws timed out promises",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html#lineNumber6",
+    "disconnect",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html#lineNumber26",
+    "disconnect throws on empty port or host",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber100",
     "event from raw",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber232",
-    "event from raw deletes causationId",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber214",
-    "event from raw deletes causationId also from metadata",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber225",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber188",
     "event from raw deletes correlationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber203",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber177",
     "event from raw deletes correlationId also from metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber152",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber138",
     "event from raw returns event instance with full metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber172",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber156",
     "event from raw returns event instance without created information",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber162",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber147",
     "event from raw returns event instance without metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber245",
-    "event from raw returns null for causationId if not set",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber239",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber195",
     "event from raw returns null for correlationId if not set",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber194",
-    "event from raw sets metadata on setting causationId",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber185",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber168",
     "event from raw sets metadata on setting correlationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber251",
+    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber201",
     "event from raw throw on missing raw event or link",
     "test"
   ],
@@ -1383,6 +1461,24 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber70",
     "handleReadStreamEventsCompleted handles ReadStreamResult.StreamDeleted",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber6",
+    "sendCommand",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber27",
+    "sendCommand throws on maximum ",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber51",
+    "sendCommand throws on socket error",
     "test"
   ],
   [
@@ -1770,18 +1866,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/event/event.ts~event#causationid",
-    "class/src/event/Event.ts~Event.html#instance-set-causationId",
-    "src/event/Event.ts~Event#causationId",
-    "member"
-  ],
-  [
-    "src/event/event.ts~event#causationid",
-    "class/src/event/Event.ts~Event.html#instance-get-causationId",
-    "src/event/Event.ts~Event#causationId",
-    "member"
-  ],
-  [
     "src/event/event.ts~event#constructor",
     "class/src/event/Event.ts~Event.html#instance-constructor-constructor",
     "src/event/Event.ts~Event#constructor",
@@ -1860,10 +1944,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/event/event.ts~event#islink",
+    "class/src/event/Event.ts~Event.html#instance-method-isLink",
+    "src/event/Event.ts~Event#isLink",
+    "method"
+  ],
+  [
     "src/event/event.ts~event#isnew",
     "class/src/event/Event.ts~Event.html#instance-method-isNew",
     "src/event/Event.ts~Event#isNew",
     "method"
+  ],
+  [
+    "src/event/event.ts~event#isresolved",
+    "class/src/event/Event.ts~Event.html#instance-member-isResolved",
+    "src/event/Event.ts~Event#isResolved",
+    "member"
   ],
   [
     "src/event/event.ts~event#metadata",
@@ -1893,12 +1989,6 @@ window.esdocSearchIndex = [
     "src/event/event.ts~event#name",
     "class/src/event/Event.ts~Event.html#instance-get-name",
     "src/event/Event.ts~Event#name",
-    "member"
-  ],
-  [
-    "src/event/event.ts~event#objectcausationid",
-    "class/src/event/Event.ts~Event.html#instance-member-objectCausationId",
-    "src/event/Event.ts~Event#objectCausationId",
     "member"
   ],
   [
@@ -2103,6 +2193,12 @@ window.esdocSearchIndex = [
     "src/eventstore/eventstore.ts~eventstore#readsliceforward",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward",
     "src/eventstore/Eventstore.ts~Eventstore#readSliceForward",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#resolvelink",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-resolveLink",
+    "src/eventstore/Eventstore.ts~Eventstore#resolveLink",
     "method"
   ],
   [
@@ -2478,9 +2574,9 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/eventstore/tcpconnection.ts~tcpconnection#timoutinterval",
-    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-timoutInterval",
-    "src/eventstore/TCPConnection.ts~TCPConnection#timoutInterval",
+    "src/eventstore/tcpconnection.ts~tcpconnection#timeoutinterval",
+    "class/src/eventstore/TCPConnection.ts~TCPConnection.html#instance-member-timeoutInterval",
+    "src/eventstore/TCPConnection.ts~TCPConnection#timeoutInterval",
     "member"
   ],
   [
@@ -3180,6 +3276,12 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/integrationtests/3_event/3_linkedevent.test.ts",
+    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html",
+    "test/integrationTests/3_event/3_linkedEvent.test.ts",
+    "testFile"
+  ],
+  [
     "test/integrationtests/4_transaction/1_transaction.test.ts",
     "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html",
     "test/integrationTests/4_transaction/1_transaction.test.ts",
@@ -3201,6 +3303,18 @@ window.esdocSearchIndex = [
     "test/unittests/1_eventstore/checkoperationresult.test.ts",
     "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html",
     "test/unitTests/1_eventstore/checkOperationResult.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/checktimeout.test.ts",
+    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html",
+    "test/unitTests/1_eventstore/checkTimeout.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/disconnect.test.ts",
+    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html",
+    "test/unitTests/1_eventstore/disconnect.test.ts",
     "testFile"
   ],
   [
@@ -3228,9 +3342,27 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
+    "test/unittests/1_eventstore/handleresponsedata.test.ts",
+    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html",
+    "test/unitTests/1_eventstore/handleResponseData.test.ts",
+    "testFile"
+  ],
+  [
     "test/unittests/1_eventstore/position.test.ts",
     "test-file/test/unitTests/1_eventstore/position.test.ts.html",
     "test/unitTests/1_eventstore/position.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/sendcommand.test.ts",
+    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html",
+    "test/unitTests/1_eventstore/sendCommand.test.ts",
+    "testFile"
+  ],
+  [
+    "test/unittests/1_eventstore/trytoconnect.test.ts",
+    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html",
+    "test/unitTests/1_eventstore/tryToConnect.test.ts",
     "testFile"
   ],
   [
@@ -3268,6 +3400,18 @@ window.esdocSearchIndex = [
     "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html",
     "test/unitTests/6_misc/uuidBufferConvert.test.ts",
     "testFile"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber5",
+    "tryToConnect",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber24",
+    "tryToConnect throws on empty port or host",
+    "test"
   ],
   [
     "",

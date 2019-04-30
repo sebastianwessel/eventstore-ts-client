@@ -74,13 +74,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Eventstore} from &apos;<span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber25">eventstore-ts-client/src/eventstore/Eventstore.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Eventstore} from &apos;<span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber26">eventstore-ts-client/src/eventstore/Eventstore.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber25">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber26">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -560,7 +560,7 @@ Alias for method stream</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -589,13 +589,42 @@ Alias for method stream</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
         <div data-ice="description"><p>Reads a slice from current stream in forward direction</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          <span data-ice="async">async</span>
+          
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-resolveLink">resolveLink</a></span></span><span class="code" data-ice="signature">(link: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Resolves a link</p>
 </div>
       </div>
     </td>
@@ -648,7 +677,7 @@ You can also use one of the alias functions fromStream or atStream</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllBackward">walkAllBackward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllBackward">walkAllBackward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -677,7 +706,7 @@ You can also use one of the alias functions fromStream or atStream</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllForward">walkAllForward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllForward">walkAllForward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -830,7 +859,7 @@ Identification can be set in connection settings field clientId</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -867,7 +896,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber37">source</a></span></span>
     </span>
   </h3>
 
@@ -914,7 +943,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber87">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber88">source</a></span></span>
     </span>
   </h3>
 
@@ -958,7 +987,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber29">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
@@ -1002,7 +1031,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber98">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber99">source</a></span></span>
     </span>
   </h3>
 
@@ -1046,7 +1075,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber105">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber106">source</a></span></span>
     </span>
   </h3>
 
@@ -1090,7 +1119,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber57">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber58">source</a></span></span>
     </span>
   </h3>
 
@@ -1136,7 +1165,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber31">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
@@ -1180,7 +1209,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
@@ -1227,7 +1256,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber134">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber135">source</a></span></span>
     </span>
   </h3>
 
@@ -1294,7 +1323,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber64">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber65">source</a></span></span>
     </span>
   </h3>
 
@@ -1355,7 +1384,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber80">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 
@@ -1399,7 +1428,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber126">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber127">source</a></span></span>
     </span>
   </h3>
 
@@ -1466,7 +1495,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber91">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber92">source</a></span></span>
     </span>
   </h3>
 
@@ -1509,7 +1538,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber141">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber142">source</a></span></span>
     </span>
   </h3>
 
@@ -1549,11 +1578,11 @@ Alias for method stream</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber270">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber271">source</a></span></span>
     </span>
   </h3>
 
@@ -1587,7 +1616,7 @@ Alias for method stream</p>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="name" class="code" data-depth="0">resolveLinks</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: true</li></ul></td>
@@ -1635,11 +1664,11 @@ Alias for method stream</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber250">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber251">source</a></span></span>
     </span>
   </h3>
 
@@ -1673,10 +1702,82 @@ Alias for method stream</p>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="name" class="code" data-depth="0">resolveLinks</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: true</li></ul></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">requireMaster</td>
+      <td data-ice="type" class="code"></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+<tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">credentials</td>
+      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-resolveLink">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    <span data-ice="async">async</span>
+    
+    <span class="code" data-ice="name">resolveLink</span><span class="code" data-ice="signature">(link: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber434">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Resolves a link</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">link</td>
+      <td data-ice="type" class="code"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></td>
+      <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
@@ -1725,7 +1826,7 @@ Alias for method stream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber113">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber114">source</a></span></span>
     </span>
   </h3>
 
@@ -1788,11 +1889,11 @@ You can also use one of the alias functions fromStream or atStream</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">walkAllBackward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">walkAllBackward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber363">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber364">source</a></span></span>
     </span>
   </h3>
 
@@ -1826,7 +1927,7 @@ You can also use one of the alias functions fromStream or atStream</p>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="name" class="code" data-depth="0">resolveLinks</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: true</li></ul></td>
@@ -1874,11 +1975,11 @@ You can also use one of the alias functions fromStream or atStream</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">walkAllForward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">walkAllForward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber291">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber292">source</a></span></span>
     </span>
   </h3>
 
@@ -1912,7 +2013,7 @@ You can also use one of the alias functions fromStream or atStream</p>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="name" class="code" data-depth="0">resolveLinks</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: true</li></ul></td>
@@ -1966,7 +2067,7 @@ You can also use one of the alias functions fromStream or atStream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber188">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber189">source</a></span></span>
     </span>
   </h3>
 
@@ -2010,7 +2111,7 @@ You can also use one of the alias functions fromStream or atStream</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber163">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber164">source</a></span></span>
     </span>
   </h3>
 
@@ -2056,7 +2157,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber46">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber47">source</a></span></span>
     </span>
   </h3>
 
@@ -2117,7 +2218,7 @@ Identification can be set in connection settings field clientId</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber209">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber210">source</a></span></span>
     </span>
   </h3>
 
@@ -2173,11 +2274,11 @@ Identification can be set in connection settings field clientId</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, position: <span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber216">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/eventstore/Eventstore.ts.html#lineNumber217">source</a></span></span>
     </span>
   </h3>
 
@@ -2217,7 +2318,7 @@ Identification can be set in connection settings field clientId</p>
       <td data-ice="description"></td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">resolveLinkTos</td>
+      <td data-ice="name" class="code" data-depth="0">resolveLinks</td>
       <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: true</li></ul></td>

@@ -27,16 +27,15 @@ export class Event {
   /** flag if metadata is type of json */
   protected metadataContentType: number = 1
   /** raw buffer representation of data */
-  protected rawData: Uint8Array | null = null
+  public rawData: Uint8Array | null = null
   /** raw buffer representation of metadata */
-  protected rawMetadata: Uint8Array | null = null
+  public rawMetadata: Uint8Array | null = null
   /** js object  representation of data */
   protected objectData: {[k: string]: JSONValue} | null = null
   /** js object  representation of metadata */
   protected objectMetadata:
     | {
         $correlationId?: string
-        $causationId?: string
       } & {[k: string]: JSONValue}
     | null = null
   /** creation date as timestamp */
@@ -45,10 +44,11 @@ export class Event {
   protected objectCreatedEpoch: number | Long | null = null
   /** events correlation uuid4 */
   protected objectCorrelationId: string | null = null
-  /** events causation uuid4 */
-  protected objectCausationId: string | null = null
+
   /** indicates if event was written to eventstore */
   protected frozen: boolean = false
+  /** indicates if its an event or a link which must be resolved */
+  protected isResolved = true
 
   /**
    * Creates an instance of Event.
@@ -103,14 +103,23 @@ export class Event {
   }
 
   /**
+   * Returns true if event is a link and not a full resolved event
+   */
+  public isLink(): boolean {
+    return !this.isResolved
+  }
+
+  /**
    * Getter for event data
    */
-  public get data(): {[k: string]: JSONValue} {
+  public get data(): {[k: string]: JSONValue} | string {
     if (this.objectData) {
       return this.objectData
     }
-    if (this.rawData) {
+    if (this.rawData && !this.isLink()) {
       this.objectData = JSON.parse(Buffer.from(this.rawData).toString())
+    } else if (this.rawData && this.isLink()) {
+      return Buffer.from(this.rawData).toString()
     }
     return this.objectData || {}
   }
@@ -118,23 +127,23 @@ export class Event {
   /**
    * Sets data
    */
-  public set data(newData: {[k: string]: JSONValue}) {
+  public set data(newData: {[k: string]: JSONValue} | string) {
     this.throwIfNotNewEvent('eventData')
     //add as new object to prevent unwanted changes
-    this.objectData = {...newData}
+    this.objectData = typeof newData === 'string' ? JSON.parse(newData) : {...newData}
   }
 
   /**
    * Getter for event metadata
    */
-  public get metadata():
-    | {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue}
-    | null {
+  public get metadata(): {$correlationId?: string} & {[k: string]: JSONValue} | null | string {
     if (this.objectMetadata) {
       return this.objectMetadata
     }
-    if (this.rawMetadata) {
+    if (this.rawMetadata && !this.isLink()) {
       this.objectMetadata = JSON.parse(Buffer.from(this.rawMetadata).toString())
+    } else if (this.rawMetadata && this.isLink()) {
+      return Buffer.from(this.rawMetadata).toString()
     }
     return this.objectMetadata
   }
@@ -143,11 +152,12 @@ export class Event {
    * Setter for event metadata
    */
   public set metadata(
-    newMetadata: {$correlationId?: string; $causationId?: string} & {[k: string]: JSONValue} | null
+    newMetadata: {$correlationId?: string} & {[k: string]: JSONValue} | null | string
   ) {
     this.throwIfNotNewEvent('eventMetadata')
     //add as new object to prevent unwanted changes
-    this.objectMetadata = {...newMetadata}
+    this.objectMetadata =
+      typeof newMetadata === 'string' ? JSON.parse(newMetadata) : {...newMetadata}
   }
 
   /**
@@ -163,7 +173,7 @@ export class Event {
       return
     }
     this.objectCorrelationId = newCorrelationId
-    if (this.metadata) {
+    if (this.metadata && typeof this.metadata !== 'string' && this.metadata.$correlationId) {
       this.metadata.$correlationId = this.objectCorrelationId
     } else {
       this.metadata = {$correlationId: this.objectCorrelationId}
@@ -174,56 +184,31 @@ export class Event {
    * Getter for event correlationId
    */
   public get correlationId(): string | null {
-    if (this.metadata) {
+    if (this.metadata && typeof this.metadata !== 'string') {
       this.objectCorrelationId = this.metadata.$correlationId || null
     }
     return this.objectCorrelationId
   }
 
   /**
-   * Setter for event causationId
-   */
-  public set causationId(newCausationId: string | null) {
-    this.throwIfNotNewEvent('causationId')
-    if (!newCausationId) {
-      this.objectCausationId = newCausationId
-      if (this.objectMetadata && this.objectMetadata.$causationId) {
-        delete this.objectMetadata.$causationId
-      }
-      return
-    }
-    this.objectCausationId = newCausationId
-    if (this.metadata) {
-      this.metadata.$causationId = this.objectCausationId
-    } else {
-      this.metadata = {$causationId: this.objectCausationId}
-    }
-  }
-
-  /**
-   * Getter for event causationId
-   */
-  public get causationId(): string | null {
-    if (this.metadata) {
-      this.objectCausationId = this.metadata.$causationId || null
-    }
-    return this.objectCausationId
-  }
-
-  /**
-   * Returns a new instance of @link {Event} from protobuf result
+   * Returns a new instance of Event from protobuf result
    */
   public static fromRaw(rawEvent: model.eventstore.proto.IEventRecord | null | undefined): Event {
     if (!rawEvent) {
       throw eventstoreError.newProtocolError('No event or link was given at Event.fromRaw')
     }
     const event = new Event(rawEvent.eventType)
+    if (rawEvent.eventType === '$>') {
+      //is linked event
+      event.isResolved = false
+    }
     event.streamId = rawEvent.eventStreamId
     event.eventNumber = rawEvent.eventNumber
     event.eventId = uuidFromBuffer(Buffer.from(rawEvent.eventId))
     event.dataContentType = rawEvent.dataContentType
     event.rawData = rawEvent.data
     event.rawMetadata = rawEvent.metadata || null
+    event.metadataContentType = rawEvent.metadataContentType
     event.objectCreated = rawEvent.created ? rawEvent.created : null
     event.objectCreatedEpoch = rawEvent.createdEpoch ? rawEvent.createdEpoch : null
     event.freeze()

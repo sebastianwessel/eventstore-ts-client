@@ -10,6 +10,7 @@ import * as model from '../protobuf/model'
 import {Position} from './Position'
 import {StreamWalker} from '../StreamWalker'
 import {Event} from '../event'
+import * as eventstoreErrors from '../errors'
 
 const protobuf = model.eventstore.proto
 
@@ -67,11 +68,11 @@ export class Eventstore extends EventEmitter {
 
     try {
       await this.authenticate()
+      await this.identifyClient()
     } catch (err) {
       await this.disconnect()
       throw err
     }
-    await this.identifyClient()
   }
 
   /**
@@ -188,7 +189,7 @@ export class Eventstore extends EventEmitter {
   protected async authenticate(): Promise<void> {
     await new Promise(
       (resolve, reject): void => {
-        this.log.debug(`Identify as ${this.connectionConfig.clientId}`)
+        this.log.debug(`Authenticate`)
         this.connection.sendCommand(
           uuid(),
           EventstoreCommand.Authenticate,
@@ -217,7 +218,7 @@ export class Eventstore extends EventEmitter {
     direction: EventstoreCommand,
     position: Position,
     maxCount: number = 100,
-    resolveLinkTos: boolean = true,
+    resolveLinks: boolean = true,
     requireMaster: boolean,
     credentials: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
@@ -227,7 +228,7 @@ export class Eventstore extends EventEmitter {
           commitPosition: position.commitPosition,
           preparePosition: position.preparePosition,
           maxCount,
-          resolveLinkTos,
+          resolveLinks,
           requireMaster
         })
         this.connection.sendCommand(
@@ -250,7 +251,7 @@ export class Eventstore extends EventEmitter {
   public async readSliceForward(
     position: Position,
     maxCount: number = 100,
-    resolveLinkTos: boolean = true,
+    resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
@@ -258,7 +259,7 @@ export class Eventstore extends EventEmitter {
       EventstoreCommand.ReadAllEventsForward,
       position,
       maxCount,
-      resolveLinkTos,
+      resolveLinks,
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
     )
@@ -270,7 +271,7 @@ export class Eventstore extends EventEmitter {
   public async readSliceBackward(
     position: Position,
     maxCount: number = 100,
-    resolveLinkTos: boolean = true,
+    resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
@@ -278,7 +279,7 @@ export class Eventstore extends EventEmitter {
       EventstoreCommand.ReadAllEventsBackward,
       position,
       maxCount,
-      resolveLinkTos,
+      resolveLinks,
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
     )
@@ -291,7 +292,7 @@ export class Eventstore extends EventEmitter {
   public async walkAllForward(
     start: Position = Position.Start,
     maxCount: number = 100,
-    resolveLinkTos: boolean = true,
+    resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
@@ -309,7 +310,7 @@ export class Eventstore extends EventEmitter {
       let readResult = that.readSliceForward(
         begin,
         maxCount,
-        resolveLinkTos,
+        resolveLinks,
         requireMaster,
         credentials
       )
@@ -322,7 +323,7 @@ export class Eventstore extends EventEmitter {
         readResult = that.readSliceForward(
           begin,
           maxCount,
-          resolveLinkTos,
+          resolveLinks,
           requireMaster,
           credentials
         )
@@ -345,7 +346,7 @@ export class Eventstore extends EventEmitter {
             readResult = that.readSliceForward(
               begin,
               maxCount,
-              resolveLinkTos,
+              resolveLinks,
               requireMaster,
               credentials
             )
@@ -363,7 +364,7 @@ export class Eventstore extends EventEmitter {
   public async walkAllBackward(
     start: Position = Position.End,
     maxCount: number = 100,
-    resolveLinkTos: boolean = true,
+    resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
@@ -381,7 +382,7 @@ export class Eventstore extends EventEmitter {
       let readResult = that.readSliceBackward(
         begin,
         maxCount,
-        resolveLinkTos,
+        resolveLinks,
         requireMaster,
         credentials
       )
@@ -394,7 +395,7 @@ export class Eventstore extends EventEmitter {
         readResult = that.readSliceBackward(
           begin,
           maxCount,
-          resolveLinkTos,
+          resolveLinks,
           requireMaster,
           credentials
         )
@@ -417,7 +418,7 @@ export class Eventstore extends EventEmitter {
             readResult = that.readSliceBackward(
               begin,
               maxCount,
-              resolveLinkTos,
+              resolveLinks,
               requireMaster,
               credentials
             )
@@ -427,5 +428,45 @@ export class Eventstore extends EventEmitter {
     }
 
     return new StreamWalker(asyncGenerator(start))
+  }
+
+  /** Resolves a link  */
+  public async resolveLink(
+    link: Event,
+    requireMaster?: boolean,
+    credentials?: UserCredentials | null
+  ): Promise<Event | null> {
+    if (!link.isLink()) {
+      return link
+    }
+
+    if (requireMaster === undefined) {
+      requireMaster = this.connectionConfig.requireMaster
+    }
+
+    if (typeof link.data !== 'string') {
+      throw eventstoreErrors.newProtocolError('Invalid link data')
+    }
+
+    const linkInfo = link.data.split('@')
+    let streamName = linkInfo[1]
+    let eventNumber = Long.fromValue(linkInfo[0])
+
+    const stream = this.stream(streamName)
+    if (stream.isMetaStream()) {
+      this.log.debug({streamName}, 'Getting specific event from meta is not supported')
+      return null
+    }
+    if (requireMaster) {
+      stream.requiresMaster()
+    }
+    if (credentials) {
+      stream.withCredentials(credentials)
+    }
+    const event = await stream.getEventByNumber(eventNumber)
+    if (!event) {
+      throw eventstoreErrors.newNotFoundError('Event could not be found')
+    }
+    return event
   }
 }

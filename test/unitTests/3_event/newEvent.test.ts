@@ -27,8 +27,7 @@ describe('New event instance tests', (): void => {
   }
 
   const testMetadata = {
-    $correlationId: uuid(),
-    $causationId: uuid()
+    $correlationId: uuid()
   }
 
   it('returns true on new event', (): void => {
@@ -62,6 +61,14 @@ describe('New event instance tests', (): void => {
     assert.strictEqual(JSON.stringify(newEvent.data), JSON.stringify(newData))
   })
 
+  it('converts json string to eventData', (): void => {
+    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
+    const newData = `{"someString":"I was changed"}`
+    newEvent.data = newData
+
+    assert.strictEqual(JSON.stringify(newEvent.data), newData)
+  })
+
   it('can change eventMetadata', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newMetadata = {somethingNew: uuid()}
@@ -71,27 +78,28 @@ describe('New event instance tests', (): void => {
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(newMetadata))
   })
 
+  it('converts json string to eventMetadata', (): void => {
+    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
+    const newMetadata = `{"somethingNew":"${uuid()}"}`
+    newEvent.metadata = newMetadata
+
+    assert.strictEqual(JSON.stringify(newEvent.metadata), newMetadata)
+  })
+
   it('can change eventCorrelationId', (): void => {
     const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
     const newCorrelationId = uuid()
     newEvent.correlationId = newCorrelationId
 
-    expect(newEvent.metadata.$correlationId).not.to.be.equal(testMetadata.$correlationId)
-    expect(newEvent.metadata.$correlationId).to.be.equal(newCorrelationId)
+    if (typeof newEvent.metadata !== 'string') {
+      expect(newEvent.metadata.$correlationId).not.to.be.equal(testMetadata.$correlationId)
+      expect(newEvent.metadata.$correlationId).to.be.equal(newCorrelationId)
+    } else {
+      assert.fail('metadata is string instead of object')
+    }
+
     expect(newEvent.correlationId).to.be.equal(newCorrelationId)
     const n = {...testMetadata, ...{$correlationId: newCorrelationId}}
-    assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(n))
-  })
-
-  it('can change eventCausationId', (): void => {
-    const newEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
-    const newCausationId = uuid()
-    newEvent.causationId = newCausationId
-
-    expect(newEvent.metadata.$causationId).not.to.be.equal(testMetadata.$causationId)
-    expect(newEvent.metadata.$causationId).to.be.equal(newCausationId)
-    expect(newEvent.causationId).to.be.equal(newCausationId)
-    const n = {...testMetadata, ...{$causationId: newCausationId}}
     assert.strictEqual(JSON.stringify(newEvent.metadata), JSON.stringify(n))
   })
 

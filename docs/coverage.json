@@ -23,18 +23,18 @@
       "undocumentLines": []
     },
     "src/event/Event.ts": {
-      "expectCount": 35,
-      "actualCount": 34,
+      "expectCount": 34,
+      "actualCount": 33,
       "undocumentLines": [
         8
       ]
     },
     "src/eventstore/Eventstore.ts": {
-      "expectCount": 26,
-      "actualCount": 24,
+      "expectCount": 27,
+      "actualCount": 25,
       "undocumentLines": [
-        14,
-        91
+        15,
+        92
       ]
     },
     "src/eventstore/EventstoreSettings.ts": {
@@ -70,7 +70,7 @@
         75,
         77,
         100,
-        234
+        243
       ]
     },
     "src/eventstore/getConnectInfo.ts": {
@@ -103,8 +103,8 @@
         38,
         60,
         488,
-        537,
-        547
+        544,
+        554
       ]
     },
     "src/stream/Transaction.ts": {

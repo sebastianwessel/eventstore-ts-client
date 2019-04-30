@@ -64,7 +64,7 @@ export class TCPConnection extends EventEmitter {
     string,
     {resolve: Function; reject: Function; sendTime: number}
   > = new Map()
-  protected timoutInterval: null | NodeJS.Timeout = null
+  protected timeoutInterval: null | NodeJS.Timeout = null
   public log: bunyan
   protected state: connectionState = connectionState.closed
   protected messageCurrentOffset: number = 0
@@ -107,7 +107,7 @@ export class TCPConnection extends EventEmitter {
         await this.tryToConnect()
         connected = true
       } catch (err) {
-        this.log.error({err, count: this.reconnectCount}, 'Try to connect failed ')
+        this.log.error({err, count: this.reconnectCount, fn: 'connect'}, 'Try to connect failed ')
         this.reconnectCount++
         await new Promise(
           (resolve): void => {
@@ -209,29 +209,39 @@ export class TCPConnection extends EventEmitter {
         this.onDrain()
         if (this.pendingRequests.size <= 0) {
           this.state = connectionState.closed
-          this.socket.end(
-            (): void => {
-              this.socket.destroy()
-              resolve()
-            }
-          )
+          this.socket.destroy()
+          resolve()
         } else {
+          this.log.debug(
+            {
+              pendingRequests: this.pendingRequests.size,
+              timeout:
+                this.initialConfig.operationTimeout + this.initialConfig.operationTimeoutCheckPeriod
+            },
+            'Wait for pending requests'
+          )
           // wait for pending requests/timeouts
           setTimeout((): void => {
             this.state = connectionState.closed
-            this.socket.end(
-              (): void => {
-                this.socket.destroy()
-                resolve()
+            this.socket.destroy()
+            this.log.debug('Timeout finished')
+            this.pendingRequests.forEach(
+              (value, id): void => {
+                this.rejectCommandPromise(
+                  id,
+                  eventstoreError.newConnectionError('Connection closed')
+                )
               }
             )
+            resolve()
           }, this.initialConfig.operationTimeout + this.initialConfig.operationTimeoutCheckPeriod)
         }
       }
     )
   }
 
-  private checkTimeout(): void {
+  protected checkTimeout(): void {
+    this.log.trace('Check timeout queue')
     const timeout: string[] = []
     const now = Date.now() - this.initialConfig.operationTimeout
     for (var [key, value] of this.pendingRequests) {
@@ -240,10 +250,13 @@ export class TCPConnection extends EventEmitter {
       }
     }
     for (let x = 0, xMax = timeout.length; x < xMax; x++) {
-      const entry = this.pendingRequests.get(timeout[x])
-      if (entry) {
-        entry.reject(eventstoreError.newTimeoutError())
-        this.pendingRequests.delete(timeout[x])
+      try {
+        this.rejectCommandPromise(
+          timeout[x],
+          eventstoreError.newTimeoutError('Timeout by eventstore-ts-client')
+        )
+      } catch (err) {
+        this.log.error({err, fn: 'checkTimeout'}, 'Error on rejectCommandPromise')
       }
     }
   }
@@ -271,6 +284,7 @@ export class TCPConnection extends EventEmitter {
 
     if (promise) {
       if (this.pendingRequests.size >= this.connectionConfig.maxQueueSize) {
+        promise.reject(eventstoreError.newConnectionError('Maximum concurrent items reached'))
         throw eventstoreError.newConnectionError('Maximum concurrent items reached')
       }
       this.pendingRequests.set(correlationId, {...promise, sendTime: Date.now()})
@@ -359,7 +373,7 @@ export class TCPConnection extends EventEmitter {
    * This function handles raw buffer responses received within multiple tcp data package
    */
   protected handleMultiPacketResponseData(data: Buffer): Buffer | null {
-    this.log.debug({fn: 'handleMultiPacketResponseData'}, `MultipacketResponse`)
+    this.log.trace({fn: 'handleMultiPacketResponseData'}, `MultipacketResponse`)
     if (this.messageData === null) {
       return null
     }
@@ -613,7 +627,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadAllEventsCompleted.ReadAllResult.Success:
         this.resolveCommandPromise(correlationId, decoded)
         return
-        break
       case protobuf.ReadAllEventsCompleted.ReadAllResult.AccessDenied:
         err = eventstoreError.newAccessDeniedError(message)
         break
@@ -637,7 +650,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadStreamEventsCompleted.ReadStreamResult.Success:
         this.resolveCommandPromise(correlationId, decoded)
         return
-        break
       case protobuf.ReadStreamEventsCompleted.ReadStreamResult.NoStream:
         err = eventstoreError.newNoStreamError(message)
         break
@@ -669,7 +681,6 @@ export class TCPConnection extends EventEmitter {
       case protobuf.ReadEventCompleted.ReadEventResult.Success:
         this.resolveCommandPromise(correlationId, decoded.event)
         return
-        break
       case protobuf.ReadEventCompleted.ReadEventResult.NotFound:
         err = eventstoreError.newNotFoundError(message)
         break
@@ -707,7 +718,10 @@ export class TCPConnection extends EventEmitter {
         new Position(decoded.event.commitPosition, decoded.event.preparePosition)
       )
     } else {
-      this.log.error({subscriptionId: correlationId}, 'Received StreamEventAppeared for unknown id')
+      this.log.error(
+        {subscriptionId: correlationId, fn: 'handleStreamEventAppeared'},
+        'Received StreamEventAppeared for unknown id'
+      )
       this.emit(
         'error',
         eventstoreError.newImplementationError(
@@ -875,7 +889,8 @@ export class TCPConnection extends EventEmitter {
       this.log.error(
         {
           subscriptionId: correlationId,
-          persistentSubscriptionList: this.persistentSubscriptionList
+          persistentSubscriptionList: this.persistentSubscriptionList,
+          fn: 'handlePersistentSubscriptionStreamEventAppeared'
         },
         'Received PersistentSubscriptionStreamEventAppeared for unknown id'
       )
@@ -902,7 +917,6 @@ export class TCPConnection extends EventEmitter {
     switch (result) {
       case protobuf.OperationResult.Success:
         return true
-        break
       case protobuf.OperationResult.AccessDenied:
         err = eventstoreError.newAccessDeniedError(message)
         break
@@ -1135,7 +1149,7 @@ export class TCPConnection extends EventEmitter {
     this.state = connectionState.connected
     this.emit('connected')
 
-    this.timoutInterval = setInterval(
+    this.timeoutInterval = setInterval(
       this.checkTimeout.bind(this),
       this.initialConfig.operationTimeoutCheckPeriod
     )
@@ -1167,9 +1181,9 @@ export class TCPConnection extends EventEmitter {
     }
 
     // stop timeout interval
-    if (this.timoutInterval) {
-      clearInterval(this.timoutInterval)
-      this.timoutInterval = null
+    if (this.timeoutInterval) {
+      clearInterval(this.timeoutInterval)
+      this.timeoutInterval = null
     }
 
     // reject all pending promises

@@ -27,8 +27,7 @@ describe('Existing event instance tests', (): void => {
   }
 
   const testMetadata = {
-    $correlationId: uuid(),
-    $causationId: uuid()
+    $correlationId: uuid()
   }
 
   it('returns false on existing event', (): void => {
@@ -96,31 +95,18 @@ describe('Existing event instance tests', (): void => {
       assert.strictEqual(err.name, 'EventstoreOperationError')
     }
   })
-
-  it('throws on changing eventCausationId', (): void => {
-    const existingEvent = new Event('EventWasHappened', {...testData}, {...testMetadata})
-    existingEvent.freeze()
-    try {
-      existingEvent.causationId = uuid()
-      assert.fail('has not thrown')
-    } catch (err) {
-      assert.strictEqual(err.name, 'EventstoreOperationError')
-    }
-  })
 })
 
 describe('event from raw', (): void => {
   const rawEventId = uuid()
   const rawEventStreamId = 'stream-' + uuid()
   const rawCorrelationId = uuid()
-  const rawCausationId = uuid()
   const rawEventData = {
     someField: 'someValue',
     someNumber: 100
   }
   const rawEventMetadata = {
-    $correlationId: rawCorrelationId,
-    $causationId: rawCausationId
+    $correlationId: rawCorrelationId
   }
 
   const rawEventWithMeta = {
@@ -156,7 +142,6 @@ describe('event from raw', (): void => {
     assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
     assert.strictEqual(newEvent.metadata.toString(), rawEventMetadata.toString())
     assert.strictEqual(newEvent.correlationId, rawEventMetadata.$correlationId)
-    assert.strictEqual(newEvent.causationId, rawEventMetadata.$causationId)
   })
 
   it('returns event instance without metadata', (): void => {
@@ -166,7 +151,6 @@ describe('event from raw', (): void => {
     assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
     assert.strictEqual(newEvent.metadata, null)
     assert.strictEqual(newEvent.correlationId, null)
-    assert.strictEqual(newEvent.causationId, null)
   })
 
   it('returns event instance without created information', (): void => {
@@ -179,7 +163,6 @@ describe('event from raw', (): void => {
     assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
     assert.strictEqual(newEvent.metadata.toString(), rawEventMetadata.toString())
     assert.strictEqual(newEvent.correlationId, rawEventMetadata.$correlationId)
-    assert.strictEqual(newEvent.causationId, rawEventMetadata.$causationId)
   })
 
   it('sets metadata on setting correlationId', (): void => {
@@ -187,15 +170,6 @@ describe('event from raw', (): void => {
     newEvent.correlationId = rawEventMetadata.$correlationId
     const expected = {
       $correlationId: rawEventMetadata.$correlationId
-    }
-    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
-  })
-
-  it('sets metadata on setting causationId', (): void => {
-    const newEvent = new Event('SomethingWasHappened')
-    newEvent.causationId = rawEventMetadata.$causationId
-    const expected = {
-      $causationId: rawEventMetadata.$causationId
     }
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
@@ -211,27 +185,9 @@ describe('event from raw', (): void => {
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
 
-  it('deletes causationId also from metadata', (): void => {
-    const newEvent = new Event(
-      'SomethingWasHappened',
-      {},
-      {$causationId: rawEventMetadata.$causationId}
-    )
-    newEvent.causationId = null
-    const expected = {}
-    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
-  })
-
   it('deletes correlationId', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.correlationId = null
-    const expected = {}
-    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
-  })
-
-  it('deletes causationId', (): void => {
-    const newEvent = new Event('SomethingWasHappened', {}, {})
-    newEvent.causationId = null
     const expected = {}
     assert.strictEqual(newEvent.metadata.toString(), expected.toString())
   })
@@ -240,12 +196,6 @@ describe('event from raw', (): void => {
     const newEvent = new Event('SomethingWasHappened', {}, {})
     newEvent.correlationId = null
     assert.strictEqual(newEvent.correlationId, null)
-  })
-
-  it('returns null for causationId if not set', (): void => {
-    const newEvent = new Event('SomethingWasHappened', {}, {})
-    newEvent.causationId = null
-    assert.strictEqual(newEvent.causationId, null)
   })
 
   it('throw on missing raw event or link', (): void => {
