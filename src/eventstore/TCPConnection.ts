@@ -64,7 +64,7 @@ export class TCPConnection extends EventEmitter {
     string,
     {resolve: Function; reject: Function; sendTime: number}
   > = new Map()
-  protected timoutInterval: null | NodeJS.Timeout = null
+  protected timeoutInterval: null | NodeJS.Timeout = null
   public log: bunyan
   protected state: connectionState = connectionState.closed
   protected messageCurrentOffset: number = 0
@@ -361,7 +361,7 @@ export class TCPConnection extends EventEmitter {
    * This function handles raw buffer responses received within multiple tcp data package
    */
   protected handleMultiPacketResponseData(data: Buffer): Buffer | null {
-    this.log.debug({fn: 'handleMultiPacketResponseData'}, `MultipacketResponse`)
+    this.log.trace({fn: 'handleMultiPacketResponseData'}, `MultipacketResponse`)
     if (this.messageData === null) {
       return null
     }
@@ -1137,7 +1137,7 @@ export class TCPConnection extends EventEmitter {
     this.state = connectionState.connected
     this.emit('connected')
 
-    this.timoutInterval = setInterval(
+    this.timeoutInterval = setInterval(
       this.checkTimeout.bind(this),
       this.initialConfig.operationTimeoutCheckPeriod
     )
@@ -1169,9 +1169,9 @@ export class TCPConnection extends EventEmitter {
     }
 
     // stop timeout interval
-    if (this.timoutInterval) {
-      clearInterval(this.timoutInterval)
-      this.timoutInterval = null
+    if (this.timeoutInterval) {
+      clearInterval(this.timeoutInterval)
+      this.timeoutInterval = null
     }
 
     // reject all pending promises
