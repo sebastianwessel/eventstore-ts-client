@@ -60,11 +60,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
@@ -830,7 +837,14 @@
       <div>
         
         
-        <div data-ice="description"><p>Base class to communicate with eventstore</p>
+        <div data-ice="description"><p>Base class to communicate with eventstore
+@emits{connected} emitted as soon as connection is established
+@emits{secureConnect} emitted when connection is secured connected
+@emits{ready} emitted after connected after authentication and identify client
+@emits{reconnect} emitted as soon as lib tries to reconnect (param: reconnect count)
+@emits{close} emitted as soon as connection is closed
+@emits{drain} emitted when connection drains existing requests before connection close
+@emits{error} emitted on connection errors (param: error)</p>
 </div>
       </div>
     </td>
@@ -912,7 +926,7 @@ This class handles basic communication with eventstore</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span>EventstoreSettings</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span><span class="code" data-ice="signature">(customSettings: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span> | <span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span>)</span>
         </p>
       </div>
       <div>
@@ -940,7 +954,7 @@ This class handles basic communication with eventstore</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span><span class="code" data-ice="signature">(host: , port: , useHttps: , timeout: , log: <span>bunyan</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span><span class="code" data-ice="signature">(host: , port: , useHttps: , timeout: , log: <span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span>)</span>
         </p>
       </div>
       <div>
@@ -969,7 +983,7 @@ This class handles basic communication with eventstore</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span><span class="code" data-ice="signature">(currentSettings: <span>EventstoreSettings</span>, log: <span>bunyan</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span><span class="code" data-ice="signature">(currentSettings: <span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span>, log: <span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span>)</span>
         </p>
       </div>
       <div>
@@ -998,7 +1012,7 @@ This class handles basic communication with eventstore</p>
           <span data-ice="kind-icon" class="kind-function">F</span>
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span><span class="code" data-ice="signature">(dnsServer: , log: <span>bunyan</span>)</span>
+          <span class="code" data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span><span class="code" data-ice="signature">(dnsServer: , log: <span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span>)</span>
         </p>
       </div>
       <div>
@@ -1064,6 +1078,146 @@ This class handles basic communication with eventstore</p>
         
         <div data-ice="description"><p>Gets a random cluster node from gossip json</p>
 </div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-typedef">T</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-typedef">T</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-typedef">T</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-external">E</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-external">E</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
       </div>
     </td>
     <td>
@@ -1169,6 +1323,34 @@ throws EventstoreProtocolError for invalid input string length</p>
       
     </td>
   </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-typedef">T</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
 </tbody>
 </table>
 </div>
@@ -1230,6 +1412,34 @@ throws EventstoreProtocolError for invalid input string length</p>
         
         <div data-ice="description"><p>Base class for handling transaction writes to stream</p>
 </div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          <span data-ice="kind-icon" class="kind-typedef">T</span>
+          
+          
+          <span class="code" data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">object</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
       </div>
     </td>
     <td>

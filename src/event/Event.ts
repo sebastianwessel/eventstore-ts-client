@@ -5,6 +5,7 @@ import * as eventstoreError from '../errors'
 import * as model from '../protobuf/model'
 import {JSONValue} from '../JSON'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /**

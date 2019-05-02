@@ -41,6 +41,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -60,6 +61,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -110,6 +112,15 @@ const es = new Eventstore({
 await es.connect()</code></code></pre>
 <h2 id="disconnecting">disconnecting</h2><p>It&apos;s highly recommended to close a connection in save way.<br>You should use <code>es.disconnect()</code> for proper shut down, because this function sets current connection to state <code>drain</code>.  
 This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p>
+<h2 id="emitted-events">emitted events</h2><ul>
+<li><code>connected</code> emitted as soon as connection is established</li>
+<li><code>secureConnect</code> emitted when connection is secured connected</li>
+<li><code>ready</code> emitted after <code>connected</code> after authentication and identify client</li>
+<li><code>reconnect</code> emitted as soon as lib tries to reconnect (param: reconnect count)</li>
+<li><code>close</code> emitted as soon as connection is closed</li>
+<li><code>drain</code> emitted when connection drains existing requests before connection close</li>
+<li><code>error</code> emitted on connection errors (param: error)</li>
+</ul>
 </div>
 </div>
 

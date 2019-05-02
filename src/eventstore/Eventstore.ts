@@ -12,8 +12,15 @@ import {StreamWalker} from '../StreamWalker'
 import {Event} from '../event'
 import * as eventstoreErrors from '../errors'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
+/**
+ * @typedef {object} WriteResult
+ * @property {Long | number} firstEventNumber
+ * @property {Long | number} lastEventNumber
+ * @property {Position} position
+ */
 export interface WriteResult {
   firstEventNumber: Long | number
   lastEventNumber: Long | number
@@ -22,6 +29,13 @@ export interface WriteResult {
 
 /**
  * Base class to communicate with eventstore
+ * @emits{connected} emitted as soon as connection is established
+ * @emits{secureConnect} emitted when connection is secured connected
+ * @emits{ready} emitted after connected after authentication and identify client
+ * @emits{reconnect} emitted as soon as lib tries to reconnect (param: reconnect count)
+ * @emits{close} emitted as soon as connection is closed
+ * @emits{drain} emitted when connection drains existing requests before connection close
+ * @emits{error} emitted on connection errors (param: error)
  */
 export class Eventstore extends EventEmitter {
   /** connection config */
@@ -131,6 +145,9 @@ export class Eventstore extends EventEmitter {
     return this.connection.isConnected
   }
 
+  /**
+   * Returns current connection
+   */
   public getConnection(): TCPConnection {
     return this.connection
   }

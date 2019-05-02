@@ -14,7 +14,7 @@
 
 Eventstore javascript client library written in typescript.
 
-This repository is **under heavy development and not ready for use**
+This repository is **in BETA status**
 
 Main focus on this lib are:
 

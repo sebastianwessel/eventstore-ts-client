@@ -60,11 +60,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
@@ -88,8 +95,15 @@ import {StreamWalker} from &apos;../StreamWalker&apos;
 import {Event} from &apos;../event&apos;
 import * as eventstoreErrors from &apos;../errors&apos;
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
+/**
+ * @typedef {object} WriteResult
+ * @property {Long | number} firstEventNumber
+ * @property {Long | number} lastEventNumber
+ * @property {Position} position
+ */
 export interface WriteResult {
   firstEventNumber: Long | number
   lastEventNumber: Long | number
@@ -98,6 +112,13 @@ export interface WriteResult {
 
 /**
  * Base class to communicate with eventstore
+ * @emits{connected} emitted as soon as connection is established
+ * @emits{secureConnect} emitted when connection is secured connected
+ * @emits{ready} emitted after connected after authentication and identify client
+ * @emits{reconnect} emitted as soon as lib tries to reconnect (param: reconnect count)
+ * @emits{close} emitted as soon as connection is closed
+ * @emits{drain} emitted when connection drains existing requests before connection close
+ * @emits{error} emitted on connection errors (param: error)
  */
 export class Eventstore extends EventEmitter {
   /** connection config */
@@ -115,6 +136,48 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = setConnectionSettings(connectionConfiguration)
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection({...this.connectionConfig})
+    this.connection.on(
+      &apos;error&apos;,
+      (err): void =&gt; {
+        this.log.error({err}, err.name)
+        this.emit(&apos;error&apos;, err)
+      }
+    )
+    this.connection.on(
+      &apos;secureConnect&apos;,
+      (): void =&gt; {
+        this.log.debug(&apos;secure connected&apos;)
+        this.emit(&apos;secureConnect&apos;)
+      }
+    )
+    this.connection.on(
+      &apos;drain&apos;,
+      (): void =&gt; {
+        this.log.debug(&apos;connection is draining&apos;)
+        this.emit(&apos;drain&apos;)
+      }
+    )
+    this.connection.on(
+      &apos;close&apos;,
+      (): void =&gt; {
+        this.log.debug(&apos;connection is closed&apos;)
+        this.emit(&apos;close&apos;)
+      }
+    )
+    this.connection.on(
+      &apos;connected&apos;,
+      (): void =&gt; {
+        this.log.debug(&apos;connected to eventstore&apos;)
+        this.emit(&apos;connected&apos;)
+      }
+    )
+    this.connection.on(
+      &apos;reconnect&apos;,
+      (reconnectCount: number): void =&gt; {
+        this.log.debug({reconnectCount}, &apos;reconnecting to eventstore&apos;)
+        this.emit(&apos;reconnect&apos;, reconnectCount)
+      }
+    )
   }
 
   /**
@@ -124,8 +187,6 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
-
-    this.connection.on(&apos;error&apos;, this.onError)
   }
 
   /**
@@ -145,6 +206,8 @@ export class Eventstore extends EventEmitter {
     try {
       await this.authenticate()
       await this.identifyClient()
+      this.log.debug(&apos;connection ready&apos;)
+      this.emit(&apos;ready&apos;)
     } catch (err) {
       await this.disconnect()
       throw err
@@ -165,6 +228,9 @@ export class Eventstore extends EventEmitter {
     return this.connection.isConnected
   }
 
+  /**
+   * Returns current connection
+   */
   public getConnection(): TCPConnection {
     return this.connection
   }
@@ -278,13 +344,6 @@ export class Eventstore extends EventEmitter {
         )
       }
     )
-  }
-
-  /**
-   * Called from event listener connected to &apos;error&apos;
-   */
-  protected onError(err: Error): void {
-    this.log.error({err}, err.name)
   }
 
   /**

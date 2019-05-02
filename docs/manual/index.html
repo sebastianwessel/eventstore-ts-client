@@ -41,6 +41,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -60,6 +61,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -92,7 +94,7 @@
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=vulnerabilities" alt="Vulnerabilities"></a>
 <a href="https://sebastianwessel.github.io/eventstore-ts-client"><img src="https://sebastianwessel.github.io/eventstore-ts-client/badge.svg" alt="doc coverage"></a></p>
 <p>Eventstore javascript client library written in typescript.</p>
-<p>This repository is <strong>under heavy development and not ready for use</strong></p>
+<p>This repository is <strong>in BETA status</strong></p>
 <p>Main focus on this lib are:</p>
 <ul>
 <li>available for typescript</li>
@@ -188,7 +190,29 @@ await eventstore
   .requiresMaster()
   .append(eventTestWasDone)
 
- console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code></code></pre><p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p><p>Of course you&apos;re able to use function parameters as well if you prefer it, but it&apos;s not recommended</p><h2>Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p><h2>request response queue</h2><p>This lib does not use a queue for outgoing requests and commands.<br>Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.<br>If an connection to eventstore get lost while sending a request you will get an connection error immediately and this library will not try to resend requests for you.</p><p>I strongly believe it&apos;s up to program logic to handle unexpected lost connection failures while sending some requests.<br>It depends very hard on each usecase how to handle such failures and also if it&apos;s possible to reconnect or not.<br>To avoid unsolvable questions like &quot;What to do with requests when...&quot; and because tcp connections are duplex connections there is no request queue.
+ console.log(&quot;Stored event:&quot;, eventTestWasDone.id)</code></code></pre><p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p><p>Of course you&apos;re able to use function parameters as well if you prefer it, but it&apos;s not recommended</p><h2>Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p><p>List of possible errors:</p><ul>
+<li><code>EventstoreAccessDeniedError</code></li>
+<li><code>EventstoreAlreadyExistError</code></li>
+<li><code>EventstoreBadRequestError</code></li>
+<li><code>EventstoreCommitTimeoutError</code></li>
+<li><code>EventstoreConnectionError</code></li>
+<li><code>EventstoreDoesNotExistError</code></li>
+<li><code>EventstoreForwardTimeoutError</code></li>
+<li><code>EventstoreImplementationError</code></li>
+<li><code>EventstoreInvalidTransactionError</code></li>
+<li><code>EventstoreNoStreamError</code></li>
+<li><code>EventstoreNotAuthenticatedError</code></li>
+<li><code>EventstoreNotFoundError</code></li>
+<li><code>EventstoreNotHandledError</code></li>
+<li><code>EventstoreNotModifiedError</code></li>
+<li><code>EventstoreOperationError</code></li>
+<li><code>EventstorePrepareTimeoutError</code></li>
+<li><code>EventstoreProtocolError</code></li>
+<li><code>EventstoreStreamDeletedError</code></li>
+<li><code>EventstoreTimeoutError</code></li>
+<li><code>EventstoreUnspecificError</code></li>
+<li><code>EventstoreWrongExpectedVersionError</code></li>
+</ul><h2>request response queue</h2><p>This lib does not use a queue for outgoing requests and commands.<br>Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.<br>If an connection to eventstore get lost while sending a request you will get an connection error immediately and this library will not try to resend requests for you.</p><p>I strongly believe it&apos;s up to program logic to handle unexpected lost connection failures while sending some requests.<br>It depends very hard on each usecase how to handle such failures and also if it&apos;s possible to reconnect or not.<br>To avoid unsolvable questions like &quot;What to do with requests when...&quot; and because tcp connections are duplex connections there is no request queue.
 This library tries to do as much as possible in real time and/or in asynchronous fashion.</p><p>If a correlating response for a request contains some error code the request promise will be rejected with correlating error.<br>If no response arrives within given timeout setting the request will promise will be rejected with an <code>EventstoreTimeoutError</code>.</p></div>
         <a data-ice="link" href="manual/readme.html"></a>
       </div>
@@ -221,7 +245,15 @@ const es = new Eventstore({
 })
 
 await es.connect()</code></code></pre><h2>disconnecting</h2><p>It&apos;s highly recommended to close a connection in save way.<br>You should use <code>es.disconnect()</code> for proper shut down, because this function sets current connection to state <code>drain</code>.  
-This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p></div>
+This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  </p><h2>emitted events</h2><ul>
+<li><code>connected</code> emitted as soon as connection is established</li>
+<li><code>secureConnect</code> emitted when connection is secured connected</li>
+<li><code>ready</code> emitted after <code>connected</code> after authentication and identify client</li>
+<li><code>reconnect</code> emitted as soon as lib tries to reconnect (param: reconnect count)</li>
+<li><code>close</code> emitted as soon as connection is closed</li>
+<li><code>drain</code> emitted when connection drains existing requests before connection close</li>
+<li><code>error</code> emitted on connection errors (param: error)</li>
+</ul></div>
         <a data-ice="link" href="manual/eventstore.html"></a>
       </div>
     </div>
@@ -378,7 +410,13 @@ const persistentSubscription = eventstore
   .atStream(&apos;myStream&apos;)
   .getPersistentSubscription(&apos;persistentsubscription&apos;)
 
-await persistentSubscription.subscribe()</code></code></pre><p>Unsubscribing an existing persistent subscription is also pretty easy</p><pre><code class="language-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code></code></pre><h2>catchUp subscriptions</h2><p>/** TODO **/<br>not implemented yet</p></div>
+await persistentSubscription.subscribe()</code></code></pre><p>Unsubscribing an existing persistent subscription is also pretty easy</p><pre><code class="language-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code></code></pre><h2>catchUp subscriptions</h2><p>/** TODO **/<br>not implemented yet</p><h2>emitted events</h2><ul>
+<li><code>subscribed</code> emitted after subscription is established</li>
+<li><code>dropped</code> emitted when subscription is dropped</li>
+<li><code>event</code> emitted when event appeared (param: Event)</li>
+<li><code>event-eventnametolowercase</code> emitted when event appeared (param: Event)</li>
+<li><code>error</code> emitted in error case (param: Error)</li>
+</ul></div>
         <a data-ice="link" href="manual/subscriptions.html"></a>
       </div>
     </div>

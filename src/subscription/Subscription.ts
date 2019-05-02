@@ -8,6 +8,11 @@ import {Event} from '../event'
 
 /**
  * Base class for handling subscriptions
+ * @emits {subscribed}
+ * @emits {dropped}
+ * @emits {event}
+ * @emits {event-eventnametolowercase}
+ * @emits {error}
  */
 export class Subscription extends EventEmitter {
   /** uuid4 of subscription */
@@ -84,6 +89,14 @@ export class Subscription extends EventEmitter {
   public async unsubscribe(): Promise<void> {
     this.log.debug({fn: 'unsubscribe'}, 'unsubscribe subscription')
     await this.tcpConnection.unsubscribeFromStream(this.id)
+  }
+
+  /**
+   * Called when event from eventstore arrives
+   */
+  public eventAppeared(event: Event, position: Position): void {
+    this.emit('event', event, position)
+    this.emit(`event-${event.name.toLocaleLowerCase()}`, event, position)
   }
 
   /**

@@ -2166,12 +2166,6 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/eventstore/eventstore.ts~eventstore#onerror",
-    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-onError",
-    "src/eventstore/Eventstore.ts~Eventstore#onError",
-    "method"
-  ],
-  [
     "src/eventstore/eventstore.ts~eventstore#ping",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-ping",
     "src/eventstore/Eventstore.ts~Eventstore#ping",
@@ -2220,10 +2214,40 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/eventstore.ts~writeresult",
+    "typedef/index.html#static-typedef-WriteResult",
+    "src/eventstore/Eventstore.ts~WriteResult",
+    "typedef"
+  ],
+  [
     "src/eventstore/eventstoresettings.ts",
     "file/src/eventstore/EventstoreSettings.ts.html",
     "src/eventstore/EventstoreSettings.ts",
     "file"
+  ],
+  [
+    "src/eventstore/eventstoresettings.ts~eventstoresettings",
+    "typedef/index.html#static-typedef-EventstoreSettings",
+    "src/eventstore/EventstoreSettings.ts~EventstoreSettings",
+    "typedef"
+  ],
+  [
+    "src/eventstore/eventstoresettings.ts~long",
+    "https://github.com/dcodeIO/long.js",
+    "src/eventstore/EventstoreSettings.ts~Long",
+    "external"
+  ],
+  [
+    "src/eventstore/eventstoresettings.ts~usercredentials",
+    "typedef/index.html#static-typedef-UserCredentials",
+    "src/eventstore/EventstoreSettings.ts~UserCredentials",
+    "typedef"
+  ],
+  [
+    "src/eventstore/eventstoresettings.ts~bunyan",
+    "https://github.com/trentm/node-bunyan",
+    "src/eventstore/EventstoreSettings.ts~bunyan",
+    "external"
   ],
   [
     "src/eventstore/position.ts",
@@ -2628,6 +2652,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/protobuf/expectedversion.ts~expectedversion",
+    "typedef/index.html#static-typedef-ExpectedVersion",
+    "src/protobuf/ExpectedVersion.ts~ExpectedVersion",
+    "typedef"
+  ],
+  [
     "src/protobuf/model.d.ts",
     "file/src/protobuf/model.d.ts.html",
     "src/protobuf/model.d.ts",
@@ -2838,6 +2868,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/stream/stream.ts~streamoptions",
+    "typedef/index.html#static-typedef-StreamOptions",
+    "src/stream/Stream.ts~StreamOptions",
+    "typedef"
+  ],
+  [
     "src/stream/streamposition.ts",
     "file/src/stream/StreamPosition.ts.html",
     "src/stream/StreamPosition.ts",
@@ -3006,6 +3042,12 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/subscription/persistentsubscription.ts~persistentsubscription#eventappeared",
+    "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-eventAppeared",
+    "src/subscription/PersistentSubscription.ts~PersistentSubscription#eventAppeared",
+    "method"
+  ],
+  [
     "src/subscription/persistentsubscription.ts~persistentsubscription#id",
     "class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-id",
     "src/subscription/PersistentSubscription.ts~PersistentSubscription#id",
@@ -3118,6 +3160,12 @@ window.esdocSearchIndex = [
     "class/src/subscription/Subscription.ts~Subscription.html#instance-member-credentials",
     "src/subscription/Subscription.ts~Subscription#credentials",
     "member"
+  ],
+  [
+    "src/subscription/subscription.ts~subscription#eventappeared",
+    "class/src/subscription/Subscription.ts~Subscription.html#instance-method-eventAppeared",
+    "src/subscription/Subscription.ts~Subscription#eventAppeared",
+    "method"
   ],
   [
     "src/subscription/subscription.ts~subscription#getcredentials",

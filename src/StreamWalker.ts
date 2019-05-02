@@ -6,11 +6,17 @@ import * as eventstoreError from './errors'
  * Stream walker
  */
 export class StreamWalker {
+  /** iterable  */
   protected iterable: AsyncIterableIterator<Event | null>
+
+  /**
+   * Creates an instance of stream walker.
+   */
   public constructor(iterable: AsyncIterableIterator<Event | null>) {
     this.iterable = iterable
   }
 
+  /** standard async iterable function */
   public async *[Symbol.asyncIterator]() {
     for await (const value of this.iterable) {
       yield value

@@ -41,6 +41,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -60,6 +61,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -117,6 +119,30 @@ await eventstore
 <p>As you can see your code becomes a lot more self speaking and also someone who isn&apos;t familiar with your program or even unfamiliar with javascript/typescript is able to understand what these lines of code are doing.</p>
 <p>Of course you&apos;re able to use function parameters as well if you prefer it, but it&apos;s not recommended</p>
 <h2 id="error-handling">Error handling</h2><p>This client lib also uses named errors - so no need to parse error messages.<br>Just use <code>error.name</code> to identify different errors.<br>Also the error instance may contain an additional field <code>causedBy</code> which will hold some error object if there was an error before which causes the current error.</p>
+<p>List of possible errors:</p>
+<ul>
+<li><code>EventstoreAccessDeniedError</code></li>
+<li><code>EventstoreAlreadyExistError</code></li>
+<li><code>EventstoreBadRequestError</code></li>
+<li><code>EventstoreCommitTimeoutError</code></li>
+<li><code>EventstoreConnectionError</code></li>
+<li><code>EventstoreDoesNotExistError</code></li>
+<li><code>EventstoreForwardTimeoutError</code></li>
+<li><code>EventstoreImplementationError</code></li>
+<li><code>EventstoreInvalidTransactionError</code></li>
+<li><code>EventstoreNoStreamError</code></li>
+<li><code>EventstoreNotAuthenticatedError</code></li>
+<li><code>EventstoreNotFoundError</code></li>
+<li><code>EventstoreNotHandledError</code></li>
+<li><code>EventstoreNotModifiedError</code></li>
+<li><code>EventstoreOperationError</code></li>
+<li><code>EventstorePrepareTimeoutError</code></li>
+<li><code>EventstoreProtocolError</code></li>
+<li><code>EventstoreStreamDeletedError</code></li>
+<li><code>EventstoreTimeoutError</code></li>
+<li><code>EventstoreUnspecificError</code></li>
+<li><code>EventstoreWrongExpectedVersionError</code></li>
+</ul>
 <h2 id="request-response-queue">request response queue</h2><p>This lib does not use a queue for outgoing requests and commands.<br>Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.<br>If an connection to eventstore get lost while sending a request you will get an connection error immediately and this library will not try to resend requests for you.</p>
 <p>I strongly believe it&apos;s up to program logic to handle unexpected lost connection failures while sending some requests.<br>It depends very hard on each usecase how to handle such failures and also if it&apos;s possible to reconnect or not.<br>To avoid unsolvable questions like &quot;What to do with requests when...&quot; and because tcp connections are duplex connections there is no request queue.
 This library tries to do as much as possible in real time and/or in asynchronous fashion.</p>

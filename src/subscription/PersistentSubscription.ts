@@ -9,10 +9,15 @@ import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /**
  * Represents a persistent subscription
+ *
+ * @emits {dropped} emitted when subscription is disconnected
+ * @emits {event}
+ * @emits {event-eventnametolowercase}
  */
 export class PersistentSubscription extends EventEmitter {
   /** corresponding stream  */
@@ -23,18 +28,19 @@ export class PersistentSubscription extends EventEmitter {
   public subscriptionGroupName: string
   /** user credentials */
   protected credentials: UserCredentials | null = null
-
+  /** last commit position */
   public lastCommitPosition: Long = Long.fromNumber(0)
+  /** last event number */
   public lastEventNumber: Long | null = null
-
+  /** id of persistent subscription (uuid)*/
   public id: string = uuid()
-
+  /** subscription id send back from eventstore */
   public subscriptionId: string
-
+  /** count of max concurrent events */
   public allowedInFlightMessages: number = 10
-
+  /** status of subscription */
   protected status: SubscriptionStatus = SubscriptionStatus.disconnected
-
+  /** indicate if incoming events should automatically acknowledged */
   public autoAcknowledge: boolean = true
 
   /**
@@ -170,6 +176,14 @@ export class PersistentSubscription extends EventEmitter {
           )
       }
     )
+  }
+
+  /**
+   * Called when event from eventstore arrives
+   */
+  public eventAppeared(event: Event): void {
+    this.emit('event', event)
+    this.emit(`event-${event.name.toLocaleLowerCase()}`, event)
   }
 
   /**

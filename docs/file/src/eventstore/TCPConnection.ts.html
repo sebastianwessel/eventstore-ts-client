@@ -60,11 +60,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
@@ -98,6 +105,7 @@ import {Position} from &apos;./Position&apos;
 import {WriteResult} from &apos;./Eventstore&apos;
 import Long from &apos;long&apos;
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /** typescript enumeration of connection states */
@@ -132,24 +140,38 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  * This class handles basic communication with eventstore
  */
 export class TCPConnection extends EventEmitter {
+  /** initial config */
   protected initialConfig: EventstoreSettings
+  /** config after discovery process */
   protected connectionConfig: EventstoreSettings
+  /** tcp socket  */
   protected socket: net.Socket | tls.TLSSocket
+  /** connection id  */
   protected connectionId: string | null = null
+  /** list of pending requests */
   protected pendingRequests: Map&lt;
     string,
     {resolve: Function; reject: Function; sendTime: number}
   &gt; = new Map()
+  /** timeout interval for timed out pending requests */
   protected timeoutInterval: null | NodeJS.Timeout = null
+  /** logger instance */
   public log: bunyan
+  /** connection state */
   protected state: connectionState = connectionState.closed
+  /** message offset of tcp data */
   protected messageCurrentOffset: number = 0
+  /** message length of tcp data */
   protected messageCurrentLength: number = 0
+  /** message buffer of tcp data */
   protected messageData: Buffer | null = null
+  /** list of subscriptions */
   protected subscriptionList: Map&lt;string, Subscription&gt; = new Map()
+  /** list of persistent subscriptions */
   protected persistentSubscriptionList: Map&lt;string, PersistentSubscription&gt; = new Map()
+  /** indicates if connection close is wanted by user or not */
   protected isUnexpectedClosed: boolean = true
-
+  /** counter for re-connections */
   protected reconnectCount: number = 0
 
   /**
@@ -173,6 +195,9 @@ export class TCPConnection extends EventEmitter {
     return this.state === connectionState.connected
   }
 
+  /**
+   * Called to connect to eventstore
+   */
   public async connect(): Promise&lt;void&gt; {
     let connected = false
     while (!connected &amp;&amp; this.reconnectCount &lt; this.initialConfig.maxReconnections) {
@@ -185,6 +210,7 @@ export class TCPConnection extends EventEmitter {
       } catch (err) {
         this.log.error({err, count: this.reconnectCount, fn: &apos;connect&apos;}, &apos;Try to connect failed &apos;)
         this.reconnectCount++
+        this.emit(&apos;reconnect&apos;, this.reconnectCount)
         await new Promise(
           (resolve): void =&gt; {
             setTimeout(resolve, this.initialConfig.reconnectionDelay)
@@ -316,6 +342,9 @@ export class TCPConnection extends EventEmitter {
     )
   }
 
+  /**
+   * Called by interval function to check if there are some pending requests which should be rejected with time out error
+   */
   protected checkTimeout(): void {
     this.log.trace(&apos;Check timeout queue&apos;)
     const timeout: string[] = []
@@ -783,13 +812,7 @@ export class TCPConnection extends EventEmitter {
     const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
       const event = Event.fromRaw(decoded.event.event || decoded.event.link)
-      subscription.emit(
-        &apos;event&apos;,
-        event,
-        new Position(decoded.event.commitPosition, decoded.event.preparePosition)
-      )
-      subscription.emit(
-        `event-${event.name.toLocaleLowerCase()}`,
+      subscription.eventAppeared(
         event,
         new Position(decoded.event.commitPosition, decoded.event.preparePosition)
       )
@@ -959,8 +982,7 @@ export class TCPConnection extends EventEmitter {
     const subscription = this.persistentSubscriptionList.get(correlationId)
     if (subscription) {
       const event = Event.fromRaw(decoded.event.event || decoded.event.link)
-      subscription.emit(&apos;event&apos;, event)
-      subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
+      subscription.eventAppeared(event)
     } else {
       this.log.error(
         {
@@ -1154,6 +1176,7 @@ export class TCPConnection extends EventEmitter {
         )
       }
     )
+    subscription.emit(&apos;subscribed&apos;)
     subscription.lastCommitPosition = result.lastCommitPosition
       ? Long.fromValue(result.lastCommitPosition)
       : Long.fromValue(0)

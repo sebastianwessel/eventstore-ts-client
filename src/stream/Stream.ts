@@ -19,9 +19,15 @@ import Long = require('long')
 import {JSONValue} from '../JSON'
 import {StreamWalker} from '../StreamWalker'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
-/** typescript interface for stream options */
+/**
+ * @typedef {object} StreamOptions
+ * @property {boolean} requireMaster indicates if operations require master node
+ * @property {boolean} resolveLinks indicates if event links should be resolved on read operations
+ * @property {UserCredentials | null} credentials user credentials if others than default connection credentials
+ */
 export interface StreamOptions {
   requireMaster: boolean
   resolveLinks: boolean
@@ -32,9 +38,13 @@ export interface StreamOptions {
  * Base class for handling a stream
  */
 export class Stream {
+  /** eventstore instance */
   protected esConnection: Eventstore
+  /** bunyan logger */
   public log: bunyan
+  /** id of stream */
   protected streamId: string
+  /** stream options */
   protected options: StreamOptions
 
   /**
@@ -57,6 +67,9 @@ export class Stream {
     return 'Stream: ' + this.streamId
   }
 
+  /**
+   * Gets id  of stream
+   */
   public get id(): string {
     return this.streamId
   }
@@ -541,6 +554,9 @@ export class Stream {
     return new StreamWalker(asyncGenerator(start))
   }
 
+  /**
+   * Walk through all events in stream forward
+   */
   public async walkStreamForward(
     start: Long | number = StreamPosition.Start,
     maxCount: number = 100,
@@ -551,6 +567,9 @@ export class Stream {
     return await this.walkStream(true, start, maxCount, resolveLinkTos, requireMaster, credentials)
   }
 
+  /**
+   * Walk through all events in stream backward
+   */
   public async walkStreamBackward(
     start: Long | number = StreamPosition.End,
     maxCount: number = 100,

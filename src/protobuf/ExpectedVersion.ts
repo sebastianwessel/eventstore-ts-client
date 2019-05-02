@@ -1,4 +1,10 @@
-/** typescript enumeration for expected version constant */
+/**
+ * @typedef {object} ExpectedVersion
+ * - StreamExists
+ * - Any
+ * - NoStream
+ * - EmptyStream
+ */
 export enum ExpectedVersion {
   StreamExists = -4,
   Any = -2,

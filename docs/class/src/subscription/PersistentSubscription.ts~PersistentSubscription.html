@@ -60,11 +60,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
@@ -74,13 +81,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {PersistentSubscription} from &apos;<span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber17">eventstore-ts-client/src/subscription/PersistentSubscription.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {PersistentSubscription} from &apos;<span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber22">eventstore-ts-client/src/subscription/PersistentSubscription.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber17">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber22">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -175,7 +182,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>count of max concurrent events</p>
+</div>
       </div>
     </td>
     <td>
@@ -203,7 +211,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>indicate if incoming events should automatically acknowledged</p>
+</div>
       </div>
     </td>
     <td>
@@ -231,7 +240,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>id of persistent subscription (uuid)</p>
+</div>
       </div>
     </td>
     <td>
@@ -253,13 +263,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastCommitPosition">lastCommitPosition</a></span></span><span class="code" data-ice="signature">: <span>Long</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastCommitPosition">lastCommitPosition</a></span></span><span class="code" data-ice="signature">: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>last commit position</p>
+</div>
       </div>
     </td>
     <td>
@@ -281,13 +292,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastEventNumber">lastEventNumber</a></span></span><span class="code" data-ice="signature">: <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-lastEventNumber">lastEventNumber</a></span></span><span class="code" data-ice="signature">: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>last event number</p>
+</div>
       </div>
     </td>
     <td>
@@ -460,7 +472,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>subscription id send back from eventstore</p>
+</div>
       </div>
     </td>
     <td>
@@ -488,7 +501,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-credentials">credentials</a></span></span><span class="code" data-ice="signature">: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-member-credentials">credentials</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
         </p>
       </div>
       <div>
@@ -552,7 +565,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>status of subscription</p>
+</div>
       </div>
     </td>
     <td>
@@ -581,7 +595,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvent">acknowledgeEvent</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvent">acknowledgeEvent</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
@@ -610,7 +624,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvents">acknowledgeEvents</a></span></span><span class="code" data-ice="signature">(events: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-acknowledgeEvents">acknowledgeEvents</a></span></span><span class="code" data-ice="signature">(events: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
@@ -639,7 +653,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-delete">delete</a></span></span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-delete">delete</a></span></span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -668,7 +682,36 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvent">notAcknowledgeEvent</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, reason: <span>*</span>, message: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-eventAppeared">eventAppeared</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>): <span>void</span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Called when event from eventstore arrives</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvent">notAcknowledgeEvent</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, reason: <span>*</span>, message: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
@@ -697,7 +740,7 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvents">notAcknowledgeEvents</a></span></span><span class="code" data-ice="signature">(events: , reason: <span>*</span>, message: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-notAcknowledgeEvents">notAcknowledgeEvents</a></span></span><span class="code" data-ice="signature">(events: , reason: <span>*</span>, message: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
         </p>
       </div>
       <div>
@@ -726,7 +769,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-subscribe">subscribe</a></span></span><span class="code" data-ice="signature">(allowedInFlightMessages: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-subscribe">subscribe</a></span></span><span class="code" data-ice="signature">(allowedInFlightMessages: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -755,7 +798,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-unsubscribe">unsubscribe</a></span></span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-unsubscribe">unsubscribe</a></span></span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -784,7 +827,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(customConfig: {}, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html#instance-method-update">update</a></span></span><span class="code" data-ice="signature">(customConfig: {}, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -821,7 +864,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber49">source</a></span></span>
     </span>
   </h3>
 
@@ -868,14 +911,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber34">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber40">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>count of max concurrent events</p>
+</div>
 
   
 
@@ -911,14 +955,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>indicate if incoming events should automatically acknowledged</p>
+</div>
 
   
 
@@ -954,14 +999,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber30">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber36">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>id of persistent subscription (uuid)</p>
+</div>
 
   
 
@@ -993,18 +1039,19 @@
     
     
     
-    <span class="code" data-ice="name">lastCommitPosition</span><span class="code" data-ice="signature">: <span>Long</span></span>
+    <span class="code" data-ice="name">lastCommitPosition</span><span class="code" data-ice="signature">: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber27">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>last commit position</p>
+</div>
 
   
 
@@ -1036,18 +1083,19 @@
     
     
     
-    <span class="code" data-ice="name">lastEventNumber</span><span class="code" data-ice="signature">: <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
+    <span class="code" data-ice="name">lastEventNumber</span><span class="code" data-ice="signature">: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber28">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber34">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>last event number</p>
+</div>
 
   
 
@@ -1083,7 +1131,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber68">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber74">source</a></span></span>
     </span>
   </h3>
 
@@ -1127,7 +1175,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber81">source</a></span></span>
     </span>
   </h3>
 
@@ -1171,7 +1219,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber82">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber88">source</a></span></span>
     </span>
   </h3>
 
@@ -1215,7 +1263,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber24">source</a></span></span>
     </span>
   </h3>
 
@@ -1259,7 +1307,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber23">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber28">source</a></span></span>
     </span>
   </h3>
 
@@ -1303,14 +1351,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber32">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber38">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>subscription id send back from eventstore</p>
+</div>
 
   
 
@@ -1344,11 +1393,11 @@
     
     
     
-    <span class="code" data-ice="name">credentials</span><span class="code" data-ice="signature">: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
+    <span class="code" data-ice="name">credentials</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber25">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber30">source</a></span></span>
     </span>
   </h3>
 
@@ -1392,7 +1441,7 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber21">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber26">source</a></span></span>
     </span>
   </h3>
 
@@ -1436,14 +1485,15 @@
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>status of subscription</p>
+</div>
 
   
 
@@ -1478,11 +1528,11 @@
     
     
     
-    <span class="code" data-ice="name">acknowledgeEvent</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+    <span class="code" data-ice="name">acknowledgeEvent</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber178">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber192">source</a></span></span>
     </span>
   </h3>
 
@@ -1510,7 +1560,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1544,11 +1594,11 @@
     
     
     
-    <span class="code" data-ice="name">acknowledgeEvents</span><span class="code" data-ice="signature">(events: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+    <span class="code" data-ice="name">acknowledgeEvents</span><span class="code" data-ice="signature">(events: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber185">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber199">source</a></span></span>
     </span>
   </h3>
 
@@ -1576,7 +1626,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1610,11 +1660,11 @@
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">delete</span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">delete</span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber118">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber124">source</a></span></span>
     </span>
   </h3>
 
@@ -1636,7 +1686,67 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"></td>
+    </tr>
+</tbody>
+  </table>
+</div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-eventAppeared">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">eventAppeared</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>): <span>void</span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber184">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Called when event from eventstore arrives</p>
+</div>
+
+  
+
+  <div data-ice="properties"><div data-ice="properties">
+  <h4 data-ice="title">Params:</h4>
+  <table class="params">
+    <thead>
+    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
+    </thead>
+    <tbody>
+    
+    <tr data-ice="property" data-depth="0">
+      <td data-ice="name" class="code" data-depth="0">event</td>
+      <td data-ice="type" class="code"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1670,11 +1780,11 @@
     
     
     
-    <span class="code" data-ice="name">notAcknowledgeEvent</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, reason: <span>*</span>, message: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+    <span class="code" data-ice="name">notAcknowledgeEvent</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, reason: <span>*</span>, message: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber209">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber223">source</a></span></span>
     </span>
   </h3>
 
@@ -1714,7 +1824,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1748,11 +1858,11 @@
     
     
     
-    <span class="code" data-ice="name">notAcknowledgeEvents</span><span class="code" data-ice="signature">(events: , reason: <span>*</span>, message: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
+    <span class="code" data-ice="name">notAcknowledgeEvents</span><span class="code" data-ice="signature">(events: , reason: <span>*</span>, message: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>void</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber222">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber236">source</a></span></span>
     </span>
   </h3>
 
@@ -1792,7 +1902,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1826,11 +1936,11 @@
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">subscribe</span><span class="code" data-ice="signature">(allowedInFlightMessages: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">subscribe</span><span class="code" data-ice="signature">(allowedInFlightMessages: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber90">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 
@@ -1859,7 +1969,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1893,11 +2003,11 @@
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">unsubscribe</span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">unsubscribe</span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber109">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber115">source</a></span></span>
     </span>
   </h3>
 
@@ -1919,7 +2029,7 @@
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1953,11 +2063,11 @@
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">(customConfig: {}, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">update</span><span class="code" data-ice="signature">(customConfig: {}, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber146">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/subscription/PersistentSubscription.ts.html#lineNumber152">source</a></span></span>
     </span>
   </h3>
 
@@ -1986,7 +2096,7 @@
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
