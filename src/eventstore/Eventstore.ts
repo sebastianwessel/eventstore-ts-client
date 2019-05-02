@@ -39,6 +39,48 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = setConnectionSettings(connectionConfiguration)
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection({...this.connectionConfig})
+    this.connection.on(
+      'error',
+      (err): void => {
+        this.log.error({err}, err.name)
+        this.emit('error', err)
+      }
+    )
+    this.connection.on(
+      'secureConnect',
+      (): void => {
+        this.log.debug('secure connected')
+        this.emit('secureConnect')
+      }
+    )
+    this.connection.on(
+      'drain',
+      (): void => {
+        this.log.debug('connection is draining')
+        this.emit('drain')
+      }
+    )
+    this.connection.on(
+      'close',
+      (): void => {
+        this.log.debug('connection is closed')
+        this.emit('close')
+      }
+    )
+    this.connection.on(
+      'connected',
+      (): void => {
+        this.log.debug('connected to eventstore')
+        this.emit('connected')
+      }
+    )
+    this.connection.on(
+      'reconnect',
+      (reconnectCount: number): void => {
+        this.log.debug({reconnectCount}, 'reconnecting to eventstore')
+        this.emit('reconnect', reconnectCount)
+      }
+    )
   }
 
   /**
@@ -48,8 +90,6 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
-
-    this.connection.on('error', this.onError)
   }
 
   /**
@@ -69,6 +109,8 @@ export class Eventstore extends EventEmitter {
     try {
       await this.authenticate()
       await this.identifyClient()
+      this.log.debug('connection ready')
+      this.emit('ready')
     } catch (err) {
       await this.disconnect()
       throw err
@@ -202,13 +244,6 @@ export class Eventstore extends EventEmitter {
         )
       }
     )
-  }
-
-  /**
-   * Called from event listener connected to 'error'
-   */
-  protected onError(err: Error): void {
-    this.log.error({err}, err.name)
   }
 
   /**

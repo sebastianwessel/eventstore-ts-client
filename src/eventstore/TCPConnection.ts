@@ -109,6 +109,7 @@ export class TCPConnection extends EventEmitter {
       } catch (err) {
         this.log.error({err, count: this.reconnectCount, fn: 'connect'}, 'Try to connect failed ')
         this.reconnectCount++
+        this.emit('reconnect', this.reconnectCount)
         await new Promise(
           (resolve): void => {
             setTimeout(resolve, this.initialConfig.reconnectionDelay)
