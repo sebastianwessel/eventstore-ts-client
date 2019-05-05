@@ -30,14 +30,14 @@ sp="/-\|"
 print_style "check if eventstore docker image exists\n";
 if [[ "$(docker images -q eventstore/eventstore:latest 2> /dev/null)" == "" ]]; then
   print_style "...images does not exist\n";
-  docker-compose -f ./test/integrationTests/docker-compose.yml pull  
+  docker-compose -f ./test/2_integrationTests/docker-compose.yml pull  
   # docker pull eventstore/eventstore:latest
   else
   print_style "...image exists\n";
 fi
 
 print_style 'starting docker' "info\n";
-docker-compose -f ./test/integrationTests/docker-compose.yml -p estest up -d
+docker-compose -f ./test/2_integrationTests/docker-compose.yml -p estest up -d
 
 print_style 'creating docker test container:\n';
 docker build -t sebastianwessel/eventstore-ts-client .
@@ -75,7 +75,7 @@ printf "\b\b\e[0m "
 ###############################################
 print_style "\nsetting up eventstore config\n";
 print_style 'create read only user: ';
-curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/readOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+curl --output /dev/null --silent --fail -i -d @test/2_integrationTests/testSetup/readOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
 res=$?
 if test "$res" != "0"; then
   print_style "fail\n" "danger";
@@ -84,7 +84,7 @@ if test "$res" != "0"; then
 fi
 
 print_style 'create write only user: '
-curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/writeOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+curl --output /dev/null --silent --fail -i -d @test/2_integrationTests/testSetup/writeOnlyUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
 res=$?
 if test "$res" != "0"; then
   print_style "fail\n" "danger";
@@ -93,7 +93,7 @@ if test "$res" != "0"; then
 fi
 
 print_style 'create restricted user: ';
-curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/restrictedUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
+curl --output /dev/null --silent --fail -i -d @test/2_integrationTests/testSetup/restrictedUser.json -H Content-Type:application/json -u admin:changeit http://127.0.0.1:2113/users/
 res=$?
 if test "$res" != "0"; then
   print_style "fail\n" "danger";
@@ -102,7 +102,7 @@ if test "$res" != "0"; then
 fi
 
 print_style 'change default acl: ';
-curl --output /dev/null --silent --fail -i -d @test/integrationTests/testSetup/defaultACL.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/%24settings/metadata/
+curl --output /dev/null --silent --fail -i -d @test/2_integrationTests/testSetup/defaultACL.json -H Content-Type:application/vnd.eventstore.events+json -u admin:changeit http://127.0.0.1:2113/streams/%24settings/metadata/
 res=$?
 if test "$res" != "0"; then
   print_style "fail\n" "danger";
@@ -112,7 +112,7 @@ fi
 
 
 print_style 'creating test streams:\n';
-for dir in ./test/integrationTests/testSetup/testStreams/*/
+for dir in ./test/2_integrationTests/testSetup/testStreams/*/
 do
   for filename in ${dir}*.json; do
     dir=${dir%*/}      # remove the trailing "/"
@@ -147,6 +147,6 @@ cp ./coverage/coverage-final.json ./coverage/coverage.json
 ### shut down eventstore cluster and remove docker containers
 ###############################################
 print_style "shutting down docker containers\n";
-docker-compose -f ./test/integrationTests/docker-compose.yml -p estest down
+docker-compose -f ./test/2_integrationTests/docker-compose.yml -p estest down
 
 exit $testexit

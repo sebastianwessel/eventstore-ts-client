@@ -95,9 +95,9 @@ describe('Connection test', (): void => {
       useSSL: true,
       validateServer: true,
       secureContext: {
-        ca: fs.readFileSync('./test/integrationTests/testSetup/rootCA.crt'),
-        key: fs.readFileSync('./test/integrationTests/testSetup/domain.key'),
-        cert: fs.readFileSync('./test/integrationTests/testSetup/domain.crt')
+        ca: fs.readFileSync('./test/2_integrationTests/testSetup/rootCA.crt'),
+        key: fs.readFileSync('./test/2_integrationTests/testSetup/domain.key'),
+        cert: fs.readFileSync('./test/2_integrationTests/testSetup/domain.crt')
       }
     })
     try {
@@ -117,9 +117,9 @@ describe('Connection test', (): void => {
       useSSL: true,
       validateServer: true,
       secureContext: {
-        ca: fs.readFileSync('./test/integrationTests/testSetup/rootCA.crt'),
-        key: fs.readFileSync('./test/integrationTests/testSetup/invalid.key'),
-        cert: fs.readFileSync('./test/integrationTests/testSetup/domain.crt')
+        ca: fs.readFileSync('./test/2_integrationTests/testSetup/rootCA.crt'),
+        key: fs.readFileSync('./test/2_integrationTests/testSetup/invalid.key'),
+        cert: fs.readFileSync('./test/2_integrationTests/testSetup/domain.crt')
       }
     })
     try {
