@@ -6,6 +6,7 @@ import {EventEmitter} from 'events'
 import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
+import {EventstoreError} from '../errors'
 import * as model from '../protobuf/model'
 import {
   Subscription,
@@ -152,9 +153,14 @@ export class TCPConnection extends EventEmitter {
 
     await new Promise(
       (resolve, reject): void => {
-        const errorListener = (err: Error): void => {
+        const errorListener = (err: Error | EventstoreError): void => {
           this.state = connectionState.closed
-          this.onError(eventstoreError.newConnectionError(err.message, err))
+          if (err instanceof Error) {
+            this.onError(eventstoreError.newConnectionError(err.message, err))
+          } else {
+            this.onError(err)
+          }
+
           reject(err)
         }
 
