@@ -28,11 +28,11 @@ describe('Linked event', (): void => {
   )
 
   it('resolves linked event', async (): Promise<void> => {
-    const walker = await es.fromStream('$ce-teneventsstream').walkStreamForward(0, 100, false)
+    const walker = await es.fromStream('$ce-teneventsstream').walkStreamForward(0, false)
     await walker.forEach(
       async (eventEntry): Promise<void> => {
         assert.strictEqual(eventEntry.isLink(), true)
-        assert.strictEqual(typeof eventEntry.metadata, 'string')
+        assert.strictEqual(typeof eventEntry.metadata, 'object')
         const event = await es.resolveLink(eventEntry, true, {
           username: 'restrictedUser',
           password: 'restrictedOnlyUserPassword'
