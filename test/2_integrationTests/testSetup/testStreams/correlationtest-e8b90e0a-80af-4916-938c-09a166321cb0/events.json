@@ -1,0 +1,24 @@
+[
+  {
+      "eventId": "66fbbc77-6e6f-4d16-a208-871efdb4a4bb",
+      "eventType": "CausedEvent2",
+      "data": {
+          "count": 3
+      },
+      "metadata":{
+        "$correlationId":"b9599c37-ce20-415a-bbb5-6d8a1da97cec",
+        "$causedBy": "1227f490-9921-498d-a6fc-3d14195a40eb"
+      }
+  },
+  {
+    "eventId": "d8ae42b1-6ffb-494e-a40c-d463a73f03e4",
+    "eventType": "CausedEvent3",
+    "data": {
+        "count": 4
+    },
+    "metadata":{
+      "$correlationId":"b9599c37-ce20-415a-bbb5-6d8a1da97cec",
+      "$causedBy": "66fbbc77-6e6f-4d16-a208-871efdb4a4bb"
+    }
+}
+]
