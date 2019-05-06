@@ -1,0 +1,23 @@
+[
+  {
+      "eventId": "6072f9ce-1235-44ec-998d-7f4869dafaa4",
+      "eventType": "CommandEvent",
+      "data": {
+          "count": 1
+      },
+      "metadata":{
+        "$correlationId":"b9599c37-ce20-415a-bbb5-6d8a1da97cec"
+      }
+  },
+  {
+    "eventId": "1227f490-9921-498d-a6fc-3d14195a40eb",
+    "eventType": "CausedEvent1",
+    "data": {
+        "count": 2
+    },
+    "metadata":{
+      "$correlationId":"b9599c37-ce20-415a-bbb5-6d8a1da97cec",
+      "$causedBy": "6072f9ce-1235-44ec-998d-7f4869dafaa4"
+    }
+}
+]

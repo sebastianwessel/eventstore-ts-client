@@ -1,16 +1,12 @@
 {
-  "coverage": "83.09%",
-  "expectCount": 278,
-  "actualCount": 231,
+  "coverage": "97.84%",
+  "expectCount": 279,
+  "actualCount": 273,
   "files": {
     "src/StreamWalker.ts": {
       "expectCount": 10,
-      "actualCount": 7,
-      "undocumentLines": [
-        9,
-        10,
-        14
-      ]
+      "actualCount": 10,
+      "undocumentLines": []
     },
     "src/errors/EventstoreError.ts": {
       "expectCount": 4,
@@ -24,24 +20,19 @@
     },
     "src/event/Event.ts": {
       "expectCount": 34,
-      "actualCount": 33,
-      "undocumentLines": [
-        8
-      ]
+      "actualCount": 34,
+      "undocumentLines": []
     },
     "src/eventstore/Eventstore.ts": {
-      "expectCount": 27,
-      "actualCount": 25,
-      "undocumentLines": [
-        15,
-        92
-      ]
+      "expectCount": 26,
+      "actualCount": 26,
+      "undocumentLines": []
     },
     "src/eventstore/EventstoreSettings.ts": {
       "expectCount": 2,
       "actualCount": 1,
       "undocumentLines": [
-        81
+        116
       ]
     },
     "src/eventstore/Position.ts": {
@@ -51,27 +42,8 @@
     },
     "src/eventstore/TCPConnection.ts": {
       "expectCount": 65,
-      "actualCount": 47,
-      "undocumentLines": [
-        25,
-        59,
-        60,
-        61,
-        62,
-        63,
-        67,
-        68,
-        69,
-        70,
-        71,
-        72,
-        73,
-        74,
-        75,
-        77,
-        100,
-        243
-      ]
+      "actualCount": 65,
+      "undocumentLines": []
     },
     "src/eventstore/getConnectInfo.ts": {
       "expectCount": 5,
@@ -94,39 +66,20 @@
     },
     "src/stream/Stream.ts": {
       "expectCount": 33,
-      "actualCount": 24,
+      "actualCount": 32,
       "undocumentLines": [
-        22,
-        35,
-        36,
-        37,
-        38,
-        60,
-        488,
-        544,
-        554
+        501
       ]
     },
     "src/stream/Transaction.ts": {
       "expectCount": 18,
-      "actualCount": 17,
-      "undocumentLines": [
-        10
-      ]
+      "actualCount": 18,
+      "undocumentLines": []
     },
     "src/subscription/PersistentSubscription.ts": {
-      "expectCount": 25,
-      "actualCount": 17,
-      "undocumentLines": [
-        12,
-        27,
-        28,
-        30,
-        32,
-        34,
-        36,
-        38
-      ]
+      "expectCount": 26,
+      "actualCount": 26,
+      "undocumentLines": []
     },
     "src/subscription/PersistentSubscriptionConfig.ts": {
       "expectCount": 3,
@@ -136,8 +89,8 @@
       ]
     },
     "src/subscription/Subscription.ts": {
-      "expectCount": 19,
-      "actualCount": 19,
+      "expectCount": 20,
+      "actualCount": 20,
       "undocumentLines": []
     }
   }

@@ -41,6 +41,7 @@
     <li data-ice="manualNav" class="indent-h1" data-link="manual/eventstore.html"><a href="manual/eventstore.html" data-ice="link">Eventstore</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#connecting" data-ice="link">connecting</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#disconnecting" data-ice="link">disconnecting</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/eventstore.html"><a href="manual/eventstore.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -60,6 +61,7 @@
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#subscribe-to-stream" data-ice="link">subscribe to stream</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#persistent-subscription" data-ice="link">persistent subscription</a></li>
 <li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#catchup-subscriptions" data-ice="link">catchUp subscriptions</a></li>
+<li data-ice="manualNav" class="indent-h2" data-link="manual/subscriptions.html"><a href="manual/subscriptions.html#emitted-events" data-ice="link">emitted events</a></li>
 </ul>
   </div>
 <div data-ice="manual">
@@ -159,6 +161,13 @@ await persistentSubscription.subscribe()</code></code></pre>
 <p>Unsubscribing an existing persistent subscription is also pretty easy</p>
 <pre><code class="language-javascript"><code class="source-code prettyprint">await persistentSubscription.unsubscribe()</code></code></pre>
 <h2 id="catchup-subscriptions">catchUp subscriptions</h2><p>/** TODO **/<br>not implemented yet</p>
+<h2 id="emitted-events">emitted events</h2><ul>
+<li><code>subscribed</code> emitted after subscription is established</li>
+<li><code>dropped</code> emitted when subscription is dropped</li>
+<li><code>event</code> emitted when event appeared (param: Event)</li>
+<li><code>event-eventnametolowercase</code> emitted when event appeared (param: Event)</li>
+<li><code>error</code> emitted in error case (param: Error)</li>
+</ul>
 </div>
 </div>
 

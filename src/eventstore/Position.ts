@@ -1,11 +1,5 @@
 import Long = require('long')
 
-/** typescript interface for eventstore position in global log */
-export interface ESPosition {
-  commitPosition: Long
-  preparePosition: Long
-}
-
 /**
  * Represents a position in eventstore global log file
  */

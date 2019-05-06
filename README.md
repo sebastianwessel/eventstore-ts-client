@@ -12,9 +12,9 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)
 [![doc coverage](https://sebastianwessel.github.io/eventstore-ts-client/badge.svg)](https://sebastianwessel.github.io/eventstore-ts-client)
 
-Eventstore javascript client library written in typescript.
+Eventstore node.js javascript client library written in typescript with ES6 async/await syntax.
 
-This repository is **under heavy development and not ready for use**
+This repository is **in BETA status**
 
 Main focus on this lib are:
 

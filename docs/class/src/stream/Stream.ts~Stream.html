@@ -60,11 +60,18 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
@@ -74,13 +81,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber34">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Stream} from &apos;<span><a href="file/src/stream/Stream.ts.html#lineNumber40">eventstore-ts-client/src/stream/Stream.ts</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber34">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/src/stream/Stream.ts.html#lineNumber40">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -175,7 +182,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>Gets id  of stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -197,13 +205,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-member-log">log</a></span></span><span class="code" data-ice="signature">: <span>bunyan</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-member-log">log</a></span></span><span class="code" data-ice="signature">: <span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>bunyan logger</p>
+</div>
       </div>
     </td>
     <td>
@@ -266,7 +275,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>eventstore instance</p>
+</div>
       </div>
     </td>
     <td>
@@ -288,13 +298,14 @@
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-member-options">options</a></span></span><span class="code" data-ice="signature">: <span>StreamOptions</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-member-options">options</a></span></span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>stream options</p>
+</div>
       </div>
     </td>
     <td>
@@ -322,7 +333,8 @@
       <div>
         
         
-        
+        <div data-ice="description"><p>id of stream</p>
+</div>
       </div>
     </td>
     <td>
@@ -351,7 +363,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-append">append</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-append">append</a></span></span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -380,7 +392,7 @@
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-createPersistentSubscription">createPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: , customConfig: {}, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-createPersistentSubscription">createPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: , customConfig: {}, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -410,7 +422,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getEventByNumber">getEventByNumber</a></span></span><span class="code" data-ice="signature">(eventNumber: <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getEventByNumber">getEventByNumber</a></span></span><span class="code" data-ice="signature">(eventNumber: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -439,7 +451,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getFirstEvent">getFirstEvent</a></span></span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getFirstEvent">getFirstEvent</a></span></span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -468,7 +480,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getLastEvent">getLastEvent</a></span></span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getLastEvent">getLastEvent</a></span></span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -497,7 +509,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getMetadata">getMetadata</a></span></span><span class="code" data-ice="signature">(requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getMetadata">getMetadata</a></span></span><span class="code" data-ice="signature">(requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -526,7 +538,7 @@ This operation needs admin rights and a master connection</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getPersistentSubscription">getPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-getPersistentSubscription">getPersistentSubscription</a></span></span><span class="code" data-ice="signature">(subscriptionGroupName: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
         </p>
       </div>
       <div>
@@ -613,7 +625,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSliceBackward">readSliceBackward</a></span></span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -642,7 +654,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSliceForward">readSliceForward</a></span></span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -729,7 +741,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-setMetadata">setMetadata</a></span></span><span class="code" data-ice="signature">(newMetadata: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-setMetadata">setMetadata</a></span></span><span class="code" data-ice="signature">(newMetadata: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -787,7 +799,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-startTransaction">startTransaction</a></span></span><span class="code" data-ice="signature">(expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-startTransaction">startTransaction</a></span></span><span class="code" data-ice="signature">(expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -816,7 +828,7 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-subscribe">subscribe</a></span></span><span class="code" data-ice="signature">(resolveLinkTos: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-subscribe">subscribe</a></span></span><span class="code" data-ice="signature">(resolveLinkTos: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -845,13 +857,14 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamBackward">walkStreamBackward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamBackward">walkStreamBackward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Walk through all events in stream backward</p>
+</div>
       </div>
     </td>
     <td>
@@ -873,13 +886,14 @@ This operation needs admin rights and a master connection</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamForward">walkStreamForward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStreamForward">walkStreamForward</a></span></span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Walk through all events in stream forward</p>
+</div>
       </div>
     </td>
     <td>
@@ -901,7 +915,7 @@ This operation needs admin rights and a master connection</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-withCredentials">withCredentials</a></span></span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-withCredentials">withCredentials</a></span></span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
         </p>
       </div>
       <div>
@@ -936,7 +950,7 @@ This operation needs admin rights and a master connection</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-appendEvents">appendEvents</a></span></span><span class="code" data-ice="signature">(events: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-appendEvents">appendEvents</a></span></span><span class="code" data-ice="signature">(events: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -965,7 +979,7 @@ This operation needs admin rights and a master connection</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-delete">delete</a></span></span><span class="code" data-ice="signature">(hardDelete: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-delete">delete</a></span></span><span class="code" data-ice="signature">(hardDelete: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -995,7 +1009,7 @@ Use softDelete or hardDelete instead</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, fromEventNumber: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-readSlice">readSlice</a></span></span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, fromEventNumber: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
         </p>
       </div>
       <div>
@@ -1024,7 +1038,7 @@ Use softDelete or hardDelete instead</p>
           
           <span data-ice="async">async</span>
           
-          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStream">walkStream</a></span></span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>*</span></span>
+          <span class="code" data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html#instance-method-walkStream">walkStream</a></span></span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>*</span></span>
         </p>
       </div>
       <div>
@@ -1060,7 +1074,7 @@ Use softDelete or hardDelete instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber43">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber53">source</a></span></span>
     </span>
   </h3>
 
@@ -1107,14 +1121,15 @@ Use softDelete or hardDelete instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber60">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber73">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Gets id  of stream</p>
+</div>
 
   
 
@@ -1146,18 +1161,19 @@ Use softDelete or hardDelete instead</p>
     
     
     
-    <span class="code" data-ice="name">log</span><span class="code" data-ice="signature">: <span>bunyan</span></span>
+    <span class="code" data-ice="name">log</span><span class="code" data-ice="signature">: <span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber36">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber44">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>bunyan logger</p>
+</div>
 
   
 
@@ -1193,7 +1209,7 @@ Use softDelete or hardDelete instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber56">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber66">source</a></span></span>
     </span>
   </h3>
 
@@ -1239,14 +1255,15 @@ Use softDelete or hardDelete instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber35">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber42">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>eventstore instance</p>
+</div>
 
   
 
@@ -1278,18 +1295,19 @@ Use softDelete or hardDelete instead</p>
     
     
     
-    <span class="code" data-ice="name">options</span><span class="code" data-ice="signature">: <span>StreamOptions</span></span>
+    <span class="code" data-ice="name">options</span><span class="code" data-ice="signature">: <span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber38">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber48">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>stream options</p>
+</div>
 
   
 
@@ -1325,14 +1343,15 @@ Use softDelete or hardDelete instead</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber37">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber46">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>id of stream</p>
+</div>
 
   
 
@@ -1367,11 +1386,11 @@ Use softDelete or hardDelete instead</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">append</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">append</span><span class="code" data-ice="signature">(event: <span><a href="class/src/event/Event.ts~Event.html">Event</a></span>, expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber150">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber163">source</a></span></span>
     </span>
   </h3>
 
@@ -1411,7 +1430,7 @@ Use softDelete or hardDelete instead</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1445,11 +1464,11 @@ Use softDelete or hardDelete instead</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">createPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: , customConfig: {}, credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">createPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: , customConfig: {}, credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber580">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber599">source</a></span></span>
     </span>
   </h3>
 
@@ -1485,7 +1504,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1519,11 +1538,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">getEventByNumber</span><span class="code" data-ice="signature">(eventNumber: <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">getEventByNumber</span><span class="code" data-ice="signature">(eventNumber: <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber236">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber249">source</a></span></span>
     </span>
   </h3>
 
@@ -1545,7 +1564,7 @@ This operation needs admin rights and a master connection</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">eventNumber</td>
-      <td data-ice="type" class="code"><span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1563,7 +1582,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1597,11 +1616,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">getFirstEvent</span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">getFirstEvent</span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber277">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber290">source</a></span></span>
     </span>
   </h3>
 
@@ -1635,7 +1654,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1669,11 +1688,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">getLastEvent</span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">getLastEvent</span><span class="code" data-ice="signature">(resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber293">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber306">source</a></span></span>
     </span>
   </h3>
 
@@ -1707,7 +1726,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1741,11 +1760,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">getMetadata</span><span class="code" data-ice="signature">(requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">getMetadata</span><span class="code" data-ice="signature">(requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber304">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber317">source</a></span></span>
     </span>
   </h3>
 
@@ -1773,7 +1792,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1807,11 +1826,11 @@ This operation needs admin rights and a master connection</p>
     
     
     
-    <span class="code" data-ice="name">getPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
+    <span class="code" data-ice="name">getPersistentSubscription</span><span class="code" data-ice="signature">(subscriptionGroupName: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber619">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber638">source</a></span></span>
     </span>
   </h3>
 
@@ -1839,7 +1858,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -1877,7 +1896,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber166">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber179">source</a></span></span>
     </span>
   </h3>
 
@@ -1943,7 +1962,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber143">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber156">source</a></span></span>
     </span>
   </h3>
 
@@ -1983,11 +2002,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSliceBackward</span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber471">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber484">source</a></span></span>
     </span>
   </h3>
 
@@ -2034,7 +2053,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2068,11 +2087,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSliceForward</span><span class="code" data-ice="signature">(fromEventNumber: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber451">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber464">source</a></span></span>
     </span>
   </h3>
 
@@ -2119,7 +2138,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2157,7 +2176,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber67">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber80">source</a></span></span>
     </span>
   </h3>
 
@@ -2201,7 +2220,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber83">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber96">source</a></span></span>
     </span>
   </h3>
 
@@ -2241,11 +2260,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">setMetadata</span><span class="code" data-ice="signature">(newMetadata: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">setMetadata</span><span class="code" data-ice="signature">(newMetadata: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber343">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber356">source</a></span></span>
     </span>
   </h3>
 
@@ -2279,7 +2298,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2317,7 +2336,7 @@ This operation needs admin rights and a master connection</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber180">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber193">source</a></span></span>
     </span>
   </h3>
 
@@ -2379,11 +2398,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">startTransaction</span><span class="code" data-ice="signature">(expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">startTransaction</span><span class="code" data-ice="signature">(expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber371">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber384">source</a></span></span>
     </span>
   </h3>
 
@@ -2417,7 +2436,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2451,11 +2470,11 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">subscribe</span><span class="code" data-ice="signature">(resolveLinkTos: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">subscribe</span><span class="code" data-ice="signature">(resolveLinkTos: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber567">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber586">source</a></span></span>
     </span>
   </h3>
 
@@ -2483,7 +2502,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2517,18 +2536,19 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">walkStreamBackward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">walkStreamBackward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber554">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber573">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Walk through all events in stream backward</p>
+</div>
 
   
 
@@ -2567,7 +2587,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2601,18 +2621,19 @@ This operation needs admin rights and a master connection</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">walkStreamForward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">walkStreamForward</span><span class="code" data-ice="signature">(start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinkTos: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber544">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber560">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Walk through all events in stream forward</p>
+</div>
 
   
 
@@ -2651,7 +2672,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2685,11 +2706,11 @@ This operation needs admin rights and a master connection</p>
     
     
     
-    <span class="code" data-ice="name">withCredentials</span><span class="code" data-ice="signature">(credentials: <span>UserCredentials</span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
+    <span class="code" data-ice="name">withCredentials</span><span class="code" data-ice="signature">(credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber75">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber88">source</a></span></span>
     </span>
   </h3>
 
@@ -2711,7 +2732,7 @@ This operation needs admin rights and a master connection</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2747,11 +2768,11 @@ This operation needs admin rights and a master connection</p>
     
     
     
-    <span class="code" data-ice="name">appendEvents</span><span class="code" data-ice="signature">(events: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">appendEvents</span><span class="code" data-ice="signature">(events: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber91">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber104">source</a></span></span>
     </span>
   </h3>
 
@@ -2791,7 +2812,7 @@ This operation needs admin rights and a master connection</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2825,11 +2846,11 @@ This operation needs admin rights and a master connection</p>
     
     
     
-    <span class="code" data-ice="name">delete</span><span class="code" data-ice="signature">(hardDelete: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span>UserCredentials</span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">delete</span><span class="code" data-ice="signature">(hardDelete: , expectedVersion: <span>*</span>, requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber195">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber208">source</a></span></span>
     </span>
   </h3>
 
@@ -2870,7 +2891,7 @@ Use softDelete or hardDelete instead</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2904,11 +2925,11 @@ Use softDelete or hardDelete instead</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, fromEventNumber: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
+    <span class="code" data-ice="name">readSlice</span><span class="code" data-ice="signature">(direction: <span>EventstoreCommand</span>, fromEventNumber: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber415">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber428">source</a></span></span>
     </span>
   </h3>
 
@@ -2936,7 +2957,7 @@ Use softDelete or hardDelete instead</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">fromEventNumber</td>
-      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span>Long</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span> | <span><a href="https://github.com/dcodeIO/long.js">Long</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"><ul><li>optional</li>
 <li>default: 0</li></ul></td>
       <td data-ice="description"></td>
@@ -2962,7 +2983,7 @@ Use softDelete or hardDelete instead</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>
@@ -2996,11 +3017,11 @@ Use softDelete or hardDelete instead</p>
     
     <span data-ice="async">async</span>
     
-    <span class="code" data-ice="name">walkStream</span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>*</span></span>
+    <span class="code" data-ice="name">walkStream</span><span class="code" data-ice="signature">(forward: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span>, start: <span>*</span>, maxCount: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, resolveLinks: , requireMaster: , credentials: <span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span>): <span>*</span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber488">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/stream/Stream.ts.html#lineNumber501">source</a></span></span>
     </span>
   </h3>
 
@@ -3053,7 +3074,7 @@ Use softDelete or hardDelete instead</p>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">credentials</td>
-      <td data-ice="type" class="code"><span>UserCredentials</span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
+      <td data-ice="type" class="code"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/null">null</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"></td>
     </tr>

@@ -6,6 +6,7 @@ import {EventEmitter} from 'events'
 import {uuidToBuffer, uuidFromBuffer} from '../protobuf/uuidBufferConvert'
 import {EventstoreCommand} from '../protobuf/EventstoreCommand'
 import * as eventstoreError from '../errors'
+import {EventstoreError} from '../errors'
 import * as model from '../protobuf/model'
 import {
   Subscription,
@@ -22,6 +23,7 @@ import {Position} from './Position'
 import {WriteResult} from './Eventstore'
 import Long from 'long'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /** typescript enumeration of connection states */
@@ -56,24 +58,38 @@ const DATA_OFFSET = CORRELATION_ID_OFFSET + GUID_LENGTH // Length + Cmd + Flags 
  * This class handles basic communication with eventstore
  */
 export class TCPConnection extends EventEmitter {
+  /** initial config */
   protected initialConfig: EventstoreSettings
+  /** config after discovery process */
   protected connectionConfig: EventstoreSettings
+  /** tcp socket  */
   protected socket: net.Socket | tls.TLSSocket
+  /** connection id  */
   protected connectionId: string | null = null
+  /** list of pending requests */
   protected pendingRequests: Map<
     string,
     {resolve: Function; reject: Function; sendTime: number}
   > = new Map()
+  /** timeout interval for timed out pending requests */
   protected timeoutInterval: null | NodeJS.Timeout = null
+  /** logger instance */
   public log: bunyan
+  /** connection state */
   protected state: connectionState = connectionState.closed
+  /** message offset of tcp data */
   protected messageCurrentOffset: number = 0
+  /** message length of tcp data */
   protected messageCurrentLength: number = 0
+  /** message buffer of tcp data */
   protected messageData: Buffer | null = null
+  /** list of subscriptions */
   protected subscriptionList: Map<string, Subscription> = new Map()
+  /** list of persistent subscriptions */
   protected persistentSubscriptionList: Map<string, PersistentSubscription> = new Map()
+  /** indicates if connection close is wanted by user or not */
   protected isUnexpectedClosed: boolean = true
-
+  /** counter for re-connections */
   protected reconnectCount: number = 0
 
   /**
@@ -97,6 +113,9 @@ export class TCPConnection extends EventEmitter {
     return this.state === connectionState.connected
   }
 
+  /**
+   * Called to connect to eventstore
+   */
   public async connect(): Promise<void> {
     let connected = false
     while (!connected && this.reconnectCount < this.initialConfig.maxReconnections) {
@@ -109,6 +128,7 @@ export class TCPConnection extends EventEmitter {
       } catch (err) {
         this.log.error({err, count: this.reconnectCount, fn: 'connect'}, 'Try to connect failed ')
         this.reconnectCount++
+        this.emit('reconnect', this.reconnectCount)
         await new Promise(
           (resolve): void => {
             setTimeout(resolve, this.initialConfig.reconnectionDelay)
@@ -133,9 +153,14 @@ export class TCPConnection extends EventEmitter {
 
     await new Promise(
       (resolve, reject): void => {
-        const errorListener = (err: Error): void => {
+        const errorListener = (err: Error | EventstoreError): void => {
           this.state = connectionState.closed
-          this.onError(eventstoreError.newConnectionError(err.message, err))
+          if (err instanceof Error) {
+            this.onError(eventstoreError.newConnectionError(err.message, err))
+          } else {
+            this.onError(err)
+          }
+
           reject(err)
         }
 
@@ -240,6 +265,9 @@ export class TCPConnection extends EventEmitter {
     )
   }
 
+  /**
+   * Called by interval function to check if there are some pending requests which should be rejected with time out error
+   */
   protected checkTimeout(): void {
     this.log.trace('Check timeout queue')
     const timeout: string[] = []
@@ -707,13 +735,7 @@ export class TCPConnection extends EventEmitter {
     const subscription = this.subscriptionList.get(correlationId)
     if (subscription) {
       const event = Event.fromRaw(decoded.event.event || decoded.event.link)
-      subscription.emit(
-        'event',
-        event,
-        new Position(decoded.event.commitPosition, decoded.event.preparePosition)
-      )
-      subscription.emit(
-        `event-${event.name.toLocaleLowerCase()}`,
+      subscription.eventAppeared(
         event,
         new Position(decoded.event.commitPosition, decoded.event.preparePosition)
       )
@@ -883,8 +905,7 @@ export class TCPConnection extends EventEmitter {
     const subscription = this.persistentSubscriptionList.get(correlationId)
     if (subscription) {
       const event = Event.fromRaw(decoded.event.event || decoded.event.link)
-      subscription.emit('event', event)
-      subscription.emit(`event-${event.name.toLocaleLowerCase()}`, event)
+      subscription.eventAppeared(event)
     } else {
       this.log.error(
         {
@@ -1078,6 +1099,7 @@ export class TCPConnection extends EventEmitter {
         )
       }
     )
+    subscription.emit('subscribed')
     subscription.lastCommitPosition = result.lastCommitPosition
       ? Long.fromValue(result.lastCommitPosition)
       : Long.fromValue(0)

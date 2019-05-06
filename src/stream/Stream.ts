@@ -19,9 +19,15 @@ import Long = require('long')
 import {JSONValue} from '../JSON'
 import {StreamWalker} from '../StreamWalker'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
-/** typescript interface for stream options */
+/**
+ * @typedef {object} StreamOptions
+ * @property {boolean} requireMaster indicates if operations require master node
+ * @property {boolean} resolveLinks indicates if event links should be resolved on read operations
+ * @property {UserCredentials | null} credentials user credentials if others than default connection credentials
+ */
 export interface StreamOptions {
   requireMaster: boolean
   resolveLinks: boolean
@@ -32,10 +38,16 @@ export interface StreamOptions {
  * Base class for handling a stream
  */
 export class Stream {
+  /** eventstore instance */
   protected esConnection: Eventstore
+  /** bunyan logger */
   public log: bunyan
+  /** id of stream */
   protected streamId: string
+  /** stream options */
   protected options: StreamOptions
+  /** default read slice size */
+  protected defaultSliceSize: number = 100
 
   /**
    * Creates an instance of Stream.
@@ -57,6 +69,9 @@ export class Stream {
     return 'Stream: ' + this.streamId
   }
 
+  /**
+   * Gets id  of stream
+   */
   public get id(): string {
     return this.streamId
   }
@@ -92,7 +107,7 @@ export class Stream {
     events: Event[],
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<WriteResult> {
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
@@ -151,7 +166,7 @@ export class Stream {
     event: Event | Event[],
     expectedVersion: ExpectedVersion | number | Long = -2,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<WriteResult> {
     if (Array.isArray(event)) {
       return await this.appendEvents(event, expectedVersion, requireMaster, credentials)
@@ -165,13 +180,14 @@ export class Stream {
    */
   public async hardDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
-    requireMaster?: boolean
+    requireMaster?: boolean,
+    credentials?: UserCredentials
   ): Promise<Position> {
     this.log.debug(
       {fn: 'hardDelete', streamId: this.streamId},
       `Hard delete Stream ${this.streamId}`
     )
-    return await this.delete(true, expectedVersion, requireMaster)
+    return await this.delete(true, expectedVersion, requireMaster, credentials)
   }
 
   /**
@@ -179,13 +195,14 @@ export class Stream {
    */
   public async softDelete(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
-    requireMaster?: boolean
+    requireMaster?: boolean,
+    credentials?: UserCredentials
   ): Promise<Position> {
     this.log.debug(
       {fn: 'softDelete', streamId: this.streamId},
       `Soft delete Stream ${this.streamId}`
     )
-    return await this.delete(false, expectedVersion, requireMaster)
+    return await this.delete(false, expectedVersion, requireMaster, credentials)
   }
 
   /**
@@ -343,7 +360,7 @@ export class Stream {
   public async setMetadata(
     newMetadata: {},
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<void> {
     if (this.isMetaStream()) {
       throw eventstoreError.newBadRequestError(
@@ -357,12 +374,7 @@ export class Stream {
         requireMaster: requireMaster === undefined ? this.options.requireMaster : requireMaster,
         credentials: credentials || this.options.credentials
       })
-      .append(
-        newMetaEvent,
-        ExpectedVersion.Any,
-        requireMaster,
-        credentials || this.options.credentials
-      )
+      .append(newMetaEvent, ExpectedVersion.Any, requireMaster, credentials)
   }
 
   /**
@@ -371,7 +383,7 @@ export class Stream {
   public async startTransaction(
     expectedVersion: ExpectedVersion = ExpectedVersion.Any,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<Transaction> {
     if (this.isMetaStream()) {
       throw eventstoreError.newBadRequestError(
@@ -415,17 +427,17 @@ export class Stream {
   protected async readSlice(
     direction: EventstoreCommand,
     fromEventNumber: number | Long = 0,
-    maxCount: number = 100,
+    maxSliceCount?: number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.ReadStreamEvents.fromObject({
           eventStreamId: this.streamId,
           fromEventNumber,
-          maxCount,
+          maxCount: maxSliceCount || this.defaultSliceSize,
           resolveLinkTos: resolveLinks === undefined ? this.options.resolveLinks : resolveLinks,
           requireMaster: requireMaster === undefined ? this.options.requireMaster : requireMaster
         })
@@ -450,15 +462,15 @@ export class Stream {
    */
   public async readSliceForward(
     fromEventNumber: number | Long = StreamPosition.Start,
-    maxCount: number = 100,
-    resolveLinks: boolean,
+    maxSliceCount?: number,
+    resolveLinks?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await this.readSlice(
       EventstoreCommand.ReadStreamEventsForward,
       fromEventNumber,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster,
       credentials
@@ -470,15 +482,15 @@ export class Stream {
    */
   public async readSliceBackward(
     fromEventNumber: number | Long = StreamPosition.End,
-    maxCount: number = 100,
-    resolveLinks: boolean,
+    maxSliceCount?: number,
+    resolveLinks?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await this.readSlice(
       EventstoreCommand.ReadStreamEventsBackward,
       fromEventNumber,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster,
       credentials
@@ -486,21 +498,18 @@ export class Stream {
   }
   // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
   protected async walkStream(
-    forward: boolean = true,
-    start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
+    forward: boolean,
+    start: Long | number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ) {
     const that = this
     const resolveLinksTos = resolveLinks === undefined ? this.options.resolveLinks : resolveLinks
+    const maxCount = this.defaultSliceSize
     const getSlice = forward ? 'readSliceForward' : 'readSliceBackward'
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
-    }
-    if (credentials === undefined) {
-      credentials = this.options.credentials
     }
     // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
     const asyncGenerator = async function*(begin: Long | number) {
@@ -541,24 +550,28 @@ export class Stream {
     return new StreamWalker(asyncGenerator(start))
   }
 
+  /**
+   * Walk through all events in stream forward
+   */
   public async walkStreamForward(
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinkTos?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
-    return await this.walkStream(true, start, maxCount, resolveLinkTos, requireMaster, credentials)
+    return await this.walkStream(true, start, resolveLinkTos, requireMaster, credentials)
   }
 
+  /**
+   * Walk through all events in stream backward
+   */
   public async walkStreamBackward(
     start: Long | number = StreamPosition.End,
-    maxCount: number = 100,
     resolveLinkTos?: boolean,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
-    return await this.walkStream(false, start, maxCount, resolveLinkTos, requireMaster, credentials)
+    return await this.walkStream(false, start, resolveLinkTos, requireMaster, credentials)
   }
 
   /**
@@ -566,7 +579,7 @@ export class Stream {
    */
   public async subscribe(
     resolveLinkTos?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<Subscription> {
     return await this.esConnection
       .getConnection()
@@ -580,7 +593,7 @@ export class Stream {
   public async createPersistentSubscription(
     subscriptionGroupName: string,
     customConfig: PersistentSubscriptionConfig | {} = {},
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<PersistentSubscription> {
     const settings = setPersistentSubscriptionConfig(customConfig)
 
@@ -618,7 +631,7 @@ export class Stream {
    */
   public getPersistentSubscription(
     subscriptionGroupName: string,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): PersistentSubscription {
     return new PersistentSubscription(
       this,

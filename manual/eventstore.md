@@ -44,3 +44,13 @@ await es.connect()
 It's highly recommended to close a connection in save way.  
 You should use `es.disconnect()` for proper shut down, because this function sets current connection to state `drain`.  
 This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  
+
+## emitted events
+
+- `connected` emitted as soon as connection is established
+- `secureConnect` emitted when connection is secured connected
+- `ready` emitted after `connected` after authentication and identify client
+- `reconnect` emitted as soon as lib tries to reconnect (param: reconnect count)
+- `close` emitted as soon as connection is closed
+- `drain` emitted when connection drains existing requests before connection close
+- `error` emitted on connection errors (param: error)

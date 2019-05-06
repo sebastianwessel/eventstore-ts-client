@@ -3,7 +3,7 @@ const uuid = require('uuid4')
 const fs = require('fs')
 const path = require('path')
 
-const outputDir = path.resolve(__dirname, '../test/integrationTests/testSetup/testStreams')
+const outputDir = path.resolve(__dirname, '../test/2_integrationTests/testSetup/testStreams')
 
 const eventNameList = [
   'EventA',

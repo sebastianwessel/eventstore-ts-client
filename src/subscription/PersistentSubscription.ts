@@ -9,10 +9,15 @@ import Long from 'long'
 import {Event} from '../event'
 import {uuidToBuffer} from '../protobuf/uuidBufferConvert'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /**
  * Represents a persistent subscription
+ *
+ * @emits {dropped} emitted when subscription is disconnected
+ * @emits {event}
+ * @emits {event-eventnametolowercase}
  */
 export class PersistentSubscription extends EventEmitter {
   /** corresponding stream  */
@@ -23,18 +28,19 @@ export class PersistentSubscription extends EventEmitter {
   public subscriptionGroupName: string
   /** user credentials */
   protected credentials: UserCredentials | null = null
-
+  /** last commit position */
   public lastCommitPosition: Long = Long.fromNumber(0)
+  /** last event number */
   public lastEventNumber: Long | null = null
-
+  /** id of persistent subscription (uuid)*/
   public id: string = uuid()
-
+  /** subscription id send back from eventstore */
   public subscriptionId: string
-
+  /** count of max concurrent events */
   public allowedInFlightMessages: number = 10
-
+  /** status of subscription */
   protected status: SubscriptionStatus = SubscriptionStatus.disconnected
-
+  /** indicate if incoming events should automatically acknowledged */
   public autoAcknowledge: boolean = true
 
   /**
@@ -144,8 +150,8 @@ export class PersistentSubscription extends EventEmitter {
    * Updates persistent subscription
    */
   public async update(
-    customConfig: PersistentSubscriptionConfig | {} = {},
-    credentials?: UserCredentials | null
+    customConfig: PersistentSubscriptionConfig | {},
+    credentials?: UserCredentials
   ): Promise<PersistentSubscription> {
     const settings = setPersistentSubscriptionConfig(customConfig)
 
@@ -173,16 +179,24 @@ export class PersistentSubscription extends EventEmitter {
   }
 
   /**
+   * Called when event from eventstore arrives
+   */
+  public eventAppeared(event: Event): void {
+    this.emit('event', event)
+    this.emit(`event-${event.name.toLocaleLowerCase()}`, event)
+  }
+
+  /**
    * Acknowledges single event
    */
-  public acknowledgeEvent(event: Event, credentials?: UserCredentials | null): void {
+  public acknowledgeEvent(event: Event, credentials?: UserCredentials): void {
     return this.acknowledgeEvents([event], credentials)
   }
 
   /**
    * Acknowledges array of events
    */
-  public acknowledgeEvents(events: Event[], credentials?: UserCredentials | null): void {
+  public acknowledgeEvents(events: Event[], credentials?: UserCredentials): void {
     const processedEventIds = events.map(
       (event): Buffer => {
         return uuidToBuffer(event.id)
@@ -211,7 +225,7 @@ export class PersistentSubscription extends EventEmitter {
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): void {
     return this.notAcknowledgeEvents([event], reason, message, credentials)
   }
@@ -224,7 +238,7 @@ export class PersistentSubscription extends EventEmitter {
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): void {
     const processedEventIds = events.map(
       (event): Buffer => {

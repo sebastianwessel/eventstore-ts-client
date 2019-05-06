@@ -7,6 +7,7 @@ import * as eventstoreError from '../errors'
 import {UserCredentials} from '../eventstore/EventstoreSettings'
 import {Eventstore} from '../eventstore'
 
+/** protobuf shorthand */
 const protobuf = model.eventstore.proto
 
 /**

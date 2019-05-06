@@ -58,6 +58,30 @@ This client lib also uses named errors - so no need to parse error messages.
 Just use `error.name` to identify different errors.  
 Also the error instance may contain an additional field `causedBy` which will hold some error object if there was an error before which causes the current error.
 
+List of possible errors:
+
+- `EventstoreAccessDeniedError`
+- `EventstoreAlreadyExistError`
+- `EventstoreBadRequestError`
+- `EventstoreCommitTimeoutError`
+- `EventstoreConnectionError`
+- `EventstoreDoesNotExistError`
+- `EventstoreForwardTimeoutError`
+- `EventstoreImplementationError`
+- `EventstoreInvalidTransactionError`
+- `EventstoreNoStreamError`
+- `EventstoreNotAuthenticatedError`
+- `EventstoreNotFoundError`
+- `EventstoreNotHandledError`
+- `EventstoreNotModifiedError`
+- `EventstoreOperationError`
+- `EventstorePrepareTimeoutError`
+- `EventstoreProtocolError`
+- `EventstoreStreamDeletedError`
+- `EventstoreTimeoutError`
+- `EventstoreUnspecificError`
+- `EventstoreWrongExpectedVersionError`
+
 ## request response queue
 
 This lib does not use a queue for outgoing requests and commands.  

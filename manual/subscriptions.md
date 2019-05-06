@@ -119,3 +119,11 @@ await persistentSubscription.unsubscribe()
 
 /** TODO **/  
 not implemented yet
+
+## emitted events
+
+- `subscribed` emitted after subscription is established
+- `dropped` emitted when subscription is dropped
+- `event` emitted when event appeared (param: Event)
+- `event-eventnametolowercase` emitted when event appeared (param: Event)
+- `error` emitted in error case (param: Error)

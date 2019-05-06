@@ -1,7 +1,7 @@
 {
   "type": "File",
   "start": 0,
-  "end": 1604,
+  "end": 1603,
   "loc": {
     "start": {
       "line": 1,
@@ -15,7 +15,7 @@
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 1604,
+    "end": 1603,
     "loc": {
       "start": {
         "line": 1,
@@ -2563,7 +2563,7 @@
       {
         "type": "Identifier",
         "start": 1358,
-        "end": 1561,
+        "end": 1560,
         "loc": {
           "start": {
             "line": 52,
@@ -2574,326 +2574,292 @@
             "column": 1
           }
         },
-        "declarations": [
+        "id": {
+          "type": "Identifier",
+          "start": 1367,
+          "end": 1398,
+          "loc": {
+            "start": {
+              "line": 52,
+              "column": 9
+            },
+            "end": {
+              "line": 52,
+              "column": 40
+            },
+            "identifierName": "setPersistentSubscriptionConfig"
+          },
+          "name": "setPersistentSubscriptionConfig"
+        },
+        "generator": false,
+        "async": false,
+        "params": [
           {
-            "type": "VariableDeclarator",
-            "start": 1362,
-            "end": 1561,
+            "type": "Identifier",
+            "start": 1402,
+            "end": 1455,
             "loc": {
               "start": {
-                "line": 52,
-                "column": 4
+                "line": 53,
+                "column": 2
               },
               "end": {
-                "line": 56,
-                "column": 1
-              }
-            },
-            "id": {
-              "type": "Identifier",
-              "start": 1362,
-              "end": 1393,
-              "loc": {
-                "start": {
-                  "line": 52,
-                  "column": 4
-                },
-                "end": {
-                  "line": 52,
-                  "column": 35
-                },
-                "identifierName": "setPersistentSubscriptionConfig"
+                "line": 53,
+                "column": 55
               },
-              "name": "setPersistentSubscriptionConfig"
+              "identifierName": "customSettings"
             },
-            "init": {
-              "type": "ArrowFunctionExpression",
-              "start": 1396,
-              "end": 1561,
+            "name": "customSettings",
+            "typeAnnotation": {
+              "type": "TSTypeAnnotation",
+              "start": 1416,
+              "end": 1455,
               "loc": {
                 "start": {
-                  "line": 52,
-                  "column": 38
+                  "line": 53,
+                  "column": 16
                 },
                 "end": {
-                  "line": 56,
-                  "column": 1
+                  "line": 53,
+                  "column": 55
                 }
               },
-              "returnType": {
-                "type": "TSTypeAnnotation",
-                "start": 1455,
-                "end": 1485,
+              "typeAnnotation": {
+                "type": "TSUnionType",
+                "start": 1418,
+                "end": 1455,
                 "loc": {
                   "start": {
-                    "line": 54,
-                    "column": 1
+                    "line": 53,
+                    "column": 18
                   },
                   "end": {
-                    "line": 54,
-                    "column": 31
+                    "line": 53,
+                    "column": 55
                   }
                 },
-                "typeAnnotation": {
-                  "type": "TSTypeReference",
-                  "start": 1457,
-                  "end": 1485,
-                  "loc": {
-                    "start": {
-                      "line": 54,
-                      "column": 3
-                    },
-                    "end": {
-                      "line": 54,
-                      "column": 31
-                    }
-                  },
-                  "typeName": {
-                    "type": "Identifier",
-                    "start": 1457,
-                    "end": 1485,
-                    "loc": {
-                      "start": {
-                        "line": 54,
-                        "column": 3
-                      },
-                      "end": {
-                        "line": 54,
-                        "column": 31
-                      },
-                      "identifierName": "PersistentSubscriptionConfig"
-                    },
-                    "name": "PersistentSubscriptionConfig"
-                  }
-                }
-              },
-              "id": null,
-              "generator": false,
-              "async": false,
-              "params": [
-                {
-                  "type": "Identifier",
-                  "start": 1400,
-                  "end": 1453,
-                  "loc": {
-                    "start": {
-                      "line": 53,
-                      "column": 2
-                    },
-                    "end": {
-                      "line": 53,
-                      "column": 55
-                    },
-                    "identifierName": "customSettings"
-                  },
-                  "name": "customSettings",
-                  "typeAnnotation": {
-                    "type": "TSTypeAnnotation",
-                    "start": 1414,
-                    "end": 1453,
+                "types": [
+                  {
+                    "type": "TSObjectKeyword",
+                    "start": 1418,
+                    "end": 1424,
                     "loc": {
                       "start": {
                         "line": 53,
-                        "column": 16
+                        "column": 18
+                      },
+                      "end": {
+                        "line": 53,
+                        "column": 24
+                      }
+                    }
+                  },
+                  {
+                    "type": "TSTypeReference",
+                    "start": 1427,
+                    "end": 1455,
+                    "loc": {
+                      "start": {
+                        "line": 53,
+                        "column": 27
                       },
                       "end": {
                         "line": 53,
                         "column": 55
                       }
                     },
-                    "typeAnnotation": {
-                      "type": "TSUnionType",
-                      "start": 1416,
-                      "end": 1453,
+                    "typeName": {
+                      "type": "Identifier",
+                      "start": 1427,
+                      "end": 1455,
                       "loc": {
                         "start": {
                           "line": 53,
-                          "column": 18
+                          "column": 27
                         },
                         "end": {
                           "line": 53,
                           "column": 55
-                        }
-                      },
-                      "types": [
-                        {
-                          "type": "TSObjectKeyword",
-                          "start": 1416,
-                          "end": 1422,
-                          "loc": {
-                            "start": {
-                              "line": 53,
-                              "column": 18
-                            },
-                            "end": {
-                              "line": 53,
-                              "column": 24
-                            }
-                          }
                         },
-                        {
-                          "type": "TSTypeReference",
-                          "start": 1425,
-                          "end": 1453,
-                          "loc": {
-                            "start": {
-                              "line": 53,
-                              "column": 27
-                            },
-                            "end": {
-                              "line": 53,
-                              "column": 55
-                            }
-                          },
-                          "typeName": {
-                            "type": "Identifier",
-                            "start": 1425,
-                            "end": 1453,
-                            "loc": {
-                              "start": {
-                                "line": 53,
-                                "column": 27
-                              },
-                              "end": {
-                                "line": 53,
-                                "column": 55
-                              },
-                              "identifierName": "PersistentSubscriptionConfig"
-                            },
-                            "name": "PersistentSubscriptionConfig"
-                          }
-                        }
-                      ]
+                        "identifierName": "PersistentSubscriptionConfig"
+                      },
+                      "name": "PersistentSubscriptionConfig"
                     }
                   }
-                }
-              ],
-              "body": {
-                "type": "BlockStatement",
-                "start": 1489,
-                "end": 1561,
-                "loc": {
-                  "start": {
-                    "line": 54,
-                    "column": 35
-                  },
-                  "end": {
-                    "line": 56,
-                    "column": 1
-                  }
-                },
-                "body": [
-                  {
-                    "type": "ReturnStatement",
-                    "start": 1493,
-                    "end": 1559,
-                    "loc": {
-                      "start": {
-                        "line": 55,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 55,
-                        "column": 68
-                      }
-                    },
-                    "argument": {
-                      "type": "ObjectExpression",
-                      "start": 1500,
-                      "end": 1559,
-                      "loc": {
-                        "start": {
-                          "line": 55,
-                          "column": 9
-                        },
-                        "end": {
-                          "line": 55,
-                          "column": 68
-                        }
-                      },
-                      "properties": [
-                        {
-                          "type": "SpreadElement",
-                          "start": 1501,
-                          "end": 1539,
-                          "loc": {
-                            "start": {
-                              "line": 55,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 55,
-                              "column": 48
-                            }
-                          },
-                          "argument": {
-                            "type": "Identifier",
-                            "start": 1504,
-                            "end": 1539,
-                            "loc": {
-                              "start": {
-                                "line": 55,
-                                "column": 13
-                              },
-                              "end": {
-                                "line": 55,
-                                "column": 48
-                              },
-                              "identifierName": "defaultPersistentSubscriptionConfig"
-                            },
-                            "name": "defaultPersistentSubscriptionConfig"
-                          }
-                        },
-                        {
-                          "type": "SpreadElement",
-                          "start": 1541,
-                          "end": 1558,
-                          "loc": {
-                            "start": {
-                              "line": 55,
-                              "column": 50
-                            },
-                            "end": {
-                              "line": 55,
-                              "column": 67
-                            }
-                          },
-                          "argument": {
-                            "type": "Identifier",
-                            "start": 1544,
-                            "end": 1558,
-                            "loc": {
-                              "start": {
-                                "line": 55,
-                                "column": 53
-                              },
-                              "end": {
-                                "line": 55,
-                                "column": 67
-                              },
-                              "identifierName": "customSettings"
-                            },
-                            "name": "customSettings"
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ],
-                "directives": []
+                ]
               }
             }
           }
         ],
-        "kind": "let",
+        "returnType": {
+          "type": "TSTypeAnnotation",
+          "start": 1457,
+          "end": 1487,
+          "loc": {
+            "start": {
+              "line": 54,
+              "column": 1
+            },
+            "end": {
+              "line": 54,
+              "column": 31
+            }
+          },
+          "typeAnnotation": {
+            "type": "TSTypeReference",
+            "start": 1459,
+            "end": 1487,
+            "loc": {
+              "start": {
+                "line": 54,
+                "column": 3
+              },
+              "end": {
+                "line": 54,
+                "column": 31
+              }
+            },
+            "typeName": {
+              "type": "Identifier",
+              "start": 1459,
+              "end": 1487,
+              "loc": {
+                "start": {
+                  "line": 54,
+                  "column": 3
+                },
+                "end": {
+                  "line": 54,
+                  "column": 31
+                },
+                "identifierName": "PersistentSubscriptionConfig"
+              },
+              "name": "PersistentSubscriptionConfig"
+            }
+          }
+        },
+        "body": {
+          "type": "BlockStatement",
+          "start": 1488,
+          "end": 1560,
+          "loc": {
+            "start": {
+              "line": 54,
+              "column": 32
+            },
+            "end": {
+              "line": 56,
+              "column": 1
+            }
+          },
+          "body": [
+            {
+              "type": "ReturnStatement",
+              "start": 1492,
+              "end": 1558,
+              "loc": {
+                "start": {
+                  "line": 55,
+                  "column": 2
+                },
+                "end": {
+                  "line": 55,
+                  "column": 68
+                }
+              },
+              "argument": {
+                "type": "ObjectExpression",
+                "start": 1499,
+                "end": 1558,
+                "loc": {
+                  "start": {
+                    "line": 55,
+                    "column": 9
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": 68
+                  }
+                },
+                "properties": [
+                  {
+                    "type": "SpreadElement",
+                    "start": 1500,
+                    "end": 1538,
+                    "loc": {
+                      "start": {
+                        "line": 55,
+                        "column": 10
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 48
+                      }
+                    },
+                    "argument": {
+                      "type": "Identifier",
+                      "start": 1503,
+                      "end": 1538,
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 13
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 48
+                        },
+                        "identifierName": "defaultPersistentSubscriptionConfig"
+                      },
+                      "name": "defaultPersistentSubscriptionConfig"
+                    }
+                  },
+                  {
+                    "type": "SpreadElement",
+                    "start": 1540,
+                    "end": 1557,
+                    "loc": {
+                      "start": {
+                        "line": 55,
+                        "column": 50
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 67
+                      }
+                    },
+                    "argument": {
+                      "type": "Identifier",
+                      "start": 1543,
+                      "end": 1557,
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 53
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 67
+                        },
+                        "identifierName": "customSettings"
+                      },
+                      "name": "customSettings"
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "directives": []
+        },
         "name": "_",
         "leadingComments": [],
         "trailingComments": []
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1563,
-        "end": 1603,
+        "start": 1562,
+        "end": 1602,
         "loc": {
           "start": {
             "line": 58,
@@ -2907,8 +2873,8 @@
         "specifiers": [
           {
             "type": "ExportSpecifier",
-            "start": 1571,
-            "end": 1602,
+            "start": 1570,
+            "end": 1601,
             "loc": {
               "start": {
                 "line": 58,
@@ -2921,8 +2887,8 @@
             },
             "local": {
               "type": "Identifier",
-              "start": 1571,
-              "end": 1602,
+              "start": 1570,
+              "end": 1601,
               "loc": {
                 "start": {
                   "line": 58,
@@ -2938,8 +2904,8 @@
             },
             "exported": {
               "type": "Identifier",
-              "start": 1571,
-              "end": 1602,
+              "start": 1570,
+              "end": 1601,
               "loc": {
                 "start": {
                   "line": 58,
@@ -2960,8 +2926,8 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 1563,
-        "end": 1603,
+        "start": 1562,
+        "end": 1602,
         "loc": {
           "start": {
             "line": 58,
@@ -2975,9 +2941,9 @@
         "specifiers": null,
         "source": null,
         "declaration": {
-          "type": "VariableDeclaration",
+          "type": "FunctionDeclaration",
           "start": 1358,
-          "end": 1561,
+          "end": 1560,
           "loc": {
             "start": {
               "line": 52,
@@ -2988,334 +2954,284 @@
               "column": 1
             }
           },
-          "declarations": [
+          "id": {
+            "type": "Identifier",
+            "start": 1367,
+            "end": 1398,
+            "loc": {
+              "start": {
+                "line": 52,
+                "column": 9
+              },
+              "end": {
+                "line": 52,
+                "column": 40
+              },
+              "identifierName": "setPersistentSubscriptionConfig"
+            },
+            "name": "setPersistentSubscriptionConfig"
+          },
+          "generator": false,
+          "async": false,
+          "params": [
             {
-              "type": "VariableDeclarator",
-              "start": 1362,
-              "end": 1561,
+              "type": "Identifier",
+              "start": 1402,
+              "end": 1455,
               "loc": {
                 "start": {
-                  "line": 52,
-                  "column": 4
+                  "line": 53,
+                  "column": 2
                 },
                 "end": {
-                  "line": 56,
-                  "column": 1
-                }
+                  "line": 53,
+                  "column": 55
+                },
+                "identifierName": "customSettings"
               },
-              "id": {
-                "type": "Identifier",
-                "start": 1362,
-                "end": 1393,
+              "name": "customSettings",
+              "typeAnnotation": {
+                "type": "TSTypeAnnotation",
+                "start": 1416,
+                "end": 1455,
                 "loc": {
                   "start": {
-                    "line": 52,
-                    "column": 4
+                    "line": 53,
+                    "column": 16
                   },
                   "end": {
-                    "line": 52,
-                    "column": 35
-                  },
-                  "identifierName": "setPersistentSubscriptionConfig"
-                },
-                "name": "setPersistentSubscriptionConfig"
-              },
-              "init": {
-                "type": "ArrowFunctionExpression",
-                "start": 1396,
-                "end": 1561,
-                "loc": {
-                  "start": {
-                    "line": 52,
-                    "column": 38
-                  },
-                  "end": {
-                    "line": 56,
-                    "column": 1
+                    "line": 53,
+                    "column": 55
                   }
                 },
-                "returnType": {
-                  "type": "TSTypeAnnotation",
-                  "start": 1455,
-                  "end": 1485,
+                "typeAnnotation": {
+                  "type": "TSUnionType",
+                  "start": 1418,
+                  "end": 1455,
                   "loc": {
                     "start": {
-                      "line": 54,
-                      "column": 1
+                      "line": 53,
+                      "column": 18
                     },
                     "end": {
-                      "line": 54,
-                      "column": 31
+                      "line": 53,
+                      "column": 55
                     }
                   },
-                  "typeAnnotation": {
-                    "type": "TSTypeReference",
-                    "start": 1457,
-                    "end": 1485,
-                    "loc": {
-                      "start": {
-                        "line": 54,
-                        "column": 3
-                      },
-                      "end": {
-                        "line": 54,
-                        "column": 31
-                      }
-                    },
-                    "typeName": {
-                      "type": "Identifier",
-                      "start": 1457,
-                      "end": 1485,
-                      "loc": {
-                        "start": {
-                          "line": 54,
-                          "column": 3
-                        },
-                        "end": {
-                          "line": 54,
-                          "column": 31
-                        },
-                        "identifierName": "PersistentSubscriptionConfig"
-                      },
-                      "name": "PersistentSubscriptionConfig"
-                    }
-                  }
-                },
-                "id": {
-                  "type": "Identifier",
-                  "start": 1362,
-                  "end": 1393,
-                  "loc": {
-                    "start": {
-                      "line": 52,
-                      "column": 4
-                    },
-                    "end": {
-                      "line": 52,
-                      "column": 35
-                    },
-                    "identifierName": "setPersistentSubscriptionConfig"
-                  },
-                  "name": "setPersistentSubscriptionConfig"
-                },
-                "generator": false,
-                "async": false,
-                "params": [
-                  {
-                    "type": "Identifier",
-                    "start": 1400,
-                    "end": 1453,
-                    "loc": {
-                      "start": {
-                        "line": 53,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 53,
-                        "column": 55
-                      },
-                      "identifierName": "customSettings"
-                    },
-                    "name": "customSettings",
-                    "typeAnnotation": {
-                      "type": "TSTypeAnnotation",
-                      "start": 1414,
-                      "end": 1453,
+                  "types": [
+                    {
+                      "type": "TSObjectKeyword",
+                      "start": 1418,
+                      "end": 1424,
                       "loc": {
                         "start": {
                           "line": 53,
-                          "column": 16
+                          "column": 18
+                        },
+                        "end": {
+                          "line": 53,
+                          "column": 24
+                        }
+                      }
+                    },
+                    {
+                      "type": "TSTypeReference",
+                      "start": 1427,
+                      "end": 1455,
+                      "loc": {
+                        "start": {
+                          "line": 53,
+                          "column": 27
                         },
                         "end": {
                           "line": 53,
                           "column": 55
                         }
                       },
-                      "typeAnnotation": {
-                        "type": "TSUnionType",
-                        "start": 1416,
-                        "end": 1453,
+                      "typeName": {
+                        "type": "Identifier",
+                        "start": 1427,
+                        "end": 1455,
                         "loc": {
                           "start": {
                             "line": 53,
-                            "column": 18
+                            "column": 27
                           },
                           "end": {
                             "line": 53,
                             "column": 55
-                          }
-                        },
-                        "types": [
-                          {
-                            "type": "TSObjectKeyword",
-                            "start": 1416,
-                            "end": 1422,
-                            "loc": {
-                              "start": {
-                                "line": 53,
-                                "column": 18
-                              },
-                              "end": {
-                                "line": 53,
-                                "column": 24
-                              }
-                            }
                           },
-                          {
-                            "type": "TSTypeReference",
-                            "start": 1425,
-                            "end": 1453,
-                            "loc": {
-                              "start": {
-                                "line": 53,
-                                "column": 27
-                              },
-                              "end": {
-                                "line": 53,
-                                "column": 55
-                              }
-                            },
-                            "typeName": {
-                              "type": "Identifier",
-                              "start": 1425,
-                              "end": 1453,
-                              "loc": {
-                                "start": {
-                                  "line": 53,
-                                  "column": 27
-                                },
-                                "end": {
-                                  "line": 53,
-                                  "column": 55
-                                },
-                                "identifierName": "PersistentSubscriptionConfig"
-                              },
-                              "name": "PersistentSubscriptionConfig"
-                            }
-                          }
-                        ]
+                          "identifierName": "PersistentSubscriptionConfig"
+                        },
+                        "name": "PersistentSubscriptionConfig"
                       }
                     }
-                  }
-                ],
-                "body": {
-                  "type": "BlockStatement",
-                  "start": 1489,
-                  "end": 1561,
-                  "loc": {
-                    "start": {
-                      "line": 54,
-                      "column": 35
-                    },
-                    "end": {
-                      "line": 56,
-                      "column": 1
-                    }
-                  },
-                  "body": [
-                    {
-                      "type": "ReturnStatement",
-                      "start": 1493,
-                      "end": 1559,
-                      "loc": {
-                        "start": {
-                          "line": 55,
-                          "column": 2
-                        },
-                        "end": {
-                          "line": 55,
-                          "column": 68
-                        }
-                      },
-                      "argument": {
-                        "type": "ObjectExpression",
-                        "start": 1500,
-                        "end": 1559,
-                        "loc": {
-                          "start": {
-                            "line": 55,
-                            "column": 9
-                          },
-                          "end": {
-                            "line": 55,
-                            "column": 68
-                          }
-                        },
-                        "properties": [
-                          {
-                            "type": "SpreadElement",
-                            "start": 1501,
-                            "end": 1539,
-                            "loc": {
-                              "start": {
-                                "line": 55,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 55,
-                                "column": 48
-                              }
-                            },
-                            "argument": {
-                              "type": "Identifier",
-                              "start": 1504,
-                              "end": 1539,
-                              "loc": {
-                                "start": {
-                                  "line": 55,
-                                  "column": 13
-                                },
-                                "end": {
-                                  "line": 55,
-                                  "column": 48
-                                },
-                                "identifierName": "defaultPersistentSubscriptionConfig"
-                              },
-                              "name": "defaultPersistentSubscriptionConfig"
-                            }
-                          },
-                          {
-                            "type": "SpreadElement",
-                            "start": 1541,
-                            "end": 1558,
-                            "loc": {
-                              "start": {
-                                "line": 55,
-                                "column": 50
-                              },
-                              "end": {
-                                "line": 55,
-                                "column": 67
-                              }
-                            },
-                            "argument": {
-                              "type": "Identifier",
-                              "start": 1544,
-                              "end": 1558,
-                              "loc": {
-                                "start": {
-                                  "line": 55,
-                                  "column": 53
-                                },
-                                "end": {
-                                  "line": 55,
-                                  "column": 67
-                                },
-                                "identifierName": "customSettings"
-                              },
-                              "name": "customSettings"
-                            }
-                          }
-                        ]
-                      }
-                    }
-                  ],
-                  "directives": []
+                  ]
                 }
               }
             }
           ],
-          "kind": "let",
+          "returnType": {
+            "type": "TSTypeAnnotation",
+            "start": 1457,
+            "end": 1487,
+            "loc": {
+              "start": {
+                "line": 54,
+                "column": 1
+              },
+              "end": {
+                "line": 54,
+                "column": 31
+              }
+            },
+            "typeAnnotation": {
+              "type": "TSTypeReference",
+              "start": 1459,
+              "end": 1487,
+              "loc": {
+                "start": {
+                  "line": 54,
+                  "column": 3
+                },
+                "end": {
+                  "line": 54,
+                  "column": 31
+                }
+              },
+              "typeName": {
+                "type": "Identifier",
+                "start": 1459,
+                "end": 1487,
+                "loc": {
+                  "start": {
+                    "line": 54,
+                    "column": 3
+                  },
+                  "end": {
+                    "line": 54,
+                    "column": 31
+                  },
+                  "identifierName": "PersistentSubscriptionConfig"
+                },
+                "name": "PersistentSubscriptionConfig"
+              }
+            }
+          },
+          "body": {
+            "type": "BlockStatement",
+            "start": 1488,
+            "end": 1560,
+            "loc": {
+              "start": {
+                "line": 54,
+                "column": 32
+              },
+              "end": {
+                "line": 56,
+                "column": 1
+              }
+            },
+            "body": [
+              {
+                "type": "ReturnStatement",
+                "start": 1492,
+                "end": 1558,
+                "loc": {
+                  "start": {
+                    "line": 55,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 55,
+                    "column": 68
+                  }
+                },
+                "argument": {
+                  "type": "ObjectExpression",
+                  "start": 1499,
+                  "end": 1558,
+                  "loc": {
+                    "start": {
+                      "line": 55,
+                      "column": 9
+                    },
+                    "end": {
+                      "line": 55,
+                      "column": 68
+                    }
+                  },
+                  "properties": [
+                    {
+                      "type": "SpreadElement",
+                      "start": 1500,
+                      "end": 1538,
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 10
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 48
+                        }
+                      },
+                      "argument": {
+                        "type": "Identifier",
+                        "start": 1503,
+                        "end": 1538,
+                        "loc": {
+                          "start": {
+                            "line": 55,
+                            "column": 13
+                          },
+                          "end": {
+                            "line": 55,
+                            "column": 48
+                          },
+                          "identifierName": "defaultPersistentSubscriptionConfig"
+                        },
+                        "name": "defaultPersistentSubscriptionConfig"
+                      }
+                    },
+                    {
+                      "type": "SpreadElement",
+                      "start": 1540,
+                      "end": 1557,
+                      "loc": {
+                        "start": {
+                          "line": 55,
+                          "column": 50
+                        },
+                        "end": {
+                          "line": 55,
+                          "column": 67
+                        }
+                      },
+                      "argument": {
+                        "type": "Identifier",
+                        "start": 1543,
+                        "end": 1557,
+                        "loc": {
+                          "start": {
+                            "line": 55,
+                            "column": 53
+                          },
+                          "end": {
+                            "line": 55,
+                            "column": 67
+                          },
+                          "identifierName": "customSettings"
+                        },
+                        "name": "customSettings"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "directives": []
+          },
           "leadingComments": [],
           "trailingComments": []
         },
