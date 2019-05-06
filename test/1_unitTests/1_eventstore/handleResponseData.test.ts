@@ -42,10 +42,10 @@ describe('TCPConnection', (): void => {
   describe('handleNewResponseData', (): void => {
     it('throws on invalid command length', async (): Promise<void> => {
       const testClass = new TestClass()
-      let buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab])
+      let buf = Buffer.from([0, 0, 0, 0, 0, 0, 0, 0])
       try {
         testClass.handleNewResponseData(buf)
-        assert.ok('has not thrown')
+        assert.fail('has not thrown')
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreProtocolError')
       }
@@ -55,10 +55,10 @@ describe('TCPConnection', (): void => {
   describe('handleSingleResponseData', (): void => {
     it('throws on invalid command length', async (): Promise<void> => {
       const testClass = new TestClass()
-      let buf = Buffer.from([0x12, 0x34, 0x56, 0x78, 0x90, 0xab])
+      let buf = Buffer.from([0, 0, 0, 0, 0, 0, 0, 0])
       try {
         testClass.handleSingleResponseData(buf)
-        assert.ok('has not thrown')
+        assert.fail('has not thrown')
       } catch (err) {
         assert.strictEqual(err.name, 'EventstoreProtocolError')
       }
