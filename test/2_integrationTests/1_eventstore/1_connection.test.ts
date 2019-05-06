@@ -3,8 +3,19 @@ import {Eventstore} from '../../../src'
 import * as assert from 'assert'
 import * as bunyan from 'bunyan'
 import * as fs from 'fs'
+import {setConnectionSettings} from '../../../src/eventstore/EventstoreSettings'
 
 describe('Connection test', (): void => {
+  it('creates an instance without config', async (): Promise<void> => {
+    const es = new Eventstore()
+    expect(es.isConnected).not.to.true
+  })
+
+  it('creates an instance with eventstore settings object', async (): Promise<void> => {
+    const es = new Eventstore(setConnectionSettings({}))
+    expect(es.isConnected).not.to.true
+  })
+
   it('returns false if not connected', async (): Promise<void> => {
     const es = new Eventstore({
       uri: 'tcp://restrictedUser:restrictedOnlyUserPassword@cluster1.escluster.net:1113'

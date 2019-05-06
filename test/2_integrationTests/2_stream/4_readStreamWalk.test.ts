@@ -28,7 +28,7 @@ describe('Walk stream tests', (): void => {
       assert.strictEqual(value.data.count, checkCounter)
       checkCounter++
     }
-    assert.strictEqual(checkCounter, 10000)
+    assert.strictEqual(checkCounter, 10001)
   })
 
   it('can walk to stream backward', async (): Promise<void> => {
@@ -36,7 +36,7 @@ describe('Walk stream tests', (): void => {
       .stream('tenthousandstream-f73cff95-564b-4da4-8072-4d761db6cd34')
       .walkStreamBackward()
 
-    let checkCounter = 10000
+    let checkCounter = 10001
     for await (const value of walker) {
       checkCounter--
       assert.strictEqual(value.data.count, checkCounter)
