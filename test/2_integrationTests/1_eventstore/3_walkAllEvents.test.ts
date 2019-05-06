@@ -24,7 +24,7 @@ describe('Read all events', (): void => {
     }
   )
 
-  it('reads  all events forward', async (): Promise<void> => {
+  it('reads all events forward', async (): Promise<void> => {
     let slice
     try {
       slice = await es.walkAllForward()
@@ -38,7 +38,7 @@ describe('Read all events', (): void => {
     assert.strictEqual(forwardResult.length > 10000, true)
   })
 
-  it('reads  all events backward', async (): Promise<void> => {
+  it('reads all events backward', async (): Promise<void> => {
     let slice
     try {
       slice = await es.walkAllBackward()
