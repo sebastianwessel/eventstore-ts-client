@@ -93,7 +93,7 @@
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=sqale_rating" alt="Maintainability Rating"></a>
 <a href="https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client"><img src="https://sonarcloud.io/api/project_badges/measure?project=sebastianwessel_eventstore-ts-client&amp;metric=vulnerabilities" alt="Vulnerabilities"></a>
 <a href="https://sebastianwessel.github.io/eventstore-ts-client"><img src="https://sebastianwessel.github.io/eventstore-ts-client/badge.svg" alt="doc coverage"></a></p>
-<p>Eventstore javascript client library written in typescript.</p>
+<p>Eventstore node.js javascript client library written in typescript with ES6 async/await syntax.</p>
 <p>This repository is <strong>in BETA status</strong></p>
 <p>Main focus on this lib are:</p>
 <ul>
@@ -109,7 +109,7 @@
 <h2 id="requirements">Requirements</h2><p>You will need to have node.js version &gt;=10 installed to use this lib because it&apos;s based on async iterators.<br>It&apos;s tested against eventstore version 5, but should also work on lower versions in general.<br>Expect some shortcut function for accessing standard projections which are not part of lower eventstore versions.</p>
 <h2 id="installation">Installation</h2><p>Installation is as simple as most packages.<br>Just install package in your projects root with:</p>
 <pre><code class="language-bash"><code class="source-code prettyprint">npm i --save eventstore-ts-client</code></code></pre>
-<h2 id="quick-start">Quick-Start</h2><pre><code class="language-javascript"><code class="source-code prettyprint">const {Eventstore, Event} = require(&apos;eventstore-ts-client)
+<h2 id="quick-start">Quick-Start</h2><pre><code class="language-javascript"><code class="source-code prettyprint">const {Eventstore, Event} = require(&apos;eventstore-ts-client&apos;)
 const es = new Eventstore({
   uri: &apos;tcp://admin:changeit@127.0.0.1:1113&apos;
 })

@@ -496,14 +496,17 @@ export class Stream {
       credentials
     )
   }
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
+  /**
+   * Walk through all events of stream
+   */
   protected async walkStream(
     forward: boolean,
     start: Long | number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials
-  ) {
+  ): Promise<StreamWalker> {
     const that = this
     const resolveLinksTos = resolveLinks === undefined ? this.options.resolveLinks : resolveLinks
     const maxCount = this.defaultSliceSize

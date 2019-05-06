@@ -253,1231 +253,1285 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber6",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber6",
     "Async iterator test",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber94",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber94",
     "Async iterator test can combine filter and forEach",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber108",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber108",
     "Async iterator test can combine filter, map and to array",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber56",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber56",
     "Async iterator test can filter events",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber45",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber45",
     "Async iterator test can iterate through",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber67",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber67",
     "Async iterator test can reduce events to single value",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber82",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber82",
     "Async iterator test can test all entries and return global result true",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber88",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber88",
     "Async iterator test can test all entries and return global result true",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber76",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber76",
     "Async iterator test can transform to array",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber171",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber171",
     "Async iterator test throws on none function at every",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber127",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber127",
     "Async iterator test throws on none function at filter",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber149",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber149",
     "Async iterator test throws on none function at forEach",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber138",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber138",
     "Async iterator test throws on none function at map",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html#lineNumber160",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html#lineNumber160",
     "Async iterator test throws on none function at reduce",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber211",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber222",
     "Basic connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber232",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber243",
     "Basic connection test can ping eventstore",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber228",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber239",
     "Basic connection test returns clientId - name of connection",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber7",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber8",
     "Connection test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber76",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber87",
     "Connection test can connect to eventstore cluster secure tcp",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber61",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber72",
     "Connection test can connect to eventstore cluster unsecure",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber46",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber57",
     "Connection test can connect to eventstore single node to default port",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber31",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber42",
     "Connection test can connect to eventstore single node unsecure",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber92",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber103",
     "Connection test can ssl connect to eventstore with cert & strict validation",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber15",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber14",
+    "Connection test creates an instance with eventstore settings object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber9",
+    "Connection test creates an instance without config",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber26",
     "Connection test does nothing if not connected",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber176",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber187",
     "Connection test finds cluster node from seed list",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber155",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber166",
     "Connection test finds cluster node over dns",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber135",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber146",
     "Connection test finds cluster node over dns (require master)",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber196",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber207",
     "Connection test it throws on invalid credentials",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber8",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber19",
     "Connection test returns false if not connected",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber23",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber34",
     "Connection test set a logger",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber114",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html#lineNumber125",
     "Connection test throws on invalid secure context",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber17",
+    "test-file/test/1_unitTests/3_event/eventBase.test.ts.html#lineNumber17",
     "Event class base tests",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber33",
+    "test-file/test/1_unitTests/3_event/eventBase.test.ts.html#lineNumber33",
     "Event class base tests creates a event instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber41",
+    "test-file/test/1_unitTests/3_event/eventBase.test.ts.html#lineNumber41",
     "Event class base tests creates a event instance with eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html#lineNumber49",
+    "test-file/test/1_unitTests/3_event/eventBase.test.ts.html#lineNumber49",
     "Event class base tests creates a event instance with eventData and metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber5",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber5",
     "Event emit tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber72",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber72",
     "Event emit tests appends multiple new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber23",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber23",
     "Event emit tests appends single new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber39",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber39",
     "Event emit tests appends single new event with require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber50",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber50",
     "Event emit tests appends single new event with require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber61",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber61",
     "Event emit tests appends single new event without require master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber89",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber89",
     "Event emit tests throws when emitting events already stored in eventstore",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber4",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber4",
     "Eventstore error class",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber11",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber11",
     "Eventstore error class can have a causing error instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber5",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber5",
     "Eventstore error class creates an error instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber20",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber20",
     "Eventstore error types",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber31",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber31",
     "Eventstore error types ",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber36",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber36",
     "Eventstore error types ",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html#lineNumber57",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html#lineNumber57",
     "Eventstore error types ",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber17",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber17",
     "Existing event instance tests",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber33",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber33",
     "Existing event instance tests returns false on existing event",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber87",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber87",
     "Existing event instance tests throws on changing eventCorrelationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber63",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber63",
     "Existing event instance tests throws on changing eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber51",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber51",
     "Existing event instance tests throws on changing eventId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber75",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber75",
     "Existing event instance tests throws on changing eventMetadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber39",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber39",
     "Existing event instance tests throws on changing name",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber10",
+    "test-file/test/1_unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber10",
     "Gossip connection info",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber13",
+    "test-file/test/1_unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber13",
     "Gossip connection info returns empty array on dns error",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber18",
+    "test-file/test/1_unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber18",
     "Gossip connection info returns null on error",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber23",
+    "test-file/test/1_unitTests/1_eventstore/getConnectionInfo.test.ts.html#lineNumber23",
     "Gossip connection info returns same settings",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber5",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber5",
     "Linked event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber30",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber30",
     "Linked event resolves linked event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber48",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber48",
     "Linked event returns same event if not link",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber54",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber54",
     "Linked event throws NotFoundError",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber81",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html#lineNumber81",
     "Linked event throws ProtocolError",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber17",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber17",
     "New event instance tests",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber89",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber89",
     "New event instance tests can change eventCorrelationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber55",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber55",
     "New event instance tests can change eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber46",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber46",
     "New event instance tests can change eventId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber72",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber72",
     "New event instance tests can change eventMetadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber38",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber38",
     "New event instance tests can change name",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber64",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber64",
     "New event instance tests converts json string to eventData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber81",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber81",
     "New event instance tests converts json string to eventMetadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber106",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber106",
     "New event instance tests returns model.eventstore.proto.NewEvent instance",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html#lineNumber33",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber33",
     "New event instance tests returns true on new event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber5",
     "Persistent subscription test",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber134",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber150",
     "Persistent subscription test Persistent subscription get events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber203",
-    "Persistent subscription test Persistent subscription get events can notAck events",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber219",
+    "Persistent subscription test Persistent subscription get events can notAck single event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber163",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber179",
     "Persistent subscription test Persistent subscription get events can start a subscription on none empty stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber5",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber289",
+    "Persistent subscription test Persistent subscription get events notAck events with unknown by default",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber254",
+    "Persistent subscription test Persistent subscription get events notAck single event with unknown by default",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber6",
     "Persistent subscription test with admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber23",
     "Persistent subscription test with admin user rights creates a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber57",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber73",
     "Persistent subscription test with admin user rights deletes a persistent subscription",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber45",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber61",
     "Persistent subscription test with admin user rights throws on creating persistent subscription with same names again",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber69",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber85",
     "Persistent subscription test with admin user rights throws on delete",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber33",
-    "Persistent subscription test with admin user rights updates a persistent subscription",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber46",
+    "Persistent subscription test with admin user rights updates a persistent subscription with given subscription config and credentials",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber82",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber34",
+    "Persistent subscription test with admin user rights updates a persistent subscription with object",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber98",
     "Persistent subscription test without admin user rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber103",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber119",
     "Persistent subscription test without admin user rights throws on create",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber123",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber139",
     "Persistent subscription test without admin user rights throws on delete",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber113",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html#lineNumber129",
     "Persistent subscription test without admin user rights throws on update",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber4",
     "Read all events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber5",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber5",
     "Read all events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber55",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber55",
     "Read all events matches end/start entries",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber41",
-    "Read all events reads  all events backward",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber27",
-    "Read all events reads  all events forward",
-    "test"
-  ],
-  [
-    "",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber37",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber37",
     "Read all events reads a slice from all events backward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber22",
     "Read all events reads a slice from all events forward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber62",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber41",
+    "Read all events reads all events backward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber27",
+    "Read all events reads all events forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber77",
+    "Read all events reads all links backward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html#lineNumber63",
+    "Read all events reads all links forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber62",
     "Read all events throws on access denied (backward)",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber52",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html#lineNumber52",
     "Read all events throws on access denied (forward)",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/3_event/2_readEvent.test.ts.html#lineNumber5",
     "Read events from stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber36",
+    "test-file/test/2_integrationTests/3_event/2_readEvent.test.ts.html#lineNumber38",
     "Read events from stream reads a slice backward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/3_event/2_readEvent.test.ts.html#lineNumber23",
     "Read events from stream reads a slice forward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber3",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber3",
     "Read stream basic tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber21",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber21",
     "Read stream basic tests Read one event",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber22",
     "Read stream basic tests Read one event returns a event by given eventNumber",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber33",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber33",
     "Read stream basic tests Read one event returns a event by given eventNumber from master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber45",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber45",
     "Read stream basic tests Read one event returns first event of stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber56",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber56",
     "Read stream basic tests Read one event returns last event of stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber4",
     "Stream subscription tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber94",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber94",
     "Stream subscription tests logs on error",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber112",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber112",
     "Stream subscription tests receives events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber76",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber76",
     "Stream subscription tests returns false for not resolve links",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber39",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber39",
     "Stream subscription tests returns subscription name",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber58",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber58",
     "Stream subscription tests returns true for resolve links",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html#lineNumber22",
     "Stream subscription tests subscribes and unsubscribes to a stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber4",
     "Stream tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber4",
     "Stream tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber22",
     "Stream tests Basic tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber76",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber76",
     "Stream tests Basic tests can hard delete a stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber65",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber65",
     "Stream tests Basic tests can soft delete a stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber69",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber69",
     "Stream tests Basic tests can soft delete a stream on master node",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber41",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber41",
     "Stream tests Basic tests returns a stream instance for function atStream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber35",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber35",
     "Stream tests Basic tests returns a stream instance for function fromStream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber29",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber29",
     "Stream tests Basic tests returns a stream instance for function stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber23",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber23",
     "Stream tests Basic tests returns a stream name",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber47",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber47",
     "Stream tests Basic tests returns same stream on requiresMaster",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber59",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber59",
     "Stream tests Basic tests returns same stream on resolveAllLinks",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber53",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber53",
     "Stream tests Basic tests returns same stream on withCredentials",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html#lineNumber80",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html#lineNumber80",
     "Stream tests Basic tests throws on delete metastream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber22",
     "Stream tests Get stream metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber30",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber30",
     "Stream tests Get stream metadata reads metadata for stream on master node",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber23",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber23",
     "Stream tests Get stream metadata returns null for existing stream with no metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber38",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber38",
     "Stream tests Get stream metadata returns null for not existing stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber52",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber52",
     "Stream tests Get stream metadata throws on invalid access rights",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber43",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber43",
     "Stream tests Get stream metadata throws on metadata stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber65",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber65",
     "Stream tests Set stream metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber94",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber94",
     "Stream tests Set stream metadata throws on metadata stream",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber66",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber66",
     "Stream tests Set stream metadata writes stream metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber82",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html#lineNumber82",
     "Stream tests Set stream metadata writes stream metadata (require master)",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber5",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber5",
     "TCPConnection",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber34",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber34",
     "TCPConnection handleMultiPacketResponseData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber35",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber35",
     "TCPConnection handleMultiPacketResponseData returns null when param is null",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber42",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber42",
     "TCPConnection handleNewResponseData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber43",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber43",
     "TCPConnection handleNewResponseData throws on invalid command length",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber55",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber55",
     "TCPConnection handleSingleResponseData",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber56",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html#lineNumber56",
     "TCPConnection handleSingleResponseData throws on invalid command length",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber5",
+    "test-file/test/1_unitTests/1_eventstore/position.test.ts.html#lineNumber5",
     "Test position class",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber12",
+    "test-file/test/1_unitTests/1_eventstore/position.test.ts.html#lineNumber12",
     "Test position class creates a new instance from Long",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/position.test.ts.html#lineNumber6",
+    "test-file/test/1_unitTests/1_eventstore/position.test.ts.html#lineNumber6",
     "Test position class creates a new instance from numbers",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber4",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber4",
     "Transaction tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber31",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber31",
     "Transaction tests appends events to transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber49",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber49",
     "Transaction tests appends events to transaction requiered master",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber22",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber22",
     "Transaction tests creates a new transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber109",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber109",
     "Transaction tests it throws on commiting roled back transactions",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber135",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber135",
     "Transaction tests it throws on invalid transaction",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber147",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber147",
     "Transaction tests it throws on metastreams",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber70",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber70",
     "Transaction tests it throws on re-commiting",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber98",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber98",
     "Transaction tests it throws on writing of already stored events",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber84",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber84",
     "Transaction tests it throws on writing to already committed transactions",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber122",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html#lineNumber122",
     "Transaction tests it throws on writing to roled back transactions",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber3",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber3",
     "Walk stream tests",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber34",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber34",
     "Walk stream tests can walk to stream backward",
     "test"
   ],
   [
     "",
-    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber21",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber21",
     "Walk stream tests can walk to stream forward",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber37",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber37",
     "buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber41",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber41",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber46",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber46",
     "buffer to uuid converts buffer to uuid",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber51",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber51",
     "buffer to uuid throws on invalid buffer size",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber9",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber9",
     "checkOperationResult",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber26",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber26",
     "checkOperationResult handles OperationResult.AccessDenied",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber37",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber37",
     "checkOperationResult handles OperationResult.CommitTimeout",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber48",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber48",
     "checkOperationResult handles OperationResult.ForwardTimeout",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber59",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber59",
     "checkOperationResult handles OperationResult.InvalidTransaction",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber70",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber70",
     "checkOperationResult handles OperationResult.PrepareTimeout",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber81",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber81",
     "checkOperationResult handles OperationResult.StreamDeleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber103",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber103",
     "checkOperationResult handles OperationResult.Unspecific",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber92",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html#lineNumber92",
     "checkOperationResult handles OperationResult.WrongExpectedVersion",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber7",
+    "test-file/test/1_unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber7",
     "checkTimeout",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber61",
+    "test-file/test/1_unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber61",
     "checkTimeout logs errors on timeout",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber45",
+    "test-file/test/1_unitTests/1_eventstore/checkTimeout.test.ts.html#lineNumber45",
     "checkTimeout throws timed out promises",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html#lineNumber6",
+    "test-file/test/1_unitTests/1_eventstore/disconnect.test.ts.html#lineNumber6",
     "disconnect",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html#lineNumber26",
+    "test-file/test/1_unitTests/1_eventstore/disconnect.test.ts.html#lineNumber26",
     "disconnect throws on empty port or host",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber100",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber100",
     "event from raw",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber188",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber188",
     "event from raw deletes correlationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber177",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber177",
     "event from raw deletes correlationId also from metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber138",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber138",
     "event from raw returns event instance with full metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber156",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber156",
     "event from raw returns event instance without created information",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber147",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber147",
     "event from raw returns event instance without metadata",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber195",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber195",
     "event from raw returns null for correlationId if not set",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber168",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber168",
     "event from raw sets metadata on setting correlationId",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html#lineNumber201",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html#lineNumber201",
     "event from raw throw on missing raw event or link",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber9",
+    "test-file/test/2_integrationTests/1_eventstore/streamNamesByCategory.test.ts.html#lineNumber5",
+    "get stream names by category",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/streamNamesByCategory.test.ts.html#lineNumber30",
+    "get stream names by category returns all stream names for category",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber9",
     "handleReadAllEventsCompleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber26",
+    "test-file/test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber26",
     "handleReadAllEventsCompleted handles ReadEventResult.AccessDenied",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber48",
+    "test-file/test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber48",
     "handleReadAllEventsCompleted handles ReadEventResult.NotModified",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber70",
+    "test-file/test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html#lineNumber70",
     "handleReadAllEventsCompleted handles ReadEventResult.UnspecificError",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber9",
+    "test-file/test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber9",
     "handleReadEventCompleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber49",
+    "test-file/test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber49",
     "handleReadEventCompleted handles ReadEventResult.NoStream",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber26",
+    "test-file/test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber26",
     "handleReadEventCompleted handles ReadEventResult.NotFound",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber72",
+    "test-file/test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts.html#lineNumber72",
     "handleReadEventCompleted handles ReadEventResult.StreamDeleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber9",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber9",
     "handleReadStreamEventsCompleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber92",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber92",
     "handleReadStreamEventsCompleted handles ReadStreamResult.AccessDenied",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber26",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber26",
     "handleReadStreamEventsCompleted handles ReadStreamResult.NoStream",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber48",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber48",
     "handleReadStreamEventsCompleted handles ReadStreamResult.NotModified",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber70",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html#lineNumber70",
     "handleReadStreamEventsCompleted handles ReadStreamResult.StreamDeleted",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber6",
+    "test-file/test/1_unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber6",
     "sendCommand",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber27",
+    "test-file/test/1_unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber27",
     "sendCommand throws on maximum ",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber51",
+    "test-file/test/1_unitTests/1_eventstore/sendCommand.test.ts.html#lineNumber51",
     "sendCommand throws on socket error",
     "test"
   ],
@@ -2106,6 +2160,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/eventstore.ts~eventstore#defaultslicesize",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-member-defaultSliceSize",
+    "src/eventstore/Eventstore.ts~Eventstore#defaultSliceSize",
+    "member"
+  ],
+  [
     "src/eventstore/eventstore.ts~eventstore#disconnect",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-disconnect",
     "src/eventstore/Eventstore.ts~Eventstore#disconnect",
@@ -2202,6 +2262,12 @@ window.esdocSearchIndex = [
     "method"
   ],
   [
+    "src/eventstore/eventstore.ts~eventstore#streamnamesbycategory",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-streamNamesByCategory",
+    "src/eventstore/Eventstore.ts~Eventstore#streamNamesByCategory",
+    "method"
+  ],
+  [
     "src/eventstore/eventstore.ts~eventstore#walkallbackward",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllBackward",
     "src/eventstore/Eventstore.ts~Eventstore#walkAllBackward",
@@ -2211,6 +2277,24 @@ window.esdocSearchIndex = [
     "src/eventstore/eventstore.ts~eventstore#walkallforward",
     "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkAllForward",
     "src/eventstore/Eventstore.ts~Eventstore#walkAllForward",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#walkeventsbycorrelationid",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkEventsByCorrelationId",
+    "src/eventstore/Eventstore.ts~Eventstore#walkEventsByCorrelationId",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#walkeventsbystreamcategory",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkEventsByStreamCategory",
+    "src/eventstore/Eventstore.ts~Eventstore#walkEventsByStreamCategory",
+    "method"
+  ],
+  [
+    "src/eventstore/eventstore.ts~eventstore#walkeventsbytype",
+    "class/src/eventstore/Eventstore.ts~Eventstore.html#instance-method-walkEventsByType",
+    "src/eventstore/Eventstore.ts~Eventstore#walkEventsByType",
     "method"
   ],
   [
@@ -2704,6 +2788,12 @@ window.esdocSearchIndex = [
     "class/src/stream/Stream.ts~Stream.html#instance-method-createPersistentSubscription",
     "src/stream/Stream.ts~Stream#createPersistentSubscription",
     "method"
+  ],
+  [
+    "src/stream/stream.ts~stream#defaultslicesize",
+    "class/src/stream/Stream.ts~Stream.html#instance-member-defaultSliceSize",
+    "src/stream/Stream.ts~Stream#defaultSliceSize",
+    "member"
   ],
   [
     "src/stream/stream.ts~stream#delete",
@@ -3270,225 +3360,315 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "test/integrationtests/1_eventstore/1_connection.test.ts",
-    "test-file/test/integrationTests/1_eventstore/1_connection.test.ts.html",
-    "test/integrationTests/1_eventstore/1_connection.test.ts",
+    "test/1_unittests/1_eventstore/checkoperationresult.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/checkOperationResult.test.ts.html",
+    "test/1_unitTests/1_eventstore/checkOperationResult.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/1_eventstore/2_readallevents.test.ts",
-    "test-file/test/integrationTests/1_eventstore/2_readAllEvents.test.ts.html",
-    "test/integrationTests/1_eventstore/2_readAllEvents.test.ts",
+    "test/1_unittests/1_eventstore/checktimeout.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/checkTimeout.test.ts.html",
+    "test/1_unitTests/1_eventstore/checkTimeout.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/1_eventstore/3_walkallevents.test.ts",
-    "test-file/test/integrationTests/1_eventstore/3_walkAllEvents.test.ts.html",
-    "test/integrationTests/1_eventstore/3_walkAllEvents.test.ts",
+    "test/1_unittests/1_eventstore/disconnect.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/disconnect.test.ts.html",
+    "test/1_unitTests/1_eventstore/disconnect.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/1_stream.test.ts",
-    "test-file/test/integrationTests/2_stream/1_stream.test.ts.html",
-    "test/integrationTests/2_stream/1_stream.test.ts",
+    "test/1_unittests/1_eventstore/getconnectioninfo.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/getConnectionInfo.test.ts.html",
+    "test/1_unitTests/1_eventstore/getConnectionInfo.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/2_streammetadata.test.ts",
-    "test-file/test/integrationTests/2_stream/2_streamMetadata.test.ts.html",
-    "test/integrationTests/2_stream/2_streamMetadata.test.ts",
+    "test/1_unittests/1_eventstore/handlereadalleventscompleted.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html",
+    "test/1_unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/3_readstreambasic.test.ts",
-    "test-file/test/integrationTests/2_stream/3_readStreamBasic.test.ts.html",
-    "test/integrationTests/2_stream/3_readStreamBasic.test.ts",
+    "test/1_unittests/1_eventstore/handlereadeventcompleted.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts.html",
+    "test/1_unitTests/1_eventstore/handleReadEventCompleted.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/2_stream/4_readstreamwalk.test.ts",
-    "test-file/test/integrationTests/2_stream/4_readStreamWalk.test.ts.html",
-    "test/integrationTests/2_stream/4_readStreamWalk.test.ts",
+    "test/1_unittests/1_eventstore/handlereadstreameventscompleted.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html",
+    "test/1_unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/3_event/1_appendevent.test.ts",
-    "test-file/test/integrationTests/3_event/1_appendEvent.test.ts.html",
-    "test/integrationTests/3_event/1_appendEvent.test.ts",
+    "test/1_unittests/1_eventstore/handleresponsedata.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/handleResponseData.test.ts.html",
+    "test/1_unitTests/1_eventstore/handleResponseData.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/3_event/2_readevent.test.ts",
-    "test-file/test/integrationTests/3_event/2_readEvent.test.ts.html",
-    "test/integrationTests/3_event/2_readEvent.test.ts",
+    "test/1_unittests/1_eventstore/position.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/position.test.ts.html",
+    "test/1_unitTests/1_eventstore/position.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/3_event/3_linkedevent.test.ts",
-    "test-file/test/integrationTests/3_event/3_linkedEvent.test.ts.html",
-    "test/integrationTests/3_event/3_linkedEvent.test.ts",
+    "test/1_unittests/1_eventstore/sendcommand.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/sendCommand.test.ts.html",
+    "test/1_unitTests/1_eventstore/sendCommand.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/4_transaction/1_transaction.test.ts",
-    "test-file/test/integrationTests/4_transaction/1_transaction.test.ts.html",
-    "test/integrationTests/4_transaction/1_transaction.test.ts",
+    "test/1_unittests/1_eventstore/trytoconnect.test.ts",
+    "test-file/test/1_unitTests/1_eventstore/tryToConnect.test.ts.html",
+    "test/1_unitTests/1_eventstore/tryToConnect.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/5_subscription/persistentsubscription.test.ts",
-    "test-file/test/integrationTests/5_subscription/persistentSubscription.test.ts.html",
-    "test/integrationTests/5_subscription/persistentSubscription.test.ts",
+    "test/1_unittests/3_event/eventbase.test.ts",
+    "test-file/test/1_unitTests/3_event/eventBase.test.ts.html",
+    "test/1_unitTests/3_event/eventBase.test.ts",
     "testFile"
   ],
   [
-    "test/integrationtests/5_subscription/subscription.test.ts",
-    "test-file/test/integrationTests/5_subscription/subscription.test.ts.html",
-    "test/integrationTests/5_subscription/subscription.test.ts",
+    "test/1_unittests/3_event/existingevent.test.ts",
+    "test-file/test/1_unitTests/3_event/existingEvent.test.ts.html",
+    "test/1_unitTests/3_event/existingEvent.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/checkoperationresult.test.ts",
-    "test-file/test/unitTests/1_eventstore/checkOperationResult.test.ts.html",
-    "test/unitTests/1_eventstore/checkOperationResult.test.ts",
+    "test/1_unittests/3_event/newevent.test.ts",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html",
+    "test/1_unitTests/3_event/newEvent.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/checktimeout.test.ts",
-    "test-file/test/unitTests/1_eventstore/checkTimeout.test.ts.html",
-    "test/unitTests/1_eventstore/checkTimeout.test.ts",
+    "test/1_unittests/5_errors/eventstoreerror.test.ts",
+    "test-file/test/1_unitTests/5_errors/eventstoreError.test.ts.html",
+    "test/1_unitTests/5_errors/eventstoreError.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/disconnect.test.ts",
-    "test-file/test/unitTests/1_eventstore/disconnect.test.ts.html",
-    "test/unitTests/1_eventstore/disconnect.test.ts",
+    "test/1_unittests/6_misc/streamwalker.test.ts",
+    "test-file/test/1_unitTests/6_misc/streamWalker.test.ts.html",
+    "test/1_unitTests/6_misc/streamWalker.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/getconnectioninfo.test.ts",
-    "test-file/test/unitTests/1_eventstore/getConnectionInfo.test.ts.html",
-    "test/unitTests/1_eventstore/getConnectionInfo.test.ts",
+    "test/1_unittests/6_misc/uuidbufferconvert.test.ts",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html",
+    "test/1_unitTests/6_misc/uuidBufferConvert.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/handlereadalleventscompleted.test.ts",
-    "test-file/test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts.html",
-    "test/unitTests/1_eventstore/handleReadAllEventsCompleted.test.ts",
+    "test/2_integrationtests/1_eventstore/1_connection.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/1_connection.test.ts.html",
+    "test/2_integrationTests/1_eventstore/1_connection.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/handlereadeventcompleted.test.ts",
-    "test-file/test/unitTests/1_eventstore/handleReadEventCompleted.test.ts.html",
-    "test/unitTests/1_eventstore/handleReadEventCompleted.test.ts",
+    "test/2_integrationtests/1_eventstore/2_readallevents.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts.html",
+    "test/2_integrationTests/1_eventstore/2_readAllEvents.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/handlereadstreameventscompleted.test.ts",
-    "test-file/test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts.html",
-    "test/unitTests/1_eventstore/handleReadStreamEventsCompleted.test.ts",
+    "test/2_integrationtests/1_eventstore/3_walkallevents.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts.html",
+    "test/2_integrationTests/1_eventstore/3_walkAllEvents.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/handleresponsedata.test.ts",
-    "test-file/test/unitTests/1_eventstore/handleResponseData.test.ts.html",
-    "test/unitTests/1_eventstore/handleResponseData.test.ts",
+    "test/2_integrationtests/1_eventstore/streamnamesbycategory.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/streamNamesByCategory.test.ts.html",
+    "test/2_integrationTests/1_eventstore/streamNamesByCategory.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/position.test.ts",
-    "test-file/test/unitTests/1_eventstore/position.test.ts.html",
-    "test/unitTests/1_eventstore/position.test.ts",
+    "test/2_integrationtests/1_eventstore/walkeventsbycorrelationid.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByCorrelationId.test.ts.html",
+    "test/2_integrationTests/1_eventstore/walkEventsByCorrelationId.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/sendcommand.test.ts",
-    "test-file/test/unitTests/1_eventstore/sendCommand.test.ts.html",
-    "test/unitTests/1_eventstore/sendCommand.test.ts",
+    "test/2_integrationtests/1_eventstore/walkeventsbystreamcategory.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByStreamCategory.test.ts.html",
+    "test/2_integrationTests/1_eventstore/walkEventsByStreamCategory.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/1_eventstore/trytoconnect.test.ts",
-    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html",
-    "test/unitTests/1_eventstore/tryToConnect.test.ts",
+    "test/2_integrationtests/1_eventstore/walkeventsbytype.test.ts",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html",
+    "test/2_integrationTests/1_eventstore/walkEventsByType.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/3_event/eventbase.test.ts",
-    "test-file/test/unitTests/3_event/eventBase.test.ts.html",
-    "test/unitTests/3_event/eventBase.test.ts",
+    "test/2_integrationtests/2_stream/1_stream.test.ts",
+    "test-file/test/2_integrationTests/2_stream/1_stream.test.ts.html",
+    "test/2_integrationTests/2_stream/1_stream.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/3_event/existingevent.test.ts",
-    "test-file/test/unitTests/3_event/existingEvent.test.ts.html",
-    "test/unitTests/3_event/existingEvent.test.ts",
+    "test/2_integrationtests/2_stream/2_streammetadata.test.ts",
+    "test-file/test/2_integrationTests/2_stream/2_streamMetadata.test.ts.html",
+    "test/2_integrationTests/2_stream/2_streamMetadata.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/3_event/newevent.test.ts",
-    "test-file/test/unitTests/3_event/newEvent.test.ts.html",
-    "test/unitTests/3_event/newEvent.test.ts",
+    "test/2_integrationtests/2_stream/3_readstreambasic.test.ts",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html",
+    "test/2_integrationTests/2_stream/3_readStreamBasic.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/5_errors/eventstoreerror.test.ts",
-    "test-file/test/unitTests/5_errors/eventstoreError.test.ts.html",
-    "test/unitTests/5_errors/eventstoreError.test.ts",
+    "test/2_integrationtests/2_stream/4_readstreamwalk.test.ts",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html",
+    "test/2_integrationTests/2_stream/4_readStreamWalk.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/6_misc/streamwalker.test.ts",
-    "test-file/test/unitTests/6_misc/streamWalker.test.ts.html",
-    "test/unitTests/6_misc/streamWalker.test.ts",
+    "test/2_integrationtests/3_event/1_appendevent.test.ts",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html",
+    "test/2_integrationTests/3_event/1_appendEvent.test.ts",
     "testFile"
   ],
   [
-    "test/unittests/6_misc/uuidbufferconvert.test.ts",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html",
-    "test/unitTests/6_misc/uuidBufferConvert.test.ts",
+    "test/2_integrationtests/3_event/2_readevent.test.ts",
+    "test-file/test/2_integrationTests/3_event/2_readEvent.test.ts.html",
+    "test/2_integrationTests/3_event/2_readEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/2_integrationtests/3_event/3_linkedevent.test.ts",
+    "test-file/test/2_integrationTests/3_event/3_linkedEvent.test.ts.html",
+    "test/2_integrationTests/3_event/3_linkedEvent.test.ts",
+    "testFile"
+  ],
+  [
+    "test/2_integrationtests/4_transaction/1_transaction.test.ts",
+    "test-file/test/2_integrationTests/4_transaction/1_transaction.test.ts.html",
+    "test/2_integrationTests/4_transaction/1_transaction.test.ts",
+    "testFile"
+  ],
+  [
+    "test/2_integrationtests/5_subscription/persistentsubscription.test.ts",
+    "test-file/test/2_integrationTests/5_subscription/persistentSubscription.test.ts.html",
+    "test/2_integrationTests/5_subscription/persistentSubscription.test.ts",
+    "testFile"
+  ],
+  [
+    "test/2_integrationtests/5_subscription/subscription.test.ts",
+    "test-file/test/2_integrationTests/5_subscription/subscription.test.ts.html",
+    "test/2_integrationTests/5_subscription/subscription.test.ts",
     "testFile"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber5",
+    "test-file/test/1_unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber5",
     "tryToConnect",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber24",
+    "test-file/test/1_unitTests/1_eventstore/tryToConnect.test.ts.html#lineNumber24",
     "tryToConnect throws on empty port or host",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber5",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber5",
     "uuid to buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber8",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber8",
     "uuid to buffer converts a uuid to formated buffer",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber13",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber13",
     "uuid to buffer returns a buffer for id=null",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber27",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber27",
     "uuid to buffer throws on invalid uuid format",
     "test"
   ],
   [
     "",
-    "test-file/test/unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber18",
+    "test-file/test/1_unitTests/6_misc/uuidBufferConvert.test.ts.html#lineNumber18",
     "uuid to buffer throws on uuid size",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByCorrelationId.test.ts.html#lineNumber5",
+    "walkEventsByCorrelationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByCorrelationId.test.ts.html#lineNumber47",
+    "walkEventsByCorrelationId returns all linked events for given uuid",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByCorrelationId.test.ts.html#lineNumber31",
+    "walkEventsByCorrelationId returns all resolved events for given uuid",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByStreamCategory.test.ts.html#lineNumber5",
+    "walkEventsByStreamCategory",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByStreamCategory.test.ts.html#lineNumber56",
+    "walkEventsByStreamCategory returns all linked events for category",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByStreamCategory.test.ts.html#lineNumber39",
+    "walkEventsByStreamCategory returns all resolved events for category",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html#lineNumber5",
+    "walkEventsByType",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html#lineNumber76",
+    "walkEventsByType returns all linked events of type LookUpEvent1",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html#lineNumber93",
+    "walkEventsByType returns all linked events of type LookUpEvent2",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html#lineNumber42",
+    "walkEventsByType returns all resolved events of type LookUpEvent1",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/1_eventstore/walkEventsByType.test.ts.html#lineNumber59",
+    "walkEventsByType returns all resolved events of type LookUpEvent2",
     "test"
   ]
 ]

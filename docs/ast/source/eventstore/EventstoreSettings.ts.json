@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 4301,
+  "end": 4388,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 121,
+      "line": 127,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 4301,
+    "end": 4388,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 121,
+        "line": 127,
         "column": 0
       }
     },
@@ -4095,17 +4095,17 @@
                   "trailingComments": [
                     {
                       "type": "CommentBlock",
-                      "value": "* Generates settings for connecting to eventstore ",
+                      "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
                       "start": 4055,
-                      "end": 4109,
+                      "end": 4217,
                       "loc": {
                         "start": {
                           "line": 115,
                           "column": 0
                         },
                         "end": {
-                          "line": 115,
-                          "column": 54
+                          "line": 121,
+                          "column": 3
                         }
                       }
                     }
@@ -4137,428 +4137,64 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "* Generates settings for connecting to eventstore ",
+            "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
             "start": 4055,
-            "end": 4109,
+            "end": 4217,
             "loc": {
               "start": {
                 "line": 115,
                 "column": 0
               },
               "end": {
-                "line": 115,
-                "column": 54
+                "line": 121,
+                "column": 3
               }
             }
           }
         ]
       },
       {
-        "type": "Identifier",
-        "start": 4110,
-        "end": 4268,
+        "type": "ExportNamedDeclaration",
+        "start": 4218,
+        "end": 4387,
         "loc": {
           "start": {
-            "line": 116,
+            "line": 122,
             "column": 0
           },
           "end": {
-            "line": 118,
+            "line": 126,
             "column": 1
           }
         },
-        "id": {
-          "type": "Identifier",
-          "start": 4119,
-          "end": 4140,
-          "loc": {
-            "start": {
-              "line": 116,
-              "column": 9
-            },
-            "end": {
-              "line": 116,
-              "column": 30
-            },
-            "identifierName": "setConnectionSettings"
-          },
-          "name": "setConnectionSettings"
-        },
-        "generator": false,
-        "async": false,
-        "params": [
-          {
-            "type": "Identifier",
-            "start": 4141,
-            "end": 4184,
-            "loc": {
-              "start": {
-                "line": 116,
-                "column": 31
-              },
-              "end": {
-                "line": 116,
-                "column": 74
-              },
-              "identifierName": "customSettings"
-            },
-            "name": "customSettings",
-            "typeAnnotation": {
-              "type": "TSTypeAnnotation",
-              "start": 4155,
-              "end": 4184,
-              "loc": {
-                "start": {
-                  "line": 116,
-                  "column": 45
-                },
-                "end": {
-                  "line": 116,
-                  "column": 74
-                }
-              },
-              "typeAnnotation": {
-                "type": "TSUnionType",
-                "start": 4157,
-                "end": 4184,
-                "loc": {
-                  "start": {
-                    "line": 116,
-                    "column": 47
-                  },
-                  "end": {
-                    "line": 116,
-                    "column": 74
-                  }
-                },
-                "types": [
-                  {
-                    "type": "TSObjectKeyword",
-                    "start": 4157,
-                    "end": 4163,
-                    "loc": {
-                      "start": {
-                        "line": 116,
-                        "column": 47
-                      },
-                      "end": {
-                        "line": 116,
-                        "column": 53
-                      }
-                    }
-                  },
-                  {
-                    "type": "TSTypeReference",
-                    "start": 4166,
-                    "end": 4184,
-                    "loc": {
-                      "start": {
-                        "line": 116,
-                        "column": 56
-                      },
-                      "end": {
-                        "line": 116,
-                        "column": 74
-                      }
-                    },
-                    "typeName": {
-                      "type": "Identifier",
-                      "start": 4166,
-                      "end": 4184,
-                      "loc": {
-                        "start": {
-                          "line": 116,
-                          "column": 56
-                        },
-                        "end": {
-                          "line": 116,
-                          "column": 74
-                        },
-                        "identifierName": "EventstoreSettings"
-                      },
-                      "name": "EventstoreSettings"
-                    }
-                  }
-                ]
-              }
-            }
-          }
-        ],
-        "returnType": {
-          "type": "TSTypeAnnotation",
-          "start": 4185,
-          "end": 4205,
-          "loc": {
-            "start": {
-              "line": 116,
-              "column": 75
-            },
-            "end": {
-              "line": 116,
-              "column": 95
-            }
-          },
-          "typeAnnotation": {
-            "type": "TSTypeReference",
-            "start": 4187,
-            "end": 4205,
-            "loc": {
-              "start": {
-                "line": 116,
-                "column": 77
-              },
-              "end": {
-                "line": 116,
-                "column": 95
-              }
-            },
-            "typeName": {
-              "type": "Identifier",
-              "start": 4187,
-              "end": 4205,
-              "loc": {
-                "start": {
-                  "line": 116,
-                  "column": 77
-                },
-                "end": {
-                  "line": 116,
-                  "column": 95
-                },
-                "identifierName": "EventstoreSettings"
-              },
-              "name": "EventstoreSettings"
-            }
-          }
-        },
-        "body": {
-          "type": "BlockStatement",
-          "start": 4206,
-          "end": 4268,
-          "loc": {
-            "start": {
-              "line": 116,
-              "column": 96
-            },
-            "end": {
-              "line": 118,
-              "column": 1
-            }
-          },
-          "body": [
-            {
-              "type": "ReturnStatement",
-              "start": 4210,
-              "end": 4266,
-              "loc": {
-                "start": {
-                  "line": 117,
-                  "column": 2
-                },
-                "end": {
-                  "line": 117,
-                  "column": 58
-                }
-              },
-              "argument": {
-                "type": "ObjectExpression",
-                "start": 4217,
-                "end": 4266,
-                "loc": {
-                  "start": {
-                    "line": 117,
-                    "column": 9
-                  },
-                  "end": {
-                    "line": 117,
-                    "column": 58
-                  }
-                },
-                "properties": [
-                  {
-                    "type": "SpreadElement",
-                    "start": 4218,
-                    "end": 4246,
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 10
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 38
-                      }
-                    },
-                    "argument": {
-                      "type": "Identifier",
-                      "start": 4221,
-                      "end": 4246,
-                      "loc": {
-                        "start": {
-                          "line": 117,
-                          "column": 13
-                        },
-                        "end": {
-                          "line": 117,
-                          "column": 38
-                        },
-                        "identifierName": "defaultConnectionSettings"
-                      },
-                      "name": "defaultConnectionSettings"
-                    }
-                  },
-                  {
-                    "type": "SpreadElement",
-                    "start": 4248,
-                    "end": 4265,
-                    "loc": {
-                      "start": {
-                        "line": 117,
-                        "column": 40
-                      },
-                      "end": {
-                        "line": 117,
-                        "column": 57
-                      }
-                    },
-                    "argument": {
-                      "type": "Identifier",
-                      "start": 4251,
-                      "end": 4265,
-                      "loc": {
-                        "start": {
-                          "line": 117,
-                          "column": 43
-                        },
-                        "end": {
-                          "line": 117,
-                          "column": 57
-                        },
-                        "identifierName": "customSettings"
-                      },
-                      "name": "customSettings"
-                    }
-                  }
-                ]
-              }
-            }
-          ],
-          "directives": []
-        },
-        "name": "_",
-        "leadingComments": [],
-        "trailingComments": []
-      },
-      {
-        "type": "ExportNamedDeclaration",
-        "start": 4270,
-        "end": 4300,
-        "loc": {
-          "start": {
-            "line": 120,
-            "column": 0
-          },
-          "end": {
-            "line": 120,
-            "column": 30
-          }
-        },
-        "specifiers": [
-          {
-            "type": "ExportSpecifier",
-            "start": 4278,
-            "end": 4299,
-            "loc": {
-              "start": {
-                "line": 120,
-                "column": 8
-              },
-              "end": {
-                "line": 120,
-                "column": 29
-              }
-            },
-            "local": {
-              "type": "Identifier",
-              "start": 4278,
-              "end": 4299,
-              "loc": {
-                "start": {
-                  "line": 120,
-                  "column": 8
-                },
-                "end": {
-                  "line": 120,
-                  "column": 29
-                },
-                "identifierName": "setConnectionSettings"
-              },
-              "name": "setConnectionSettings"
-            },
-            "exported": {
-              "type": "Identifier",
-              "start": 4278,
-              "end": 4299,
-              "loc": {
-                "start": {
-                  "line": 120,
-                  "column": 8
-                },
-                "end": {
-                  "line": 120,
-                  "column": 29
-                },
-                "identifierName": "setConnectionSettings"
-              },
-              "name": "setConnectionSettings"
-            }
-          }
-        ],
-        "source": null,
-        "declaration": null
-      },
-      {
-        "type": "ExportNamedDeclaration",
-        "start": 4270,
-        "end": 4300,
-        "loc": {
-          "start": {
-            "line": 120,
-            "column": 0
-          },
-          "end": {
-            "line": 120,
-            "column": 30
-          }
-        },
-        "specifiers": null,
+        "specifiers": [],
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 4110,
-          "end": 4268,
+          "start": 4225,
+          "end": 4387,
           "loc": {
             "start": {
-              "line": 116,
-              "column": 0
+              "line": 122,
+              "column": 7
             },
             "end": {
-              "line": 118,
+              "line": 126,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 4119,
-            "end": 4140,
+            "start": 4234,
+            "end": 4255,
             "loc": {
               "start": {
-                "line": 116,
-                "column": 9
+                "line": 122,
+                "column": 16
               },
               "end": {
-                "line": 116,
-                "column": 30
+                "line": 122,
+                "column": 37
               },
               "identifierName": "setConnectionSettings"
             },
@@ -4569,90 +4205,90 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 4141,
-              "end": 4184,
+              "start": 4259,
+              "end": 4302,
               "loc": {
                 "start": {
-                  "line": 116,
-                  "column": 31
+                  "line": 123,
+                  "column": 2
                 },
                 "end": {
-                  "line": 116,
-                  "column": 74
+                  "line": 123,
+                  "column": 45
                 },
                 "identifierName": "customSettings"
               },
               "name": "customSettings",
               "typeAnnotation": {
                 "type": "TSTypeAnnotation",
-                "start": 4155,
-                "end": 4184,
+                "start": 4273,
+                "end": 4302,
                 "loc": {
                   "start": {
-                    "line": 116,
-                    "column": 45
+                    "line": 123,
+                    "column": 16
                   },
                   "end": {
-                    "line": 116,
-                    "column": 74
+                    "line": 123,
+                    "column": 45
                   }
                 },
                 "typeAnnotation": {
                   "type": "TSUnionType",
-                  "start": 4157,
-                  "end": 4184,
+                  "start": 4275,
+                  "end": 4302,
                   "loc": {
                     "start": {
-                      "line": 116,
-                      "column": 47
+                      "line": 123,
+                      "column": 18
                     },
                     "end": {
-                      "line": 116,
-                      "column": 74
+                      "line": 123,
+                      "column": 45
                     }
                   },
                   "types": [
                     {
                       "type": "TSObjectKeyword",
-                      "start": 4157,
-                      "end": 4163,
+                      "start": 4275,
+                      "end": 4281,
                       "loc": {
                         "start": {
-                          "line": 116,
-                          "column": 47
+                          "line": 123,
+                          "column": 18
                         },
                         "end": {
-                          "line": 116,
-                          "column": 53
+                          "line": 123,
+                          "column": 24
                         }
                       }
                     },
                     {
                       "type": "TSTypeReference",
-                      "start": 4166,
-                      "end": 4184,
+                      "start": 4284,
+                      "end": 4302,
                       "loc": {
                         "start": {
-                          "line": 116,
-                          "column": 56
+                          "line": 123,
+                          "column": 27
                         },
                         "end": {
-                          "line": 116,
-                          "column": 74
+                          "line": 123,
+                          "column": 45
                         }
                       },
                       "typeName": {
                         "type": "Identifier",
-                        "start": 4166,
-                        "end": 4184,
+                        "start": 4284,
+                        "end": 4302,
                         "loc": {
                           "start": {
-                            "line": 116,
-                            "column": 56
+                            "line": 123,
+                            "column": 27
                           },
                           "end": {
-                            "line": 116,
-                            "column": 74
+                            "line": 123,
+                            "column": 45
                           },
                           "identifierName": "EventstoreSettings"
                         },
@@ -4666,44 +4302,44 @@
           ],
           "returnType": {
             "type": "TSTypeAnnotation",
-            "start": 4185,
-            "end": 4205,
+            "start": 4304,
+            "end": 4324,
             "loc": {
               "start": {
-                "line": 116,
-                "column": 75
+                "line": 124,
+                "column": 1
               },
               "end": {
-                "line": 116,
-                "column": 95
+                "line": 124,
+                "column": 21
               }
             },
             "typeAnnotation": {
               "type": "TSTypeReference",
-              "start": 4187,
-              "end": 4205,
+              "start": 4306,
+              "end": 4324,
               "loc": {
                 "start": {
-                  "line": 116,
-                  "column": 77
+                  "line": 124,
+                  "column": 3
                 },
                 "end": {
-                  "line": 116,
-                  "column": 95
+                  "line": 124,
+                  "column": 21
                 }
               },
               "typeName": {
                 "type": "Identifier",
-                "start": 4187,
-                "end": 4205,
+                "start": 4306,
+                "end": 4324,
                 "loc": {
                   "start": {
-                    "line": 116,
-                    "column": 77
+                    "line": 124,
+                    "column": 3
                   },
                   "end": {
-                    "line": 116,
-                    "column": 95
+                    "line": 124,
+                    "column": 21
                   },
                   "identifierName": "EventstoreSettings"
                 },
@@ -4713,73 +4349,73 @@
           },
           "body": {
             "type": "BlockStatement",
-            "start": 4206,
-            "end": 4268,
+            "start": 4325,
+            "end": 4387,
             "loc": {
               "start": {
-                "line": 116,
-                "column": 96
+                "line": 124,
+                "column": 22
               },
               "end": {
-                "line": 118,
+                "line": 126,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 4210,
-                "end": 4266,
+                "start": 4329,
+                "end": 4385,
                 "loc": {
                   "start": {
-                    "line": 117,
+                    "line": 125,
                     "column": 2
                   },
                   "end": {
-                    "line": 117,
+                    "line": 125,
                     "column": 58
                   }
                 },
                 "argument": {
                   "type": "ObjectExpression",
-                  "start": 4217,
-                  "end": 4266,
+                  "start": 4336,
+                  "end": 4385,
                   "loc": {
                     "start": {
-                      "line": 117,
+                      "line": 125,
                       "column": 9
                     },
                     "end": {
-                      "line": 117,
+                      "line": 125,
                       "column": 58
                     }
                   },
                   "properties": [
                     {
                       "type": "SpreadElement",
-                      "start": 4218,
-                      "end": 4246,
+                      "start": 4337,
+                      "end": 4365,
                       "loc": {
                         "start": {
-                          "line": 117,
+                          "line": 125,
                           "column": 10
                         },
                         "end": {
-                          "line": 117,
+                          "line": 125,
                           "column": 38
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 4221,
-                        "end": 4246,
+                        "start": 4340,
+                        "end": 4365,
                         "loc": {
                           "start": {
-                            "line": 117,
+                            "line": 125,
                             "column": 13
                           },
                           "end": {
-                            "line": 117,
+                            "line": 125,
                             "column": 38
                           },
                           "identifierName": "defaultConnectionSettings"
@@ -4789,29 +4425,29 @@
                     },
                     {
                       "type": "SpreadElement",
-                      "start": 4248,
-                      "end": 4265,
+                      "start": 4367,
+                      "end": 4384,
                       "loc": {
                         "start": {
-                          "line": 117,
+                          "line": 125,
                           "column": 40
                         },
                         "end": {
-                          "line": 117,
+                          "line": 125,
                           "column": 57
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 4251,
-                        "end": 4265,
+                        "start": 4370,
+                        "end": 4384,
                         "loc": {
                           "start": {
-                            "line": 117,
+                            "line": 125,
                             "column": 43
                           },
                           "end": {
-                            "line": 117,
+                            "line": 125,
                             "column": 57
                           },
                           "identifierName": "customSettings"
@@ -4827,8 +4463,7 @@
           },
           "leadingComments": [],
           "trailingComments": []
-        },
-        "leadingComments": null
+        }
       }
     ],
     "directives": []
@@ -5012,17 +4647,17 @@
     },
     {
       "type": "CommentBlock",
-      "value": "* Generates settings for connecting to eventstore ",
+      "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
       "start": 4055,
-      "end": 4109,
+      "end": 4217,
       "loc": {
         "start": {
           "line": 115,
           "column": 0
         },
         "end": {
-          "line": 115,
-          "column": 54
+          "line": 121,
+          "column": 3
         }
       }
     }

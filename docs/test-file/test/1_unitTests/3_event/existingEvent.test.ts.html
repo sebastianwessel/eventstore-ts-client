@@ -1,0 +1,310 @@
+<!DOCTYPE html><html><head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">test/1_unitTests/3_event/existingEvent.test.ts | eventstore-ts-client | Eventstore typescript / ES6 javascript client lib</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="Eventstore typescript / ES6 javascript client lib written in typescript"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="eventstore-ts-client | Eventstore typescript / ES6 javascript client lib"><meta property="twitter:description" content="Eventstore typescript / ES6 javascript client lib written in typescript"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/sebastianwessel/eventstore-ts-client"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/StreamWalker.ts~StreamWalker.html">StreamWalker</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#errors">errors</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/errors/EventstoreError.ts~EventstoreError.html">EventstoreError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAccessDeniedError">newAccessDeniedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newAlreadyExistError">newAlreadyExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newBadRequestError">newBadRequestError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newCommitTimeoutError">newCommitTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newConnectionError">newConnectionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newDoesNotExistError">newDoesNotExistError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newForwardTimeoutError">newForwardTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newImplementationError">newImplementationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newInvalidTransactionError">newInvalidTransactionError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNoStreamError">newNoStreamError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotAuthenticatedError">newNotAuthenticatedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotFoundError">newNotFoundError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotHandledError">newNotHandledError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newNotModifiedError">newNotModifiedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newOperationError">newOperationError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newPrepareTimeoutError">newPrepareTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newProtocolError">newProtocolError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newStreamDeletedError">newStreamDeletedError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newTimeoutError">newTimeoutError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newUnspecificError">newUnspecificError</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-newWrongExpectedVersionError">newWrongExpectedVersionError</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#event">event</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/event/Event.ts~Event.html">Event</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#eventstore">eventstore</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Eventstore.ts~Eventstore.html">Eventstore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/Position.ts~Position.html">Position</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/eventstore/TCPConnection.ts~TCPConnection.html">TCPConnection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConnectionSettings">setConnectionSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-fetchgossipJson">fetchgossipJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpAndPort">getIpAndPort</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getIpListFromDns">getIpListFromDns</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getMasterNodeInfo">getMasterNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getRandomNodeInfo">getRandomNodeInfo</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-WriteResult">WriteResult</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-EventstoreSettings">EventstoreSettings</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-UserCredentials">UserCredentials</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/dcodeIO/long.js">Long</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-external">E</span><span data-ice="name"><span><a href="https://github.com/trentm/node-bunyan">bunyan</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#protobuf">protobuf</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidFromBuffer">uuidFromBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-uuidToBuffer">uuidToBuffer</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-$root">$root</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ExpectedVersion">ExpectedVersion</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#stream">stream</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Stream.ts~Stream.html">Stream</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/stream/Transaction.ts~Transaction.html">Transaction</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-StreamOptions">StreamOptions</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#subscription">subscription</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/PersistentSubscription.ts~PersistentSubscription.html">PersistentSubscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/subscription/Subscription.ts~Subscription.html">Subscription</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setPersistentSubscriptionConfig">setPersistentSubscriptionConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SystemConsumerStrategies">SystemConsumerStrategies</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/1_unitTests/3_event/existingEvent.test.ts</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Event} from &apos;../../../src&apos;
+import * as assert from &apos;assert&apos;
+import uuid = require(&apos;uuid/v4&apos;)
+import {uuidToBuffer} from &apos;../../../src/protobuf/uuidBufferConvert&apos;
+
+interface TestEventDataSchema {
+  someString: string
+  someNumber: number
+  someBoolean: boolean
+  someObject: {
+    moreText: string
+    otherNumber: number
+    otherBoolean: boolean
+  }
+}
+
+describe(&apos;Existing event instance tests&apos;, (): void =&gt; {
+  const testData: TestEventDataSchema = {
+    someString: &apos;some text&apos;,
+    someNumber: 100,
+    someBoolean: true,
+    someObject: {
+      moreText: &apos;something more&apos;,
+      otherNumber: 200,
+      otherBoolean: false
+    }
+  }
+
+  const testMetadata = {
+    $correlationId: uuid()
+  }
+
+  it(&apos;returns false on existing event&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    assert.strictEqual(existingEvent.isNew(), false)
+  })
+
+  it(&apos;throws on changing name&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    const newName = &apos;EventRenamed&apos;
+    try {
+      existingEvent.name = newName
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreOperationError&apos;)
+    }
+  })
+
+  it(&apos;throws on changing eventId&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    const newId = uuid()
+    try {
+      existingEvent.id = newId
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreOperationError&apos;)
+    }
+  })
+
+  it(&apos;throws on changing eventData&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    const newData = {...testData, ...{someString: &apos;I was changed&apos;}}
+    try {
+      existingEvent.data = newData
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreOperationError&apos;)
+    }
+  })
+
+  it(&apos;throws on changing eventMetadata&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    const newMetadata = {somethingNew: uuid()}
+    try {
+      existingEvent.metadata = newMetadata
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreOperationError&apos;)
+    }
+  })
+
+  it(&apos;throws on changing eventCorrelationId&apos;, (): void =&gt; {
+    const existingEvent = new Event(&apos;EventWasHappened&apos;, {...testData}, {...testMetadata})
+    existingEvent.freeze()
+    const newCorrelationId = uuid()
+    try {
+      existingEvent.correlationId = newCorrelationId
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreOperationError&apos;)
+    }
+  })
+})
+
+describe(&apos;event from raw&apos;, (): void =&gt; {
+  const rawEventId = uuid()
+  const rawEventStreamId = &apos;stream-&apos; + uuid()
+  const rawCorrelationId = uuid()
+  const rawEventData = {
+    someField: &apos;someValue&apos;,
+    someNumber: 100
+  }
+  const rawEventMetadata = {
+    $correlationId: rawCorrelationId
+  }
+
+  const rawEventWithMeta = {
+    eventType: &apos;SomethingWasHappened&apos;,
+    eventStreamId: rawEventStreamId,
+    eventNumber: 1,
+    eventId: uuidToBuffer(rawEventId),
+    dataContentType: 1,
+    metadataContentType: 1,
+    data: Buffer.from(JSON.stringify(rawEventData)),
+    metadata: Buffer.from(JSON.stringify(rawEventMetadata)),
+    created: Date.now(),
+    createdEpoch: Date.now()
+  }
+
+  const rawEventWithoutMeta = {
+    eventType: &apos;SomethingWasHappened&apos;,
+    eventStreamId: rawEventStreamId,
+    eventNumber: 1,
+    eventId: uuidToBuffer(rawEventId),
+    dataContentType: 1,
+    metadataContentType: 1,
+    data: Buffer.from(JSON.stringify(rawEventData)),
+    metadata: null,
+    created: null,
+    createdEpoch: null
+  }
+
+  it(&apos;returns event instance with full metadata&apos;, (): void =&gt; {
+    const newEvent = Event.fromRaw(rawEventWithMeta)
+    assert.strictEqual(newEvent.name, &apos;SomethingWasHappened&apos;)
+    assert.strictEqual(newEvent.streamId, rawEventStreamId)
+    assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
+    assert.strictEqual(newEvent.metadata.toString(), rawEventMetadata.toString())
+    assert.strictEqual(newEvent.correlationId, rawEventMetadata.$correlationId)
+  })
+
+  it(&apos;returns event instance without metadata&apos;, (): void =&gt; {
+    const newEvent = Event.fromRaw(rawEventWithoutMeta)
+    assert.strictEqual(newEvent.name, &apos;SomethingWasHappened&apos;)
+    assert.strictEqual(newEvent.streamId, rawEventStreamId)
+    assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
+    assert.strictEqual(newEvent.metadata, null)
+    assert.strictEqual(newEvent.correlationId, null)
+  })
+
+  it(&apos;returns event instance without created information&apos;, (): void =&gt; {
+    const raw = {...rawEventWithMeta}
+    delete raw.created
+    delete raw.createdEpoch
+    const newEvent = Event.fromRaw(rawEventWithMeta)
+    assert.strictEqual(newEvent.name, &apos;SomethingWasHappened&apos;)
+    assert.strictEqual(newEvent.streamId, rawEventStreamId)
+    assert.strictEqual(newEvent.data.toString(), rawEventData.toString())
+    assert.strictEqual(newEvent.metadata.toString(), rawEventMetadata.toString())
+    assert.strictEqual(newEvent.correlationId, rawEventMetadata.$correlationId)
+  })
+
+  it(&apos;sets metadata on setting correlationId&apos;, (): void =&gt; {
+    const newEvent = new Event(&apos;SomethingWasHappened&apos;)
+    newEvent.correlationId = rawEventMetadata.$correlationId
+    const expected = {
+      $correlationId: rawEventMetadata.$correlationId
+    }
+    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it(&apos;deletes correlationId also from metadata&apos;, (): void =&gt; {
+    const newEvent = new Event(
+      &apos;SomethingWasHappened&apos;,
+      {},
+      {$correlationId: rawEventMetadata.$correlationId}
+    )
+    newEvent.correlationId = null
+    const expected = {}
+    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it(&apos;deletes correlationId&apos;, (): void =&gt; {
+    const newEvent = new Event(&apos;SomethingWasHappened&apos;, {}, {})
+    newEvent.correlationId = null
+    const expected = {}
+    assert.strictEqual(newEvent.metadata.toString(), expected.toString())
+  })
+
+  it(&apos;returns null for correlationId if not set&apos;, (): void =&gt; {
+    const newEvent = new Event(&apos;SomethingWasHappened&apos;, {}, {})
+    newEvent.correlationId = null
+    assert.strictEqual(newEvent.correlationId, null)
+  })
+
+  it(&apos;throw on missing raw event or link&apos;, (): void =&gt; {
+    try {
+      Event.fromRaw(null)
+      assert.fail(&apos;has not thrown&apos;)
+    } catch (err) {
+      assert.strictEqual(err.name, &apos;EventstoreProtocolError&apos;)
+    }
+  })
+})
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(2.0.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+
+
+</body></html>
