@@ -46,6 +46,8 @@ export class Stream {
   protected streamId: string
   /** stream options */
   protected options: StreamOptions
+  /** default read slice size */
+  protected defaultSliceSize: number = 100
 
   /**
    * Creates an instance of Stream.
@@ -428,17 +430,20 @@ export class Stream {
   protected async readSlice(
     direction: EventstoreCommand,
     fromEventNumber: number | Long = 0,
-    maxCount: number = 100,
+    maxSliceCount?: number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
+    if (maxSliceCount === undefined) {
+      maxSliceCount = this.defaultSliceSize
+    }
     return await new Promise(
       (resolve, reject): void => {
         const raw = protobuf.ReadStreamEvents.fromObject({
           eventStreamId: this.streamId,
           fromEventNumber,
-          maxCount,
+          maxCount: maxSliceCount,
           resolveLinkTos: resolveLinks === undefined ? this.options.resolveLinks : resolveLinks,
           requireMaster: requireMaster === undefined ? this.options.requireMaster : requireMaster
         })
@@ -463,15 +468,15 @@ export class Stream {
    */
   public async readSliceForward(
     fromEventNumber: number | Long = StreamPosition.Start,
-    maxCount: number = 100,
-    resolveLinks: boolean,
+    maxSliceCount?: number,
+    resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await this.readSlice(
       EventstoreCommand.ReadStreamEventsForward,
       fromEventNumber,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster,
       credentials
@@ -483,15 +488,15 @@ export class Stream {
    */
   public async readSliceBackward(
     fromEventNumber: number | Long = StreamPosition.End,
-    maxCount: number = 100,
-    resolveLinks: boolean,
+    maxSliceCount?: number,
+    resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadStreamEventsCompleted> {
     return await this.readSlice(
       EventstoreCommand.ReadStreamEventsBackward,
       fromEventNumber,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster,
       credentials
@@ -501,13 +506,13 @@ export class Stream {
   protected async walkStream(
     forward: boolean = true,
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ) {
     const that = this
     const resolveLinksTos = resolveLinks === undefined ? this.options.resolveLinks : resolveLinks
+    const maxCount = this.defaultSliceSize
     const getSlice = forward ? 'readSliceForward' : 'readSliceBackward'
     if (requireMaster === undefined) {
       requireMaster = this.options.requireMaster
@@ -559,12 +564,11 @@ export class Stream {
    */
   public async walkStreamForward(
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinkTos?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
-    return await this.walkStream(true, start, maxCount, resolveLinkTos, requireMaster, credentials)
+    return await this.walkStream(true, start, resolveLinkTos, requireMaster, credentials)
   }
 
   /**
@@ -572,12 +576,11 @@ export class Stream {
    */
   public async walkStreamBackward(
     start: Long | number = StreamPosition.End,
-    maxCount: number = 100,
     resolveLinkTos?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
-    return await this.walkStream(false, start, maxCount, resolveLinkTos, requireMaster, credentials)
+    return await this.walkStream(false, start, resolveLinkTos, requireMaster, credentials)
   }
 
   /**
