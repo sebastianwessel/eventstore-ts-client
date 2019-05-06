@@ -141,10 +141,8 @@ export class Event {
     if (this.objectMetadata) {
       return this.objectMetadata
     }
-    if (this.rawMetadata && !this.isLink()) {
+    if (this.rawMetadata) {
       this.objectMetadata = JSON.parse(Buffer.from(this.rawMetadata).toString())
-    } else if (this.rawMetadata && this.isLink()) {
-      return Buffer.from(this.rawMetadata).toString()
     }
     return this.objectMetadata
   }
@@ -199,7 +197,7 @@ export class Event {
       throw eventstoreError.newProtocolError('No event or link was given at Event.fromRaw')
     }
     const event = new Event(rawEvent.eventType)
-    if (rawEvent.eventType === '$>') {
+    if (rawEvent.eventType === '$>' || rawEvent.eventType === '$@') {
       //is linked event
       event.isResolved = false
     }
