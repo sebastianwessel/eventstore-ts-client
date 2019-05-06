@@ -48,7 +48,7 @@ npm i --save eventstore-ts-client
 ## Quick-Start
 
 ```javascript
-const {Eventstore, Event} = require('eventstore-ts-client)
+const {Eventstore, Event} = require('eventstore-ts-client')
 const es = new Eventstore({
   uri: 'tcp://admin:changeit@127.0.0.1:1113'
 })
