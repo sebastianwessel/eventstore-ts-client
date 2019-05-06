@@ -68,7 +68,7 @@ export class Eventstore extends EventEmitter {
   /**
    * Ensure to use up-to-date settings, logger and a fresh connection socket
    */
-  protected init(connectionConfiguration: EventstoreSettings | object = {}): void {
+  protected init(connectionConfiguration: EventstoreSettings | {} = {}): void {
     this.connectionConfig = {...this.connectionConfig, ...connectionConfiguration}
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection(this.connectionConfig)
@@ -280,7 +280,7 @@ export class Eventstore extends EventEmitter {
     direction: EventstoreCommand,
     position: Position,
     maxSliceCount: number,
-    resolveLinks: boolean = true,
+    resolveLinks: boolean,
     requireMaster: boolean,
     credentials: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
@@ -544,7 +544,7 @@ export class Eventstore extends EventEmitter {
     start: Long | number = StreamPosition.Start,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
     const stream = this.stream(`$ce-${category}`)
     return stream.walkStreamForward(start, resolveLinks, requireMaster, credentials)
@@ -559,7 +559,7 @@ export class Eventstore extends EventEmitter {
     start: Long | number = StreamPosition.Start,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
     const stream = this.stream(`$et-${eventType}`)
     return stream.walkStreamForward(start, resolveLinks, requireMaster, credentials)
@@ -574,7 +574,7 @@ export class Eventstore extends EventEmitter {
     start: Long | number = StreamPosition.Start,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
     const stream = this.stream(`$bc-${correlationId}`)
 
@@ -589,7 +589,7 @@ export class Eventstore extends EventEmitter {
     category: string,
     start: Long | number = StreamPosition.Start,
     requireMaster?: boolean,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): Promise<StreamWalker> {
     const stream = this.stream(`$category-${category}`)
     return stream.walkStreamForward(start, false, requireMaster, credentials)

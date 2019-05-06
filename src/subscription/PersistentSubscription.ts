@@ -150,8 +150,8 @@ export class PersistentSubscription extends EventEmitter {
    * Updates persistent subscription
    */
   public async update(
-    customConfig: PersistentSubscriptionConfig | {} = {},
-    credentials?: UserCredentials | null
+    customConfig: PersistentSubscriptionConfig | {},
+    credentials?: UserCredentials
   ): Promise<PersistentSubscription> {
     const settings = setPersistentSubscriptionConfig(customConfig)
 
@@ -189,14 +189,14 @@ export class PersistentSubscription extends EventEmitter {
   /**
    * Acknowledges single event
    */
-  public acknowledgeEvent(event: Event, credentials?: UserCredentials | null): void {
+  public acknowledgeEvent(event: Event, credentials?: UserCredentials): void {
     return this.acknowledgeEvents([event], credentials)
   }
 
   /**
    * Acknowledges array of events
    */
-  public acknowledgeEvents(events: Event[], credentials?: UserCredentials | null): void {
+  public acknowledgeEvents(events: Event[], credentials?: UserCredentials): void {
     const processedEventIds = events.map(
       (event): Buffer => {
         return uuidToBuffer(event.id)
@@ -225,7 +225,7 @@ export class PersistentSubscription extends EventEmitter {
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): void {
     return this.notAcknowledgeEvents([event], reason, message, credentials)
   }
@@ -238,7 +238,7 @@ export class PersistentSubscription extends EventEmitter {
     reason: model.eventstore.proto.PersistentSubscriptionNakEvents.NakAction = model.eventstore
       .proto.PersistentSubscriptionNakEvents.NakAction.Unknown,
     message?: string,
-    credentials?: UserCredentials | null
+    credentials?: UserCredentials
   ): void {
     const processedEventIds = events.map(
       (event): Buffer => {
