@@ -44,6 +44,8 @@ export class Eventstore extends EventEmitter {
   public log: bunyan
   /** connection base */
   protected connection: TCPConnection
+  /** default read slice size */
+  protected defaultSliceSize: number = 100
 
   /**
    * Creates an instance of Eventstore.
@@ -53,53 +55,12 @@ export class Eventstore extends EventEmitter {
     this.connectionConfig = setConnectionSettings(connectionConfiguration)
     this.log = this.connectionConfig.logger
     this.connection = new TCPConnection({...this.connectionConfig})
+
     this.on(
       'error',
       (err): void => {
         //prevent throwing error
         this.log.error({err}, 'Eventstore error')
-      }
-    )
-    this.connection.on(
-      'error',
-      (err): void => {
-        this.log.error({err}, err.name)
-        this.emit('error', err)
-      }
-    )
-    this.connection.on(
-      'secureConnect',
-      (): void => {
-        this.log.debug('secure connected')
-        this.emit('secureConnect')
-      }
-    )
-    this.connection.on(
-      'drain',
-      (): void => {
-        this.log.debug('connection is draining')
-        this.emit('drain')
-      }
-    )
-    this.connection.on(
-      'close',
-      (): void => {
-        this.log.debug('connection is closed')
-        this.emit('close')
-      }
-    )
-    this.connection.on(
-      'connected',
-      (): void => {
-        this.log.debug('connected to eventstore')
-        this.emit('connected')
-      }
-    )
-    this.connection.on(
-      'reconnect',
-      (reconnectCount: number): void => {
-        this.log.debug({reconnectCount}, 'reconnecting to eventstore')
-        this.emit('reconnect', reconnectCount)
       }
     )
   }
@@ -318,7 +279,7 @@ export class Eventstore extends EventEmitter {
   protected async readSlice(
     direction: EventstoreCommand,
     position: Position,
-    maxCount: number = 100,
+    maxSliceCount: number,
     resolveLinks: boolean = true,
     requireMaster: boolean,
     credentials: UserCredentials | null
@@ -328,7 +289,7 @@ export class Eventstore extends EventEmitter {
         const raw = protobuf.ReadAllEvents.fromObject({
           commitPosition: position.commitPosition,
           preparePosition: position.preparePosition,
-          maxCount,
+          maxCount: maxSliceCount,
           resolveLinks,
           requireMaster
         })
@@ -351,15 +312,18 @@ export class Eventstore extends EventEmitter {
    */
   public async readSliceForward(
     position: Position,
-    maxCount: number = 100,
+    maxSliceCount?: number,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    if (maxSliceCount === undefined) {
+      maxSliceCount = this.defaultSliceSize
+    }
     return await this.readSlice(
       EventstoreCommand.ReadAllEventsForward,
       position,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
@@ -371,15 +335,18 @@ export class Eventstore extends EventEmitter {
    */
   public async readSliceBackward(
     position: Position,
-    maxCount: number = 100,
+    maxSliceCount?: number,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<model.eventstore.proto.ReadAllEventsCompleted> {
+    if (maxSliceCount === undefined) {
+      maxSliceCount = this.defaultSliceSize
+    }
     return await this.readSlice(
       EventstoreCommand.ReadAllEventsBackward,
       position,
-      maxCount,
+      maxSliceCount,
       resolveLinks,
       requireMaster || this.connectionConfig.requireMaster,
       credentials || this.connectionConfig.credentials
@@ -392,7 +359,6 @@ export class Eventstore extends EventEmitter {
    */
   public async walkAllForward(
     start: Position = Position.Start,
-    maxCount: number = 100,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
@@ -410,20 +376,19 @@ export class Eventstore extends EventEmitter {
       //fetch first slice
       let readResult = that.readSliceForward(
         begin,
-        maxCount,
+        that.defaultSliceSize,
         resolveLinks,
         requireMaster,
         credentials
       )
       let result = await readResult
-
       let maxSlicePosition = new Position(result.commitPosition, result.preparePosition)
       begin = new Position(result.nextCommitPosition, result.nextPreparePosition)
       if (begin.compareTo(maxSlicePosition) >= 0) {
         //we have more so start fetching in background
         readResult = that.readSliceForward(
           begin,
-          maxCount,
+          that.defaultSliceSize,
           resolveLinks,
           requireMaster,
           credentials
@@ -446,7 +411,7 @@ export class Eventstore extends EventEmitter {
 
             readResult = that.readSliceForward(
               begin,
-              maxCount,
+              that.defaultSliceSize,
               resolveLinks,
               requireMaster,
               credentials
@@ -464,7 +429,6 @@ export class Eventstore extends EventEmitter {
    */
   public async walkAllBackward(
     start: Position = Position.End,
-    maxCount: number = 100,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
@@ -482,7 +446,7 @@ export class Eventstore extends EventEmitter {
       //fetch first slice
       let readResult = that.readSliceBackward(
         begin,
-        maxCount,
+        that.defaultSliceSize,
         resolveLinks,
         requireMaster,
         credentials
@@ -495,7 +459,7 @@ export class Eventstore extends EventEmitter {
         //we have more so start fetching in background
         readResult = that.readSliceBackward(
           begin,
-          maxCount,
+          that.defaultSliceSize,
           resolveLinks,
           requireMaster,
           credentials
@@ -518,7 +482,7 @@ export class Eventstore extends EventEmitter {
 
             readResult = that.readSliceBackward(
               begin,
-              maxCount,
+              that.defaultSliceSize,
               resolveLinks,
               requireMaster,
               credentials
@@ -578,23 +542,12 @@ export class Eventstore extends EventEmitter {
   public async walkEventsByStreamCategory(
     category: string,
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
     const stream = this.stream(`$ce-${category}`)
-
-    if (resolveLinks) {
-      stream.resolveAllLinks()
-    }
-    if (requireMaster) {
-      stream.requiresMaster()
-    }
-    if (credentials) {
-      stream.withCredentials(credentials)
-    }
-    return stream.walkStreamForward(start, maxCount)
+    return stream.walkStreamForward(start, resolveLinks, requireMaster, credentials)
   }
 
   /**
@@ -604,23 +557,12 @@ export class Eventstore extends EventEmitter {
   public async walkEventsByType(
     eventType: string,
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
     const stream = this.stream(`$et-${eventType}`)
-
-    if (resolveLinks) {
-      stream.resolveAllLinks()
-    }
-    if (requireMaster) {
-      stream.requiresMaster()
-    }
-    if (credentials) {
-      stream.withCredentials(credentials)
-    }
-    return stream.walkStreamForward(start, maxCount)
+    return stream.walkStreamForward(start, resolveLinks, requireMaster, credentials)
   }
 
   /**
@@ -630,48 +572,26 @@ export class Eventstore extends EventEmitter {
   public async walkEventsByCorrelationId(
     correlationId: string,
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
     resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
     const stream = this.stream(`$bc-${correlationId}`)
 
-    if (resolveLinks) {
-      stream.resolveAllLinks()
-    }
-    if (requireMaster) {
-      stream.requiresMaster()
-    }
-    if (credentials) {
-      stream.withCredentials(credentials)
-    }
-    return stream.walkStreamForward(start, maxCount)
+    return stream.walkStreamForward(start, resolveLinks, requireMaster, credentials)
   }
 
   /**
    * Get all stream names by stream category
    * (eventstore system projections must be enabled)
    */
-  public async streamsByCategory(
+  public async streamNamesByCategory(
     category: string,
     start: Long | number = StreamPosition.Start,
-    maxCount: number = 100,
-    resolveLinks: boolean = true,
     requireMaster?: boolean,
     credentials?: UserCredentials | null
   ): Promise<StreamWalker> {
     const stream = this.stream(`$category-${category}`)
-
-    if (resolveLinks) {
-      stream.resolveAllLinks()
-    }
-    if (requireMaster) {
-      stream.requiresMaster()
-    }
-    if (credentials) {
-      stream.withCredentials(credentials)
-    }
-    return stream.walkStreamForward(start, maxCount)
+    return stream.walkStreamForward(start, false, requireMaster, credentials)
   }
 }
