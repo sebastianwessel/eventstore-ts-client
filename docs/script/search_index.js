@@ -511,6 +511,12 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber113",
+    "Event emit tests throws on wrong expected version",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/2_integrationTests/3_event/1_appendEvent.test.ts.html#lineNumber89",
     "Event emit tests throws when emitting events already stored in eventstore",
     "test"
@@ -699,6 +705,18 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber81",
     "New event instance tests converts json string to eventMetadata",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber112",
+    "New event instance tests returns Event instance with correlationId set to parents correlationId",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/1_unitTests/3_event/newEvent.test.ts.html#lineNumber119",
+    "New event instance tests returns Event instance with correlationId set to parents id if correlation id not set",
     "test"
   ],
   [
@@ -926,12 +944,18 @@ window.esdocSearchIndex = [
   [
     "",
     "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber45",
-    "Read stream basic tests Read one event returns first event of stream",
+    "Read stream basic tests Read one event returns a event by given eventNumber from master (as parameter)",
     "test"
   ],
   [
     "",
     "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber56",
+    "Read stream basic tests Read one event returns first event of stream",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/2_stream/3_readStreamBasic.test.ts.html#lineNumber67",
     "Read stream basic tests Read one event returns last event of stream",
     "test"
   ],
@@ -1255,7 +1279,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber34",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber47",
     "Walk stream tests can walk to stream backward",
     "test"
   ],
@@ -1263,6 +1287,12 @@ window.esdocSearchIndex = [
     "",
     "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber21",
     "Walk stream tests can walk to stream forward",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/2_integrationTests/2_stream/4_readStreamWalk.test.ts.html#lineNumber34",
+    "Walk stream tests can walk to stream forward with master required",
     "test"
   ],
   [
@@ -1918,6 +1948,12 @@ window.esdocSearchIndex = [
     "file/src/event/Event.ts.html",
     "src/event/Event.ts",
     "file"
+  ],
+  [
+    "src/event/event.ts~event#causesevent",
+    "class/src/event/Event.ts~Event.html#instance-method-causesEvent",
+    "src/event/Event.ts~Event#causesEvent",
+    "method"
   ],
   [
     "src/event/event.ts~event#constructor",

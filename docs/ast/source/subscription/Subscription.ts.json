@@ -7787,44 +7787,9 @@
               }
             ]
           },
-          "leadingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * Base class for handling subscriptions\n * @emits {subscribed}\n * @emits {dropped}\n * @emits {event}\n * @emits {event-eventnametolowercase}\n * @emits {error}\n ",
-              "start": 291,
-              "end": 457,
-              "loc": {
-                "start": {
-                  "line": 9,
-                  "column": 0
-                },
-                "end": {
-                  "line": 16,
-                  "column": 3
-                }
-              }
-            }
-          ],
+          "leadingComments": [],
           "trailingComments": []
-        },
-        "leadingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "*\n * Base class for handling subscriptions\n * @emits {subscribed}\n * @emits {dropped}\n * @emits {event}\n * @emits {event-eventnametolowercase}\n * @emits {error}\n ",
-            "start": 291,
-            "end": 457,
-            "loc": {
-              "start": {
-                "line": 9,
-                "column": 0
-              },
-              "end": {
-                "line": 16,
-                "column": 3
-              }
-            }
-          }
-        ]
+        }
       }
     ],
     "directives": []

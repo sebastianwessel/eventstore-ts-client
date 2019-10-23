@@ -509,9 +509,9 @@
           ],
           "directives": []
         },
-        "leadingComments": [],
         "trailingComments": [],
-        "name": "_"
+        "name": "_",
+        "leadingComments": []
       },
       {
         "type": "Identifier",
@@ -10885,24 +10885,6 @@
             ],
             "directives": []
           },
-          "leadingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * Returns new EventstoreError type of EventstoreConnectionError\n ",
-              "start": 51,
-              "end": 123,
-              "loc": {
-                "start": {
-                  "line": 3,
-                  "column": 0
-                },
-                "end": {
-                  "line": 5,
-                  "column": 3
-                }
-              }
-            }
-          ],
           "trailingComments": [
             {
               "type": "CommentBlock",
@@ -10920,7 +10902,8 @@
                 }
               }
             }
-          ]
+          ],
+          "leadingComments": []
         },
         "leadingComments": null
       },

@@ -1,7 +1,7 @@
 {
-  "coverage": "98.24%",
-  "expectCount": 285,
-  "actualCount": 280,
+  "coverage": "96.5%",
+  "expectCount": 286,
+  "actualCount": 276,
   "files": {
     "src/StreamWalker.ts": {
       "expectCount": 10,
@@ -15,13 +15,17 @@
     },
     "src/errors/index.ts": {
       "expectCount": 21,
-      "actualCount": 21,
-      "undocumentLines": []
+      "actualCount": 20,
+      "undocumentLines": [
+        6
+      ]
     },
     "src/event/Event.ts": {
-      "expectCount": 34,
+      "expectCount": 35,
       "actualCount": 34,
-      "undocumentLines": []
+      "undocumentLines": [
+        9
+      ]
     },
     "src/eventstore/Eventstore.ts": {
       "expectCount": 31,
@@ -30,10 +34,8 @@
     },
     "src/eventstore/EventstoreSettings.ts": {
       "expectCount": 2,
-      "actualCount": 1,
-      "undocumentLines": [
-        122
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "src/eventstore/Position.ts": {
       "expectCount": 7,
@@ -47,8 +49,10 @@
     },
     "src/eventstore/getConnectInfo.ts": {
       "expectCount": 5,
-      "actualCount": 5,
-      "undocumentLines": []
+      "actualCount": 4,
+      "undocumentLines": [
+        12
+      ]
     },
     "src/protobuf/model.js": {
       "expectCount": 3,
@@ -66,30 +70,36 @@
     },
     "src/stream/Stream.ts": {
       "expectCount": 34,
-      "actualCount": 34,
-      "undocumentLines": []
+      "actualCount": 33,
+      "undocumentLines": [
+        23
+      ]
     },
     "src/stream/Transaction.ts": {
       "expectCount": 18,
-      "actualCount": 18,
-      "undocumentLines": []
+      "actualCount": 17,
+      "undocumentLines": [
+        11
+      ]
     },
     "src/subscription/PersistentSubscription.ts": {
       "expectCount": 26,
-      "actualCount": 26,
-      "undocumentLines": []
+      "actualCount": 25,
+      "undocumentLines": [
+        13
+      ]
     },
     "src/subscription/PersistentSubscriptionConfig.ts": {
       "expectCount": 3,
-      "actualCount": 2,
-      "undocumentLines": [
-        52
-      ]
+      "actualCount": 3,
+      "undocumentLines": []
     },
     "src/subscription/Subscription.ts": {
       "expectCount": 20,
-      "actualCount": 20,
-      "undocumentLines": []
+      "actualCount": 19,
+      "undocumentLines": [
+        17
+      ]
     }
   }
 }

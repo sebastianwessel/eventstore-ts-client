@@ -76,7 +76,7 @@ export class Transaction {
   }
 
   /**
-   * Appends array of evens to transaction
+   * Appends array of events to transaction
    */
   protected async appendEvents(
     events: Event[],

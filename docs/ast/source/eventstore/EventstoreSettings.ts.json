@@ -1,28 +1,28 @@
 {
   "type": "File",
   "start": 0,
-  "end": 4388,
+  "end": 4284,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 127,
+      "line": 123,
       "column": 0
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 4388,
+    "end": 4284,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 127,
+        "line": 123,
         "column": 0
       }
     },
@@ -4091,24 +4091,6 @@
                         }
                       }
                     }
-                  ],
-                  "trailingComments": [
-                    {
-                      "type": "CommentBlock",
-                      "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
-                      "start": 4055,
-                      "end": 4217,
-                      "loc": {
-                        "start": {
-                          "line": 115,
-                          "column": 0
-                        },
-                        "end": {
-                          "line": 121,
-                          "column": 3
-                        }
-                      }
-                    }
                   ]
                 }
               ]
@@ -4137,16 +4119,16 @@
         "trailingComments": [
           {
             "type": "CommentBlock",
-            "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
+            "value": "*\n * Generates settings for connecting to eventstore\n ",
             "start": 4055,
-            "end": 4217,
+            "end": 4113,
             "loc": {
               "start": {
                 "line": 115,
                 "column": 0
               },
               "end": {
-                "line": 121,
+                "line": 117,
                 "column": 3
               }
             }
@@ -4155,15 +4137,15 @@
       },
       {
         "type": "ExportNamedDeclaration",
-        "start": 4218,
-        "end": 4387,
+        "start": 4114,
+        "end": 4283,
         "loc": {
           "start": {
-            "line": 122,
+            "line": 118,
             "column": 0
           },
           "end": {
-            "line": 126,
+            "line": 122,
             "column": 1
           }
         },
@@ -4171,29 +4153,29 @@
         "source": null,
         "declaration": {
           "type": "FunctionDeclaration",
-          "start": 4225,
-          "end": 4387,
+          "start": 4121,
+          "end": 4283,
           "loc": {
             "start": {
-              "line": 122,
+              "line": 118,
               "column": 7
             },
             "end": {
-              "line": 126,
+              "line": 122,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 4234,
-            "end": 4255,
+            "start": 4130,
+            "end": 4151,
             "loc": {
               "start": {
-                "line": 122,
+                "line": 118,
                 "column": 16
               },
               "end": {
-                "line": 122,
+                "line": 118,
                 "column": 37
               },
               "identifierName": "setConnectionSettings"
@@ -4205,15 +4187,15 @@
           "params": [
             {
               "type": "Identifier",
-              "start": 4259,
-              "end": 4302,
+              "start": 4155,
+              "end": 4198,
               "loc": {
                 "start": {
-                  "line": 123,
+                  "line": 119,
                   "column": 2
                 },
                 "end": {
-                  "line": 123,
+                  "line": 119,
                   "column": 45
                 },
                 "identifierName": "customSettings"
@@ -4221,73 +4203,73 @@
               "name": "customSettings",
               "typeAnnotation": {
                 "type": "TSTypeAnnotation",
-                "start": 4273,
-                "end": 4302,
+                "start": 4169,
+                "end": 4198,
                 "loc": {
                   "start": {
-                    "line": 123,
+                    "line": 119,
                     "column": 16
                   },
                   "end": {
-                    "line": 123,
+                    "line": 119,
                     "column": 45
                   }
                 },
                 "typeAnnotation": {
                   "type": "TSUnionType",
-                  "start": 4275,
-                  "end": 4302,
+                  "start": 4171,
+                  "end": 4198,
                   "loc": {
                     "start": {
-                      "line": 123,
+                      "line": 119,
                       "column": 18
                     },
                     "end": {
-                      "line": 123,
+                      "line": 119,
                       "column": 45
                     }
                   },
                   "types": [
                     {
                       "type": "TSObjectKeyword",
-                      "start": 4275,
-                      "end": 4281,
+                      "start": 4171,
+                      "end": 4177,
                       "loc": {
                         "start": {
-                          "line": 123,
+                          "line": 119,
                           "column": 18
                         },
                         "end": {
-                          "line": 123,
+                          "line": 119,
                           "column": 24
                         }
                       }
                     },
                     {
                       "type": "TSTypeReference",
-                      "start": 4284,
-                      "end": 4302,
+                      "start": 4180,
+                      "end": 4198,
                       "loc": {
                         "start": {
-                          "line": 123,
+                          "line": 119,
                           "column": 27
                         },
                         "end": {
-                          "line": 123,
+                          "line": 119,
                           "column": 45
                         }
                       },
                       "typeName": {
                         "type": "Identifier",
-                        "start": 4284,
-                        "end": 4302,
+                        "start": 4180,
+                        "end": 4198,
                         "loc": {
                           "start": {
-                            "line": 123,
+                            "line": 119,
                             "column": 27
                           },
                           "end": {
-                            "line": 123,
+                            "line": 119,
                             "column": 45
                           },
                           "identifierName": "EventstoreSettings"
@@ -4302,43 +4284,43 @@
           ],
           "returnType": {
             "type": "TSTypeAnnotation",
-            "start": 4304,
-            "end": 4324,
+            "start": 4200,
+            "end": 4220,
             "loc": {
               "start": {
-                "line": 124,
+                "line": 120,
                 "column": 1
               },
               "end": {
-                "line": 124,
+                "line": 120,
                 "column": 21
               }
             },
             "typeAnnotation": {
               "type": "TSTypeReference",
-              "start": 4306,
-              "end": 4324,
+              "start": 4202,
+              "end": 4220,
               "loc": {
                 "start": {
-                  "line": 124,
+                  "line": 120,
                   "column": 3
                 },
                 "end": {
-                  "line": 124,
+                  "line": 120,
                   "column": 21
                 }
               },
               "typeName": {
                 "type": "Identifier",
-                "start": 4306,
-                "end": 4324,
+                "start": 4202,
+                "end": 4220,
                 "loc": {
                   "start": {
-                    "line": 124,
+                    "line": 120,
                     "column": 3
                   },
                   "end": {
-                    "line": 124,
+                    "line": 120,
                     "column": 21
                   },
                   "identifierName": "EventstoreSettings"
@@ -4349,73 +4331,73 @@
           },
           "body": {
             "type": "BlockStatement",
-            "start": 4325,
-            "end": 4387,
+            "start": 4221,
+            "end": 4283,
             "loc": {
               "start": {
-                "line": 124,
+                "line": 120,
                 "column": 22
               },
               "end": {
-                "line": 126,
+                "line": 122,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ReturnStatement",
-                "start": 4329,
-                "end": 4385,
+                "start": 4225,
+                "end": 4281,
                 "loc": {
                   "start": {
-                    "line": 125,
+                    "line": 121,
                     "column": 2
                   },
                   "end": {
-                    "line": 125,
+                    "line": 121,
                     "column": 58
                   }
                 },
                 "argument": {
                   "type": "ObjectExpression",
-                  "start": 4336,
-                  "end": 4385,
+                  "start": 4232,
+                  "end": 4281,
                   "loc": {
                     "start": {
-                      "line": 125,
+                      "line": 121,
                       "column": 9
                     },
                     "end": {
-                      "line": 125,
+                      "line": 121,
                       "column": 58
                     }
                   },
                   "properties": [
                     {
                       "type": "SpreadElement",
-                      "start": 4337,
-                      "end": 4365,
+                      "start": 4233,
+                      "end": 4261,
                       "loc": {
                         "start": {
-                          "line": 125,
+                          "line": 121,
                           "column": 10
                         },
                         "end": {
-                          "line": 125,
+                          "line": 121,
                           "column": 38
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 4340,
-                        "end": 4365,
+                        "start": 4236,
+                        "end": 4261,
                         "loc": {
                           "start": {
-                            "line": 125,
+                            "line": 121,
                             "column": 13
                           },
                           "end": {
-                            "line": 125,
+                            "line": 121,
                             "column": 38
                           },
                           "identifierName": "defaultConnectionSettings"
@@ -4425,29 +4407,29 @@
                     },
                     {
                       "type": "SpreadElement",
-                      "start": 4367,
-                      "end": 4384,
+                      "start": 4263,
+                      "end": 4280,
                       "loc": {
                         "start": {
-                          "line": 125,
+                          "line": 121,
                           "column": 40
                         },
                         "end": {
-                          "line": 125,
+                          "line": 121,
                           "column": 57
                         }
                       },
                       "argument": {
                         "type": "Identifier",
-                        "start": 4370,
-                        "end": 4384,
+                        "start": 4266,
+                        "end": 4280,
                         "loc": {
                           "start": {
-                            "line": 125,
+                            "line": 121,
                             "column": 43
                           },
                           "end": {
-                            "line": 125,
+                            "line": 121,
                             "column": 57
                           },
                           "identifierName": "customSettings"
@@ -4461,9 +4443,44 @@
             ],
             "directives": []
           },
-          "leadingComments": [],
+          "leadingComments": [
+            {
+              "type": "CommentBlock",
+              "value": "*\n * Generates settings for connecting to eventstore\n ",
+              "start": 4055,
+              "end": 4113,
+              "loc": {
+                "start": {
+                  "line": 115,
+                  "column": 0
+                },
+                "end": {
+                  "line": 117,
+                  "column": 3
+                }
+              }
+            }
+          ],
           "trailingComments": []
-        }
+        },
+        "leadingComments": [
+          {
+            "type": "CommentBlock",
+            "value": "*\n * Generates settings for connecting to eventstore\n ",
+            "start": 4055,
+            "end": 4113,
+            "loc": {
+              "start": {
+                "line": 115,
+                "column": 0
+              },
+              "end": {
+                "line": 117,
+                "column": 3
+              }
+            }
+          }
+        ]
       }
     ],
     "directives": []
@@ -4647,16 +4664,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\n * Generates settings for connecting to eventstore\n *\n * @export\n * @param {(object | EventstoreSettings)} customSettings\n * @returns {EventstoreSettings}\n ",
+      "value": "*\n * Generates settings for connecting to eventstore\n ",
       "start": 4055,
-      "end": 4217,
+      "end": 4113,
       "loc": {
         "start": {
           "line": 115,
           "column": 0
         },
         "end": {
-          "line": 121,
+          "line": 117,
           "column": 3
         }
       }
