@@ -157,6 +157,10 @@ export class Event {
     //add as new object to prevent unwanted changes
     this.objectMetadata =
       typeof newMetadata === 'string' ? JSON.parse(newMetadata) : {...newMetadata}
+
+    if (this.objectCorrelationId && typeof this.metadata === 'object') {
+      this.metadata = {...this.metadata, $correlationId: this.objectCorrelationId}
+    }
   }
 
   /**
@@ -187,6 +191,15 @@ export class Event {
       this.objectCorrelationId = this.metadata.$correlationId || null
     }
     return this.objectCorrelationId
+  }
+
+  /**
+   * Returns a new new instance of Event with correlation id set to currents events correlation id or id
+   */
+  public causesEvent(eventType: string, data?: {}, metadata?: {}): Event {
+    const childEvent = new Event(eventType, data, metadata)
+    childEvent.correlationId = this.correlationId || this.id
+    return childEvent
   }
 
   /**
