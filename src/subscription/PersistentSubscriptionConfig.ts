@@ -49,10 +49,8 @@ const defaultPersistentSubscriptionConfig: PersistentSubscriptionConfig = {
 /**
  * merges given settings with default settings
  */
-function setPersistentSubscriptionConfig(
+export function setPersistentSubscriptionConfig(
   customSettings: object | PersistentSubscriptionConfig
 ): PersistentSubscriptionConfig {
   return {...defaultPersistentSubscriptionConfig, ...customSettings}
 }
-
-export {setPersistentSubscriptionConfig}

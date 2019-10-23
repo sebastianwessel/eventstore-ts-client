@@ -112,9 +112,11 @@ const defaultConnectionSettings: EventstoreSettings = {
   }
 }
 
-/** Generates settings for connecting to eventstore */
-function setConnectionSettings(customSettings: object | EventstoreSettings): EventstoreSettings {
+/**
+ * Generates settings for connecting to eventstore
+ */
+export function setConnectionSettings(
+  customSettings: object | EventstoreSettings
+): EventstoreSettings {
   return {...defaultConnectionSettings, ...customSettings}
 }
-
-export {setConnectionSettings}

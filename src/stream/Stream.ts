@@ -105,7 +105,7 @@ export class Stream {
    */
   protected appendEvents(
     events: Event[],
-    expectedVersion: ExpectedVersion | number | Long = -2,
+    expectedVersion: ExpectedVersion | number | Long,
     requireMaster?: boolean,
     credentials?: UserCredentials
   ): Promise<WriteResult> {
@@ -125,7 +125,7 @@ export class Stream {
 
     const raw = protobuf.WriteEvents.fromObject({
       eventStreamId: this.streamId,
-      expectedVersion: expectedVersion,
+      expectedVersion,
       events: eventArrayTransformed,
       requireMaster: requireMaster === undefined ? this.options.requireMaster : requireMaster
     })
@@ -211,7 +211,7 @@ export class Stream {
    */
   protected delete(
     hardDelete: boolean,
-    expectedVersion: ExpectedVersion = ExpectedVersion.Any,
+    expectedVersion: ExpectedVersion,
     requireMaster?: boolean,
     credentials?: UserCredentials
   ): Promise<Position> {
@@ -426,7 +426,7 @@ export class Stream {
    */
   protected async readSlice(
     direction: EventstoreCommand,
-    fromEventNumber: number | Long = 0,
+    fromEventNumber: number | Long,
     maxSliceCount?: number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
@@ -461,7 +461,7 @@ export class Stream {
    * Read a slice from stream in forward direction starting at given position
    */
   public async readSliceForward(
-    fromEventNumber: number | Long = StreamPosition.Start,
+    fromEventNumber: number | Long,
     maxSliceCount?: number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
@@ -481,7 +481,7 @@ export class Stream {
    * Read a slice from stream in backward direction starting at given position
    */
   public async readSliceBackward(
-    fromEventNumber: number | Long = StreamPosition.End,
+    fromEventNumber: number | Long,
     maxSliceCount?: number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
@@ -496,14 +496,17 @@ export class Stream {
       credentials
     )
   }
-  // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+
+  /**
+   * Walk through all events of stream
+   */
   protected async walkStream(
     forward: boolean,
     start: Long | number,
     resolveLinks?: boolean,
     requireMaster?: boolean,
     credentials?: UserCredentials
-  ) {
+  ): Promise<StreamWalker> {
     const that = this
     const resolveLinksTos = resolveLinks === undefined ? this.options.resolveLinks : resolveLinks
     const maxCount = this.defaultSliceSize

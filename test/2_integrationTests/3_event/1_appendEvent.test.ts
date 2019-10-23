@@ -109,4 +109,19 @@ describe('Event emit tests', (): void => {
       expect(err.name).to.be.equal('EventstoreOperationError')
     }
   })
+
+  it('throws on wrong expected version', async (): Promise<void> => {
+    const newEvents = [
+      new Event('FirstEventWritten'),
+      new Event('NextEventWritten'),
+      new Event('LastEventWritten')
+    ]
+    const stream = await es.stream('testemitstream')
+    try {
+      await stream.append(newEvents, ExpectedVersion.NoStream)
+      assert.fail('has not thrown')
+    } catch (err) {
+      assert.ok('ok')
+    }
+  })
 })
