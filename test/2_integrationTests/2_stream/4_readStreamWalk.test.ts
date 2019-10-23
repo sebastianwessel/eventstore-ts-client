@@ -31,6 +31,19 @@ describe('Walk stream tests', (): void => {
     assert.strictEqual(checkCounter, 10001)
   })
 
+  it('can walk to stream forward with master required', async (): Promise<void> => {
+    const walker = await es
+      .stream('tenthousandstream-f73cff95-564b-4da4-8072-4d761db6cd34')
+      .walkStreamForward(0, true, true)
+
+    let checkCounter = 0
+    for await (const value of walker) {
+      assert.strictEqual(value.data.count, checkCounter)
+      checkCounter++
+    }
+    assert.strictEqual(checkCounter, 10001)
+  })
+
   it('can walk to stream backward', async (): Promise<void> => {
     const walker = await es
       .stream('tenthousandstream-f73cff95-564b-4da4-8072-4d761db6cd34')

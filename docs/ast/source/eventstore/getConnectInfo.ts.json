@@ -3072,7 +3072,6 @@
                           "directives": []
                         }
                       },
-                      "guardedHandlers": [],
                       "finalizer": null
                     },
                     {
@@ -3114,24 +3113,7 @@
             }
           ],
           "kind": "const",
-          "leadingComments": [
-            {
-              "type": "CommentBlock",
-              "value": "*\n * dns lookup for given domain and returns list of corresponding ip's\n ",
-              "start": 254,
-              "end": 331,
-              "loc": {
-                "start": {
-                  "line": 9,
-                  "column": 0
-                },
-                "end": {
-                  "line": 11,
-                  "column": 3
-                }
-              }
-            }
-          ],
+          "leadingComments": [],
           "trailingComments": [
             {
               "type": "CommentBlock",
@@ -3151,24 +3133,6 @@
             }
           ]
         },
-        "leadingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "*\n * dns lookup for given domain and returns list of corresponding ip's\n ",
-            "start": 254,
-            "end": 331,
-            "loc": {
-              "start": {
-                "line": 9,
-                "column": 0
-              },
-              "end": {
-                "line": 11,
-                "column": 3
-              }
-            }
-          }
-        ],
         "trailingComments": [
           {
             "type": "CommentBlock",
@@ -5274,7 +5238,6 @@
                           "directives": []
                         }
                       },
-                      "guardedHandlers": [],
                       "finalizer": null
                     },
                     {

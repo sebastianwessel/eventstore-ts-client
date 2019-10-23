@@ -6,7 +6,7 @@ There are a couple of things like error handling or function naming which should
 
 It follows async/await style to avoid "callback hell" as well.
 
-## speaking code
+## Speaking code
 
 Instead of having some base function with lots of parameters this lib provides some nice syntax and alias functions.  
 Instead of writing:
@@ -82,7 +82,7 @@ List of possible errors:
 - `EventstoreUnspecificError`
 - `EventstoreWrongExpectedVersionError`
 
-## request response queue
+## Request response queue
 
 This lib does not use a queue for outgoing requests and commands.  
 Most outgoing requests will result in promises which will get resolved as soon as an valid response without error code arrives.  

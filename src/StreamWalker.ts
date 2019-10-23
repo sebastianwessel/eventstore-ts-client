@@ -48,9 +48,9 @@ export class StreamWalker {
     }
 
     const iterable = this.iterable
-    const b = async function*(fn: Function, thisArg?: Function) {
+    const b = async function*(innerFn: Function, thisInnerArg?: Function) {
       for await (const value of iterable) {
-        if (await fn.call(thisArg, value)) {
+        if (await innerFn.call(thisInnerArg, value)) {
           yield value
         }
       }

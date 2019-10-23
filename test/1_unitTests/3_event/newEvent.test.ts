@@ -108,4 +108,17 @@ describe('New event instance tests', (): void => {
     const result = newEvent.toRaw()
     assert.strictEqual(result.constructor.name, 'NewEvent')
   })
+
+  it('returns Event instance with correlationId set to parents correlationId', (): void => {
+    const parentEvent = new Event('EventWasHappened')
+    parentEvent.correlationId = '123'
+    const childEvent = parentEvent.causesEvent('EventCausedByEvent')
+    assert.strictEqual(childEvent.correlationId, '123')
+  })
+
+  it('returns Event instance with correlationId set to parents id if correlation id not set', (): void => {
+    const parentEvent = new Event('EventWasHappened')
+    const childEvent = parentEvent.causesEvent('EventCausedByEvent')
+    assert.strictEqual(childEvent.correlationId, parentEvent.id)
+  })
 })

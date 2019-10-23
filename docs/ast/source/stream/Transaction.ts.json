@@ -815,24 +815,6 @@
           }
         ],
         "kind": "const",
-        "leadingComments": [
-          {
-            "type": "CommentBlock",
-            "value": "* protobuf shorthand ",
-            "start": 355,
-            "end": 380,
-            "loc": {
-              "start": {
-                "line": 10,
-                "column": 0
-              },
-              "end": {
-                "line": 10,
-                "column": 25
-              }
-            }
-          }
-        ],
         "trailingComments": [
           {
             "type": "CommentBlock",

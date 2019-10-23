@@ -113,6 +113,13 @@ npm run test
 
 Running tests will also generate some code coverage report to be used in tools like sonarqube
 
+## ToDo
+
+- catch-up subscription
+- ACL handling
+- code review and cleanup
+- improve tests and documentation
+
 ## Apache 2.0 License
 
 see [LICENSE](LICENSE)
