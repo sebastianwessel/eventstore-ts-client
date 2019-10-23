@@ -155,12 +155,9 @@ export class Event {
   ) {
     this.throwIfNotNewEvent('eventMetadata')
     //add as new object to prevent unwanted changes
+    const $correlationId = this.objectCorrelationId ? this.objectCorrelationId : undefined
     this.objectMetadata =
-      typeof newMetadata === 'string' ? JSON.parse(newMetadata) : {...newMetadata}
-
-    if (this.objectCorrelationId && typeof this.metadata === 'object') {
-      this.metadata = {...this.metadata, $correlationId: this.objectCorrelationId}
-    }
+      typeof newMetadata === 'string' ? { ...JSON.parse(newMetadata), $correlationId} : {...newMetadata, $correlationId}
   }
 
   /**
