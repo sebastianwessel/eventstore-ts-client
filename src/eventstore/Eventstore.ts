@@ -567,7 +567,7 @@ export class Eventstore extends EventEmitter {
 
   /**
    * Get all events by correlation id
-   * (eventstore system projections must be enabled)
+   * (eventstore system projections must be enabled and eventstore server version >=5 must be installed)
    */
   public async walkEventsByCorrelationId(
     correlationId: string,
