@@ -3,7 +3,7 @@
 There are 3 different subscription types.  
 Simple stream subscriptions, persistent subscriptions and catchUp subscriptions.
 
-## subscribe to stream
+## Subscribe to stream
 
 You can use `subscribe()` at stream instances and simply adding listener(s) to returned subscription.  
 There are two options.
@@ -43,7 +43,7 @@ subscription.on('event-specificeventa', (event) => {
 
 With this approach you're able to add different listeners for different needs to one single stream subscription.
 
-## persistent subscription
+## Persistent subscription
 
 You can create persistent subscriptions (**needs admin rights**)
 
@@ -115,12 +115,12 @@ Unsubscribing an existing persistent subscription is also pretty easy
 await persistentSubscription.unsubscribe()
 ```
 
-## catchUp subscriptions
+## CatchUp subscriptions
 
 /** TODO **/  
 not implemented yet
 
-## emitted events
+## Emitted events
 
 - `subscribed` emitted after subscription is established
 - `dropped` emitted when subscription is dropped

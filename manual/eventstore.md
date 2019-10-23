@@ -1,6 +1,6 @@
 # Eventstore
 
-## connecting
+## Connecting
 
 Main connection parameters are set inside of connection uri  
 This lib supports connecting to single instance via tcp and auto discovering to clusters also.  
@@ -39,13 +39,13 @@ const es = new Eventstore({
 await es.connect()
 ```
 
-## disconnecting
+## Disconnecting
 
 It's highly recommended to close a connection in save way.  
 You should use `es.disconnect()` for proper shut down, because this function sets current connection to state `drain`.  
 This means the connection does not accept outgoing requests any longer and waits if necessary for outstanding responses from eventstore.  
 
-## emitted events
+## Emitted events
 
 - `connected` emitted as soon as connection is established
 - `secureConnect` emitted when connection is secured connected

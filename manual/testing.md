@@ -15,18 +15,18 @@
 Tests are implemented as integration tests against a real eventstore cluster.  
 You can find code coverage analysis at **[sonarcloud.com](https://sonarcloud.io/dashboard?id=sebastianwessel_eventstore-ts-client)** and at **[codecov.io](https://codecov.io/gh/sebastianwessel/eventstore-ts-client)**
 
-## requirements
+## Requirements
 
 - node > 10
 - linux or mac for running bash scripts
 - installed Docker
 
-## running tests
+## Running tests
 
 - install all dependencies `npm install`
 - run tests `npm run test`
 
-## test suite
+## Test suite
 
 The whole tests are configured and started by `scripts/allTest.sh`
 

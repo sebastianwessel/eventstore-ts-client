@@ -1,6 +1,6 @@
 # Streams
 
-## accessing steams
+## Accessing steams
 
 You can use different methods to get an stream instance:
 
@@ -44,7 +44,7 @@ await eventstore
       .append(eventUsernameChanged)
 ```
 
-## writing to streams
+## Writing to streams
 
 Writing to streams is simple by using `.append()` function at a stream instance.
 
@@ -72,7 +72,7 @@ const eventD = new Event('EventD')
 await eventstore.atStream('mystream').append([eventC, eventD])
 ```
 
-## reading from stream
+## Reading from stream
 
 It's recommended to use an async iterator to fetch events from streams.  
 
@@ -114,7 +114,7 @@ const result = await walker
 console.log(result)
 ```
 
-## reading all events
+## Reading all events
 
 It's possible to read all events from eventstore.  
 It uses same behavior as regular async iterator for streams but it **needs admin rights**.
@@ -137,6 +137,28 @@ const eventstore = new Eventstore()
 await eventstore.connect()
 
 const events = await eventstore.walkAllBackward()
+
+for await (const event of events) {
+  console.log(event.name)
+}
+```
+
+## System projections
+
+Eventstore comes with some handy projections which are available if you have enabled system projections in your server config and your current user acl is not disallowing access to them.
+
+You can use some functions to access these streams:
+
+- walkEventsByStreamCategory
+- walkEventsByType
+- walkEventsByCorrelationId
+- streamNamesByCategory
+
+```javascript
+const eventstore = new Eventstore()
+await eventstore.connect()
+
+const events = await eventstore.walkEventsByType('sometype')
 
 for await (const event of events) {
   console.log(event.name)
