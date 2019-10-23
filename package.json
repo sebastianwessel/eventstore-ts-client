@@ -1,6 +1,6 @@
 {
   "name": "eventstore-ts-client",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Eventstore node.js javascript client library written in typescript with ES6 async/await syntax",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
